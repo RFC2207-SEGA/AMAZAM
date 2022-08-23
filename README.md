@@ -7,6 +7,7 @@
     ##### git checkout main
     ##### git fetch origin 
     ##### git reset --hard origin/main
+This switches the repo to the main branch, pulls the latest commits and resets the repo's local copy of main to match the latest version.
     
 3. Create a new-branch. Use a separate branch for each feature or issue you work on. After creating a branch, check it out locally so that any changes you make will be on that branch.
     ##### git checkout -b new-feature
