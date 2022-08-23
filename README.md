@@ -1,5 +1,5 @@
 # SEGA-Project-Atelier
-#Project Setup using: https://github.com/DaltonHart/HowTo-React-Webpack-Babel
+# Project Setup using: https://github.com/DaltonHart/HowTo-React-Webpack-Babel
 
 
 1. Clone main branch to local machine
