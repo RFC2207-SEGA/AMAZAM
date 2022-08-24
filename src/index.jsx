@@ -4,11 +4,12 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 // create the root of the app by selection where the app should be mounted in the dom
 const root = createRoot(document.getElementById("root"));
+import ReviewsRatings from './components/Reviews/ReviewsRatings.jsx';
 
 
 class App extends React.Component {
   constructor(props) {
-    super (props)
+    super(props);
     this.state = {
       products: [
         {
@@ -35,10 +36,11 @@ class App extends React.Component {
               "category": "Pants",
               "default_price": "40"
           }
-      ],
-      product: this.state.products[0],
+      ]
     }
+    this.state.product = this.state.products[1]
   }
+
 
   selectProduct (product) {
     this.setState({ 'product': product })
@@ -47,18 +49,18 @@ class App extends React.Component {
 
   render () {
     return (
+      // <div>
+      //   <Overview product={this.state.product} select={this.selectProduct.bind(this)}/>
+      // </div>
       <div>
-        <Overview product={this.state.product} select={this.selectProduct.bind(this)}/>
+        <ReviewsRatings product={this.state.product} select={this.selectProduct.bind(this)}/>
       </div>
-      <div>
-        <Reviews product={this.state.product} select={this.selectProduct.bind(this)}/>
-      </div>
-      <div>
-        <QA product={this.state.product} select={this.selectProduct.bind(this)}/>
-      </div>
-      <div>
-        <Related products={this.state.products} product={this.state.product} select={this.selectProduct.bind(this)}/>
-      </div>
+      // <div>
+      //   <QA product={this.state.product} select={this.selectProduct.bind(this)}/>
+      // </div>
+      // <div>
+      //   <Related products={this.state.products} product={this.state.product} select={this.selectProduct.bind(this)}/>
+      // </div>
     )
   }
 }
