@@ -1,16 +1,13 @@
 # SEGA-Project-Atelier
-# Project Setup using: https://github.com/DaltonHart/HowTo-React-Webpack-Babel
+## Project Setup using: https://github.com/DaltonHart/HowTo-React-Webpack-Babel
 
 
 1. Clone main branch to local machine
-2. Start with the main branch - All feature branches are created off the latest code state of a project. This guide assumes this is maintained and updated in the main branch.
-    ##### git checkout main
-    ##### git fetch origin 
-    ##### git reset --hard origin/main
-This switches the repo to the main branch, pulls the latest commits and resets the repo's local copy of main to match the latest version.
+2. Git the file from the main branch onto your local machine. 
 
-         OR 
+          ```sh
          git pull origin main
+         ````
     
 3. Create a new-branch. Use a separate branch for each feature or issue you work on. After creating a branch, check it out locally so that any changes you make will be on that branch.
     ##### git checkout -b new-feature
