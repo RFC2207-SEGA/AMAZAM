@@ -6,6 +6,8 @@
 2. Git the file from the main branch onto your local machine. 
 
          git pull origin main
+         OR
+         git checkout origin main
         
     
 3. This command will let you create a new Branch to start your work not on the main branch. Use this to send pull request to the main branch. 
