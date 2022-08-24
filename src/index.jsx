@@ -3,6 +3,7 @@ import React from "react";
 // Import from react-dom the ability to create a root render
 import { createRoot } from "react-dom/client";
 // create the root of the app by selection where the app should be mounted in the dom
+import Overview from "./components/Overview.jsx"
 const root = createRoot(document.getElementById("root"));
 
 
@@ -36,7 +37,15 @@ class App extends React.Component {
               "default_price": "40"
           }
       ],
-      product: this.state.products[0],
+
+      product: {
+        "id": 1,
+        "name": "Camo Onesie",
+        "slogan": "Blend in to your crowd",
+        "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
+        "category": "Jackets",
+        "default_price": "140"
+      },
     }
   }
 
@@ -48,16 +57,12 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <Overview product={this.state.product} select={this.selectProduct.bind(this)}/>
-      </div>
-      <div>
-        <Reviews product={this.state.product} select={this.selectProduct.bind(this)}/>
-      </div>
-      <div>
+        <div>
+        <Overview product={this.state.product} select={this.selectProduct.bind(this)} />
+        {/* <Reviews product={this.state.product} select={this.selectProduct.bind(this)}/>
         <QA product={this.state.product} select={this.selectProduct.bind(this)}/>
-      </div>
-      <div>
-        <Related products={this.state.products} product={this.state.product} select={this.selectProduct.bind(this)}/>
+        <Related products={this.state.products} product={this.state.product} select={this.selectProduct.bind(this)}/> */}
+        </div>
       </div>
     )
   }

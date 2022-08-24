@@ -20,7 +20,7 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
+	font-family: Futura;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -45,4 +45,60 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+.overview-container {
+	display: flex;
+}
+
+.gallery-container {
+	display: flex;
+	max-width: 80%;
+  position: relative;
+  /* margin: auto; */
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+.sale {
+	color: red;
+}
+
+.strikeout {
+	text-decoration: line-through;
+}
+
+.product-category {
+	font-style: italic;
+}
+
+.product-name {
+	font-style: italic;
+	font-size: 24px;
+}
+
+.placeholder {
+	font-size: 10px;
 }
