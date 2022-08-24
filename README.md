@@ -9,9 +9,9 @@
         
     
 3. This command will let you create a new Branch to start your work not on the main branch. Use this to send pull request to the main branch. 
-    `
-    git checkout -b new-feature
-    `
+    
+         git checkout -b new-feature
+    
 4. Update, add, commit, and push changes
 
           git status
