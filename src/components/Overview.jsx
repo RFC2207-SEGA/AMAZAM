@@ -1,7 +1,8 @@
 import React from 'react';
 import Gallery from './Gallery.jsx';
 import StyleSelector from './StyleSelector.jsx';
-import ProductInfo from './ProductInfo.jsx'
+import ProductInfo from './ProductInfo.jsx';
+import OverviewSelectors from './OverviewSelectors.jsx';
 // import axios from 'axios';
 
 class Overview extends React.Component {
@@ -166,25 +167,10 @@ class Overview extends React.Component {
           </div>
           <section className="product-info">
             <ProductInfo product={this.props.product} style={this.state.currentStyle} onSale={this.state.onSale}/>
-            <div>
             <StyleSelector style={this.state.currentStyle.name} styles={this.state.productStyles} onClick={this.styleSelect.bind(this)}/>
-          </div>
-          <div> Size:
-          <select onChange={this.pickSize.bind(this)}>{this.state.sizes.map((size) => (
-            <option value={size}>{size}</option>
-          ))}
-          </select>
-          Quantity:
-          <select>{this.state.quantities.map((quantity) => (
-            <option value={quantity}>{quantity}</option>
-          ))}
-          </select>
-          <div>
-            <button>Add to Cart</button>
-          </div>
-          </div>
-          <div className="social-links"></div>
-          <button>Facebook</button><button>Twitter</button><button>Pinterest</button>
+            <OverviewSelectors pickSize={this.pickSize.bind(this)} sizes={this.state.sizes} quantities={this.state.quantities}/>
+            <div className="social-links"></div>
+            <button>Facebook</button><button>Twitter</button><button>Pinterest</button>
           </section>
         </div>
         <div className="product-description">
