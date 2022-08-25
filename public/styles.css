@@ -20,7 +20,11 @@
 	flex: 2;
 	order: 2;
 	width: 75%;
-	background-color: yellow;
+	/* background-color: yellow; */
+}
+
+.sellerResponse {
+	background-color: rgb(220, 220, 220);
 }
 
 /* .RatingBreadown {

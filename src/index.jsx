@@ -4,7 +4,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 // create the root of the app by selection where the app should be mounted in the dom
 const root = createRoot(document.getElementById("root"));
-import ReviewsRatings from './components/Reviews/ReviewsRatings.jsx';
+import RatingsReviews from './components/RatingsReviews/RatingsReviews.jsx';
 
 
 class App extends React.Component {
@@ -53,7 +53,7 @@ class App extends React.Component {
       //   <Overview product={this.state.product} select={this.selectProduct.bind(this)}/>
       // </div>
       <div>
-        <ReviewsRatings product={this.state.product} select={this.selectProduct.bind(this)}/>
+        <RatingsReviews product={this.state.product} select={this.selectProduct.bind(this)}/>
       </div>
       // <div>
       //   <QA product={this.state.product} select={this.selectProduct.bind(this)}/>

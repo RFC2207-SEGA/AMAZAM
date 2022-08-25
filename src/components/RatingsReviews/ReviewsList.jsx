@@ -1,10 +1,14 @@
 import React from "react";
 import ReviewTile from './ReviewTile.jsx';
 
-function ReviewsList (props) {
+function ReviewsList ({reviews, sort}) {
   return (
     <>
-      {props.reviews.map(review => {
+
+
+
+
+      {reviews.map(review => {
         return <ReviewTile review={review} key={review.review_id} />
       })}
     </>
