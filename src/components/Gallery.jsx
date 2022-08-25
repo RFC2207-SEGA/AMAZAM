@@ -1,11 +1,13 @@
 import React from 'react';
 import Photo from './Photo.jsx';
+import FullscreenModal from './FullscreenModal.jsx'
 
 class Gallery extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       photoIndex: 1,
+      showModal: false,
     }
   }
 
@@ -22,10 +24,15 @@ class Gallery extends React.Component {
     }
   }
 
+  triggerModal() {
+    this.setState({ 'showModal': !this.state.showModal })
+  }
+
   render () {
     return (
       <div> {this.props.style.photos.map((photo) => (
-        <Photo photo={photo} index={this.props.style.photos.indexOf(photo)} display={this.display.bind(this)} next={this.movePhoto.bind(this)} prev={this.movePhoto.bind(this)}/>))}
+        <Photo photo={photo} index={this.props.style.photos.indexOf(photo)} display={this.display.bind(this)} next={this.movePhoto.bind(this)} prev={this.movePhoto.bind(this)} triggerModal={this.triggerModal.bind(this)}/>))}
+        <FullscreenModal show={this.state.showModal} photo={this.props.style.photos[this.state.photoIndex]} toggleModal={this.triggerModal.bind(this)}/>
       </div>
     )
   }

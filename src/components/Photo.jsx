@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Photo = ({photo, index, display, prev, next}) => {
+const Photo = ({photo, index, display, prev, next, triggerModal}) => {
   if (display(index)) {
     return (
       <div className="photo fade">
@@ -8,8 +8,8 @@ const Photo = ({photo, index, display, prev, next}) => {
         <img
           src={photo.url}
           width="768"
-          height="384"
-          ></img>
+          height="500"
+          onClick={() => {triggerModal()}}></img>
         <a className="next" onClick={() => { next(1) }}>&#10095;</a>
       </div>
     )
