@@ -36,3 +36,11 @@
 	flex: 2;
 	background-color: orange;
 } */
+
+meter {
+  width: 290px;
+  height: 25px;
+  /*-webkit-appearance: none; /* Reset appearance */
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}

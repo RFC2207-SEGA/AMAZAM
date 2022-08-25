@@ -1,5 +1,5 @@
 import React from "react";
-import { FaStar, FaCheck } from 'react-icons/fa';
+import { FaCheck } from 'react-icons/fa';
 
 
 function ReviewTile ({ review }) {
@@ -28,7 +28,7 @@ function ReviewTile ({ review }) {
 
   return (
     <>
-      <div><FaStar /><FaStar /><FaStar /><FaStar /><FaStar /></div>
+      <div>⭐️ ⭐️ ⭐️ ⭐️ ⭐️ </div>
       <span>{review.reviewer_name}</span>, <span>{formatDate(review.date)}</span>
       <h3>{review.summary}</h3>
       <p>{review.body}</p>
@@ -43,8 +43,14 @@ function ReviewTile ({ review }) {
 
       <div>{sellerResponse()}</div>
 
-      <p>Helpful? Yes ({review.helpfulness})</p>
-      <p>Report</p>
+      <div>
+        <span>Helpful? </span>
+        <a href="">Yes</a>
+        <span> ({review.helpfulness}) </span>
+        <a href="">No</a>
+      </div>
+
+      <a href="">Report</a>
     </>
   )
 }

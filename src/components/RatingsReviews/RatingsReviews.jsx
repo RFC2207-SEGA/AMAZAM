@@ -15,7 +15,7 @@ class RatingsReviews extends React.Component {
           "results": [
             {
               "review_id": 5,
-              "rating": 3,
+              "rating": 3.6,
               "summary": "I'm enjoying wearing these shades",
               "recommend": true,
               "response": null,
@@ -35,7 +35,7 @@ class RatingsReviews extends React.Component {
             },
             {
               "review_id": 3,
-              "rating": 4,
+              "rating": 4.5,
               "summary": "I am liking these glasses",
               "recommend": false,
               "response": "Glad you're enjoying the product!",
@@ -53,12 +53,10 @@ class RatingsReviews extends React.Component {
     this.handleSort = this.handleSort.bind(this);
   }
 
-
   handleSort(e) {
     e.preventDefault();
-    this.setState ({sort: e.target.value})
+    this.setState({sort: e.target.value})
   }
-
 
   render() {
     return (
@@ -67,7 +65,7 @@ class RatingsReviews extends React.Component {
         <div className='ReviewsRatings'>
 
           <div className='Breakdowns'>
-            <div className='RatingBreakdown'><RatingBreakdown /></div>
+            <div className='RatingBreakdown'><RatingBreakdown reviews={this.state.reviews[0].results}/></div>
             <div className='ProductBreakdown'><ProductBreakdown /></div>
           </div>
 
