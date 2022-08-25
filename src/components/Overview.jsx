@@ -69,7 +69,7 @@ class Overview extends React.Component {
               "size": "XS"
             },
             "38": {
-              "quantity": 16,
+              "quantity": 10,
               "size": "S"
             },
             "39": {
@@ -159,6 +159,7 @@ class Overview extends React.Component {
 
   render() {
       return (
+      <div>
         <div className='overview-container'>
           <div className="gallery-container">
             <Gallery style={this.state.currentStyle} />
@@ -166,13 +167,14 @@ class Overview extends React.Component {
           <section className="product-info">
             <ProductInfo product={this.props.product} style={this.state.currentStyle} onSale={this.state.onSale}/>
             <div>
-            <StyleSelector styles={this.state.productStyles} onClick={this.styleSelect.bind(this)}/>
+            <StyleSelector style={this.state.currentStyle.name} styles={this.state.productStyles} onClick={this.styleSelect.bind(this)}/>
           </div>
-          <div>
+          <div> Size:
           <select onChange={this.pickSize.bind(this)}>{this.state.sizes.map((size) => (
             <option value={size}>{size}</option>
           ))}
           </select>
+          Quantity:
           <select>{this.state.quantities.map((quantity) => (
             <option value={quantity}>{quantity}</option>
           ))}
@@ -181,8 +183,19 @@ class Overview extends React.Component {
             <button>Add to Cart</button>
           </div>
           </div>
+          <div className="social-links"></div>
+          <button>Facebook</button><button>Twitter</button><button>Pinterest</button>
           </section>
         </div>
+        <div className="product-description">
+          <div className="product-slogan">
+            <h1 className="slogan-header">{this.props.product.slogan}:</h1>
+            <p>{this.props.product.description}</p>
+          </div>
+          <div> {this.state.productInfo.map((feat) => (
+            <div> {feat.feature}: {feat.value}</div>))}</div>
+        </div>
+      </div>
       )
     }
 }

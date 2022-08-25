@@ -49,6 +49,8 @@ table {
 
 .overview-container {
 	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
 }
 
 .gallery-container {
@@ -91,14 +93,42 @@ table {
 }
 
 .product-category {
+	margin: 4px;
 	font-style: italic;
 }
 
 .product-name {
 	font-style: italic;
-	font-size: 24px;
+	font-size: 36px;
+	margin: 8px;
 }
 
 .placeholder {
 	font-size: 10px;
+}
+
+.product-info {
+	display: flex;
+	flex-direction: column;
+}
+
+.product-description {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.product-slogan {
+	width: 50%;
+	flex-wrap: wrap;
+}
+
+.slogan-header {
+	font-style: italic;
+	font-size: 24px;
+	margin: 8px;
+}
+
+.price {
+	font-size: 12px;
+	margin: 4px;
 }

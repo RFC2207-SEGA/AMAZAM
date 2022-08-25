@@ -7,11 +7,8 @@ const ProductInfo = ({product, style, onSale}) => {
       <li className="placeholder"> Star Component Goes Here! </li>
       <li className='product-category'>Category: {product.category}</li>
       <li className='product-name'>{product.name}</li>
-      <li className='sale'>Price: {style.original_price - style.sale_price}</li>
+      <li className='price sale'>Price: ${style.original_price - style.sale_price}</li>
       <li className='strikeout'>{style.original_price}</li>
-      <li>Product Overview</li>
-      <li className="social-links">Social Links:</li>
-      <button>Facebook</button><button>Twitter</button><button>Pinterest</button>
     </ul>
     )
   } else {
@@ -20,10 +17,7 @@ const ProductInfo = ({product, style, onSale}) => {
         <li className="placeholder"> Star Component Goes Here! </li>
         <li className='product-category'>Category: {product.category}</li>
         <li className='product-name'>{product.name}</li>
-        <li>Price: {style.original_price}</li>
-        <li>Product Overview</li>
-        <li className="social-links">Social Links:</li>
-        <button>Facebook</button><button>Twitter</button><button>Pinterest</button>
+        <li className='price'>Price: ${style.original_price}</li>
       </ul>
   )
   }
