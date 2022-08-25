@@ -1,14 +1,17 @@
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable react/destructuring-assignment */
 // Bring React in to build a component.
 import React from "react";
 // Import from react-dom the ability to create a root render
 import { createRoot } from "react-dom/client";
+import QList from './components/Q&A/qList.jsx';
 // create the root of the app by selection where the app should be mounted in the dom
 const root = createRoot(document.getElementById("root"));
 
 
 class App extends React.Component {
   constructor(props) {
-    super (props)
+    super(props);
     this.state = {
       products: [
         {
@@ -34,31 +37,31 @@ class App extends React.Component {
               "description": "Whether you're a morning person or not. Whether you're gym bound or not. Everyone looks good in joggers.",
               "category": "Pants",
               "default_price": "40"
-          }
+        }
       ],
-      product: this.state.products[0],
+      // product: this.state.products[0],
     }
   }
 
-  selectProduct (product) {
-    this.setState({ 'product': product })
-    //TODO: implement product selection function
+  selectProduct(product) {
+    this.setState({ 'product': product });
+    // TODO: implement product selection function
   }
 
   render () {
     return (
+      // <div>
+      //   <Overview product={this.state.product} select={this.selectProduct.bind(this)}/>
+      // </div>
+      // <div>
+      //   <Reviews product={this.state.product} select={this.selectProduct.bind(this)}/>
+      // </div>
       <div>
-        <Overview product={this.state.product} select={this.selectProduct.bind(this)}/>
+        <QList product={this.state.product} select={this.selectProduct.bind(this)} />
       </div>
-      <div>
-        <Reviews product={this.state.product} select={this.selectProduct.bind(this)}/>
-      </div>
-      <div>
-        <QA product={this.state.product} select={this.selectProduct.bind(this)}/>
-      </div>
-      <div>
-        <Related products={this.state.products} product={this.state.product} select={this.selectProduct.bind(this)}/>
-      </div>
+      // <div>
+      //   <Related products={this.state.products} product={this.state.product} select={this.selectProduct.bind(this)}/>
+      // </div>
     )
   }
 }

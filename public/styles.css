@@ -46,3 +46,30 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+#QList{
+	padding: 100px;
+}
+#QComp, #AComp {
+	padding: 10px;
+}
+#QBody {
+	font-size: 20px;
+	font-weight: bold;
+}
+#QUser {
+	font-size: small;
+
+}
+#ALetter {
+	float: left;
+	font-size: 20px;
+	font-weight: bold;
+}
+#AWrapper {
+	padding: 3px;
+}
+#Abody {
+	margin-left: 30px;
+	font-size: 20px;
+}
+
