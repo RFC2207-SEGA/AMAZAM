@@ -169,8 +169,8 @@ class Overview extends React.Component {
             <ProductInfo product={this.props.product} style={this.state.currentStyle} onSale={this.state.onSale}/>
             <StyleSelector style={this.state.currentStyle.name} styles={this.state.productStyles} onClick={this.styleSelect.bind(this)}/>
             <OverviewSelectors pickSize={this.pickSize.bind(this)} sizes={this.state.sizes} quantities={this.state.quantities}/>
-            <div className="social-links"></div>
-            <button>Facebook</button><button>Twitter</button><button>Pinterest</button>
+            <span className="social-links">
+            <i class="fa-brands fa-facebook"></i><i class="fa-brands fa-twitter"></i><i class="fa-brands fa-pinterest"></i></span>
           </section>
         </div>
         <div className="product-description">

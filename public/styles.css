@@ -183,3 +183,12 @@ table {
 	justify-content: center;
 	font-size: small;
 }
+
+.social-links {
+	align-self: flex-end;
+}
+
+i:hover {
+	cursor: pointer;
+	color: red;
+}
