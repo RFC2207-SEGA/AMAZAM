@@ -49,8 +49,9 @@ table {
 
 .overview-container {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-around;
 	align-items: center;
+	padding: 20px;
 }
 
 .gallery-container {
@@ -102,14 +103,18 @@ table {
 }
 
 .product-category {
-	margin: 4px;
+	padding: 10px;
+	color: white;
+	background-color: #888;
 	font-style: italic;
 }
 
 .product-name {
+	padding: 10px;
+	color: white;
+	background-color: #888;
 	font-style: italic;
 	font-size: 36px;
-	margin: 8px;
 }
 
 .placeholder {
@@ -119,6 +124,7 @@ table {
 .product-info {
 	display: flex;
 	flex-direction: column;
+	width: 40%;
 }
 
 .product-description {
@@ -143,17 +149,36 @@ table {
 }
 
 .full-photo-modal {
-	position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 80;
+	position: absolute;
+  z-index: 1;
+  left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+  width: 150%;
+  height: 100%;
+	margin: auto;
 }
 
 .photo-modal-content {
 	left: 0;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 100%; /* Could be more or less, depending on screen size */
+}
+
+.title-bar {
+	display: flex;
+	height: 80px;
+	font-size: 72px;
+	font-style: italic;
+	color: white;
+	background-color: #888;
+	justify-content: space-between;
+	padding: 12px;
+	text-decoration: underline 4px;
+}
+
+.title-streamer {
+	margin-top: 8px;
+	display: flex;
+	justify-content: center;
+	font-size: small;
 }
