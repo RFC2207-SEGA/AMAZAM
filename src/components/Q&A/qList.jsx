@@ -31,7 +31,7 @@ class QList extends React.Component {
               "question_body": "How long does it last?",
               "question_date": "2019-06-28T00:00:00.000Z",
               "asker_name": "funnygirl",
-              "question_helpfulness": 2,
+              "question_helpfulness": 10,
               "reported": false,
               "answers": {
                 "70": {
@@ -59,14 +59,29 @@ class QList extends React.Component {
     }
   }
 
+
+
   render() {
-    var qArray = this.state.productQ.results;
+    var qArr = this.state.productQ.results;
+
+    if (qArr.length > 1) {
+      for (var i = 0; i < qArr.length; i++) {
+        if(qArr[i+1]) {
+          if(qArr[i].question_helpfulness < qArr[i+1].question_helpfulness) {
+            var temp = qArr[i];
+            qArr[i] = qArr[i+1];
+            qArr[i+1] = temp;
+          }
+        }
+      }
+    }
+
     return(
       <div id="QList">
-        {qArray.map((q) =>
+        {qArr.map((qItem) =>
         <ul>
-          <QuestionComp questionList={q}/>
-          <AnswerComp answerList={q.answers}/>
+          <QuestionComp questionList={qItem}/>
+          <AnswerComp answerList={qItem.answers}/>
         </ul>
         )}
       </div>
