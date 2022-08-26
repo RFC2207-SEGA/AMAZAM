@@ -1,10 +1,13 @@
 import React from 'react';
 import MiniPhoto from './MiniPhoto.jsx'
 
-const MiniGallery = ({photos}) => {
+const MiniGallery = ({photos, index}) => {
   return (
-    <div className="mini-carousel"> {photos.map((photo) => (
+    <div className="mini-carousel">
+      <a>-</a>
+      {photos.slice(index, index + 4).map((photo) => (
       <MiniPhoto photo={photo}/>))}
+      <a>+</a>
     </div>
   )
 }

@@ -29,13 +29,17 @@ class Gallery extends React.Component {
     this.setState({ 'showModal': !this.state.showModal })
   }
 
+  modalHover() {
+    return;
+  }
+
   render () {
     return (
       <div>
         {this.props.style.photos.map((photo) => (
         <Photo photo={photo} index={this.props.style.photos.indexOf(photo)} display={this.display.bind(this)} next={this.movePhoto.bind(this)} prev={this.movePhoto.bind(this)} triggerModal={this.triggerModal.bind(this)} photos={this.props.style.photos}/>))}
-        <MiniGallery photos={this.props.style.photos}/>
-        <FullscreenModal show={this.state.showModal} photo={this.props.style.photos[this.state.photoIndex]} toggleModal={this.triggerModal.bind(this)}/>
+        <MiniGallery photos={this.props.style.photos} index={this.state.photoIndex - 1}/>
+        <FullscreenModal show={this.state.showModal} photo={this.props.style.photos[this.state.photoIndex - 1]} toggleModal={this.triggerModal.bind(this)} next={this.movePhoto.bind(this)} prev={this.movePhoto.bind(this)} zoom={this.modalHover.bind(this)}/>
       </div>
     )
   }

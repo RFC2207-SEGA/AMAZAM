@@ -49,7 +49,7 @@ table {
 
 .overview-container {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-evenly;
 	align-items: center;
 	padding: 20px;
 }
@@ -68,7 +68,11 @@ table {
 	flex-direction: column;
 	top: 10%;
 	left: 10%;
-	bottom: 0px;
+	background: black;
+	opacity: 80%;
+	color: white;
+	align-items: center;
+	border-radius: 1%;
 }
 
 .prev, .next {
@@ -162,24 +166,33 @@ table {
 }
 
 .photo:hover {
-	cursor: pointer;
-	opacity: 90%;
+	cursor: zoom-in;
+	opacity: 80%;
 }
 
 .full-photo-modal {
-	position: absolute;
-  z-index: 2;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
   left: 0;
-  top: 0;
-  width: 150%;
-  height: 100%;
-	margin: auto;
+	width: 100%;
+  top: 0;/* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
 }
 
 .photo-modal-content {
-	left: 0;
-  border: 1px solid #888;
-  width: 100%; /* Could be more or less, depending on screen size */
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+	animation-name: zoom;
+  animation-duration: 0.6s;/* Could be more or less, depending on screen size */
 }
 
 .title-bar {
@@ -233,4 +246,45 @@ i:hover {
 .fa-check:hover {
 	color: black;
 	cursor: default;
+}
+
+.photo img {
+	object-fit: cover;
+	transition: 0.5s all ease-in-out;
+}
+
+.photo {
+	transition: 0.5s all ease;
+}
+
+.mini-photo {
+	margin: 4px;
+}
+
+.mini-photo img {
+	object-fit: cover;
+	transition: 0.5s all ease-in-out;
+}
+
+.mini-photo img:hover {
+	cursor: pointer;
+	transform: scale(1.2);
+	opacity: 80%;
+}
+
+.style-bubble {
+	object-fit: cover;
+	border-radius: 50%;
+	margin: 1%;
+	transition: 0.5s all ease-in-out;
+}
+
+.style-bubble:hover {
+	cursor: pointer;
+	opacity: 80%;
+	transform:scale(1.2);
+}
+
+.selected {
+	border: 2px dotted red;
 }

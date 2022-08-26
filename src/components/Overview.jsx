@@ -3,6 +3,8 @@ import Gallery from './Gallery.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import OverviewSelectors from './OverviewSelectors.jsx';
+import axios from 'axios';
+import {API_KEY} from '../config/config.js';
 // import axios from 'axios';
 
 class Overview extends React.Component {
@@ -114,16 +116,39 @@ class Overview extends React.Component {
       onSale: true,
       sizes: [],
       quantities: [],
+      currentProduct: '',
     }
   }
 
   //WHEN I MOUNT:
-  componentDidMount() {
+  componentDidUpdate() {
+    if (this.props.product.id !== this.state.currentProduct) {
+      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${this.props.product.id}`,
+      {headers: {'Authorization': `${API_KEY}`}, params: { product_id: this.props.product.id}})
+        .then((productInfo) => {
+          this.setState({ 'productInfo': productInfo.data.features, 'currentProduct': this.props.product.id })
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .then(() => {
+          return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${this.props.product.id}/styles`, {headers: {'Authorization': `${API_KEY}`},
+          params: { product_id: this.props.product.id}})
+        })
+        .then((productStyles) => {
+          this.setState({ 'productStyles': productStyles.data.results, 'currentStyle': productStyles.data.results[0]})
+        })
+        .then(() => {
+          this.onSale();
+          this.getSizes();
+          return;
+        })
+    }
     //make a get request to the API for the info of current product using this.props.product's id, return the .features property (should be an array)
     //make a get request to the API for the styles, return .results property (should be an array).
-    this.onSale();
-    this.getSizes();
-    return;
+    // this.onSale();
+    // this.getSizes();
+    // return;
   }
 
   onSale() {
