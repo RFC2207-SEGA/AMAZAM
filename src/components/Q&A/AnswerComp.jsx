@@ -27,7 +27,7 @@ class AnswerComp extends React.Component {
   }
 
   handleClick(e) {
-    console.log(this.state.answerList);
+    console.log(e);
   }
 
 
