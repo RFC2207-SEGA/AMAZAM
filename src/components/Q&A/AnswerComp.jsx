@@ -6,11 +6,14 @@ class AnswerComp extends React.Component {
     super(props);
     this.state = {
       answerList: this.props.answerList,
+      answerArr: [],
       nameSeller: false
+
     }
     this.formatDate = this.formatDate.bind(this);
     this.checkName = this.checkName.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.sortByHelp = this.sortByHelp.bind(this);
   }
 
 
@@ -26,18 +29,22 @@ class AnswerComp extends React.Component {
     return nameStr;
   }
 
-  handleClick(e) {
-    console.log(e);
+  handleClick(ans, e) {
+    var currentArr = this.state.answerArr;
+    var index = currentArr.indexOf(ans);
+    var tempObj = ans;
+    tempObj.helpfulness+=1;
+    currentArr.splice(index, 1, tempObj);
+    this.setState({answerArr: currentArr});
+    this.sortByHelp();
+
+
   }
 
-
-
-
-  render() {
+  sortByHelp() {
     var aList = this.state.answerList;
     var key = Object.keys(this.state.answerList);
     var arr = [];
-
     //populate an array of answer objects at specific key
   for (var i = 0; i < key.length; i++) {
     arr.push(aList[key[i]]);
@@ -55,17 +62,29 @@ class AnswerComp extends React.Component {
         }
       }
     }
+    this.setState({answerArr: arr});
+  }
+  this.setState({answerArr: arr});
   }
 
+  componentDidMount() {
+    this.sortByHelp();
+  }
+
+
+
+
+  render() {
     return(
+
       <div id='AComp'>
-      {arr.map((ans) =>
+      {this.state.answerArr.map((ans) =>
       <div id="AWrapper">
         <div style={{display:'none'}}>{this.checkName(ans.answerer_name)}</div>
         <h1 id='ALetter'>A: </h1><p id="Abody">{ans.body}</p>
           <span>By:</span><span style={this.state.nameSeller ? {fontWeight: 'bold'} : {}}> {ans.answerer_name},</span>
           <span> {this.formatDate(ans.date)}</span>
-          <span> | Helpful? <button onClick={this.handleClick}>Yes? </button> ({ans.helpfulness})</span>
+          <span> | Helpful? <button onClick={(e) => this.handleClick(ans, e)}>Yes? </button> ({ans.helpfulness})</span>
       </div>
       )}
       </div>
