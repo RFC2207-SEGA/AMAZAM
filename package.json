@@ -1,11 +1,12 @@
 {
-  "name": "sega-project-atelier",
+  "name": "SEGA-Project-Atelier",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/RFC2207-SEGA/SEGA-Project-Atelier.git",
   "author": "Zachariah1618 <zvallow@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

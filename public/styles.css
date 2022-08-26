@@ -1,3 +1,187 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font-family: Futura;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.overview-container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: 20px;
+}
+
+.gallery-container {
+	display: flex;
+	max-width: 80%;
+  position: relative;
+  /* margin: auto; */
+}
+
+.mini-carousel {
+	z-index: 1;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+.sale {
+	color: red;
+}
+
+.strikeout {
+	text-decoration: line-through;
+}
+
+.product-category {
+	padding: 10px;
+	color: white;
+	background-color: #888;
+	font-style: italic;
+}
+
+.product-name {
+	padding: 10px;
+	color: white;
+	background-color: #888;
+	font-style: italic;
+	font-size: 36px;
+}
+
+.placeholder {
+	font-size: 10px;
+}
+
+.product-info {
+	display: flex;
+	flex-direction: column;
+	width: 40%;
+}
+
+.product-description {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.product-slogan {
+	width: 50%;
+	flex-wrap: wrap;
+}
+
+.slogan-header {
+	font-style: italic;
+	font-size: 24px;
+	margin: 8px;
+}
+
+.price {
+	font-size: 12px;
+	margin: 4px;
+}
+
+.full-photo-modal {
+	position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 150%;
+  height: 100%;
+	margin: auto;
+}
+
+.photo-modal-content {
+	left: 0;
+  border: 1px solid #888;
+  width: 100%; /* Could be more or less, depending on screen size */
+}
+
+.title-bar {
+	display: flex;
+	height: 80px;
+	font-size: 72px;
+	font-style: italic;
+	color: white;
+	background-color: #888;
+	justify-content: space-between;
+	padding: 12px;
+	text-decoration: underline 4px;
+}
+
+.title-streamer {
+	margin-top: 8px;
+	display: flex;
+	justify-content: center;
+	font-size: small;
+}
 
 /*
 // REVIEWS & RATINGS
