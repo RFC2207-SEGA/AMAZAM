@@ -48,11 +48,39 @@ class RatingsReviews extends React.Component {
           ]
         }
       ],
+      meta: {
+        "product_id": "2",
+        "ratings": {
+          2: 1,
+          3: 1,
+          4: 2,
+        },
+        "recommended": {
+          0: 5,
+          1: 2,
+        },
+        "characteristics": {
+          "Size": {
+            "id": 14,
+            "value": "4.0000"
+          },
+          "Width": {
+            "id": 15,
+            "value": "3.5000"
+          },
+          "Comfort": {
+            "id": 16,
+            "value": "4.0000"
+          },
+        }
+      },
       sort: 'relevant'
     }
+
     this.handleSort = this.handleSort.bind(this);
   }
 
+  // This may be replaced by the axios sort param
   handleSort(e) {
     e.preventDefault();
     this.setState({sort: e.target.value})
@@ -65,8 +93,8 @@ class RatingsReviews extends React.Component {
         <div className='ReviewsRatings'>
 
           <div className='Breakdowns'>
-            <div className='RatingBreakdown'><RatingBreakdown reviews={this.state.reviews[0].results}/></div>
-            <div className='ProductBreakdown'><ProductBreakdown /></div>
+            <div className='RatingBreakdown'><RatingBreakdown meta={this.state.meta}/></div>
+            <div className='ProductBreakdown'><ProductBreakdown meta={this.state.meta}/></div>
           </div>
 
           <div className='ReviewsList'>
@@ -78,7 +106,7 @@ class RatingsReviews extends React.Component {
                 <option value='newest'>Newest</option>
               </select>
             </span>
-            <ReviewsList reviews={this.state.reviews[0].results} sort={this.state.sort} />
+            <ReviewsList reviews={this.state.reviews[0].results} />
           </div>
 
         </div>

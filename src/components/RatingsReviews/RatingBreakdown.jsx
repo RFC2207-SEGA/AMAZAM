@@ -1,29 +1,35 @@
 import React from "react";
 
-function RatingBreakdown ({ reviews }) {
+function RatingBreakdown ({ meta }) {
 
-  function averageRating() {
+  function avgRating() {
     var sum = 0;
-    for (var review of reviews) {
-      sum += review.rating;
+    var reviewCount = 0;
+    for (var starRating in meta.ratings) {
+      sum += starRating * meta.ratings[starRating];
+      reviewCount += meta.ratings[starRating]
     }
-    return Math.round((sum / reviews.length) * 10) / 10
+    return Math.round((sum / reviewCount) * 10) / 10
   }
 
   function recPercentage() {
-    var count = 0;
-    for (var review of reviews) {
-      if (review.recommend)
-        count++
+    var totalReviews = 0;
+    var yesCount = 0
+    for (var vote in meta.recommended) {
+      if (vote === '1') {
+        yesCount += meta.recommended[vote]
+        totalReviews += meta.recommended[vote]
+      } else {
+        totalReviews += meta.recommended[vote]
+      }
     }
-    return Math.round((count / reviews.length) * 100)
+    return Math.round((yesCount / totalReviews) * 100)
   }
 
   return (
     <>
       <div className='ratingSummary'>
-        <h1>{averageRating()}</h1>
-        {/* <div><FaStar /><FaStar /><FaStar /><FaStar /><FaStar /></div> */}
+        <h1>{avgRating()}</h1>
         <div>⭐️ ⭐️ ⭐️ ⭐️ ⭐️ </div>
       </div>
 

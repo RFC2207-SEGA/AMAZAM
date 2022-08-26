@@ -4,7 +4,7 @@ import { FaCheck } from 'react-icons/fa';
 
 function ReviewTile ({ review }) {
 
-  function recommend() {
+  function reviewerRec() {
     if (review.recommend) {
       return <div> <FaCheck/> I recommend this product </div>
     }
@@ -14,7 +14,7 @@ function ReviewTile ({ review }) {
     if (review.response) {
       return (
         <div className='sellerResponse'>
-          <strong>Response:</strong>
+          <strong>Seller Response:</strong>
           <p>{review.response}</p>
         </div>
       )
@@ -39,7 +39,7 @@ function ReviewTile ({ review }) {
         )}
       </div>
 
-      <div>{recommend()}</div>
+      <div>{reviewerRec()}</div>
 
       <div>{sellerResponse()}</div>
 
