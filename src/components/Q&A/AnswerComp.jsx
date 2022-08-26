@@ -1,13 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
+import AnswerReport from './AnswerReport.jsx';
 class AnswerComp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       answerList: this.props.answerList,
       answerArr: [],
-      nameSeller: false
+      nameSeller: false,
+      reported: false,
+      currentAns: {}
 
     }
     this.formatDate = this.formatDate.bind(this);
@@ -37,9 +39,8 @@ class AnswerComp extends React.Component {
     currentArr.splice(index, 1, tempObj);
     this.setState({answerArr: currentArr});
     this.sortByHelp();
-
-
   }
+
 
   sortByHelp() {
     var aList = this.state.answerList;
@@ -75,6 +76,8 @@ class AnswerComp extends React.Component {
 
 
   render() {
+
+
     return(
 
       <div id='AComp'>
@@ -85,6 +88,7 @@ class AnswerComp extends React.Component {
           <span>By:</span><span style={this.state.nameSeller ? {fontWeight: 'bold'} : {}}> {ans.answerer_name},</span>
           <span> {this.formatDate(ans.date)}</span>
           <span> | Helpful? <button onClick={(e) => this.handleClick(ans, e)}>Yes? </button> ({ans.helpfulness})</span>
+          <span> | <AnswerReport ansObj={ans}/></span>
       </div>
       )}
       </div>

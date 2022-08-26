@@ -15,8 +15,8 @@ class QuestionComp extends React.Component {
   render() {
     return (
       <div id='QComp'>
-        <li id='QBody'>Q: {this.state.questions.question_body}</li>
-        <li id='QUser'>Asked by: {this.state.questions.asker_name} Helpfulness: {this.state.questions.question_helpfulness}</li>
+        <div id='QBody'>Q: {this.state.questions.question_body}</div>
+        <div id='QUser'>Asked by: {this.state.questions.asker_name} Helpfulness: {this.state.questions.question_helpfulness}</div>
       </div>
     )
   }
