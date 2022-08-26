@@ -229,3 +229,8 @@ i:hover {
 	font-size: 12px;
 	margin-bottom: 8px;
 }
+
+.fa-check:hover {
+	color: black;
+	cursor: default;
+}
