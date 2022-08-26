@@ -2,7 +2,7 @@ import React from 'react';
 
 const OverviewSelectors = ({pickSize, sizes, quantities}) => {
   return (
-    <div> Size:
+    <div className="overview-selectors"> Size:
       <select onChange={(e) => {pickSize(e)}}>{sizes.map((size) => (
         <option value={size}>{size}</option>
       ))}

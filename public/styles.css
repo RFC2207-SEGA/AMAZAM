@@ -63,6 +63,12 @@ table {
 
 .mini-carousel {
 	z-index: 1;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	top: 10%;
+	left: 10%;
+	bottom: 0px;
 }
 
 .prev, .next {
@@ -102,15 +108,19 @@ table {
 	text-decoration: line-through;
 }
 
+.overview-selectors {
+	margin: 1%;
+}
+
 .product-category {
-	padding: 10px;
+	padding: 1%;
 	color: white;
 	background-color: #888;
 	font-style: italic;
 }
 
 .product-name {
-	padding: 10px;
+	padding: 1%;
 	color: white;
 	background-color: #888;
 	font-style: italic;
@@ -118,6 +128,7 @@ table {
 }
 
 .placeholder {
+	margin: 1%;
 	font-size: 10px;
 }
 
@@ -130,7 +141,9 @@ table {
 
 .product-description {
 	display: flex;
-	justify-content: space-evenly;
+	margin-left: 10%;
+	margin-right: 20%;
+	justify-content: space-between;
 }
 
 .product-slogan {
@@ -141,17 +154,21 @@ table {
 .slogan-header {
 	font-style: italic;
 	font-size: 24px;
-	margin: 8px;
 }
 
 .price {
+	padding: 1%;
 	font-size: 12px;
-	margin: 4px;
+}
+
+.photo:hover {
+	cursor: pointer;
+	opacity: 90%;
 }
 
 .full-photo-modal {
 	position: absolute;
-  z-index: 1;
+  z-index: 2;
   left: 0;
   top: 0;
   width: 150%;
@@ -185,10 +202,30 @@ table {
 }
 
 .social-links {
-	align-self: flex-end;
+	padding:1%;
+	margin: auto;
+	font-size: 24px;
 }
 
 i:hover {
 	cursor: pointer;
 	color: red;
+}
+
+.fa-magnifying-glass {
+	font-size: 16px;
+	margin-left: 3px;
+}
+
+.style-title {
+	padding: 1%;
+}
+
+.styles-holder {
+	padding: 1%;
+}
+
+.product-features {
+	font-size: 12px;
+	margin-bottom: 8px;
 }

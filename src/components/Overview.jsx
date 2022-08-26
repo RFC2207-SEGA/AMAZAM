@@ -179,7 +179,7 @@ class Overview extends React.Component {
             <p>{this.props.product.description}</p>
           </div>
           <div> {this.state.productInfo.map((feat) => (
-            <div> {feat.feature}: {feat.value}</div>))}</div>
+            <div className="product-features"> {feat.feature}: {feat.value}</div>))}</div>
         </div>
       </div>
       )

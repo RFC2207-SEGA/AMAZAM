@@ -1,6 +1,7 @@
 import React from 'react';
 import Photo from './Photo.jsx';
 import FullscreenModal from './FullscreenModal.jsx'
+import MiniGallery from './MiniGallery.jsx'
 
 class Gallery extends React.Component {
   constructor(props) {
@@ -30,8 +31,10 @@ class Gallery extends React.Component {
 
   render () {
     return (
-      <div> {this.props.style.photos.map((photo) => (
-        <Photo photo={photo} index={this.props.style.photos.indexOf(photo)} display={this.display.bind(this)} next={this.movePhoto.bind(this)} prev={this.movePhoto.bind(this)} triggerModal={this.triggerModal.bind(this)}/>))}
+      <div>
+        {this.props.style.photos.map((photo) => (
+        <Photo photo={photo} index={this.props.style.photos.indexOf(photo)} display={this.display.bind(this)} next={this.movePhoto.bind(this)} prev={this.movePhoto.bind(this)} triggerModal={this.triggerModal.bind(this)} photos={this.props.style.photos}/>))}
+        <MiniGallery photos={this.props.style.photos}/>
         <FullscreenModal show={this.state.showModal} photo={this.props.style.photos[this.state.photoIndex]} toggleModal={this.triggerModal.bind(this)}/>
       </div>
     )

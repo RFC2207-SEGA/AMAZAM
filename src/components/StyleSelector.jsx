@@ -2,9 +2,9 @@ import React from 'react';
 
 const StyleSelector = ({style, styles, onClick}) => {
   return (
-    <div>
+    <div className="style-title">
       Style: {style}
-    <div> {styles.map((style) => (
+    <div className="styles-holder"> {styles.map((style) => (
     <img
       src={style.photos[0].thumbnail_url}
       width="80"
