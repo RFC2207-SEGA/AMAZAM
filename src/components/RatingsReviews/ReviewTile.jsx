@@ -1,12 +1,11 @@
 import React from "react";
-import { FaCheck } from 'react-icons/fa';
 
 
 function ReviewTile ({ review }) {
 
   function reviewerRec() {
     if (review.recommend) {
-      return <div> <FaCheck/> I recommend this product </div>
+      return <div> ✔️ I recommend this product </div>
     }
   }
 

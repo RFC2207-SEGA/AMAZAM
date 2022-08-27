@@ -52,8 +52,8 @@ class RatingsReviews extends React.Component {
         "product_id": "2",
         "ratings": {
           2: 1,
-          3: 1,
-          4: 2,
+          3: 3,
+          4: 5,
         },
         "recommended": {
           0: 5,
@@ -89,9 +89,9 @@ class RatingsReviews extends React.Component {
   render() {
     return (
       <>
-        <h1>Ratings &amp; Reviews</h1>
-        <div className='ReviewsRatings'>
+        <div className='ReviewsRatingsHdr'>Ratings &amp; Reviews</div>
 
+        <div className='ReviewsRatings'>
           <div className='Breakdowns'>
             <div className='RatingBreakdown'><RatingBreakdown meta={this.state.meta}/></div>
             <div className='ProductBreakdown'><ProductBreakdown meta={this.state.meta}/></div>

@@ -1,6 +1,6 @@
 /* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
+    v2.0 | 20110126
+    License: none (public domain)
 */
 
 html, body, div, span, applet, object, iframe,
@@ -184,8 +184,14 @@ table {
 }
 
 /*
-// REVIEWS & RATINGS
+R&R COMPONENT
 */
+.ReviewsRatingsHdr {
+	font-size: large;
+	padding-top: 100px;
+	padding-bottom: 30px;
+
+}
 
 .ReviewsRatings {
 	display: flex;
@@ -196,34 +202,98 @@ table {
 	flex: 1;
 	order: 1;
 	width: 25%;
-	/* flex-direction: column; */
+	flex-direction: column;
 }
 
 .ReviewsList {
 	flex: 2;
 	order: 2;
 	width: 75%;
-	/* background-color: yellow; */
+}
+
+
+/*
+RATINGS BREAKDOWN SUB-COMPONENT
+*/
+
+.ratingsBreakdownTable {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.ratingsBreakdownTable td {
+	padding-top: 2%;
+	padding-bottom: 2%;
+	vertical-align: baseline;
+}
+
+.barGraphContainer {
+	position: relative;
+	width: 84%;
+	z-index: 1;
+}
+
+.barGraph {
+	position: absolute;
+  z-index: 1;
+  height: 10px;
+  width: 100%;
+	margin-left: 3px;
+  background-color: rgb(225, 225, 225);
+}
+
+.barGraphOverlay {
+	position: absolute;
+	z-index: 2;
+  height: 10px;
+	margin-left: 3px;
+  background-color: rgb(70, 70, 70);
+}
+
+.recommendations {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+
+/*
+PRODUCT BREAKDOWN CSS
+*/
+
+.rangeBarContainer {
+	position: relative;
+	width: 95%;
+	z-index: 1;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.rangeBar {
+	position: absolute;
+  z-index: 1;
+  height: 10px;
+  width: 100%;
+  background-color: rgb(225, 225, 225);
+}
+
+.triangleDown {
+	position: absolute;
+	z-index: 2;
+	width: 0;
+	height: 0;
+	border-left: .5em solid transparent;
+	border-right: .5em solid transparent;
+	border-top: 1em solid rgb(70, 70, 70);
+}
+
+.characteristicsDesc {
+	width: 95%;
+	display: flex;
+	justify-content: space-between;
+	font-size: small;
+	padding-bottom: 10px;
 }
 
 .sellerResponse {
 	background-color: rgb(220, 220, 220);
-}
-
-/* .RatingBreadown {
-	flex: 1;
-	background-color: purple;
-}
-
-.ProductBreakdown {
-	flex: 2;
-	background-color: orange;
-} */
-
-meter {
-  width: 290px;
-  height: 25px;
-  /*-webkit-appearance: none; /* Reset appearance */
-  border: 1px solid #ccc;
-  border-radius: 3px;
 }

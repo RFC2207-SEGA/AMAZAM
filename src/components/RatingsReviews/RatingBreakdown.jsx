@@ -26,42 +26,55 @@ function RatingBreakdown ({ meta }) {
     return Math.round((yesCount / totalReviews) * 100)
   }
 
+
+
+
+  var totalRatings = 0;
+  var starPct = {};
+  var ratingsPerStar = {
+    5: 0,
+    4: 0,
+    3: 0,
+    2: 0,
+    1: 0
+  }
+
+  function starPercentage() {
+    for (var starRating in meta.ratings) {
+      ratingsPerStar[starRating] = meta.ratings[starRating]
+      totalRatings += meta.ratings[starRating]
+    }
+    for (var key in ratingsPerStar) {
+      starPct[key] = Math.round(ratingsPerStar[key] / totalRatings * 100)
+    }
+  }
+  starPercentage()
+
+
   return (
     <>
       <div className='ratingSummary'>
-        <h1>{avgRating()}</h1>
-        <div>⭐️ ⭐️ ⭐️ ⭐️ ⭐️ </div>
+        <span>{avgRating()}</span><span> ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ </span>
       </div>
 
-      <div className='breakdown'>
-        <table>
-          <tbody>
-            <tr>
-              <td><a href=''>5 stars</a></td>
-              <td><meter value="2" min="0" max="5"></meter></td>
+      <table className='ratingsBreakdownTable'>
+        <tbody>
+        {Object.entries(starPct).reverse().map(([key, value], index) => {
+          return (
+            <tr key={index}>
+              <td><a href=''>{key} stars</a></td>
+              <td className='barGraphContainer'>
+                <div className='barGraph'></div>
+                <div className='barGraphOverlay' style={{'width': `${value}%`}}></div>
+              </td>
             </tr>
-            <tr>
-              <td><a href=''>4 stars</a></td>
-              <td><meter value="3" min="0" max="5"></meter></td>
-            </tr>
-            <tr>
-              <td><a href=''>3 stars</a></td>
-              <td><meter value="1" min="0" max="5"></meter></td>
-            </tr>
-            <tr>
-              <td><a href=''>2 stars</a></td>
-              <td><meter value="1" min="0" max="5"></meter></td>
-            </tr>
-            <tr>
-              <td><a href=''>1 stars</a></td>
-              <td><meter value="4" min="0" max="5"></meter></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+          )
+        })}
+        </tbody>
+      </table>
 
       <div className='recommendations'>
-        <h4>{recPercentage()}% of reviewers recommend this product</h4>
+        <p>{recPercentage()}% of reviewers recommend this product</p>
       </div>
 
     </>

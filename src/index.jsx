@@ -107,7 +107,7 @@ class App extends React.Component {
         <QA product={this.state.product} select={this.selectProduct.bind(this)}/>
         <Related products={this.state.products} product={this.state.product} select={this.selectProduct.bind(this)}/> */}
         </div>
-        
+
         <RatingsReviews product={this.state.product} select={this.selectProduct.bind(this)}/>
 
       </div>
