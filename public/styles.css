@@ -46,6 +46,11 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+#QATitle {
+	font-size: 30px;
+	font-weight: bold;
+	padding-bottom: 30px;
+}
 #QList{
 	padding: 100px;
 }
@@ -58,6 +63,8 @@ table {
 }
 #QUser {
 	font-size: small;
+	font-weight: normal;
+	float: right;
 
 }
 #ALetter {

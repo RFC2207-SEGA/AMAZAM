@@ -7,15 +7,19 @@ class AnswerComp extends React.Component {
     this.state = {
       answerList: this.props.answerList,
       answerArr: [],
+      totalAnsArr: [],
       nameSeller: false,
       reported: false,
-      currentAns: {}
+      currentAns: {},
+      moreBtnClick: false
 
     }
     this.formatDate = this.formatDate.bind(this);
     this.checkName = this.checkName.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleAnsHelp.bind(this);
     this.sortByHelp = this.sortByHelp.bind(this);
+    this.handleSeeMoreAns = this.handleSeeMoreAns.bind(this);
+    this.handleSeeLessAns = this.handleSeeLessAns.bind(this);
   }
 
 
@@ -30,18 +34,6 @@ class AnswerComp extends React.Component {
     }
     return nameStr;
   }
-
-  handleClick(ans, e) {
-    var currentArr = this.state.answerArr;
-    var index = currentArr.indexOf(ans);
-    var tempObj = ans;
-    tempObj.helpfulness+=1;
-    currentArr.splice(index, 1, tempObj);
-    this.setState({answerArr: currentArr});
-    this.sortByHelp();
-  }
-
-
   sortByHelp() {
     var aList = this.state.answerList;
     var key = Object.keys(this.state.answerList);
@@ -63,10 +55,40 @@ class AnswerComp extends React.Component {
         }
       }
     }
-    this.setState({answerArr: arr});
+    if (this.state.moreBtnClick) {
+      this.setState({totalAnsArr: arr});
+      this.setState({answerArr: arr});
+    } else {
+      this.setState({totalAnsArr: arr});
+      arr = arr.slice(0, 2);
+      this.setState({answerArr: arr});
+    }
+
   }
+
   this.setState({answerArr: arr});
   }
+
+  handleAnsHelp(ans, e) {
+    var currentArr = this.state.answerArr;
+    var index = currentArr.indexOf(ans);
+    var tempObj = ans;
+    tempObj.helpfulness+=1;
+    currentArr.splice(index, 1, tempObj);
+    this.setState({answerArr: currentArr});
+    this.sortByHelp();
+  }
+
+  handleSeeMoreAns(ansArr) {
+    this.setState({moreBtnClick: true});
+    this.setState({answerArr: ansArr});
+  }
+  handleSeeLessAns(ansArr) {
+    this.setState({moreBtnClick: false});
+    var tempArr = ansArr.slice(0, 2);
+    this.setState({answerArr: tempArr});
+  }
+
 
   componentDidMount() {
     this.sortByHelp();
@@ -76,10 +98,17 @@ class AnswerComp extends React.Component {
 
 
   render() {
-
+    let moreBtn;
+    if(this.state.totalAnsArr.length > 2) {
+      moreBtn = <button onClick={(e) => this.handleSeeMoreAns(this.state.totalAnsArr)}>See more answers</button>
+    } else {
+      moreBtn = <span></span>
+    }
+    if(this.state.moreBtnClick) {
+      moreBtn = <button onClick={(e) => this.handleSeeLessAns(this.state.totalAnsArr)}>Collapse answers</button>
+    }
 
     return(
-
       <div id='AComp'>
       {this.state.answerArr.map((ans) =>
       <div id="AWrapper">
@@ -87,10 +116,11 @@ class AnswerComp extends React.Component {
         <h1 id='ALetter'>A: </h1><p id="Abody">{ans.body}</p>
           <span>By:</span><span style={this.state.nameSeller ? {fontWeight: 'bold'} : {}}> {ans.answerer_name},</span>
           <span> {this.formatDate(ans.date)}</span>
-          <span> | Helpful? <button onClick={(e) => this.handleClick(ans, e)}>Yes? </button> ({ans.helpfulness})</span>
+          <span> | Helpful? <button onClick={(e) => this.handleAnsHelp(ans, e)}>Yes? </button> ({ans.helpfulness})</span>
           <span> | <AnswerReport ansObj={ans}/></span>
       </div>
       )}
+      <div>{moreBtn}</div>
       </div>
     )
   }

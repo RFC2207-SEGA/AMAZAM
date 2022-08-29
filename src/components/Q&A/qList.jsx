@@ -1,6 +1,7 @@
 import React from "react";
 import AnswerComp from "./AnswerComp.jsx"
 import QuestionComp from "./QuestionComp.jsx"
+import SearchQuestions from './SearchQuestions.jsx'
 import {API_KEY} from '../../config/config.js';
 const axios = require('axios');
 
@@ -51,31 +52,31 @@ class QList extends React.Component {
                   "answerer_name": "iluvdogz",
                   "helpfulness": 31,
                   "photos": [],
+                },
+                "79": {
+                  "id": 79,
+                  "body": "Example",
+                  "date": "2019-11-14T00:00:00.000Z",
+                  "answerer_name": "ExampleUser",
+                  "helpfulness": 2,
+                  "photos": [],
                 }
               }
             },
         ]
       },
       page: 1,
-      count: 5
+      count: 5,
+      questionArr: [],
+      searchedTerm: ''
     }
+
+    this.sortQuestions = this.sortQuestions.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
-
-
-  componentDidMount() {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions',
-      {headers: {'Authorization': `${API_KEY}`},
-      params: {count: 5, page: 1, product_id: 66674 }})
-        .then((res) => console.log('Q&A at product_id: ', res.data))
-        .catch((err) => console.log(err));
-  }
-
-
-
-  render() {
+  sortQuestions() {
     var qArr = this.state.productQ.results;
-
     if (qArr.length > 1) {
       for (var i = 0; i < qArr.length; i++) {
         if(qArr[i+1]) {
@@ -86,11 +87,37 @@ class QList extends React.Component {
           }
         }
       }
+      this.setState({questionArr: qArr});
     }
+    this.setState({questionArr: qArr});
+  }
+
+  handleSearch(e) {
+    console.log(e.target.value);
+  }
+
+  componentDidMount() {
+    this.sortQuestions();
+    // axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions',
+    //   {headers: {'Authorization': `${API_KEY}`},
+    //   params: {count: 5, page: 1, product_id: 66674 }})
+    //     .then((res) => console.log('Q&A at product_id: ', res.data))
+    //     .catch((err) => console.log(err));
+  }
+
+
+
+  render() {
+
 
     return(
       <div id="QList">
-        {qArr.map((qItem) =>
+        <h1 id="QATitle">Questions and Answers</h1>
+        <form>
+          <lable>Search: </lable>
+          <input type='text' onChange={this.handleSearch}></input>
+        </form>
+        {this.state.questionArr.map((qItem) =>
         <ul>
           <QuestionComp questionList={qItem}/>
           <AnswerComp answerList={qItem.answers}/>
