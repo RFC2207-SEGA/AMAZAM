@@ -17,6 +17,7 @@ class Gallery extends React.Component {
     if (destination >= 1 && destination <= this.props.style.photos.length) {
       this.setState({ 'photoIndex': destination })
     }
+    console.log(this.state.photoIndex);
   }
 
   display(index) {
@@ -38,7 +39,7 @@ class Gallery extends React.Component {
       <div>
         {this.props.style.photos.map((photo) => (
         <Photo photo={photo} index={this.props.style.photos.indexOf(photo)} display={this.display.bind(this)} next={this.movePhoto.bind(this)} prev={this.movePhoto.bind(this)} triggerModal={this.triggerModal.bind(this)} photos={this.props.style.photos}/>))}
-        <MiniGallery photos={this.props.style.photos} index={this.state.photoIndex - 1}/>
+        <MiniGallery photos={this.props.style.photos} index={this.state.photoIndex - 1} onClick={this.movePhoto.bind(this)}/>
         <FullscreenModal show={this.state.showModal} photo={this.props.style.photos[this.state.photoIndex - 1]} toggleModal={this.triggerModal.bind(this)} next={this.movePhoto.bind(this)} prev={this.movePhoto.bind(this)} zoom={this.modalHover.bind(this)}/>
       </div>
     )

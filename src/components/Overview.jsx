@@ -117,6 +117,7 @@ class Overview extends React.Component {
       sizes: [],
       quantities: [],
       currentProduct: '',
+      currentSize: '',
     }
   }
 
@@ -169,14 +170,14 @@ class Overview extends React.Component {
     let quantities = [];
     for (var key in this.state.currentStyle.skus) {
       if (this.state.currentStyle.skus[key].size === n.target.value) {
-        for (let i = 0; i <= this.state.currentStyle.skus[key].quantity; i++) {
+        for (let i = 1; i <= this.state.currentStyle.skus[key].quantity; i++) {
           if (i <= 15) {
             quantities.push(i);
           }
         }
       }
     }
-    this.setState({ 'quantities': quantities })
+    this.setState({ 'currentSize': n.target.value, 'quantities': quantities })
   }
 
   styleSelect(style) {
@@ -193,7 +194,7 @@ class Overview extends React.Component {
           <section className="product-info">
             <ProductInfo product={this.props.product} style={this.state.currentStyle} onSale={this.state.onSale}/>
             <StyleSelector style={this.state.currentStyle.name} styles={this.state.productStyles} onClick={this.styleSelect.bind(this)}/>
-            <OverviewSelectors pickSize={this.pickSize.bind(this)} sizes={this.state.sizes} quantities={this.state.quantities}/>
+            <OverviewSelectors pickSize={this.pickSize.bind(this)} sizes={this.state.sizes} currentSize={this.state.currentSize} quantities={this.state.quantities}/>
             <span className="social-links">
             <i class="fa-brands fa-facebook"></i><i class="fa-brands fa-twitter"></i><i class="fa-brands fa-pinterest"></i></span>
           </section>

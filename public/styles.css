@@ -66,13 +66,10 @@ table {
 	position: absolute;
 	display: flex;
 	flex-direction: column;
-	top: 10%;
+	top: 4%;
 	left: 10%;
-	background: black;
-	opacity: 80%;
 	color: white;
 	align-items: center;
-	border-radius: 1%;
 }
 
 .prev, .next {
@@ -88,6 +85,21 @@ table {
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
+}
+
+.up-arrow, .down-arrow {
+	cursor: pointer;
+  top: 50%;
+  width: auto;
+  padding: 4px;
+  color: white;
+  transition: 0.6s ease;
+  border-radius: 3px 3px 3px 3px;
+  user-select: none;
+}
+
+.up-arrow:hover, .down-arrow:hover {
+	background-color: black;
 }
 
 .next {
@@ -110,10 +122,6 @@ table {
 
 .strikeout {
 	text-decoration: line-through;
-}
-
-.overview-selectors {
-	margin: 1%;
 }
 
 .product-category {
@@ -174,6 +182,7 @@ table {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
+	height: 100%;
 	width: 100%;
   top: 0;/* Full height */
   overflow: auto; /* Enable scroll if needed */
@@ -187,6 +196,7 @@ table {
 }
 
 .photo-modal-content {
+	object-fit: cover;
   margin: auto;
   display: block;
   width: 80%;
@@ -262,6 +272,7 @@ i:hover {
 }
 
 .mini-photo img {
+	border-radius: 30%;
 	object-fit: cover;
 	transition: 0.5s all ease-in-out;
 }
@@ -269,9 +280,24 @@ i:hover {
 .mini-photo img:hover {
 	cursor: pointer;
 	transform: scale(1.2);
-	opacity: 80%;
+	opacity: 80% ;
+}
+.mini-photo-selected {
+	margin: 4px;
 }
 
+.mini-photo-selected img {
+	border-radius: 30%;
+	object-fit: cover;
+	transition: 0.5s all ease-in-out;
+	border: 2px solid black;
+}
+
+.mini-photo-selected img:hover {
+	cursor: pointer;
+	transform: scale(1.2);
+	opacity: 80% ;
+}
 .style-bubble {
 	object-fit: cover;
 	border-radius: 50%;
@@ -287,4 +313,30 @@ i:hover {
 
 .selected {
 	border: 2px dotted red;
+}
+
+.size-warning {
+	display: flex;
+	justify-content: center;
+	color: red;
+	margin-bottom: 2px;
+	font-style: italic;
+	font-size: 10px;
+}
+
+.overview-selectors {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	margin: 1%;
+}
+
+.overview-dropdown {
+	width: 30%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.cart-button {
+	margin: 1%;
 }

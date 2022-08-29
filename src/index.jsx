@@ -32,7 +32,8 @@ class App extends React.Component {
   componentDidMount() {
     //GET request for a list of products and their IDs
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/',
-      {headers: {'Authorization': `${API_KEY}`}})
+      {headers: {'Authorization': `${API_KEY}`},
+      params: {count: 5, page: 1}})
         .then((res) => {
         this.setState({ 'products': res.data, 'product': res.data[0] })})
         .catch((err) => console.log(err));
