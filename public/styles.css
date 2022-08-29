@@ -196,6 +196,7 @@ table {
 }
 
 .photo-modal-content {
+	cursor: zoom-out;
 	object-fit: cover;
   margin: auto;
   display: block;
@@ -339,4 +340,22 @@ i:hover {
 
 .cart-button {
 	margin: 1%;
+}
+
+.related-product-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.related-product {
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.related-product img {
+	object-fit: cover;
 }

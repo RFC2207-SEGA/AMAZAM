@@ -7,21 +7,12 @@ class Gallery extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      photoIndex: 1,
       showModal: false,
     }
   }
 
-  movePhoto(n) {
-    let destination = this.state.photoIndex += n;
-    if (destination >= 1 && destination <= this.props.style.photos.length) {
-      this.setState({ 'photoIndex': destination })
-    }
-    console.log(this.state.photoIndex);
-  }
-
   display(index) {
-    if (index === (this.state.photoIndex-1)) {
+    if (index === (this.props.index -1)) {
       return true;
     }
   }
@@ -38,9 +29,9 @@ class Gallery extends React.Component {
     return (
       <div>
         {this.props.style.photos.map((photo) => (
-        <Photo photo={photo} index={this.props.style.photos.indexOf(photo)} display={this.display.bind(this)} next={this.movePhoto.bind(this)} prev={this.movePhoto.bind(this)} triggerModal={this.triggerModal.bind(this)} photos={this.props.style.photos}/>))}
-        <MiniGallery photos={this.props.style.photos} index={this.state.photoIndex - 1} onClick={this.movePhoto.bind(this)}/>
-        <FullscreenModal show={this.state.showModal} photo={this.props.style.photos[this.state.photoIndex - 1]} toggleModal={this.triggerModal.bind(this)} next={this.movePhoto.bind(this)} prev={this.movePhoto.bind(this)} zoom={this.modalHover.bind(this)}/>
+        <Photo photo={photo} index={this.props.style.photos.indexOf(photo)} display={this.display.bind(this)} next={this.props.movePhoto} prev={this.props.movePhoto} triggerModal={this.triggerModal.bind(this)} photos={this.props.style.photos}/>))}
+        <MiniGallery photos={this.props.style.photos} index={this.props.index - 1} onClick={this.props.movePhoto}/>
+        <FullscreenModal show={this.state.showModal} photo={this.props.style.photos[this.props.index - 1]} toggleModal={this.triggerModal.bind(this)} next={this.props.movePhoto} prev={this.props.movePhoto} zoom={this.modalHover.bind(this)}/>
       </div>
     )
   }

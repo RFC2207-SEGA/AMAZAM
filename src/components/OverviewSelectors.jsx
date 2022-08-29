@@ -2,6 +2,7 @@ import React from 'react';
 
 const OverviewSelectors = ({ pickSize, sizes, currentSize, quantities }) => {
   if (quantities.length > 0) {
+    console.log('sizes: ', sizes);
     return (
       <div className="overview-selectors"> Size:
         <select className="overview-dropdown" onChange={(e) => { pickSize(e) }}>
@@ -12,8 +13,8 @@ const OverviewSelectors = ({ pickSize, sizes, currentSize, quantities }) => {
         </select>
         Quantity:
         <select className="overview-dropdown">
-          <option value="" disabled selected hidden> 1 </option>
-          {quantities.map((quantity) => (
+          <option value="1" default> 1 </option>
+          {quantities.slice(1).map((quantity) => (
             <option value={quantity}>{quantity}</option>
           ))}
         </select>
@@ -24,6 +25,7 @@ const OverviewSelectors = ({ pickSize, sizes, currentSize, quantities }) => {
     )
   }
   else {
+    console.log('sizes: ', sizes);
     return (
       <div className="overview-selectors">
       <div className="size-warning">Please select a size!</div>
@@ -36,7 +38,7 @@ const OverviewSelectors = ({ pickSize, sizes, currentSize, quantities }) => {
         </select>
         Quantity:
         <select className="overview-dropdown">
-          <option value="" disabled selected hidden>OUT OF STOCK</option>
+          <option value="">OUT OF STOCK</option>
         </select>
         <div>
           <button className="cartButton">Add to Cart</button>

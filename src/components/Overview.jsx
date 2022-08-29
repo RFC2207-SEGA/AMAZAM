@@ -118,6 +118,7 @@ class Overview extends React.Component {
       quantities: [],
       currentProduct: '',
       currentSize: '',
+      photoIndex: 1,
     }
   }
 
@@ -137,13 +138,17 @@ class Overview extends React.Component {
           params: { product_id: this.props.product.id}})
         })
         .then((productStyles) => {
-          this.setState({ 'productStyles': productStyles.data.results, 'currentStyle': productStyles.data.results[0]})
+          let sizes = [];
+          for (var key in productStyles.data.results[0].skus) {
+            sizes.push(productStyles.data.results[0].skus[key].size)
+          }
+          return this.setState({ 'productStyles': productStyles.data.results, 'currentStyle': productStyles.data.results[0], 'sizes': sizes})
         })
-        .then(() => {
-          this.onSale();
-          this.getSizes();
-          return;
-        })
+        // .then(() => {
+        //   this.onSale();
+        //   this.getSizes();
+        //   return;
+        // })
     }
     //make a get request to the API for the info of current product using this.props.product's id, return the .features property (should be an array)
     //make a get request to the API for the styles, return .results property (should be an array).
@@ -158,16 +163,19 @@ class Overview extends React.Component {
     }
   }
 
-  getSizes() {
-    let sizes = [];
-    for (var key in this.state.currentStyle.skus) {
-      sizes.push(this.state.currentStyle.skus[key].size)
-    }
-    this.setState({ 'sizes': sizes });
-  }
+  // getSizes() {
+  //   console.log('getSizes style: ', this.state.currentStyle)
+  //   let sizes = [];
+  //   for (var key in this.state.currentStyle.skus) {
+  //     sizes.push(this.state.currentStyle.skus[key].size)
+  //   }
+  //   this.setState({ 'sizes': sizes });
+  // }
 
   pickSize(n) {
+    n.preventDefault();
     let quantities = [];
+    console.log('pickSizes style: ', this.state.currentStyle)
     for (var key in this.state.currentStyle.skus) {
       if (this.state.currentStyle.skus[key].size === n.target.value) {
         for (let i = 1; i <= this.state.currentStyle.skus[key].quantity; i++) {
@@ -177,11 +185,19 @@ class Overview extends React.Component {
         }
       }
     }
+    console.log(n.target.value)
     this.setState({ 'currentSize': n.target.value, 'quantities': quantities })
   }
 
   styleSelect(style) {
-    this.setState({ 'currentStyle': style })
+    this.setState({ 'currentStyle': style, 'photoIndex': 1 })
+  }
+
+  movePhoto(n) {
+    let destination = this.state.photoIndex += n;
+    if (destination >= 1 && destination <= this.state.currentStyle.photos.length) {
+      this.setState({ 'photoIndex': destination })
+    }
   }
 
   render() {
@@ -189,7 +205,7 @@ class Overview extends React.Component {
       <div>
         <div className='overview-container'>
           <div className="gallery-container">
-            <Gallery style={this.state.currentStyle} />
+            <Gallery style={this.state.currentStyle} index={this.state.photoIndex} movePhoto={this.movePhoto.bind(this)}/>
           </div>
           <section className="product-info">
             <ProductInfo product={this.props.product} style={this.state.currentStyle} onSale={this.state.onSale}/>
