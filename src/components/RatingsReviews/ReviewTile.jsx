@@ -13,7 +13,7 @@ function ReviewTile ({ review }) {
     if (review.response) {
       return (
         <div className='sellerResponse'>
-          <strong>Seller Response:</strong>
+          <p>Seller Response:</p>
           <p>{review.response}</p>
         </div>
       )
