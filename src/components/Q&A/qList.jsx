@@ -68,7 +68,7 @@ class QList extends React.Component {
       page: 1,
       count: 5,
       questionArr: [],
-      searchedTerm: ''
+      searchSort: false
     }
 
     this.sortQuestions = this.sortQuestions.bind(this);
@@ -76,24 +76,46 @@ class QList extends React.Component {
   }
 
   sortQuestions() {
-    var qArr = this.state.productQ.results;
-    if (qArr.length > 1) {
-      for (var i = 0; i < qArr.length; i++) {
-        if(qArr[i+1]) {
-          if(qArr[i].question_helpfulness < qArr[i+1].question_helpfulness) {
-            var temp = qArr[i];
-            qArr[i] = qArr[i+1];
-            qArr[i+1] = temp;
+    console.log(this.state.searchSort);
+    if (!this.state.searchSort) {
+      var qArr = this.state.productQ.results;
+      if (qArr.length > 1) {
+        for (var i = 0; i < qArr.length; i++) {
+          if(qArr[i+1]) {
+            if(qArr[i].question_helpfulness < qArr[i+1].question_helpfulness) {
+              var temp = qArr[i];
+              qArr[i] = qArr[i+1];
+              qArr[i+1] = temp;
+            }
           }
         }
+        this.setState({questionArr: qArr});
       }
       this.setState({questionArr: qArr});
     }
-    this.setState({questionArr: qArr});
+    else {
+      //sort by handleSearch()
+    }
   }
 
   handleSearch(e) {
-    console.log(e.target.value);
+    var term = e.target.value;
+    var searchArr = this.state.questionArr;
+    if (term.length >= 3) {
+      this.setState({searchSort: true});
+      for(var i = 0; i < searchArr.length; i++) {
+        if (searchArr[i - 1]) {
+          var currentStr = searchArr[i].question_body;
+          if (currentStr.includes(term)) {
+            var temp = searchArr[i];
+            searchArr[i] = searchArr[i - 1];
+            searchArr[i - 1] = temp;
+          }
+        }
+      }
+      console.log(searchArr);
+      this.setState({questionArr: searchArr});
+    }
   }
 
   componentDidMount() {
@@ -119,6 +141,7 @@ class QList extends React.Component {
         </form>
         {this.state.questionArr.map((qItem) =>
         <ul>
+          {console.log('does this run')}
           <QuestionComp questionList={qItem}/>
           <AnswerComp answerList={qItem.answers}/>
         </ul>
