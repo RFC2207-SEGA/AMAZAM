@@ -64,7 +64,6 @@ class QList extends React.Component {
 
 
   componentDidMount() {
-    console.log(API_KEY);
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions',
       {headers: {'Authorization': `${API_KEY}`},
       params: {count: 5, page: 1, product_id: 66674 }})
