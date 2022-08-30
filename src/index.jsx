@@ -13,6 +13,7 @@ import RatingsReviews from './components/RatingsReviews/RatingsReviews.jsx';
 
 
 
+
 class App extends React.Component {
   constructor(props) {
     super (props)

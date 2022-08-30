@@ -22,7 +22,7 @@ class RatingsReviews extends React.Component {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews', {
       headers: {'Authorization': `${API_KEY}`},
       params: {
-        count: 2,
+        count: 10,
         page: 1,
         product_id: 66673, // FIXME update to passed-in product_id
         sort: 'relevant'
@@ -51,6 +51,7 @@ class RatingsReviews extends React.Component {
       axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews', {
         headers: {'Authorization': `${API_KEY}`},
         params: {
+          count: 10,
           product_id: 66673, // FIXME update to passed-in product_id
           sort: sortMethod
         }})
