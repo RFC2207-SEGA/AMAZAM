@@ -144,17 +144,11 @@ class Overview extends React.Component {
           }
           return this.setState({ 'productStyles': productStyles.data.results, 'currentStyle': productStyles.data.results[0], 'sizes': sizes})
         })
-        // .then(() => {
-        //   this.onSale();
-        //   this.getSizes();
-        //   return;
-        // })
+        .then(() => {
+          this.onSale();
+          return;
+        })
     }
-    //make a get request to the API for the info of current product using this.props.product's id, return the .features property (should be an array)
-    //make a get request to the API for the styles, return .results property (should be an array).
-    // this.onSale();
-    // this.getSizes();
-    // return;
   }
 
   onSale() {
@@ -163,19 +157,9 @@ class Overview extends React.Component {
     }
   }
 
-  // getSizes() {
-  //   console.log('getSizes style: ', this.state.currentStyle)
-  //   let sizes = [];
-  //   for (var key in this.state.currentStyle.skus) {
-  //     sizes.push(this.state.currentStyle.skus[key].size)
-  //   }
-  //   this.setState({ 'sizes': sizes });
-  // }
-
   pickSize(n) {
     n.preventDefault();
     let quantities = [];
-    console.log('pickSizes style: ', this.state.currentStyle)
     for (var key in this.state.currentStyle.skus) {
       if (this.state.currentStyle.skus[key].size === n.target.value) {
         for (let i = 1; i <= this.state.currentStyle.skus[key].quantity; i++) {
@@ -185,7 +169,6 @@ class Overview extends React.Component {
         }
       }
     }
-    console.log(n.target.value)
     this.setState({ 'currentSize': n.target.value, 'quantities': quantities })
   }
 
@@ -228,4 +211,4 @@ class Overview extends React.Component {
     }
 }
 
-export default Overview
+export default Overview;

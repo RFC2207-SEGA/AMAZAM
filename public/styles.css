@@ -291,7 +291,7 @@ i:hover {
 	border-radius: 30%;
 	object-fit: cover;
 	transition: 0.5s all ease-in-out;
-	border: 2px solid black;
+	border: 2px dotted red;
 }
 
 .mini-photo-selected img:hover {
@@ -350,12 +350,35 @@ i:hover {
 }
 
 .related-product {
-	cursor: pointer;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	transition: 0.5s all ease-in-out;
+	margin: 3%;
+}
+
+.related-product:hover {
+	cursor: pointer;
+	opacity: 80%;
+	transform:scale(1.2);
 }
 
 .related-product img {
 	object-fit: cover;
+	border-radius: 10%;
+}
+
+.related-name {
+	font-size: 20px;
+	font-style: italic;
+}
+
+.related-price {
+	margin: 1%;
+	font-size: 12px;
+}
+
+.related-rating {
+	margin: 1%;
+	font-size: 12px;
 }

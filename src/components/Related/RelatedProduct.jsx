@@ -14,16 +14,16 @@ const RelatedProduct = ({ product, styles, rating, select }) => {
             src={photoUrl}
             width="75"
             height="100"></img>
-          <div>
+          <div className="related-name">
             {product.name}
           </div>
-          <div className="sale">
+          <div className="sale related-price">
             {salesPrice}
           </div>
-          <div className="strikeout">
+          <div className="strikeout related-price">
             ${styles.data.results[0].original_price}
           </div>
-          <div>
+          <div className="related-rating">
             {rating} stars
           </div>
         </div>
@@ -34,13 +34,13 @@ const RelatedProduct = ({ product, styles, rating, select }) => {
           <div className="related-product" onClick={() => { select(product) }}>
             <div className="sale"> No
             </div><div className="sale">Preview</div><div className="sale">Available</div>
-            <div>
+            <div className="related-name">
               {product.name}
             </div>
-            <div>
+            <div className="related-price">
               ${styles.data.results[0].original_price}
             </div>
-            <div>
+            <div className="related-rating">
               {rating} stars
             </div>
           </div>
@@ -51,13 +51,13 @@ const RelatedProduct = ({ product, styles, rating, select }) => {
             src={photoUrl}
             width="75"
             height="100"></img>
-          <div>
+          <div className="related-name">
             {product.name}
           </div>
-          <div>
+          <div className="related-price">
             ${styles.data.results[0].original_price}
           </div>
-          <div>
+          <div className="related-rating">
             {rating} stars
           </div>
         </div>
