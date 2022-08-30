@@ -6,8 +6,8 @@ function RatingBreakdown ({ meta }) {
     var sum = 0;
     var reviewCount = 0;
     for (var starRating in meta.ratings) {
-      sum += starRating * meta.ratings[starRating];
-      reviewCount += meta.ratings[starRating]
+      sum += starRating * parseInt(meta.ratings[starRating])
+      reviewCount += parseInt(meta.ratings[starRating])
     }
     return Math.round((sum / reviewCount) * 10) / 10
   }
@@ -16,17 +16,15 @@ function RatingBreakdown ({ meta }) {
     var totalReviews = 0;
     var yesCount = 0
     for (var vote in meta.recommended) {
-      if (vote === '1') {
-        yesCount += meta.recommended[vote]
-        totalReviews += meta.recommended[vote]
+      if (vote === 'true') {
+        yesCount += parseInt(meta.recommended[vote])
+        totalReviews += parseInt(meta.recommended[vote])
       } else {
-        totalReviews += meta.recommended[vote]
+        totalReviews += parseInt(meta.recommended[vote])
       }
     }
     return Math.round((yesCount / totalReviews) * 100)
   }
-
-
 
 
   var totalRatings = 0;
@@ -41,8 +39,8 @@ function RatingBreakdown ({ meta }) {
 
   function starPercentage() {
     for (var starRating in meta.ratings) {
-      ratingsPerStar[starRating] = meta.ratings[starRating]
-      totalRatings += meta.ratings[starRating]
+      ratingsPerStar[starRating] = parseInt(meta.ratings[starRating])
+      totalRatings += parseInt(meta.ratings[starRating])
     }
     for (var key in ratingsPerStar) {
       starPct[key] = Math.round(ratingsPerStar[key] / totalRatings * 100)
@@ -52,7 +50,7 @@ function RatingBreakdown ({ meta }) {
 
 
   return (
-    <>
+    <div className='ratingsBreakdownMain'>
       <div className='ratingSummary'>
         <span>{avgRating()}</span><span> ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ </span>
       </div>
@@ -77,7 +75,7 @@ function RatingBreakdown ({ meta }) {
         <p>{recPercentage()}% of reviewers recommend this product</p>
       </div>
 
-    </>
+    </div>
   )
 }
 

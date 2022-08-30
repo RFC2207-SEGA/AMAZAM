@@ -2,18 +2,29 @@ import React from "react";
 
 function ProductBreakdown ({ meta }) {
 
-  var sizePointer = parseInt(meta.characteristics.Size.value)/5 * 100
-  var widthPointer = parseInt(meta.characteristics.Width.value)/5 * 100
-  var comfortPointer = parseInt(meta.characteristics.Comfort.value)/5 * 100
-  var sizePointer = parseInt(meta.characteristics.Size.value)/5 * 100
-  var sizePointer = parseInt(meta.characteristics.Size.value)/5 * 100
+    // sizePointer: parseInt(meta.characteristics.Size.value) / 5 * 100
+    // widthPointer: parseInt(meta.characteristics.Width.value) / 5 * 100,
+    // comfortPointer: parseInt(meta.characteristics.Comfort.value) / 5 * 100,
+    // qualityPointer: parseInt(meta.characteristics.Quality.value) / 5 * 100,
+    // lengthPointer: parseInt(meta.characteristics.Length.value) / 5 * 100,
+    // fitPointer: parseInt(meta.characteristics.Fit.value) / 5 * 100
+
+  // var sizePointer: parseInt(meta.characteristics.Size.value) / 5 * 100
+  // var widthPointer: parseInt(meta.characteristics.Width.value) / 5 * 100
+  // var comfortPointer: parseInt(meta.characteristics['Comfort']['value']) / 5 * 100
+  // var qualityPointer: parseInt(meta.characteristics.Quality.value) / 5 * 100
+  // var lengthPointer: parseInt(meta.characteristics.Length.value) / 5 * 100
+  // var fitPointer: parseInt(meta.characteristics.Fit.value) / 5 * 100
+
 
   return (
-    <>
-      <p>Size</p>
+    <div className='productBreakdownMain'>
+        {console.log('meta.characteristics', meta.characteristics)}
+        {/* {console.log('meta in product breakdown', meta.characteristics.Comfort.value)} */}
+      {/* <p>Size</p>
         <div className='rangeBarContainer'>
           <div className="rangeBar"></div>
-          <div className="triangleDown" style={{'margin-left': `${sizePointer}%`}}></div>
+          <div className="triangleDown" style={{'marginLeft': `${sizePointer}%`}}></div>
         </div>
         <br></br>
         <div className='characteristicsDesc'>
@@ -23,27 +34,27 @@ function ProductBreakdown ({ meta }) {
       <p>Width</p>
         <div className='rangeBarContainer'>
           <div className="rangeBar"></div>
-          <div className="triangleDown" style={{'margin-left': `${widthPointer}%`}}></div>
+          <div className="triangleDown" style={{'marginLeft': `${widthPointer}%`}}></div>
         </div>
         <br></br>
         <div className='characteristicsDesc'>
           <span>Too Narrow</span> <span>Perfect</span> <span>Too Wide</span>
-        </div>
+        </div> */}
 
-        <p>Comfort</p>
+        {/* <p>Comfort</p>
           <div className='rangeBarContainer'>
             <div className="rangeBar"></div>
-            <div className="triangleDown" style={{'margin-left': `${comfortPointer}%`}}></div>
+            <div className="triangleDown" style={{'marginLeft': `${comfortPointer}%`}}></div>
           </div>
           <br></br>
           <div className='characteristicsDesc'>
           <span>Uncomfortable</span><span>Very Comfortable</span>
-          </div>
+          </div> */}
 
-        <p>Quality</p>
+        {/* <p>Quality</p>
           <div className='rangeBarContainer'>
             <div className="rangeBar"></div>
-            <div className="triangleDown" style={{'margin-left': `${sizePointer}%`}}></div>
+            <div className="triangleDown" style={{'marginLeft': `${qualityPointer}%`}}></div>
           </div>
           <br></br>
           <div className='characteristicsDesc'>
@@ -53,7 +64,7 @@ function ProductBreakdown ({ meta }) {
         <p>Length</p>
           <div className='rangeBarContainer'>
             <div className="rangeBar"></div>
-            <div className="triangleDown" style={{'margin-left': `${sizePointer}%`}}></div>
+            <div className="triangleDown" style={{'marginLeft': `${lengthPointer}%`}}></div>
           </div>
           <br></br>
           <div className='characteristicsDesc'>
@@ -63,13 +74,13 @@ function ProductBreakdown ({ meta }) {
         <p>Fit</p>
           <div className='rangeBarContainer'>
             <div className="rangeBar"></div>
-            <div className="triangleDown" style={{'margin-left': `${sizePointer}%`}}></div>
+            <div className="triangleDown" style={{'marginLeft': `${fitPointer}%`}}></div>
           </div>
           <br></br>
           <div className='characteristicsDesc'>
           <span>Runs Small</span>  <span>Runs Large</span>
-          </div>
-    </>
+          </div> */}
+    </div>
   )
 }
 

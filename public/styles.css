@@ -184,13 +184,12 @@ table {
 }
 
 /*
-R&R COMPONENT
+Ratings and Revies Main Component
 */
 .ReviewsRatingsHdr {
 	font-size: large;
 	padding-top: 100px;
 	padding-bottom: 30px;
-
 }
 
 .ReviewsRatings {
@@ -211,14 +210,36 @@ R&R COMPONENT
 	width: 75%;
 }
 
+/*
+Ratings Sub-component
+*/
+
+.reviewTile {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-right: 20px;
+}
+
+.reviewThumbnail {
+	height: 5em;
+	/* height: 80px;
+	width: 80px; */
+	margin: 1%
+}
+
 
 /*
-RATINGS BREAKDOWN SUB-COMPONENT
+Ratings Breakdown Sub-component
 */
+
+.ratingsBreakdownMain {
+	margin: 10px;
+}
 
 .ratingsBreakdownTable {
 	margin-top: 10px;
 	margin-bottom: 10px;
+	width: 100%;
 }
 
 .ratingsBreakdownTable td {
@@ -229,15 +250,15 @@ RATINGS BREAKDOWN SUB-COMPONENT
 
 .barGraphContainer {
 	position: relative;
-	width: 84%;
 	z-index: 1;
+	width: 85%;
 }
 
 .barGraph {
 	position: absolute;
   z-index: 1;
   height: 10px;
-  width: 100%;
+  width: 95%;
 	margin-left: 3px;
   background-color: rgb(225, 225, 225);
 }
@@ -257,15 +278,19 @@ RATINGS BREAKDOWN SUB-COMPONENT
 
 
 /*
-PRODUCT BREAKDOWN CSS
+Product Breakdown Sub-component
 */
+
+.productBreakdownMain {
+	margin: 10px;
+}
 
 .rangeBarContainer {
 	position: relative;
 	width: 95%;
 	z-index: 1;
 	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-bottom: 5px;
 }
 
 .rangeBar {
@@ -291,7 +316,7 @@ PRODUCT BREAKDOWN CSS
 	display: flex;
 	justify-content: space-between;
 	font-size: small;
-	padding-bottom: 10px;
+	padding-bottom: 15px;
 }
 
 .sellerResponse {

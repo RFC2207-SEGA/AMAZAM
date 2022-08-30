@@ -13,7 +13,7 @@ function ReviewTile ({ review }) {
     if (review.response) {
       return (
         <div className='sellerResponse'>
-          <strong>Seller Response:</strong>
+          <p>Seller Response:</p>
           <p>{review.response}</p>
         </div>
       )
@@ -26,15 +26,15 @@ function ReviewTile ({ review }) {
   }
 
   return (
-    <>
+    <div className='reviewTile'>
       <div>⭐️ ⭐️ ⭐️ ⭐️ ⭐️ </div>
-      <span>{review.reviewer_name}</span>, <span>{formatDate(review.date)}</span>
+      <span className='reviewer-name-and-date'>{review.reviewer_name}</span>, <span>{formatDate(review.date)}</span>
       <h3>{review.summary}</h3>
       <p>{review.body}</p>
 
       <div>
         {review.photos.map((photo, index) =>
-          <img src={`"${photo.url}"`} key={photo.id}></img>
+          <img className='reviewThumbnail' src={`${photo.url}`} key={photo.id}></img>
         )}
       </div>
 
@@ -50,7 +50,7 @@ function ReviewTile ({ review }) {
       </div>
 
       <a href="">Report</a>
-    </>
+    </div>
   )
 }
 
