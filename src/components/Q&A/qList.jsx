@@ -1,7 +1,6 @@
 import React from "react";
 import AnswerComp from "./AnswerComp.jsx"
 import QuestionComp from "./QuestionComp.jsx"
-import SearchQuestions from './SearchQuestions.jsx'
 import {API_KEY} from '../../config/config.js';
 const axios = require('axios');
 
@@ -63,12 +62,39 @@ class QList extends React.Component {
                 }
               }
             },
+            {
+              "question_id": 39,
+              "question_body": "Does it come in grey?",
+              "question_date": "2019-06-28T00:00:00.000Z",
+              "asker_name": "funnyboy",
+              "question_helpfulness": 2,
+              "reported": false,
+              "answers": {
+                "72": {
+                  "id": 72,
+                  "body": "Not sure but I hope it does!",
+                  "date": "2019-11-28T00:00:00.000Z",
+                  "answerer_name": "randomGuy",
+                  "helpfulness": 1,
+                  "photos": [],
+                },
+                "80": {
+                  "id": 80,
+                  "body": "Yes it does! but it is listed somewhere else",
+                  "date": "2019-11-12T00:00:00.000Z",
+                  "answerer_name": "iluvcatz",
+                  "helpfulness": 32,
+                  "photos": [],
+                },
+              }
+            },
         ]
       },
       page: 1,
       count: 5,
       questionArr: [],
-      searchSort: false
+      searchSort: false,
+      searchArray: []
     }
 
     this.sortQuestions = this.sortQuestions.bind(this);
@@ -76,30 +102,28 @@ class QList extends React.Component {
   }
 
   sortQuestions() {
-    console.log(this.state.searchSort);
-    if (!this.state.searchSort) {
       var qArr = this.state.productQ.results;
       if (qArr.length > 1) {
-        for (var i = 0; i < qArr.length; i++) {
-          if(qArr[i+1]) {
-            if(qArr[i].question_helpfulness < qArr[i+1].question_helpfulness) {
-              var temp = qArr[i];
-              qArr[i] = qArr[i+1];
-              qArr[i+1] = temp;
-            }
-          }
-        }
+        // for (var i = 0; i < qArr.length; i++) {
+        //   if(qArr[i-1]) {
+        //     if(qArr[i].question_helpfulness > qArr[0].question_helpfulness) {
+        //       var temp = qArr[i];
+        //       qArr[i] = qArr[i-1];
+        //       qArr[i-1] = temp;
+        //     }
+        //   }
+        // }
+        qArr.sort((a, b) => {
+          return b.question_helpfulness - a.question_helpfulness;
+        });
         this.setState({questionArr: qArr});
       }
       this.setState({questionArr: qArr});
-    }
-    else {
-      //sort by handleSearch()
-    }
   }
 
   handleSearch(e) {
     var term = e.target.value;
+    term = term.toLowerCase();
     var searchArr = this.state.questionArr;
     if (term.length >= 3) {
       this.setState({searchSort: true});
@@ -108,13 +132,16 @@ class QList extends React.Component {
           var currentStr = searchArr[i].question_body;
           if (currentStr.includes(term)) {
             var temp = searchArr[i];
-            searchArr[i] = searchArr[i - 1];
-            searchArr[i - 1] = temp;
+            searchArr[i] = searchArr[0];
+            searchArr[0] = temp;
           }
         }
       }
       console.log(searchArr);
-      this.setState({questionArr: searchArr});
+      this.setState({searchArray: searchArr});
+    } else {
+      this.setState({searchSort: false});
+      this.sortQuestions();
     }
   }
 
@@ -130,6 +157,28 @@ class QList extends React.Component {
 
 
   render() {
+    let toRender;
+    var index = 1;
+    if (this.state.searchSort) {
+      console.log('does this run');
+      toRender =
+      this.state.searchArray.map((qItem) =>
+        <ul>
+          <span>{index++}</span>
+          <QuestionComp questionList={qItem}/>
+          <AnswerComp answerList={qItem.answers}/>
+        </ul>
+        );
+    } else {
+      toRender =
+      this.state.questionArr.map((qItem) =>
+        <ul>
+          <QuestionComp questionList={qItem}/>
+          <AnswerComp answerList={qItem.answers}/>
+        </ul>
+        );
+    }
+
 
 
     return(
@@ -137,15 +186,10 @@ class QList extends React.Component {
         <h1 id="QATitle">Questions and Answers</h1>
         <form>
           <lable>Search: </lable>
-          <input type='text' onChange={this.handleSearch}></input>
+          <input type='text' placeholder='Have a question? Search for answers...' onChange={this.handleSearch}></input>
         </form>
-        {this.state.questionArr.map((qItem) =>
-        <ul>
-          {console.log('does this run')}
-          <QuestionComp questionList={qItem}/>
-          <AnswerComp answerList={qItem.answers}/>
-        </ul>
-        )}
+        {toRender}
+        <button>See More Questions</button>
       </div>
 
 

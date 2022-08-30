@@ -32,7 +32,7 @@ class QuestionComp extends React.Component {
       <div id='QComp'>
         <div id='QBody'>Q: {this.state.questions.question_body}
         <span id='QUser'>
-        Asked by: {this.state.questions.asker_name} | {helpBtn} ({this.state.questions.question_helpfulness}) | <AddAnswer />
+        Asked by: {this.state.questions.asker_name} | {helpBtn} <span data-testid='numHelp'>({this.state.questions.question_helpfulness})</span> | <AddAnswer />
         </span>
         </div>
       </div>
