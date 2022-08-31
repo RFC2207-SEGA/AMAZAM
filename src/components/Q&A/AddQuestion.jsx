@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 const axios = require('axios');
 
-class AddAnswer extends React.Component {
+class AddQuestion extends React.Component {
   constructor(props) {
     super(props);
     this.state = {}
@@ -17,17 +17,17 @@ class AddAnswer extends React.Component {
 
 
   render() {
-    if (!this.props.showAns) {
+    if (!this.props.show) {
       return null;
     }
     return(
       <div className='modal'>
         <div className='modal-content'>
           <div className='modal-header'>
-            <h4 className='modal-title'>Add Answer</h4>
+            <h4 className='modal-title'>Add Question</h4>
           </div>
           <div className='modal-body'>
-            Answer Content
+            Question Content
           </div>
           <div className='modal-footer'>
             <button className='modal-button' onClick={this.props.onClose}>Submit</button>
@@ -46,4 +46,4 @@ class AddAnswer extends React.Component {
 
 
 
-export default AddAnswer;
+export default AddQuestion;

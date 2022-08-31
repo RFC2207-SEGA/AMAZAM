@@ -5,6 +5,7 @@ import {render, screen, waitFor} from '@testing-library/react';
 import QList from '../src/components/Q&A/QList.jsx';
 import QuestionComp from '../src/components/Q&A/QuestionComp.jsx';
 import axios from 'axios';
+import App from '../src/index.jsx';
 
 
 

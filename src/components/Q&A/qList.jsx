@@ -1,6 +1,7 @@
 import React from "react";
 import AnswerComp from "./AnswerComp.jsx"
 import QuestionComp from "./QuestionComp.jsx"
+import AddQuestion from "./AddQuestion.jsx"
 import {API_KEY} from '../../config/config.js';
 const axios = require('axios');
 
@@ -94,11 +95,18 @@ class QList extends React.Component {
       count: 5,
       questionArr: [],
       searchSort: false,
-      searchArray: []
+      searchArray: [],
+      totalQuesArr: [],
+      btnClick: false,
+      addClick: false,
+      show: false
     }
 
     this.sortQuestions = this.sortQuestions.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.handleSeeLessQues = this.handleSeeLessQues.bind(this);
+    this.handleSeeMoreQues = this.handleSeeMoreQues.bind(this);
+    this.handleAddQues = this.handleAddQues.bind(this);
   }
 
   sortQuestions() {
@@ -116,15 +124,19 @@ class QList extends React.Component {
         qArr.sort((a, b) => {
           return b.question_helpfulness - a.question_helpfulness;
         });
-        this.setState({questionArr: qArr});
+        this.setState({totalQuesArr: qArr});
+        var temp = qArr.slice(0,2);
+        this.setState({questionArr: temp});
       }
-      this.setState({questionArr: qArr});
+      this.setState({totalQuesArr: qArr});
+      var tempArr = qArr.slice(0,2);
+      this.setState({questionArr: tempArr});
   }
 
   handleSearch(e) {
     var term = e.target.value;
     term = term.toLowerCase();
-    var searchArr = this.state.questionArr;
+    var searchArr = this.state.totalQuesArr;
     if (term.length >= 3) {
       this.setState({searchSort: true});
       for(var i = 0; i < searchArr.length; i++) {
@@ -137,12 +149,39 @@ class QList extends React.Component {
           }
         }
       }
-      console.log(searchArr);
-      this.setState({searchArray: searchArr});
+      this.setState({totalQuesArr: searchArr});
+      var temp = searchArr.slice(0,2); //make changes here when using live data
+      this.setState({searchArray: temp});
     } else {
       this.setState({searchSort: false});
       this.sortQuestions();
     }
+  }
+
+  handleSeeMoreQues(totalArr) {
+    if(this.state.searchSort) {
+      this.setState({btnClick: true}); //on each button click should add 2 more questions to arr
+      this.setState({searchArray: totalArr}); //TODO: once working with live data make changes here
+    } else {
+      this.setState({btnClick: true});
+      this.setState({questionArr: totalArr});
+    }
+  }
+
+  handleSeeLessQues(totalArr) {
+    if(this.state.searchSort) {
+      this.setState({btnClick: false});
+      var temp = totalArr.slice(0, 2);
+      this.setState({searchArray: temp});
+    } else {
+      this.setState({btnClick: false});
+      var tempArr = totalArr.slice(0, 2);
+      this.setState({questionArr: tempArr});
+    }
+  }
+
+  handleAddQues() {
+    this.setState({addClick: true});
   }
 
   componentDidMount() {
@@ -157,10 +196,32 @@ class QList extends React.Component {
 
 
   render() {
+    let addQuestion;
+    if (this.state.addClick) {
+      addQuestion = <AddQuestion />
+    } else {
+      addQuestion = <span></span>
+    }
+
+
+
+
+    let moreQBtn;
+    if (this.state.totalQuesArr.length > 2) {
+      moreQBtn = <button onClick={(e) => this.handleSeeMoreQues(this.state.totalQuesArr)}>See More Questions</button>
+    } else {
+      moreQBtn = <span></span>
+    }
+    if (this.state.btnClick) {
+      moreQBtn = <button onClick={(e) => this.handleSeeLessQues(this.state.totalQuesArr)}>See Less Questions</button>
+    }
+
+
+
+
     let toRender;
     var index = 1;
     if (this.state.searchSort) {
-      console.log('does this run');
       toRender =
       this.state.searchArray.map((qItem) =>
         <ul>
@@ -185,11 +246,13 @@ class QList extends React.Component {
       <div id="QList">
         <h1 id="QATitle">Questions and Answers</h1>
         <form>
-          <lable>Search: </lable>
+          <h1>Search: </h1>
           <input type='text' placeholder='Have a question? Search for answers...' onChange={this.handleSearch}></input>
         </form>
         {toRender}
-        <button>See More Questions</button>
+        {moreQBtn}
+        <button onClick={(e) => this.setState({show: true})}>Add a Question</button>
+        <AddQuestion onClose={() => this.setState({show: false})} show={this.state.show} />
       </div>
 
 
