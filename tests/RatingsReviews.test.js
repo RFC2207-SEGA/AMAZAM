@@ -6,12 +6,12 @@ import {render, screen, waitFor} from '@testing-library/react';
 import RatingsReviews from '../src/components/RatingsReviews/RatingsReviews.jsx';
 
 
-describe('Calculations in Product Breakdown', function() {
+describe('First test', function() {
   const user = userEvent.setup();
 
   render(<RatingsReviews />)
 
-  it('should calculate the correct percentage for each characteristic', () => {
+  it('should find the first review on the page', () => {
     return waitFor(() => expect(screen.getByText('Mazie13')).toBeInTheDocument())
       .then(() => {
         expect(screen.getByText('July 19, 2021')).toBeInTheDocument()
