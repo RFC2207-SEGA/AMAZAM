@@ -3,6 +3,7 @@ import Gallery from './Gallery.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import OverviewSelectors from './OverviewSelectors.jsx';
+import Related from "./Related/Related.jsx"
 import axios from 'axios';
 import {API_KEY} from '../config/config.js';
 // import axios from 'axios';
@@ -205,6 +206,9 @@ class Overview extends React.Component {
           </div>
           <div> {this.state.productInfo.map((feat) => (
             <div className="product-features"> <i class="fa-solid fa-check"></i> {feat.feature}: {feat.value}</div>))}</div>
+        </div>
+        <div>
+        <Related product={this.props.product} select={this.props.select} style={this.state.currentStyle} info={this.state.productInfo}/>
         </div>
       </div>
       )

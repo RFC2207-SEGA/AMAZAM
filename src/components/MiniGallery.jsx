@@ -18,7 +18,6 @@ class MiniGallery extends React.Component {
 
   photosInArray(index, resultPhotos = []) {
     var index = index;
-    console.log('index: ', index);
     if (this.props.photos.length < 7) {
       this.setState({ 'tinyPhotos': this.props.photos, 'index': 0 })
       return;

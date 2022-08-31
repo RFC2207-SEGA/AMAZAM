@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { API_KEY } from '../../config/config.js';
 import RelatedProduct from './RelatedProduct.jsx';
+import Outfit from './Outfit.jsx';
+import ComparisonModal from './ComparisonModal.jsx';
 
 class Related extends React.Component {
   constructor(props) {
@@ -12,16 +14,21 @@ class Related extends React.Component {
       relatedProducts: [],
       relatedStyles: [],
       relatedReviews: [],
+      myOutfit: [],
+      myOutfitStyles: [],
+      myOutfitReviews: [],
     }
   }
 
   componentDidUpdate() {
+    if (!this.props.product) {
+      return;
+    }
     if (this.state.productId !== this.props.product.id) {
-      console.log('id: ', this.props.product.id)
       axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${this.props.product.id}/related`,
         { headers: { 'Authorization': `${API_KEY}` }, params: { 'product_id': this.props.product.id } })
         .then((data) => {
-          this.setState({ 'productId': this.props.product.id, 'relatedIds': data.data })
+          this.setState({ 'productId': this.props.product.id, 'relatedIds': data.data, })
           return (data.data)
         })
         .then((ids) => {
@@ -84,14 +91,51 @@ class Related extends React.Component {
     }
   }
 
+  addMainToFit() {
+    for (let j = 0; j < this.state.myOutfit.length; j++) {
+      if (this.state.myOutfit[j].id === this.props.product.id) {
+        return;
+      }
+    }
+    return this.setState({ 'myOutfit': [...this.state.myOutfit, this.props.product], 'myOutfitStyles': [...this.state.myOutfitStyles, this.props.style], 'myOutfitReviews': [...this.state.myOutfitReviews, 5] })
+  }
+
+  removeFit( product, styles, rating ) {
+    var oSplicePoint = this.state.myOutfit.indexOf(product)
+    var sSplicePoint = this.state.myOutfitStyles.indexOf(styles)
+    var rSplicePoint = this.state.myOutfitReviews.indexOf(rating)
+    this.state.myOutfit.splice(oSplicePoint, 1)
+    this.state.myOutfitStyles.splice(sSplicePoint, 1)
+    this.state.myOutfitReviews.splice(rSplicePoint, 1)
+    this.setState({ 'myOutfit': this.state.myOutfit, 'myOutfitStyle': this.state.myOutfitStyles, 'myOutfitReviews': this.state.myOutfitReviews })
+  }
+
   render() {
     if (this.state.relatedProducts.length > 0) {
       return (
-        <div>
+        <div className="related-widget">
+          <div className="related-streamer"> Related Products </div>
           <div className="related-product-container">
-              {this.state.relatedProducts.map((product, index) => (
-                <RelatedProduct product={product.data} styles={this.state.relatedStyles[index]} rating={this.state.relatedReviews[index]} select={this.props.select} />
-              ))}
+            {this.state.relatedProducts.map((product, index) => (
+              <RelatedProduct product={product.data} styles={this.state.relatedStyles[index]} rating={this.state.relatedReviews[index]} select={this.props.select} mainProduct={this.props.product} mainInfo={this.props.info}/>
+            ))}
+          </div>
+          <div className="related-streamer"> My Outfit </div>
+          <div className="outfit-container">
+            <div className="empty-outfit-card" onClick={this.addMainToFit.bind(this)}>
+              <div className="action-button"><i class="fa-solid fa-shirt"></i></div>
+              <div className="sale"> +
+              </div><div>Add to</div><div>Outfit</div>
+              <div className="related-name">
+              </div>
+              <div className="related-price">
+              </div>
+              <div className="related-rating">
+              </div>
+            </div>
+            {this.state.myOutfit.map((product, index) => (
+              <Outfit product={product} styles={this.state.myOutfitStyles[index]} rating={this.state.myOutfitReviews[index]} select={this.props.select} remove={this.removeFit.bind(this)} />
+            ))}
           </div>
         </div>
       )

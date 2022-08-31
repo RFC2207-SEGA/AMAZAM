@@ -12,7 +12,7 @@ class TitleBar extends React.Component {
   }
   render () {
     return (
-      <div className="title-bar"> AMAZAM
+      <div data-testid="title-bar" className="title-bar"> AMAZAM
         <div className="search-bar">
           <input type="text" placeholder="find your fit..." onChange={this.searchInput.bind(this)}></input>
           <i class="fa-solid fa-magnifying-glass"></i>

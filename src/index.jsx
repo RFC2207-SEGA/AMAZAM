@@ -7,7 +7,6 @@ import { createRoot } from "react-dom/client";
 // create the root of the app by selection where the app should be mounted in the dom
 import Overview from "./components/Overview.jsx"
 import TitleBar from "./components/TitleBar.jsx"
-import Related from "./components/Related/Related.jsx"
 const root = createRoot(document.getElementById("root"));
 
 
@@ -70,7 +69,7 @@ class App extends React.Component {
         <div className="title-streamer">Site-wide announcement message... SALE / DISCOUNT Offer... new Product Highlight</div>
         <div>
         <Overview product={this.state.product} select={this.selectProduct.bind(this)} />
-        <Related product={this.state.product} select={this.selectProduct.bind(this)} />
+        {/* <Related product={this.state.product} select={this.selectProduct.bind(this)} /> */}
         {/* <Reviews product={this.state.product} select={this.selectProduct.bind(this)}/>
         <QA product={this.state.product} select={this.selectProduct.bind(this)}/>
         <Related products={this.state.products} product={this.state.product} select={this.selectProduct.bind(this)}/> */}

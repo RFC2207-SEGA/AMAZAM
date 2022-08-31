@@ -2,7 +2,6 @@ import React from 'react';
 
 const OverviewSelectors = ({ pickSize, sizes, currentSize, quantities }) => {
   if (quantities.length > 0) {
-    console.log('sizes: ', sizes);
     return (
       <div className="overview-selectors"> Size:
         <select className="overview-dropdown" onChange={(e) => { pickSize(e) }}>
@@ -25,7 +24,6 @@ const OverviewSelectors = ({ pickSize, sizes, currentSize, quantities }) => {
     )
   }
   else {
-    console.log('sizes: ', sizes);
     return (
       <div className="overview-selectors">
       <div className="size-warning">Please select a size!</div>
