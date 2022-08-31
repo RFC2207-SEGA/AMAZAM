@@ -1,18 +1,18 @@
-import React from "react";
-import CharItem from './CharItem.jsx'
+import React from 'react';
+import Characteristic from './Characteristic.jsx'
 
 function ProductBreakdown ({ meta }) {
 
-  function iterateMetaChars() {
+  function createCharacteristicRange() {
     if (meta.characteristics !== undefined) {
-      return Object.entries(meta.characteristics).map(([characteristic, value], index) =>
-        <CharItem characteristic={characteristic} value={value} key={index}/>
+      return Object.entries(meta.characteristics).map(([characteristic, values]) =>
+        <Characteristic characteristic={characteristic} value={values.value} key={values.id}/>
       )
     }
   }
 
   return (
-    <div className='productBreakdownMain'>{iterateMetaChars()}</div>
+    <div className='productBreakdownMain'>{createCharacteristicRange()}</div>
   )
 }
 

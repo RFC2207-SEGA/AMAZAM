@@ -1,5 +1,4 @@
-import React from "react";
-
+import React from 'react';
 
 function ReviewTile ({ review }) {
 
@@ -27,7 +26,7 @@ function ReviewTile ({ review }) {
 
   return (
     <div className='reviewTile'>
-      <div>⭐️ ⭐️ ⭐️ ⭐️ ⭐️ </div>
+      <div>⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ({review.rating})</div>
       <span className='reviewer-name-and-date'>{review.reviewer_name}</span>, <span>{formatDate(review.date)}</span>
       <h3>{review.summary}</h3>
       <p>{review.body}</p>

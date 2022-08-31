@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 
 function RatingBreakdown ({ meta }) {
 
   function avgRating() {
     var sum = 0;
-    var reviewCount = 0;
+    var totalReviews = 0;
     for (var starRating in meta.ratings) {
       sum += starRating * parseInt(meta.ratings[starRating])
-      reviewCount += parseInt(meta.ratings[starRating])
+      totalReviews += parseInt(meta.ratings[starRating])
     }
-    return Math.round((sum / reviewCount) * 10) / 10
+    return Math.round((sum / totalReviews) * 10) / 10
   }
 
   function recPercentage() {
