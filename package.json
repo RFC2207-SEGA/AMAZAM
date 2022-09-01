@@ -11,7 +11,8 @@
     "express": "^4.18.1",
     "nodemon": "^2.0.19",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-image-magnify": "^2.7.4"
   },
   "devDependencies": {
     "@babel/core": "^7.18.13",
