@@ -518,7 +518,8 @@ i:hover {
 	display: flex;
 	flex-direction: row;
 	justify-content: left;
-	align-items: left;
+	align-items: center;
+	margin-left: 10%;
 }
 
 .compare-modal {
