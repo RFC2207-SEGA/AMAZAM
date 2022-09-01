@@ -24,17 +24,24 @@ class AddQuestion extends React.Component {
       <div className='modal'>
         <div className='modal-content'>
           <div className='modal-header'>
-            <h4 className='modal-title'>Add Question</h4>
+            <span><button className='modal-button-close' onClick={this.props.onClose}>X</button></span>
+            <h4 className='modal-title'>Ask Your Question </h4>
+            <h5 className='modal-subtitle'>About Product ID {this.props.currentProduct}</h5>
           </div>
           <div className='modal-body'>
             Question Content
-          </div>
-          <div className='modal-footer'>
-            <button className='modal-button' onClick={this.props.onClose}>Submit</button>
+            <form method='post' onSubmit={this.props.onClose}>
+              <div>Your Question: </div><input type='text' required/>
+              <div>Nickname: </div><input type='text' placeholder="Example: jackson11!" required/>
+              <div>Your Email: </div><input type='text' required/>
+              <p>For authentication reasons, you will not be emailed</p>
+              <div className='modal-footer'>
+                <input type='submit' className='modal-button'/>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-
     )
   }
 

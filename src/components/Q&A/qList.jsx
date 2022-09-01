@@ -226,7 +226,7 @@ class QList extends React.Component {
       this.state.searchArray.map((qItem) =>
         <ul>
           <span>{index++}</span>
-          <QuestionComp questionList={qItem}/>
+          <QuestionComp questionList={qItem} proID={this.state.productQ.product_id}/>
           <AnswerComp answerList={qItem.answers}/>
         </ul>
         );
@@ -234,7 +234,7 @@ class QList extends React.Component {
       toRender =
       this.state.questionArr.map((qItem) =>
         <ul>
-          <QuestionComp questionList={qItem}/>
+          <QuestionComp questionList={qItem} proID={this.state.productQ.product_id}/>
           <AnswerComp answerList={qItem.answers}/>
         </ul>
         );
@@ -252,7 +252,7 @@ class QList extends React.Component {
         {toRender}
         {moreQBtn}
         <button onClick={(e) => this.setState({show: true})}>Add a Question</button>
-        <AddQuestion onClose={() => this.setState({show: false})} show={this.state.show} />
+        <AddQuestion onClose={() => this.setState({show: false})} show={this.state.show} currentProduct={this.state.productQ.product_id} />
       </div>
 
 

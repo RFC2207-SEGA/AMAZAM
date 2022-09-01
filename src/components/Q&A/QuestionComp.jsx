@@ -35,7 +35,7 @@ class QuestionComp extends React.Component {
         <span id='QUser'>
         Asked by: {this.state.questions.asker_name} | {helpBtn} <span data-testid='numHelp'>({this.state.questions.question_helpfulness})</span> |
         <button onClick={(e) => this.setState({showAns: true})}> Add a Answer</button>
-        <AddAnswer onClose={() => this.setState({showAns: false})} showAns={this.state.showAns}/>
+        <AddAnswer onClose={() => this.setState({showAns: false})} showAns={this.state.showAns} proID={this.props.proID} qbody={this.state.questions.question_body}/>
         </span>
         </div>
       </div>

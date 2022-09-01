@@ -101,9 +101,15 @@ table {
 .modal-title {
 	margin: 0;
 }
+.modal-subtitle {
+	font-size: 13px;
+}
 .modal-body {
 	padding: 10px;
 	border-top: 1px solid #eee;
 	border-bottom: 1px solid #eee;
+}
+.modal-button-close {
+	float: right;
 }
 
