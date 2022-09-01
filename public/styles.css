@@ -11,7 +11,7 @@ small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
+table, caption, tbody, textarea, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
@@ -223,8 +223,6 @@ Ratings Sub-component
 
 .reviewThumbnail {
 	height: 5em;
-	/* height: 80px;
-	width: 80px; */
 	margin: 1%
 }
 
@@ -233,29 +231,28 @@ Ratings Sub-component
 Ratings Breakdown Sub-component
 */
 
-.ratingsBreakdownMain {
+.ratingsBreakdownContainer {
 	margin: 10px;
 }
 
 .ratingsBreakdownTable {
 	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 	width: 100%;
 }
 
 .ratingsBreakdownTable td {
 	padding-top: 2%;
 	padding-bottom: 2%;
-	vertical-align: baseline;
 }
 
 .barGraphContainer {
 	position: relative;
 	z-index: 1;
-	width: 85%;
+	width: 90%;
 }
 
-.barGraph {
+.barGraphUnderlay {
 	position: absolute;
   z-index: 1;
   height: 10px;
@@ -274,7 +271,7 @@ Ratings Breakdown Sub-component
 
 .recommendations {
 	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-bottom: 30px;
 }
 
 
@@ -322,4 +319,76 @@ Product Breakdown Sub-component
 
 .sellerResponse {
 	background-color: rgb(220, 220, 220);
+}
+
+/*
+Add Review Modal
+*/
+.modal {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5) ;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 3;
+}
+
+.modal-content {
+	width: 600px;
+	background-color: #fff;
+	}
+
+.modal-header, .modal-footer {
+	padding: 10px;
+}
+
+.modal-title {
+	margin: 0;
+}
+
+.modal-body {
+	padding: 10px;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+}
+
+/* star rating */
+.rate {
+	/* float: center; */
+	height: 46px;
+	/* padding: 5px, 10px; */
+}
+.rate:not(:checked) > input {
+	position:absolute;
+	top:-9999px;
+}
+.rate:not(:checked) > label {
+	float:right;
+	width:1em;
+	overflow:hidden;
+	white-space:nowrap;
+	cursor:pointer;
+	font-size:x-large;
+	color:#ccc;
+}
+.rate:not(:checked) > label:before {
+	content: '★ ';
+}
+.rate > input:checked ~ label {
+	color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+	color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+	color: #c59b08;
 }

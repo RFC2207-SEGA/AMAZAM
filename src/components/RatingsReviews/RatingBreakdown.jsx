@@ -50,7 +50,7 @@ function RatingBreakdown ({ meta }) {
 
 
   return (
-    <div className='ratingsBreakdownMain'>
+    <div className='ratingsBreakdownContainer'>
       <div className='ratingSummary'>
         <span>{avgRating()}</span><span> ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ </span>
       </div>
@@ -62,7 +62,7 @@ function RatingBreakdown ({ meta }) {
             <tr key={index}>
               <td><a href=''>{key} stars</a></td>
               <td className='barGraphContainer'>
-                <div className='barGraph'></div>
+                <div className='barGraphUnderlay'></div>
                 <div className='barGraphOverlay' style={{'width': `${value}%`}}></div>
               </td>
             </tr>

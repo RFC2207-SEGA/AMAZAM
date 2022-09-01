@@ -53,6 +53,7 @@ class App extends React.Component {
         "category": "Jackets",
         "default_price": "140"
       },
+      meta: {}
     }
   }
 
@@ -64,11 +65,28 @@ class App extends React.Component {
 
   componentDidMount() {
     //GET request for a list of products and their IDs
-    // axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/',
-    //   {headers: {'Authorization': `${API_KEY}`},
-    //   params: {count: 5, page: 1}})
-    //     .then((res) => console.log('Array of Products: ', res.data))
-    //     .catch((err) => console.log(err));
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/',{
+      headers: {'Authorization': `${API_KEY}`},
+      params: {
+        count: 5,
+        page: 1
+      }})
+    .then(res => {
+      this.setState({ products: res.data })
+      console.log('Array of Products: ', res.data)
+      return axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta', {
+        headers: {'Authorization': `${API_KEY}`},
+        params: {product_id: 66673}
+      })
+    })
+    .then(res => {
+      this.setState({ meta: res.data })
+      console.log('meta from server:', res.data)
+    })
+    .catch(err =>
+      console.log(err));
+  }
+
     // //GET request for Q&A at a product_id
     // axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions',
     //   {headers: {'Authorization': `${API_KEY}`},
@@ -92,7 +110,6 @@ class App extends React.Component {
       //   .then((res) => console.log(res.data))
       //   .catch((err) => console.log(err));
 
-  }
 
   render () {
     return (
@@ -103,13 +120,13 @@ class App extends React.Component {
         <TitleBar />
         <div className="title-streamer">Site-wide announcement message... SALE / DISCOUNT Offer... new Product Highlight</div>
         <div>
-        <Overview product={this.state.product} select={this.selectProduct.bind(this)} />
-        {/* <Reviews product={this.state.product} select={this.selectProduct.bind(this)}/>
-        <QA product={this.state.product} select={this.selectProduct.bind(this)}/>
+        {/* <Overview product={this.state.product} select={this.selectProduct.bind(this)} /> */}
+
+        {/* <QA product={this.state.product} select={this.selectProduct.bind(this)}/>
         <Related products={this.state.products} product={this.state.product} select={this.selectProduct.bind(this)}/> */}
         </div>
 
-        <RatingsReviews product={this.state.product} select={this.selectProduct.bind(this)}/>
+        <RatingsReviews product={this.state.product} meta={this.state.meta} select={this.selectProduct.bind(this)}/>
 
       </div>
       // <div>

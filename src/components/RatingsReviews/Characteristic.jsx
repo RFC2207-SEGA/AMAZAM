@@ -11,7 +11,7 @@ function Characteristic ({ characteristic, value }) {
     Fit: ['Runs Tight', 'Perfect', 'Runs Big']
   }
 
-  var marginLeftPercentage = parseInt(value) / 5 * 100;
+  var marginLeftPercentage = parseFloat(value) / 5 * 100;
 
   return (
     <div>
@@ -22,8 +22,8 @@ function Characteristic ({ characteristic, value }) {
       </div>
       <br></br>
       <div className='characteristicsDesc'>
-        {descriptors[characteristic].map(values =>
-          <span>{values}</span>
+        {descriptors[characteristic].map((values, index) =>
+          <span key={index}>{values} </span>
         )}
       </div>
     </div>
