@@ -7,6 +7,9 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -40,6 +43,7 @@
     "start": "webpack --mode=development",
     "build": "webpack --mode=production",
     "dev": "webpack serve --open",
-    "test": "jest"
+    "test": "jest",
+    "server": "nodemon ./server/"
   }
 }
