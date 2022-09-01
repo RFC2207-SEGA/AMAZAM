@@ -25,21 +25,6 @@ class MiniGallery extends React.Component {
       this.setState({ 'tinyPhotos': this.props.photos.slice(index, index + 7), 'index': index })
       return;
     }
-    // if (index < 0) {
-    //   index = 0;
-    // }
-    // for (let j = index; j < this.props.photos.length; j++) {
-    //   resultPhotos.push(this.props.photos[j])
-    // }
-    // if (resultPhotos.length > 7) {
-    //   resultPhotos = resultPhotos.slice(0, 7);
-    // }
-    // if (resultPhotos.length === 7) {
-    //   console.log(resultPhotos);
-    //   this.setState({ 'tinyPhotos': resultPhotos })
-    //   return;
-    // }
-    // this.photosInArray(0, resultPhotos)
   }
 
   render() {

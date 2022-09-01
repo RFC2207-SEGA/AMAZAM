@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OverviewSelectors = ({ pickSize, sizes, currentSize, quantities }) => {
+const OverviewSelectors = ({ pickSize, sizes, currentSize, quantities, addToCart, pickQuantity }) => {
   if (quantities.length > 0) {
     return (
       <div className="overview-selectors"> Size:
@@ -11,14 +11,14 @@ const OverviewSelectors = ({ pickSize, sizes, currentSize, quantities }) => {
           ))}
         </select>
         Quantity:
-        <select className="overview-dropdown">
+        <select className="overview-dropdown" onChange={(e) => { pickQuantity(e) }}>
           <option value="1" default> 1 </option>
           {quantities.slice(1).map((quantity) => (
             <option value={quantity}>{quantity}</option>
           ))}
         </select>
         <div>
-          <button className="cartButton">Add to Cart</button>
+          <button className="cartButton" onClick={() => { addToCart() }}>Add to Cart</button>
         </div>
       </div>
     )
@@ -39,7 +39,7 @@ const OverviewSelectors = ({ pickSize, sizes, currentSize, quantities }) => {
           <option value="">OUT OF STOCK</option>
         </select>
         <div>
-          <button className="cartButton">Add to Cart</button>
+          <button className="cartButton" onClick={() => { addToCart() }}>Add to Cart</button>
         </div>
       </div>)
   }

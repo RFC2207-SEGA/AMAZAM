@@ -120,6 +120,7 @@ class Overview extends React.Component {
       currentProduct: '',
       currentSize: '',
       photoIndex: 1,
+      currentQuant: '',
     }
   }
 
@@ -152,6 +153,29 @@ class Overview extends React.Component {
     }
   }
 
+  addToCart() {
+    let currentSku;
+    if (this.state.currentSize.length === 0) {
+      alert('Please select a size!')
+      return;
+    }
+    if (this.state.currentQuant.length === 0) {
+      alert('Please select a quantity!')
+      return;
+    }
+    else for (var key in this.state.currentStyle.skus) {
+      if (this.state.currentStyle.skus[key].size === this.state.currentSize) {
+        console.log('key: ', key )
+        currentSku = key;
+      }
+    }
+    if (currentSku) {
+      return axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/cart`,
+      { sku_id: currentSku },  { headers: {'Authorization': `${API_KEY}`}})
+    }
+    return;
+  }
+
   onSale() {
     if (this.state.currentStyle.sale_price === '0') {
       this.setState({ 'onSale': false })
@@ -171,6 +195,11 @@ class Overview extends React.Component {
       }
     }
     this.setState({ 'currentSize': n.target.value, 'quantities': quantities })
+  }
+
+  pickQuantity(n) {
+    n.preventDefault();
+    this.setState({ 'currentQuant': n.target.value })
   }
 
   styleSelect(style) {
@@ -194,7 +223,7 @@ class Overview extends React.Component {
           <section className="product-info">
             <ProductInfo product={this.props.product} style={this.state.currentStyle} onSale={this.state.onSale}/>
             <StyleSelector style={this.state.currentStyle.name} styles={this.state.productStyles} onClick={this.styleSelect.bind(this)}/>
-            <OverviewSelectors pickSize={this.pickSize.bind(this)} sizes={this.state.sizes} currentSize={this.state.currentSize} quantities={this.state.quantities}/>
+            <OverviewSelectors pickSize={this.pickSize.bind(this)} sizes={this.state.sizes} currentSize={this.state.currentSize} quantities={this.state.quantities} addToCart={this.addToCart.bind(this)} pickQuantity={this.pickQuantity.bind(this)}/>
             <span className="social-links">
             <i class="fa-brands fa-facebook"></i><i class="fa-brands fa-twitter"></i><i class="fa-brands fa-pinterest"></i></span>
           </section>
