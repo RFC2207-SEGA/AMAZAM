@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 function RatingBreakdown ({ meta }) {
 
   function avgRating() {
@@ -51,8 +52,9 @@ function RatingBreakdown ({ meta }) {
 
   return (
     <div className='ratingsBreakdownContainer'>
-      <div className='ratingSummary'>
-        <span>{avgRating()}</span><span> ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ </span>
+      <div>
+        <span>{avgRating()}</span><i className="fa-solid fa-star"></i>
+
       </div>
 
       <table className='ratingsBreakdownTable'>

@@ -76,7 +76,7 @@ class App extends React.Component {
       console.log('Array of Products: ', res.data)
       return axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta', {
         headers: {'Authorization': `${API_KEY}`},
-        params: {product_id: 66673}
+        params: {product_id: 66642}
       })
     })
     .then(res => {

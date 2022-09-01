@@ -13,7 +13,7 @@ class RatingsReviews extends React.Component {
     this.state = {
       reviews: [],
       sort: 'relevant',
-      addReviewModal: false
+      addReviewModal: true // FIXME change back to false
     }
     this.handleSort = this.handleSort.bind(this);
     this.toggleReviewModal = this.toggleReviewModal.bind(this);
@@ -60,7 +60,6 @@ class RatingsReviews extends React.Component {
   render() {
     return (
       <>
-      {console.log('props inside ratings&review:', this.props)}
         <div className='ReviewsRatingsHdr'>Ratings &amp; Reviews</div>
 
         <div className='ReviewsRatings'>
@@ -87,7 +86,8 @@ class RatingsReviews extends React.Component {
               <div><AddReview
                 toggleReviewModal={this.toggleReviewModal}
                 addReviewModal={this.state.addReviewModal}
-                meta={this.props.meta}/>
+                meta={this.props.meta}
+                product={this.props.product}/>
               </div>
             </div>
 
