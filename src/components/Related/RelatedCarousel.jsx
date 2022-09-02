@@ -28,16 +28,57 @@ class RelatedCarousel extends React.Component {
 
   render() {
     if (this.props.show) {
+      if (this.props.photos.length < 4) {
+        return (
+          <div className="related-carousel-container">
+            <div className="arrow-spacer">
+            </div>
+            {this.state.relatedPhotos.map((photo, index) => (
+              <RelatedCarouselPhoto photo={photo} index={index + this.state.index} changePhoto={this.props.changePhoto} bigPhotoIndex={this.props.index} />
+            ))}
+            <div className="arrow-spacer">
+            </div>
+          </div>
+        )
+      }
+      if (this.state.index === 0) {
+        return (
+          <div className="related-carousel-container">
+            <div className="arrow-spacer">
+            </div>
+            {this.state.relatedPhotos.map((photo, index) => (
+              <RelatedCarouselPhoto photo={photo} index={index + this.state.index} changePhoto={this.props.changePhoto} bigPhotoIndex={this.props.index} />
+            ))}
+            <div className="arrow-spacer">
+            <a className="related-next" onClick={() => { this.photosInArray(this.state.index + 1) }}>&#10095;</a>
+            </div>
+          </div>
+        )
+      }
+      if (this.state.index + 4 === (this.props.photos.length)) {
+        return (
+          <div className="related-carousel-container">
+            <div className="arrow-spacer">
+            <a className="related-prev" onClick={() => { this.photosInArray(this.state.index - 1) }}>&#10094;</a>
+            </div>
+            {this.state.relatedPhotos.map((photo, index) => (
+              <RelatedCarouselPhoto photo={photo} index={index + this.state.index} changePhoto={this.props.changePhoto} bigPhotoIndex={this.props.index} />
+            ))}
+            <div className="arrow-spacer">
+            </div>
+          </div>
+        )
+      }
       return (
         <div className="related-carousel-container">
           <div className="arrow-spacer">
-          <a className="prev" onClick={() => { this.photosInArray(this.state.index - 1) }}>&#10094;</a>
+          <a className="related-prev" onClick={() => { this.photosInArray(this.state.index - 1) }}>&#10094;</a>
           </div>
           {this.state.relatedPhotos.map((photo, index) => (
             <RelatedCarouselPhoto photo={photo} index={index + this.state.index} changePhoto={this.props.changePhoto} bigPhotoIndex={this.props.index} />
           ))}
           <div className="arrow-spacer">
-          <a className="next" onClick={() => { this.photosInArray(this.state.index + 1) }}>&#10095;</a>
+          <a className="related-next" onClick={() => { this.photosInArray(this.state.index + 1) }}>&#10095;</a>
           </div>
         </div>
       )
