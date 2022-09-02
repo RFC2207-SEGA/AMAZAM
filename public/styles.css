@@ -1,89 +1,21 @@
 /* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
+    v2.0 | 20110126
+    License: none (public domain)
 */
 
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, textarea, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -327,6 +259,244 @@ table {
 	justify-content: center;
 	font-size: small;
 }
+
+/*
+Ratings and Revies Main Component
+*/
+#primary-ratings-and-reviews-widget-container {
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 5%;
+}
+.reviews-ratings-hdr {
+	font-size: large;
+	padding-top: 100px;
+	padding-bottom: 30px;
+}
+
+.reviews-ratings {
+	display: flex;
+	flex-direction: row;
+}
+
+.breakdowns {
+	flex: 1;
+	order: 1;
+	width: 25%;
+	flex-direction: column;
+}
+
+.reviews-list {
+	flex: 2;
+	order: 2;
+	width: 75%;
+}
+
+/*
+Review List/Tiles Sub-component
+*/
+.review-tile {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-right: 20px;
+	border-top: 1px solid #eee;
+	padding-top: 2%;
+}
+
+.review-thumbnail {
+	height: 5em;
+	margin: 1%
+}
+
+.reviewer-name-and-date {
+	font-size: small;
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+
+.review-summary {
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+
+.review-body {
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-size: small;
+}
+
+.vote-helpfulness-and-report {
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-size: small;
+}
+
+.seller-response {
+	background-color: rgb(220, 220, 220);
+}
+
+/*
+Ratings Breakdown Sub-component
+*/
+.ratings-breakdown-container {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.ratings-breakdown-table {
+	margin-top: 10px;
+	margin-bottom: 5px;
+	width: 100%;
+}
+
+.ratings-breakdown-table td {
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+
+.bar-graph-container {
+	position: relative;
+	z-index: 1;
+	width: 90%;
+}
+
+.bar-graph-underlay {
+	position: absolute;
+  z-index: 1;
+  height: 10px;
+  width: 95%;
+	margin-left: 3px;
+  background-color: rgb(225, 225, 225);
+}
+
+.bar-graph-overlay {
+	position: absolute;
+	z-index: 2;
+  height: 10px;
+	margin-left: 3px;
+  background-color: rgb(70, 70, 70);
+}
+
+.recommendations {
+	padding-top: 10px;
+	padding-bottom: 30px;
+}
+
+
+/*
+Product Breakdown Sub-component
+*/
+.product-breakdown-main {
+	margin: 10px;
+}
+
+.range-bar-container {
+	position: relative;
+	width: 95%;
+	z-index: 1;
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+
+.range-bar {
+	position: absolute;
+  z-index: 1;
+  height: 10px;
+  width: 100%;
+  background-color: rgb(225, 225, 225);
+}
+
+.triangle-down {
+	position: absolute;
+	z-index: 2;
+	width: 0;
+	height: 0;
+	border-left: .5em solid transparent;
+	border-right: .5em solid transparent;
+	border-top: 1em solid rgb(70, 70, 70);
+}
+
+.characteristics-desc {
+	width: 95%;
+	display: flex;
+	justify-content: space-between;
+	font-size: small;
+	padding-bottom: 15px;
+}
+
+
+
+/*
+Add Review Modal
+*/
+.add-review-modal {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5) ;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 3;
+}
+
+.add-review-modal-content {
+	width: 600px;
+	background-color: #fff;
+	}
+
+.add-review-modal-header, .add-review-modal-footer {
+	padding: 10px;
+}
+
+.add-review-modal-title {
+	margin: 0;
+}
+
+.add-review-modal-subtitle {
+	font-weight: 200;
+	font-size: small;
+}
+
+.add-review-modal-body {
+	padding: 10px;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+}
+
+.add-review-modal-body p {
+	font-size: smaller;
+}
+
+
+.review-thumbnail {
+	height: 5em;
+	margin: 1%
+}
+
+/*
+Modal - Star Ratings
+*/
+.star-rating-icons-container {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+.radio-item {
+	display: none !important;
+}
+
+.star-radio-label {
+	font-size: x-large;
+	cursor: pointer;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+
 
 .social-links {
 	padding: 1%;

@@ -11,6 +11,7 @@ module.exports = {
   // bail: 0,
 
   // The directory where Jest should store its cached dependency information
+  // cacheDirectory: "/private/var/folders/ry/ttbw8lrj205cqdr1hknfgd440000gn/T/jest_dx",
   // cacheDirectory: "/private/var/folders/wl/nzmysz4x65s8vpjjnp905fhh0000gn/T/jest_dx",
 
   // Automatically clear mock calls, instances, contexts and results before every test
