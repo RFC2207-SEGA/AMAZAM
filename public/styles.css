@@ -163,8 +163,21 @@ table {
 }
 
 .placeholder {
+	display: flex;
 	margin: 1%;
-	font-size: 10px;
+	font-size: 20px;
+	align-items: center;
+}
+
+.read-all-reviews {
+	font-size: 14px !important;
+	margin-left: 3%;
+	text-decoration: underline;
+}
+
+.read-all-reviews:hover {
+	cursor: pointer;
+	color: red;
 }
 
 .product-info {
@@ -606,20 +619,15 @@ i:hover {
 
 .overview-selectors {
 	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
+	flex-direction: row;
+	justify-content: space-between;
 	margin: 1%;
+	margin-left: 8%;
+	width: 80%;
+	/* padding: 3%; */
+	align-items: center;
 }
 
-.overview-dropdown {
-	width: 30%;
-	display: flex;
-	justify-content: flex-end;
-}
-
-.cart-button {
-	margin: 1%;
-}
 
 .related-product-container {
 	display: flex;
@@ -809,4 +817,76 @@ td {
 .related-next {
 	right: 0;
 	border-radius: 3px 0 0 3px;
+}
+
+.cartButton {
+  box-sizing: border-box;
+  background-color: transparent;
+  border: 2px solid #e74c3c;
+  border-radius: 0.6em;
+  color: #e74c3c;
+  cursor: pointer;
+  display: flex;
+	align-self: flex-end;
+	position: relative;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+	margin-left: 30%;
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.cartButton:hover, .btn:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.cartButton {
+  -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+.cartButton:hover {
+  box-shadow: 0 0 40px 40px #e74c3c inset;
+}
+
+
+select {
+  /* Reset Select */
+  appearance: none;
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  /* Personalize */
+  padding: 0 1em;
+  color: #fff;
+	width: 50px;
+  background-color: #888;
+  background-image: none;
+  cursor: pointer;
+  transition: 300ms ease-in-out, color 300ms ease-in-out;
+}
+select:hover {
+	opacity: 80%;
+	background-color: #e74c3c;
+}
+/* Custom Select wrapper */
+select {
+  position: relative;
+  display: flex;
+  width: 30em;
+  height: 3em;
+  border-radius: .5em;
+  overflow: hidden;
+	margin: auto;
+}
+
+/* Transition */
+.select:hover::after {
+  color: #f39c12;
 }

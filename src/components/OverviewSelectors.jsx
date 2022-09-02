@@ -3,20 +3,23 @@ import React from 'react';
 const OverviewSelectors = ({ pickSize, sizes, currentSize, quantities, addToCart, pickQuantity }) => {
   if (quantities.length > 0) {
     return (
-      <div className="overview-selectors"> Size:
+      <div>
+      <div className="overview-selectors">
+      <div>Size:</div>
         <select className="overview-dropdown" onChange={(e) => { pickSize(e) }}>
           <option value={`${currentSize}`}> {currentSize} </option>
           {sizes.map((size) => (
             <option value={size}>{size}</option>
           ))}
         </select>
-        Quantity:
+        <div>Quantity:</div>
         <select className="overview-dropdown" onChange={(e) => { pickQuantity(e) }}>
           <option value="1" default> 1 </option>
           {quantities.slice(1).map((quantity) => (
             <option value={quantity}>{quantity}</option>
           ))}
         </select>
+      </div>
         <div>
           <button className="cartButton" onClick={() => { addToCart() }}>Add to Cart</button>
         </div>
@@ -25,19 +28,21 @@ const OverviewSelectors = ({ pickSize, sizes, currentSize, quantities, addToCart
   }
   else {
     return (
-      <div className="overview-selectors">
+      <div>
       <div className="size-warning">Please select a size!</div>
-        Size:
+      <div className="overview-selectors">
+        <div>Size:</div>
         <select className="overview-dropdown" onChange={(e) => { pickSize(e) }}>
           <option value="" disabled selected hidden> Select Size </option>
           {sizes.map((size) => (
             <option value={size}>{size}</option>
           ))}
         </select>
-        Quantity:
+        <div>Quantity:</div>
         <select className="overview-dropdown">
-          <option value="">OUT OF STOCK</option>
+          <option disabled selected hidden value="">OUT OF STOCK</option>
         </select>
+        </div>
         <div>
           <button className="cartButton" onClick={() => { addToCart() }}>Add to Cart</button>
         </div>

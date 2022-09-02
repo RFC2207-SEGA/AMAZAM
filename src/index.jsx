@@ -11,6 +11,7 @@ const root = createRoot(document.getElementById("root"));
 class App extends React.Component {
   constructor(props) {
     super (props)
+    this.myRef = React.createRef()
     this.state = {
       products: [],
       product: {},
@@ -45,16 +46,21 @@ class App extends React.Component {
     this.setState({ 'product': product })
   }
 
+  executeScroll () {
+    console.log(this.myRef.current)
+    this.myRef.current.scrollIntoView({behavior: 'smooth'})
+  }
+
   render () {
     return (
       <div>
         <TitleBar />
         <div className="title-streamer">Site-wide announcement message... SALE / DISCOUNT Offer... new Product Highlight</div>
 
-        <Overview product={this.state.product} select={this.selectProduct.bind(this)} />
+        <Overview product={this.state.product} select={this.selectProduct.bind(this)} meta={this.state.reviewMeta} scroll={this.executeScroll.bind(this)}/>
 
         {/* <QA product={this.state.product} select={this.selectProduct.bind(this)}/> */}
-
+        <div ref={this.myRef}></div>
         <RatingsReviews product={this.state.product} reviewMeta={this.state.reviewMeta} select={this.selectProduct.bind(this)}/>
 
       </div>

@@ -121,6 +121,7 @@ class Overview extends React.Component {
       currentSize: '',
       photoIndex: 1,
       currentQuant: '',
+      rating: '',
     }
   }
 
@@ -147,6 +148,15 @@ class Overview extends React.Component {
           return this.setState({ 'productStyles': productStyles.data.results, 'currentStyle': productStyles.data.results[0], 'sizes': sizes})
         })
         .then(() => {
+          let rating;
+          var average = 0;
+          var numOfKeys = 0;
+          for (var key in this.props.meta.ratings) {
+            average += (key * this.props.meta.ratings[key])
+            numOfKeys += parseInt(this.props.meta.ratings[key]);
+          }
+          rating = (average / numOfKeys).toFixed(2)
+          this.setState({ 'rating': rating })
           this.onSale();
           return;
         })
@@ -221,7 +231,7 @@ class Overview extends React.Component {
             <Gallery style={this.state.currentStyle} index={this.state.photoIndex} movePhoto={this.movePhoto.bind(this)}/>
           </div>
           <section className="product-info">
-            <ProductInfo product={this.props.product} style={this.state.currentStyle} onSale={this.state.onSale}/>
+            <ProductInfo rating={this.state.rating} product={this.props.product} style={this.state.currentStyle} onSale={this.state.onSale} scroll={this.props.scroll}/>
             <StyleSelector style={this.state.currentStyle.name} styles={this.state.productStyles} onClick={this.styleSelect.bind(this)}/>
             <OverviewSelectors pickSize={this.pickSize.bind(this)} sizes={this.state.sizes} currentSize={this.state.currentSize} quantities={this.state.quantities} addToCart={this.addToCart.bind(this)} pickQuantity={this.pickQuantity.bind(this)}/>
             <span className="social-links">

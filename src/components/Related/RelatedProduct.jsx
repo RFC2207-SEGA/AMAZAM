@@ -32,6 +32,14 @@ class RelatedProduct extends React.Component {
     this.props.select( this.props.product )
   }
 
+  calculateStars(rating) {
+    let starRating = []
+    for (let i = 0; i < Math.round(rating); i++) {
+      starRating.push(<i class="fa-solid fa-star"></i>)
+    }
+    return starRating
+  }
+
   render() {
     if (this.props.product && this.props.styles) {
       var photoUrl = this.props.styles.data.results[0].photos[this.state.photoIndex - 1].thumbnail_url;
@@ -61,7 +69,7 @@ class RelatedProduct extends React.Component {
               ${this.props.styles.data.results[0].original_price}
             </div>
             <div className="related-rating">
-              {this.props.rating} stars
+              {this.calculateStars(this.props.rating)}
             </div>
           </div>
         )
@@ -84,7 +92,7 @@ class RelatedProduct extends React.Component {
                 ${this.props.styles.data.results[0].original_price}
               </div>
               <div className="related-rating">
-                {this.props.rating} stars
+                {this.calculateStars(this.props.rating)}
               </div>
             </div>
           )
@@ -107,7 +115,7 @@ class RelatedProduct extends React.Component {
                 ${this.props.styles.data.results[0].original_price}
               </div>
               <div className="related-rating">
-                {this.props.rating} stars
+                {this.calculateStars(this.props.rating)}
               </div>
             </div>
           )
