@@ -1,6 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import AnswerReport from './AnswerReport.jsx';
+import {API_KEY} from '../../config/config.js';
+const axios = require('axios');
+
+
 class AnswerComp extends React.Component {
   constructor(props) {
     super(props);
@@ -70,6 +74,12 @@ class AnswerComp extends React.Component {
   }
 
   handleAnsHelp(ans, e) {
+    var temp = parseInt(ans.id);
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${temp}/helpful`,
+    {},
+    {headers: {'Authorization': `${API_KEY}`}})
+    .then((res) => {console.log(res)})
+    .catch((err) => {console.log(err)});
     var currentArr = this.state.answerArr;
     var index = currentArr.indexOf(ans);
     var tempObj = ans;

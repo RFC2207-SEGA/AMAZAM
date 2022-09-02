@@ -9,88 +9,7 @@ class QList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      productQ: {
-        "product_id": "5",
-        "results": [{
-              "question_id": 37,
-              "question_body": "Why is this product cheaper here than other sites?",
-              "question_date": "2018-10-18T00:00:00.000Z",
-              "asker_name": "williamsmith",
-              "question_helpfulness": 4,
-              "reported": false,
-              "answers": {
-                "68": {
-                  "id": 68,
-                  "body": "We are selling it here without any markup from the middleman!",
-                  "date": "2018-08-18T00:00:00.000Z",
-                  "answerer_name": "Seller",
-                  "helpfulness": 4,
-                  "photos": []
-                }
-              }
-            },
-            {
-              "question_id": 38,
-              "question_body": "How long does it last?",
-              "question_date": "2019-06-28T00:00:00.000Z",
-              "asker_name": "funnygirl",
-              "question_helpfulness": 10,
-              "reported": false,
-              "answers": {
-                "70": {
-                  "id": 70,
-                  "body": "Some of the seams started splitting the first time I wore it!",
-                  "date": "2019-11-28T00:00:00.000Z",
-                  "answerer_name": "sillyguy",
-                  "helpfulness": 6,
-                  "photos": [],
-                },
-                "78": {
-                  "id": 78,
-                  "body": "9 lives",
-                  "date": "2019-11-12T00:00:00.000Z",
-                  "answerer_name": "iluvdogz",
-                  "helpfulness": 31,
-                  "photos": [],
-                },
-                "79": {
-                  "id": 79,
-                  "body": "Example",
-                  "date": "2019-11-14T00:00:00.000Z",
-                  "answerer_name": "ExampleUser",
-                  "helpfulness": 2,
-                  "photos": [],
-                }
-              }
-            },
-            {
-              "question_id": 39,
-              "question_body": "Does it come in grey?",
-              "question_date": "2019-06-28T00:00:00.000Z",
-              "asker_name": "funnyboy",
-              "question_helpfulness": 2,
-              "reported": false,
-              "answers": {
-                "72": {
-                  "id": 72,
-                  "body": "Not sure but I hope it does!",
-                  "date": "2019-11-28T00:00:00.000Z",
-                  "answerer_name": "randomGuy",
-                  "helpfulness": 1,
-                  "photos": [],
-                },
-                "80": {
-                  "id": 80,
-                  "body": "Yes it does! but it is listed somewhere else",
-                  "date": "2019-11-12T00:00:00.000Z",
-                  "answerer_name": "iluvcatz",
-                  "helpfulness": 32,
-                  "photos": [],
-                },
-              }
-            },
-        ]
-      },
+      productQ: {},
       page: 1,
       count: 5,
       questionArr: [],
@@ -99,7 +18,9 @@ class QList extends React.Component {
       totalQuesArr: [],
       btnClick: false,
       addClick: false,
-      show: false
+      show: false,
+      currentID: '',
+      sort: false
     }
 
     this.sortQuestions = this.sortQuestions.bind(this);
@@ -107,6 +28,7 @@ class QList extends React.Component {
     this.handleSeeLessQues = this.handleSeeLessQues.bind(this);
     this.handleSeeMoreQues = this.handleSeeMoreQues.bind(this);
     this.handleAddQues = this.handleAddQues.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   sortQuestions() {
@@ -184,24 +106,35 @@ class QList extends React.Component {
     this.setState({addClick: true});
   }
 
-  componentDidMount() {
-    this.sortQuestions();
-    // axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions',
-    //   {headers: {'Authorization': `${API_KEY}`},
-    //   params: {count: 5, page: 1, product_id: 66674 }})
-    //     .then((res) => console.log('Q&A at product_id: ', res.data))
-    //     .catch((err) => console.log(err));
+  handleClose(e) {
+    e.preventDefault();
+    this.setState({show: false})
+  }
+//use componentDidUpdate with a conditional statement
+  componentDidUpdate() {
+    if(this.props.product.id !== this.state.currentID) {
+      axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions',
+      {headers: {'Authorization': `${API_KEY}`},
+      params: {count: 5, page: 1, product_id: this.props.product.id}})
+        .then((res) => this.setState({productQ: res.data, currentID: this.props.product.id}))
+        .catch((err) => console.log(err));
+    }
   }
 
 
 
+
   render() {
-    let addQuestion;
-    if (this.state.addClick) {
-      addQuestion = <AddQuestion />
-    } else {
-      addQuestion = <span></span>
+    if (this.state.productQ.results !== undefined && this.state.sort === false) {
+      this.sortQuestions();
+      this.setState({sort: true});
     }
+    // let addQuestion;
+    // if (this.state.addClick) {
+    //   addQuestion = <AddQuestion />
+    // } else {
+    //   addQuestion = <span></span>
+    // }
 
 
 
@@ -252,7 +185,7 @@ class QList extends React.Component {
         {toRender}
         {moreQBtn}
         <button onClick={(e) => this.setState({show: true})}>Add a Question</button>
-        <AddQuestion onClose={() => this.setState({show: false})} show={this.state.show} currentProduct={this.state.productQ.product_id} />
+        <AddQuestion onClose={(e) => this.handleClose(e)} show={this.state.show} currentProductID={this.state.productQ.product_id} currentProduct={this.props.product.name}/>
       </div>
 
 
@@ -262,3 +195,85 @@ class QList extends React.Component {
 }
 
 export default QList;
+
+
+// "product_id": "5",
+// "results": [{
+//       "question_id": 37,
+//       "question_body": "Why is this product cheaper here than other sites?",
+//       "question_date": "2018-10-18T00:00:00.000Z",
+//       "asker_name": "williamsmith",
+//       "question_helpfulness": 4,
+//       "reported": false,
+//       "answers": {
+//         "68": {
+//           "id": 68,
+//           "body": "We are selling it here without any markup from the middleman!",
+//           "date": "2018-08-18T00:00:00.000Z",
+//           "answerer_name": "Seller",
+//           "helpfulness": 4,
+//           "photos": []
+//         }
+//       }
+//     },
+//     {
+//       "question_id": 38,
+//       "question_body": "How long does it last?",
+//       "question_date": "2019-06-28T00:00:00.000Z",
+//       "asker_name": "funnygirl",
+//       "question_helpfulness": 10,
+//       "reported": false,
+//       "answers": {
+//         "70": {
+//           "id": 70,
+//           "body": "Some of the seams started splitting the first time I wore it!",
+//           "date": "2019-11-28T00:00:00.000Z",
+//           "answerer_name": "sillyguy",
+//           "helpfulness": 6,
+//           "photos": [],
+//         },
+//         "78": {
+//           "id": 78,
+//           "body": "9 lives",
+//           "date": "2019-11-12T00:00:00.000Z",
+//           "answerer_name": "iluvdogz",
+//           "helpfulness": 31,
+//           "photos": [],
+//         },
+//         "79": {
+//           "id": 79,
+//           "body": "Example",
+//           "date": "2019-11-14T00:00:00.000Z",
+//           "answerer_name": "ExampleUser",
+//           "helpfulness": 2,
+//           "photos": [],
+//         }
+//       }
+//     },
+//     {
+//       "question_id": 39,
+//       "question_body": "Does it come in grey?",
+//       "question_date": "2019-06-28T00:00:00.000Z",
+//       "asker_name": "funnyboy",
+//       "question_helpfulness": 2,
+//       "reported": false,
+//       "answers": {
+//         "72": {
+//           "id": 72,
+//           "body": "Not sure but I hope it does!",
+//           "date": "2019-11-28T00:00:00.000Z",
+//           "answerer_name": "randomGuy",
+//           "helpfulness": 1,
+//           "photos": [],
+//         },
+//         "80": {
+//           "id": 80,
+//           "body": "Yes it does! but it is listed somewhere else",
+//           "date": "2019-11-12T00:00:00.000Z",
+//           "answerer_name": "iluvcatz",
+//           "helpfulness": 32,
+//           "photos": [],
+//         },
+//       }
+//     },
+// ]
