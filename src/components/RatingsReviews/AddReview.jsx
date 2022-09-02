@@ -71,7 +71,7 @@ class AddReview extends React.Component {
 
 
   render() {
-    if (!this.props.addReviewModal) {
+    if (!this.props.showAddReviewModal) {
       return null;
     } else {
       return (

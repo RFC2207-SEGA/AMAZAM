@@ -44,7 +44,7 @@ function ReviewTile ({ review }) {
 
       <div>{sellerResponse()}</div>
 
-      <div className='review-helpfulness-and-report-link'>
+      <div className='vote-helpfulness-and-report'>
         <span>Helpful? </span>
         <a href="">Yes</a>
         <span> ({review.helpfulness}) </span>

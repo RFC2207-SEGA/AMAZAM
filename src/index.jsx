@@ -1,9 +1,9 @@
 const axios = require('axios');
 import React from 'react';
 import { API_KEY } from './config/config.js';
-import { createRoot } from "react-dom/client";
-import Overview from "./components/Overview.jsx"
-import TitleBar from "./components/TitleBar.jsx"
+import { createRoot } from 'react-dom/client';
+import Overview from './components/Overview.jsx';
+import TitleBar from './components/TitleBar.jsx';
 import RatingsReviews from './components/RatingsReviews/RatingsReviews.jsx';
 const root = createRoot(document.getElementById("root"));
 
@@ -14,38 +14,36 @@ class App extends React.Component {
     this.state = {
       products: [],
       product: {},
-      meta: {}
+      reviewMeta: {}
     }
   }
 
-
-  selectProduct (product) {
-    this.setState({ 'product': product })
-  }
-
   componentDidMount() {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/',{
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/', {
       headers: {'Authorization': `${API_KEY}`},
       params: {
         count: 5,
         page: 1
       }})
     .then(res => {
-      this.setState({ products: res.data })
+      this.setState({ products: res.data, product: res.data[0] })
       console.log('Array of Products: ', res.data)
       return axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta', {
         headers: {'Authorization': `${API_KEY}`},
-        params: {product_id: 66642}
+        params: {product_id: res.data[0].id}
       })
     })
     .then(res => {
-      this.setState({ meta: res.data })
+      console.log('meta res:', res.data)
+      this.setState({ reviewMeta: res.data })
     })
     .catch(err =>
       console.log(err));
   }
 
-
+  selectProduct (product) {
+    this.setState({ 'product': product })
+  }
 
   //GET request for Cart (Currently empty but can be filled with POST request)
   // axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/cart',
@@ -69,7 +67,7 @@ class App extends React.Component {
 
         {/* <QA product={this.state.product} select={this.selectProduct.bind(this)}/> */}
 
-        <RatingsReviews product={this.state.product} meta={this.state.meta} select={this.selectProduct.bind(this)}/>
+        <RatingsReviews product={this.state.product} reviewMeta={this.state.reviewMeta} select={this.selectProduct.bind(this)}/>
 
       </div>
     )

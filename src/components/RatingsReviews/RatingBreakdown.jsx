@@ -1,27 +1,27 @@
 import React from 'react';
 
 
-function RatingBreakdown ({ meta }) {
+function RatingBreakdown ({ reviewMeta }) {
 
   function avgRating() {
     var sum = 0;
     var totalReviews = 0;
-    for (var starRating in meta.ratings) {
-      sum += starRating * parseInt(meta.ratings[starRating])
-      totalReviews += parseInt(meta.ratings[starRating])
+    for (var starRating in reviewMeta.ratings) {
+      sum += starRating * parseInt(reviewMeta.ratings[starRating])
+      totalReviews += parseInt(reviewMeta.ratings[starRating])
     }
-    return Math.round((sum / totalReviews) * 10) / 10
+    return (sum / totalReviews).toFixed(1)
   }
 
   function recPercentage() {
     var totalReviews = 0;
     var yesCount = 0
-    for (var vote in meta.recommended) {
+    for (var vote in reviewMeta.recommended) {
       if (vote === 'true') {
-        yesCount += parseInt(meta.recommended[vote])
-        totalReviews += parseInt(meta.recommended[vote])
+        yesCount += parseInt(reviewMeta.recommended[vote])
+        totalReviews += parseInt(reviewMeta.recommended[vote])
       } else {
-        totalReviews += parseInt(meta.recommended[vote])
+        totalReviews += parseInt(reviewMeta.recommended[vote])
       }
     }
     return Math.round((yesCount / totalReviews) * 100)
@@ -39,16 +39,14 @@ function RatingBreakdown ({ meta }) {
   }
 
   function starPercentage() {
-    for (var starRating in meta.ratings) {
-      ratingsPerStar[starRating] = parseInt(meta.ratings[starRating])
-      totalRatings += parseInt(meta.ratings[starRating])
+    for (var starRating in reviewMeta.ratings) {
+      ratingsPerStar[starRating] = parseInt(reviewMeta.ratings[starRating])
+      totalRatings += parseInt(reviewMeta.ratings[starRating])
     }
     for (var key in ratingsPerStar) {
       starPct[key] = Math.round(ratingsPerStar[key] / totalRatings * 100)
     }
   }
-  starPercentage()
-
 
   return (
     <div className='ratings-breakdown-container'>
@@ -57,7 +55,7 @@ function RatingBreakdown ({ meta }) {
       </div>
 
       <table className='ratings-breakdown-table'>
-        <tbody>
+        <tbody>{starPercentage()}
         {Object.entries(starPct).reverse().map(([key, value], index) => {
           return (
             <tr key={index}>

@@ -13,26 +13,28 @@ class RatingsReviews extends React.Component {
     this.state = {
       reviews: [],
       sort: 'relevant',
-      addReviewModal: false
+      showAddReviewModal: false
     }
     this.handleSort = this.handleSort.bind(this);
     this.toggleReviewModal = this.toggleReviewModal.bind(this);
   }
 
-  componentDidMount() {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews', {
-      headers: {'Authorization': `${API_KEY}`},
-      params: {
-        count: 2,
-        page: 1,
-        product_id: 66673, // FIXME - update to passed-in product_id
-        sort: 'relevant'
-      }})
-    .then((res) => {
-      this.setState({reviews: res.data.results})
-    })
-    .catch((err) =>
-      console.log(err));
+  componentDidUpdate(prevProps) {
+    if (this.props.product !== prevProps.product) {
+      axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews', {
+        headers: {'Authorization': `${API_KEY}`},
+        params: {
+          count: 2,
+          page: 1,
+          product_id: this.props.product.id,
+          sort: 'relevant'
+        }})
+      .then((res) => {
+        this.setState({reviews: res.data.results})
+      })
+      .catch((err) =>
+        console.log(err));
+    }
   }
 
   handleSort(e) {
@@ -43,7 +45,7 @@ class RatingsReviews extends React.Component {
       headers: {'Authorization': `${API_KEY}`},
       params: {
         count: 10,
-        product_id: 66673, // FIXME - update to passed-in product_id
+        product_id: this.props.product.id,
         sort: sortMethod
       }})
     .then((res) => {
@@ -54,7 +56,7 @@ class RatingsReviews extends React.Component {
   }
 
   toggleReviewModal() {
-    this.setState({ addReviewModal: !this.state.addReviewModal })
+    this.setState({ showAddReviewModal: !this.state.showAddReviewModal })
   }
 
   render() {
@@ -64,8 +66,8 @@ class RatingsReviews extends React.Component {
 
         <div className='reviews-ratings'>
           <div className='breakdowns'>
-            <div><RatingBreakdown meta={this.props.meta}/></div>
-            <div><ProductBreakdown meta={this.props.meta}/></div>
+            <div><RatingBreakdown reviewMeta={this.props.reviewMeta}/></div>
+            <div><ProductBreakdown reviewMeta={this.props.reviewMeta}/></div>
           </div>
 
           <div className='reviews-list'>
@@ -85,8 +87,8 @@ class RatingsReviews extends React.Component {
               <button onClick={this.toggleReviewModal}>Add A Review</button>
               <div><AddReview
                 toggleReviewModal={this.toggleReviewModal}
-                addReviewModal={this.state.addReviewModal}
-                meta={this.props.meta}
+                showAddReviewModal={this.state.showAddReviewModal}
+                reviewMeta={this.props.reviewMeta}
                 product={this.props.product}/>
               </div>
             </div>

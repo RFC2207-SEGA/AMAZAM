@@ -1,11 +1,11 @@
 import React from 'react';
 import Characteristic from './Characteristic.jsx'
 
-function ProductBreakdown ({ meta }) {
+function ProductBreakdown ({ reviewMeta }) {
 
   function createCharacteristicRange() {
-    if (meta.characteristics !== undefined) {
-      return Object.entries(meta.characteristics).map(([characteristic, values]) =>
+    if (reviewMeta.characteristics !== undefined) {
+      return Object.entries(reviewMeta.characteristics).map(([characteristic, values]) =>
         <Characteristic characteristic={characteristic} value={values.value} key={values.id}/>
       )
     }
