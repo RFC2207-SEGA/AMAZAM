@@ -186,73 +186,107 @@ table {
 /*
 Ratings and Revies Main Component
 */
-.ReviewsRatingsHdr {
+
+#primary-ratings-and-reviews-widget-container {
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 5%;
+}
+.reviews-ratings-hdr {
 	font-size: large;
 	padding-top: 100px;
 	padding-bottom: 30px;
-	margin-left: 10px;
 }
 
-.ReviewsRatings {
+.reviews-ratings {
 	display: flex;
 	flex-direction: row;
 }
 
-.Breakdowns {
+.breakdowns {
 	flex: 1;
 	order: 1;
 	width: 25%;
 	flex-direction: column;
 }
 
-.ReviewsList {
+.reviews-list {
 	flex: 2;
 	order: 2;
 	width: 75%;
 }
 
 /*
-Ratings Sub-component
+Review List/Tiles Sub-component
 */
 
-.reviewTile {
+.review-tile {
 	margin-top: 30px;
 	margin-bottom: 30px;
 	margin-right: 20px;
+	border-top: 1px solid #eee;
+	padding-top: 2%;
 }
 
-.reviewThumbnail {
+.review-thumbnail {
 	height: 5em;
 	margin: 1%
 }
 
+.reviewer-name-and-date {
+	font-size: small;
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+
+.review-summary {
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+
+.review-body {
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-size: small;
+}
+
+.review-helpfulness-and-report-link {
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-size: small;
+}
+
+.seller-response {
+	background-color: rgb(220, 220, 220);
+}
 
 /*
 Ratings Breakdown Sub-component
 */
 
-.ratingsBreakdownContainer {
-	margin: 10px;
+.ratings-breakdown-container {
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
-.ratingsBreakdownTable {
+.ratings-breakdown-table {
 	margin-top: 10px;
 	margin-bottom: 5px;
 	width: 100%;
 }
 
-.ratingsBreakdownTable td {
+.ratings-breakdown-table td {
 	padding-top: 2%;
 	padding-bottom: 2%;
 }
 
-.barGraphContainer {
+.bar-graph-container {
 	position: relative;
 	z-index: 1;
 	width: 90%;
 }
 
-.barGraphUnderlay {
+.bar-graph-underlay {
 	position: absolute;
   z-index: 1;
   height: 10px;
@@ -261,7 +295,7 @@ Ratings Breakdown Sub-component
   background-color: rgb(225, 225, 225);
 }
 
-.barGraphOverlay {
+.bar-graph-overlay {
 	position: absolute;
 	z-index: 2;
   height: 10px;
@@ -279,11 +313,11 @@ Ratings Breakdown Sub-component
 Product Breakdown Sub-component
 */
 
-.productBreakdownMain {
+.product-breakdown-main {
 	margin: 10px;
 }
 
-.rangeBarContainer {
+.range-bar-container {
 	position: relative;
 	width: 95%;
 	z-index: 1;
@@ -291,7 +325,7 @@ Product Breakdown Sub-component
 	padding-bottom: 5px;
 }
 
-.rangeBar {
+.range-bar {
 	position: absolute;
   z-index: 1;
   height: 10px;
@@ -299,7 +333,7 @@ Product Breakdown Sub-component
   background-color: rgb(225, 225, 225);
 }
 
-.triangleDown {
+.triangle-down {
 	position: absolute;
 	z-index: 2;
 	width: 0;
@@ -309,7 +343,7 @@ Product Breakdown Sub-component
 	border-top: 1em solid rgb(70, 70, 70);
 }
 
-.characteristicsDesc {
+.characteristics-desc {
 	width: 95%;
 	display: flex;
 	justify-content: space-between;
@@ -317,14 +351,12 @@ Product Breakdown Sub-component
 	padding-bottom: 15px;
 }
 
-.sellerResponse {
-	background-color: rgb(220, 220, 220);
-}
+
 
 /*
 Add Review Modal
 */
-.modal {
+.add-review-modal {
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -337,37 +369,47 @@ Add Review Modal
 	z-index: 3;
 }
 
-.modal-content {
+.add-review-modal-content {
 	width: 600px;
 	background-color: #fff;
 	}
 
-.modal-header, .modal-footer {
+.add-review-modal-header, .add-review-modal-footer {
 	padding: 10px;
 }
 
-.modal-title {
+.add-review-modal-title {
 	margin: 0;
 }
 
-.modal-body {
+.add-review-modal-subtitle {
+	font-weight: 200;
+	font-size: small;
+}
+
+.add-review-modal-body {
 	padding: 10px;
 	border-top: 1px solid #eee;
 	border-bottom: 1px solid #eee;
+}
+
+.add-review-modal-body p {
+	font-size: smaller;
+}
+
+
+.review-thumbnail {
+	height: 5em;
+	margin: 1%
 }
 
 /*
 Modal - Star Ratings
 */
 
-.modal-body td {
-	padding-top: 1%;
-	padding-bottom: 1%;
-}
-
 .star-rating-icons-container {
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 15px;
+	margin-bottom: 15px;
 	text-align: center;
 }
 
@@ -377,4 +419,8 @@ Modal - Star Ratings
 
 .star-radio-label {
 	font-size: x-large;
+	cursor: pointer;
+	margin-left: 5px;
+	margin-right: 5px;
 }
+

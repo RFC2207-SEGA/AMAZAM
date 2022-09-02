@@ -13,7 +13,7 @@ class RatingsReviews extends React.Component {
     this.state = {
       reviews: [],
       sort: 'relevant',
-      addReviewModal: true // FIXME change back to false
+      addReviewModal: false
     }
     this.handleSort = this.handleSort.bind(this);
     this.toggleReviewModal = this.toggleReviewModal.bind(this);
@@ -25,7 +25,7 @@ class RatingsReviews extends React.Component {
       params: {
         count: 2,
         page: 1,
-        product_id: 66673, // FIXME update to passed-in product_id
+        product_id: 66673, // FIXME - update to passed-in product_id
         sort: 'relevant'
       }})
     .then((res) => {
@@ -43,7 +43,7 @@ class RatingsReviews extends React.Component {
       headers: {'Authorization': `${API_KEY}`},
       params: {
         count: 10,
-        product_id: 66673, // FIXME update to passed-in product_id
+        product_id: 66673, // FIXME - update to passed-in product_id
         sort: sortMethod
       }})
     .then((res) => {
@@ -59,16 +59,16 @@ class RatingsReviews extends React.Component {
 
   render() {
     return (
-      <>
-        <div className='ReviewsRatingsHdr'>Ratings &amp; Reviews</div>
+      <div id='primary-ratings-and-reviews-widget-container'>
+        <div className='reviews-ratings-hdr'>Ratings &amp; Reviews</div>
 
-        <div className='ReviewsRatings'>
-          <div className='Breakdowns'>
-            <div className='RatingBreakdown'><RatingBreakdown meta={this.props.meta}/></div>
-            <div className='ProductBreakdown'><ProductBreakdown meta={this.props.meta}/></div>
+        <div className='reviews-ratings'>
+          <div className='breakdowns'>
+            <div><RatingBreakdown meta={this.props.meta}/></div>
+            <div><ProductBreakdown meta={this.props.meta}/></div>
           </div>
 
-          <div className='ReviewsList'>
+          <div className='reviews-list'>
             <span>{`${this.state.reviews.length} reviews, sorted by `}</span>
             <span>
               <select onChange={this.handleSort}>
@@ -93,7 +93,8 @@ class RatingsReviews extends React.Component {
 
             </div>
         </div>
-      </>
+      </div>
+
     )
   }
 }

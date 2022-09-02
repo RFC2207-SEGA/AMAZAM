@@ -11,7 +11,7 @@ function ReviewTile ({ review }) {
   function sellerResponse() {
     if (review.response) {
       return (
-        <div className='sellerResponse'>
+        <div className='seller-response'>
           <p>Seller Response:</p>
           <p>{review.response}</p>
         </div>
@@ -25,15 +25,18 @@ function ReviewTile ({ review }) {
   }
 
   return (
-    <div className='reviewTile'>
+    <div className='review-tile'>
       <div>⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ({review.rating})</div>
-      <span className='reviewer-name-and-date'>{review.reviewer_name}</span>, <span>{formatDate(review.date)}</span>
-      <h3>{review.summary}</h3>
-      <p>{review.body}</p>
+      <div className='reviewer-name-and-date'>
+        <span>{review.reviewer_name}</span>, <span>{formatDate(review.date)}</span>
+      </div>
+
+      <h3 className='review-summary'>{review.summary}</h3>
+      <p className='review-body'>{review.body}</p>
 
       <div>
         {review.photos.map((photo, index) =>
-          <img className='reviewThumbnail' src={`${photo.url}`} key={photo.id}></img>
+          <img className='review-thumbnail' src={`${photo.url}`} key={photo.id}></img>
         )}
       </div>
 
@@ -41,14 +44,17 @@ function ReviewTile ({ review }) {
 
       <div>{sellerResponse()}</div>
 
-      <div>
+      <div className='review-helpfulness-and-report-link'>
         <span>Helpful? </span>
         <a href="">Yes</a>
         <span> ({review.helpfulness}) </span>
         <a href="">No</a>
+        <br></br> <br></br>
+        <div>
+          <a href="">Report</a>
+        </div>
       </div>
 
-      <a href="">Report</a>
     </div>
   )
 }

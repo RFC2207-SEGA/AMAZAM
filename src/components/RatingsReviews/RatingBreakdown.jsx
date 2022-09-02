@@ -51,21 +51,20 @@ function RatingBreakdown ({ meta }) {
 
 
   return (
-    <div className='ratingsBreakdownContainer'>
+    <div className='ratings-breakdown-container'>
       <div>
-        <span>{avgRating()}</span><i className="fa-solid fa-star"></i>
-
+        <span>{avgRating()}</span> stars placeholder <i className="fa-solid fa-star"></i>
       </div>
 
-      <table className='ratingsBreakdownTable'>
+      <table className='ratings-breakdown-table'>
         <tbody>
         {Object.entries(starPct).reverse().map(([key, value], index) => {
           return (
             <tr key={index}>
               <td><a href=''>{key} stars</a></td>
-              <td className='barGraphContainer'>
-                <div className='barGraphUnderlay'></div>
-                <div className='barGraphOverlay' style={{'width': `${value}%`}}></div>
+              <td className='bar-graph-container'>
+                <div className='bar-graph-underlay'></div>
+                <div className='bar-graph-overlay' style={{'width': `${value}%`}}></div>
               </td>
             </tr>
           )

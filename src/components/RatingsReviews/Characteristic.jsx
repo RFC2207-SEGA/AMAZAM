@@ -16,14 +16,14 @@ function Characteristic ({ characteristic, value }) {
   return (
     <div>
       <p>{characteristic}</p>
-      <div className='rangeBarContainer'>
-        <div className="rangeBar"></div>
-        <div className="triangleDown" data-testid="triangleDown" style={{'marginLeft': `${marginLeftPercentage}%`}}></div>
+      <div className='range-bar-container'>
+        <div className="range-bar"></div>
+        <div className="triangle-down" data-testid="triangleDown" style={{'marginLeft': `${marginLeftPercentage}%`}}></div>
       </div>
       <br></br>
-      <div className='characteristicsDesc'>
+      <div className='characteristics-desc'>
         {descriptors[characteristic].map((values, index) =>
-          <span key={index}>{values} </span>
+          <span key={index}>{values}</span>
         )}
       </div>
     </div>

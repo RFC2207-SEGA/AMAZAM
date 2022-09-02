@@ -12,7 +12,7 @@ function ProductBreakdown ({ meta }) {
   }
 
   return (
-    <div className='productBreakdownMain'>{createCharacteristicRange()}</div>
+    <div className='product-breakdown-main'>{createCharacteristicRange()}</div>
   )
 }
 
