@@ -23,25 +23,44 @@ time, mark, audio, video {
 	font-family: Futura;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 }
-ol, ul {
+
+ol,
+ul {
 	list-style: none;
 }
-blockquote, q {
+
+blockquote,
+q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -49,7 +68,7 @@ table {
 
 .overview-container {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-evenly;
 	align-items: center;
 	padding: 20px;
 }
@@ -57,41 +76,67 @@ table {
 .gallery-container {
 	display: flex;
 	max-width: 80%;
-  position: relative;
-  /* margin: auto; */
+	position: relative;
+	/* margin: auto; */
 }
 
 .mini-carousel {
 	z-index: 1;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	top: 4%;
+	left: 10%;
+	color: white;
+	align-items: center;
 }
 
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
+.prev,
+.next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	margin-top: -22px;
+	padding: 16px;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+}
+
+.up-arrow,
+.down-arrow {
+	cursor: pointer;
+	top: 50%;
+	width: auto;
+	padding: 4px;
+	color: white;
+	transition: 0.6s ease;
+	border-radius: 3px 3px 3px 3px;
+	user-select: none;
+}
+
+.up-arrow:hover,
+.down-arrow:hover {
+	background-color: black;
 }
 
 .next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
+	right: 0;
+	border-radius: 3px 0 0 3px;
 }
 
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+.prev:hover,
+.next:hover {
+	background-color: rgba(0, 0, 0, 0.8);
 }
 
 .fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
+	animation-name: fade;
+	animation-duration: 1.5s;
 }
 
 .sale {
@@ -103,14 +148,14 @@ table {
 }
 
 .product-category {
-	padding: 10px;
+	padding: 1%;
 	color: white;
 	background-color: #888;
 	font-style: italic;
 }
 
 .product-name {
-	padding: 10px;
+	padding: 1%;
 	color: white;
 	background-color: #888;
 	font-style: italic;
@@ -118,18 +163,22 @@ table {
 }
 
 .placeholder {
+	margin: 1%;
 	font-size: 10px;
 }
 
 .product-info {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-around;
 	width: 40%;
 }
 
 .product-description {
 	display: flex;
-	justify-content: space-evenly;
+	margin-left: 10%;
+	margin-right: 20%;
+	justify-content: space-between;
 }
 
 .product-slogan {
@@ -140,28 +189,56 @@ table {
 .slogan-header {
 	font-style: italic;
 	font-size: 24px;
-	margin: 8px;
 }
 
 .price {
+	padding: 1%;
 	font-size: 12px;
-	margin: 4px;
+}
+
+.photo:hover {
+	cursor: zoom-in;
+	opacity: 80%;
 }
 
 .full-photo-modal {
-	position: absolute;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 150%;
-  height: 100%;
-	margin: auto;
+	position: fixed;
+	/* Stay in place */
+	z-index: 1;
+	/* Sit on top */
+	left: 0;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	/* Full height */
+	overflow: auto;
+	/* Enable scroll if needed */
+	background-color: rgb(0, 0, 0);
+	/* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4);
+	/* Black w/ opacity */
+}
+
+@keyframes zoom {
+	from {
+		transform: scale(0)
+	}
+
+	to {
+		transform: scale(1)
+	}
 }
 
 .photo-modal-content {
-	left: 0;
-  border: 1px solid #888;
-  width: 100%; /* Could be more or less, depending on screen size */
+	cursor: zoom-out;
+	object-fit: cover;
+	margin: auto;
+	display: block;
+	width: 80%;
+	max-width: 700px;
+	animation-name: zoom;
+	animation-duration: 0.6s;
+	/* Could be more or less, depending on screen size */
 }
 
 .title-bar {
@@ -186,7 +263,6 @@ table {
 /*
 Ratings and Revies Main Component
 */
-
 #primary-ratings-and-reviews-widget-container {
 	margin-left: 10%;
 	margin-right: 10%;
@@ -219,7 +295,6 @@ Ratings and Revies Main Component
 /*
 Review List/Tiles Sub-component
 */
-
 .review-tile {
 	margin-top: 30px;
 	margin-bottom: 30px;
@@ -263,7 +338,6 @@ Review List/Tiles Sub-component
 /*
 Ratings Breakdown Sub-component
 */
-
 .ratings-breakdown-container {
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -312,7 +386,6 @@ Ratings Breakdown Sub-component
 /*
 Product Breakdown Sub-component
 */
-
 .product-breakdown-main {
 	margin: 10px;
 }
@@ -406,7 +479,6 @@ Add Review Modal
 /*
 Modal - Star Ratings
 */
-
 .star-rating-icons-container {
 	margin-top: 15px;
 	margin-bottom: 15px;
@@ -424,3 +496,236 @@ Modal - Star Ratings
 	margin-right: 5px;
 }
 
+
+
+.social-links {
+	padding: 1%;
+	margin: auto;
+	font-size: 24px;
+}
+
+i:hover {
+	cursor: pointer;
+	color: red;
+}
+
+.fa-magnifying-glass {
+	font-size: 16px;
+	margin-left: 3px;
+}
+
+.style-title {
+	padding: 1%;
+}
+
+.styles-holder {
+	padding: 1%;
+}
+
+.product-features {
+	font-size: 12px;
+	margin-bottom: 8px;
+}
+
+.fa-check:hover {
+	color: black;
+	cursor: default;
+}
+
+.photo img {
+	object-fit: cover;
+	transition: 0.5s all ease-in-out;
+}
+
+.photo {
+	transition: 0.5s all ease;
+}
+
+.mini-photo {
+	margin: 4px;
+}
+
+.mini-photo img {
+	border-radius: 30%;
+	object-fit: cover;
+	transition: 0.5s all ease-in-out;
+}
+
+.mini-photo img:hover {
+	cursor: pointer;
+	transform: scale(1.2);
+	opacity: 80%;
+}
+
+.mini-photo-selected {
+	margin: 4px;
+}
+
+.mini-photo-selected img {
+	border-radius: 30%;
+	object-fit: cover;
+	transition: 0.5s all ease-in-out;
+	border: 2px dotted red;
+}
+
+.mini-photo-selected img:hover {
+	cursor: pointer;
+	transform: scale(1.2);
+	opacity: 80%;
+}
+
+.style-bubble {
+	object-fit: cover;
+	border-radius: 50%;
+	margin: 1%;
+	transition: 0.5s all ease-in-out;
+}
+
+.style-bubble:hover {
+	cursor: pointer;
+	opacity: 80%;
+	transform: scale(1.2);
+}
+
+.selected {
+	border: 2px dotted red;
+}
+
+.size-warning {
+	display: flex;
+	justify-content: center;
+	color: red;
+	margin-bottom: 2px;
+	font-style: italic;
+	font-size: 10px;
+}
+
+.overview-selectors {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	margin: 1%;
+}
+
+.overview-dropdown {
+	width: 30%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.cart-button {
+	margin: 1%;
+}
+
+.related-product-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.related-product {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transition: 0.5s all ease-in-out;
+	margin: 1%;
+}
+
+.related-product:hover {
+	cursor: pointer;
+	opacity: 80%;
+	transform: scale(1.1);
+}
+
+.related-product img {
+	object-fit: cover;
+	border-radius: 10%;
+}
+
+.related-name {
+	font-size: 20px;
+	font-style: italic;
+}
+
+.related-price {
+	margin: 1%;
+	font-size: 12px;
+}
+
+.related-rating {
+	margin: 1%;
+	font-size: 12px;
+}
+
+.action-button {
+	justify-self: flex-end;
+	align-self: flex-end;
+}
+
+.related-streamer {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 2%
+}
+
+.empty-outfit-card {
+	display: flex;
+	width: 100px;
+	flex-direction: column;
+	align-items: center;
+	transition: 0.5s all ease-in-out;
+	margin: 1%;
+}
+
+.empty-outfit-card:hover {
+	cursor: pointer;
+	opacity: 80%;
+	transform: scale(1.1);
+}
+
+.outfit-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+	align-items: center;
+	margin-left: 10%;
+}
+
+.compare-modal {
+	position: fixed;
+	z-index: 1;
+	/* Sit on top */
+	left: -10%;
+	width: auto;
+	/* Full width */
+	height: auto;
+	/* Full height */
+	background-color: rgb(0, 0, 0);
+	/* Fallback color */
+}
+
+.compare-modal-table {
+	width: 100%;
+	padding: 100%;
+	border: 1px solid
+}
+
+.compare-modal-head {
+	width: 100%;
+	background: #000;
+	padding: 24px;
+	color: white;
+	margin: auto;
+}
+
+.compare-modal-row {
+	border: 1px solid white;
+	color: white;
+}
+
+td {
+	margin: 2%;
+	padding: 2%;
+	text-align: center;
+}

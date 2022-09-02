@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <coverage generated="1661920885579" clover="3.2.0">
   <project timestamp="1661920885579" name="All files">
     <metrics statements="61" coveredstatements="37" conditionals="8" coveredconditionals="4" methods="26" coveredmethods="18" elements="95" coveredelements="59" complexity="0" loc="61" ncloc="61" packages="2" files="7" classes="7"/>
@@ -90,5 +91,17 @@
         <line num="1" count="1" type="stmt"/>
       </file>
     </package>
+
+<coverage generated="1661903458827" clover="3.2.0">
+  <project timestamp="1661903458827" name="All files">
+    <metrics statements="4" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1" elements="7" coveredelements="5" complexity="0" loc="4" ncloc="4" packages="1" files="1" classes="1"/>
+    <file name="ProductInfo.jsx" path="/Users/aliceblank/Coding/SEGA-Project-Atelier/src/components/ProductInfo.jsx">
+      <metrics statements="4" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="4" count="1" type="cond" truecount="1" falsecount="1"/>
+      <line num="5" count="0" type="stmt"/>
+      <line num="15" count="1" type="stmt"/>
+    </file>
+
   </project>
 </coverage>
