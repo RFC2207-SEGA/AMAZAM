@@ -8,7 +8,6 @@ class FullscreenModal extends React.Component {
   }
 
   render () {
-    console.log(this.props.photo.url);
     if (this.props.show) {
       if (this.props.index === 0) {
         return (
