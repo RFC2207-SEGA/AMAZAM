@@ -38,22 +38,22 @@ class App extends React.Component {
         this.setState({ 'products': res.data, 'product': res.data[0] })})
         .catch((err) => console.log(err));
     //GET request for Q&A at a product_id
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions',
-      {headers: {'Authorization': `${API_KEY}`},
-      params: {count: 5, page: 1, product_id: 66673 }})
-        .then((res) => console.log('Q&A at product_id: ', res.data))
-        .catch((err) => console.log(err));
-    //GET request for reviews at product ID
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews',
-      {headers: {'Authorization': `${API_KEY}`},
-      params: {count: 5, page: 1, product_id: 66673, sort: 'newest' }})
-        .then((res) => console.log('Reviews at product_id: ', res.data))
-        .catch((err) => console.log(err));
-    //GET request for Cart (Currently empty but can be filled with POST request)
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/cart',
-      {headers: {'Authorization': `${API_KEY}`}})
-        .then((res) => console.log('Cart Data: ', res.data))
-        .catch((err) => console.log(err));
+    // axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions',
+    //   {headers: {'Authorization': `${API_KEY}`},
+    //   params: {count: 5, page: 1, product_id: 66673 }})
+    //     .then((res) => console.log('Q&A at product_id: ', res.data))
+    //     .catch((err) => console.log(err));
+    // //GET request for reviews at product ID
+    // axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews',
+    //   {headers: {'Authorization': `${API_KEY}`},
+    //   params: {count: 5, page: 1, product_id: 66673, sort: 'newest' }})
+    //     .then((res) => console.log('Reviews at product_id: ', res.data))
+    //     .catch((err) => console.log(err));
+    // //GET request for Cart (Currently empty but can be filled with POST request)
+    // axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/cart',
+    //   {headers: {'Authorization': `${API_KEY}`}})
+    //     .then((res) => console.log('Cart Data: ', res.data))
+    //     .catch((err) => console.log(err));
       //Example POST request for adding interactions to the DB
       // axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/interactions',{element: 'Selector for the clicked element', widget: 'Name of widget in which click occured', time: 'Time the click occured'},
       // {headers: {'Authorization': `${API_KEY}`}})
@@ -69,10 +69,8 @@ class App extends React.Component {
         <div className="title-streamer">Site-wide announcement message... SALE / DISCOUNT Offer... new Product Highlight</div>
         <div>
         <Overview product={this.state.product} select={this.selectProduct.bind(this)} />
-        {/* <Related product={this.state.product} select={this.selectProduct.bind(this)} /> */}
         {/* <Reviews product={this.state.product} select={this.selectProduct.bind(this)}/>
-        <QA product={this.state.product} select={this.selectProduct.bind(this)}/>
-        <Related products={this.state.products} product={this.state.product} select={this.selectProduct.bind(this)}/> */}
+        <QA product={this.state.product} select={this.selectProduct.bind(this)}/> */}
         </div>
       </div>
     )

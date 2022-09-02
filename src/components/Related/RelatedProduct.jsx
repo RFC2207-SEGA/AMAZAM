@@ -1,11 +1,14 @@
 import React from 'react';
 import ComparisonModal from './ComparisonModal.jsx';
+import RelatedCarousel from './RelatedCarousel.jsx';
 
 class RelatedProduct extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       showComparison: false,
+      relatedShow: false,
+      photoIndex: 1,
     }
   }
 
@@ -13,9 +16,25 @@ class RelatedProduct extends React.Component {
     this.setState({ 'showComparison': !this.state.showComparison })
   }
 
+  toggleCarousel() {
+    this.setState({ 'relatedShow': !this.state.relatedShow })
+  }
+
+  changePhoto(n) {
+    let destination = this.state.photoIndex += n;
+    if (destination >= 1 && destination <= this.props.styles.data.results[0].photos.length) {
+      this.setState({ 'photoIndex': destination })
+    }
+  }
+
+  moveProduct() {
+    this.setState({ 'photoIndex': 1 })
+    this.props.select( this.props.product )
+  }
+
   render() {
     if (this.props.product && this.props.styles) {
-      var photoUrl = this.props.styles.data.results[0].photos[0].thumbnail_url;
+      var photoUrl = this.props.styles.data.results[0].photos[this.state.photoIndex - 1].thumbnail_url;
       let salesPrice = 0;
       if (this.props.styles.data.results[0].sale_price) {
         salesPrice = (this.props.styles.data.results[0].original_price - this.props.styles.data.results[0].sale_price)
@@ -23,11 +42,15 @@ class RelatedProduct extends React.Component {
       if (salesPrice !== 0) {
         return (
           <div className="related-product" onClick={() => { this.props.select(this.props.product) }}>
-            <span><i class="fa-solid fa-star"></i></span>
+            <div className="comparison-modal-container">
+              <ComparisonModal show={this.state.showComparison} mainProduct={this.props.mainProduct} comparedProduct={this.props.product} mainInfo={this.props.mainInfo} toggle={this.toggleModal.bind(this)} />
+            </div>
+            <div className="action-button" onClick={this.toggleModal.bind(this)}><i class="fa-solid fa-star"></i></div>
             <img
               src={photoUrl}
               width="75"
               height="100"></img>
+            <RelatedCarousel show={this.state.relatedShow} photos={this.props.styles.data.results[0].photos} />
             <div className="related-name">
               {this.props.product.name}
             </div>
@@ -47,7 +70,7 @@ class RelatedProduct extends React.Component {
           return (
             <div className="related-product">
               <div className="comparison-modal-container">
-                <ComparisonModal show={this.state.showComparison} mainProduct={this.props.mainProduct} comparedProduct={this.props.product} mainInfo={this.props.mainInfo} toggle={this.toggleModal.bind(this)}/>
+                <ComparisonModal show={this.state.showComparison} mainProduct={this.props.mainProduct} comparedProduct={this.props.product} mainInfo={this.props.mainInfo} toggle={this.toggleModal.bind(this)} />
               </div>
               <div className="action-button" onClick={this.toggleModal.bind(this)}><i class="fa-solid fa-star"></i></div>
               <div className="sale" onClick={() => { this.props.select(this.props.product) }}> No
@@ -67,30 +90,31 @@ class RelatedProduct extends React.Component {
           )
         } else {
           return (
-          <div className="related-product">
-            <div className="comparison-modal-container">
-              <ComparisonModal show={this.state.showComparison} mainProduct={this.props.mainProduct} comparedProduct={this.props.product} mainInfo={this.props.mainInfo} toggle={this.toggleModal.bind(this)}/>
+            <div className="related-product" onMouseEnter={this.toggleCarousel.bind(this)} onMouseLeave={this.toggleCarousel.bind(this)}>
+              <div className="comparison-modal-container">
+                <ComparisonModal show={this.state.showComparison} mainProduct={this.props.mainProduct} comparedProduct={this.props.product} mainInfo={this.props.mainInfo} toggle={this.toggleModal.bind(this)} />
+              </div>
+              <div className="action-button" onClick={this.toggleModal.bind(this)}><i class="fa-solid fa-star"></i></div>
+              <img onClick={this.moveProduct.bind(this)}
+                src={photoUrl}
+                width="100"
+                height="150"></img>
+              <RelatedCarousel show={this.state.relatedShow} photos={this.props.styles.data.results[0].photos} index={this.state.photoIndex - 1} changePhoto={this.changePhoto.bind(this)} />
+              <div className="related-name">
+                {this.props.product.name}
+              </div>
+              <div className="related-price">
+                ${this.props.styles.data.results[0].original_price}
+              </div>
+              <div className="related-rating">
+                {this.props.rating} stars
+              </div>
             </div>
-            <div className="action-button" onClick={this.toggleModal.bind(this)}><i class="fa-solid fa-star"></i></div>
-            <img onClick={() => { this.props.select(this.props.product) }}
-              src={photoUrl}
-              width="75"
-              height="100"></img>
-            <div className="related-name">
-              {this.props.product.name}
-            </div>
-            <div className="related-price">
-              ${this.props.styles.data.results[0].original_price}
-            </div>
-            <div className="related-rating">
-              {this.props.rating} stars
-            </div>
-          </div>
-        )
+          )
+        }
       }
+      return null;
     }
-    return null;
   }
-}
 }
 export default RelatedProduct;

@@ -600,3 +600,22 @@ td {
     left: -30px;
   }
 }
+
+.related-carousel-container {
+	display: flex;
+	flex-direction: row;
+	z-index: 1;
+	position:absolute;
+	top: 130px;
+	justify-content: space-around;
+}
+
+.arrow-spacer {
+	display: flex;
+	/* padding: 25px; */
+	margin: auto;
+	/* padding-left: 35px; */
+	padding-right: 35px;
+	left: 60px;
+	justify-content: space-between;
+}
