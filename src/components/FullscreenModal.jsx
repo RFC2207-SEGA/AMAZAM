@@ -10,6 +10,54 @@ class FullscreenModal extends React.Component {
   render () {
     console.log(this.props.photo.url);
     if (this.props.show) {
+      if (this.props.index === 0) {
+        return (
+          <div className='fluid'>
+          <div className="fluid_image-container full-photo-modal fade">
+            <div onClick={this.props.toggleModal}>
+            <ReactImageMagnify className="photo-modal-content" {...{
+              smallImage: {
+                isFluidWidth: true,
+                src: this.props.photo.url,
+              },
+              largeImage: {
+                src: this.props.photo.url,
+                width: 2000,
+                height: 2800,
+              },
+              enlargedImagePosition: 'over',
+              enlargedImageContainerClassName: 'large-image'
+            }} />
+            </div>
+              <a className="next" onClick={() => { this.props.next(1) }}>&#10095;</a>
+          </div>
+        </div>
+        )
+      }
+      if (this.props.index === this.props.last) {
+        return (
+          <div className='fluid'>
+          <div className="fluid_image-container full-photo-modal fade">
+            <a className="prev" onClick={() => { this.props.prev(-1) }}>&#10094;</a>
+            <div onClick={this.props.toggleModal}>
+            <ReactImageMagnify className="photo-modal-content" {...{
+              smallImage: {
+                isFluidWidth: true,
+                src: this.props.photo.url,
+              },
+              largeImage: {
+                src: this.props.photo.url,
+                width: 2000,
+                height: 2800,
+              },
+              enlargedImagePosition: 'over',
+              enlargedImageContainerClassName: 'large-image'
+            }} />
+            </div>
+          </div>
+        </div>
+        )
+      }
       return (
         <div className='fluid'>
         <div className="fluid_image-container full-photo-modal fade">
