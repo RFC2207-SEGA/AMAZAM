@@ -1,0 +1,33 @@
+import React from 'react';
+
+function Characteristic ({ characteristic, value }) {
+
+  var descriptors = {
+    Size: ['Too Small', 'Perfect', 'Too Big'],
+    Width: ['Too Narrow', 'Perfect', 'Too Wide'],
+    Comfort: ['Uncomfortable', 'Perfect'],
+    Quality: ['Poor', 'Great'],
+    Length: ['Too Short', 'Perfect', 'Too Long'],
+    Fit: ['Runs Tight', 'Perfect', 'Runs Big']
+  }
+
+  var marginLeftPercentage = parseFloat(value) / 5 * 100;
+
+  return (
+    <div>
+      <p>{characteristic}</p>
+      <div className='range-bar-container'>
+        <div className="range-bar"></div>
+        <div className="triangle-down" data-testid="triangleDown" style={{'marginLeft': `${marginLeftPercentage}%`}}></div>
+      </div>
+      <br></br>
+      <div className='characteristics-desc'>
+        {descriptors[characteristic].map((values, index) =>
+          <span key={index}>{values}</span>
+        )}
+      </div>
+    </div>
+  )
+}
+
+export default Characteristic;
