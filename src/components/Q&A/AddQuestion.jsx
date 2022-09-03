@@ -45,22 +45,22 @@ class AddQuestion extends React.Component {
       return null;
     }
     return(
-      <div className='modal'>
-        <div className='modal-content'>
-          <div className='modal-header'>
-            <span><button className='modal-button-close' onClick={this.props.onClose}>X</button></span>
-            <h4 className='modal-title'>Ask Your Question </h4>
-            <h5 className='modal-subtitle'>About Product {this.props.currentProduct}</h5>
+      <div className='qa-modal'>
+        <div className='qa-modal-content'>
+          <div className='qa-modal-header'>
+            <span><button className='qa-modal-button-close' onClick={this.props.onClose}>X</button></span>
+            <h4 className='qa-modal-title'>Ask Your Question </h4>
+            <h5 className='qa-modal-subtitle'>About Product {this.props.currentProduct}</h5>
           </div>
-          <div className='modal-body'>
+          <div className='qa-modal-body'>
             Question Content
             <form onSubmit={(e) => this.handleSubmit(e)} >
               <div>Your Question: </div><input type='text' onChange={(e) => this.setState({qBody: e.target.value})} required/>
               <div>Nickname: </div><input type='text' placeholder="Example: jackson11!" onChange={(e) => this.setState({qName: e.target.value})} required/>
               <div>Your Email: </div><input type='text' onChange={(e) => this.setState({qEmail: e.target.value})} required/>
               <p>For authentication reasons, you will not be emailed</p>
-              <div className='modal-footer'>
-                <button className='modal-button' >Submit</button>
+              <div className='qa-modal-footer'>
+                <button className='qa-modal-button' >Submit</button>
               </div>
             </form>
           </div>

@@ -730,41 +730,41 @@ td {
 	padding: 2%;
 	text-align: center;
 }
-#QATitle {
+#q-a-title {
 	font-size: 30px;
 	font-weight: bold;
 	padding-bottom: 30px;
 }
-#QList{
+#q-list{
 	padding: 100px;
 }
-#QComp, #AComp {
+#q-comp, #a-comp {
 	padding: 10px;
 }
-#QBody {
+#q-body {
 	font-size: 20px;
 	font-weight: bold;
 }
-#QUser {
+#q-user {
 	font-size: small;
 	font-weight: normal;
 	float: right;
 
 }
-#ALetter {
+#a-letter {
 	float: left;
 	font-size: 20px;
 	font-weight: bold;
 }
-#AWrapper {
+#a-wrapper {
 	padding: 3px;
 }
-#Abody {
+#a-body {
 	margin-left: 30px;
 	font-size: 20px;
 }
 
-.modal {
+.qa-modal {
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -775,24 +775,24 @@ td {
 	align-items: center;
 	justify-content: center;
 }
-.modal-content {
+.qa-modal-content {
 	width: 500px;
 	background-color: #fff;
 }
-.modal-header, .modal-footer {
+.qa-modal-header, .modal-footer {
 	padding: 10px;
 }
-.modal-title {
+.qa-modal-title {
 	margin: 0;
 }
-.modal-subtitle {
+.qa-modal-subtitle {
 	font-size: 13px;
 }
-.modal-body {
+.qa-modal-body {
 	padding: 10px;
 	border-top: 1px solid #eee;
 	border-bottom: 1px solid #eee;
 }
-.modal-button-close {
+.qa-modal-button-close {
 	float: right;
 }

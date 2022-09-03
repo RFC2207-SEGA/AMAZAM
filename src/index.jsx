@@ -1,10 +1,6 @@
 const axios = require('axios');
-<<<<<<< HEAD
-import {API_KEY} from './config/config.js';
-// Bring React in to build a component.
-import React from "react";
+// Bring React in to build a components
 // Import from react-dom the ability to create a root render
-import { createRoot } from "react-dom/client";
 import QList from './components/Q&A/QList.jsx';
 // create the root of the app by selection where the app should be mounted in the dom
 import Overview from "./components/Overview.jsx"
@@ -12,8 +8,6 @@ import TitleBar from "./components/TitleBar.jsx"
 import React from 'react';
 import { API_KEY } from './config/config.js';
 import { createRoot } from 'react-dom/client';
-import Overview from './components/Overview.jsx';
-import TitleBar from './components/TitleBar.jsx';
 import RatingsReviews from './components/RatingsReviews/RatingsReviews.jsx';
 const root = createRoot(document.getElementById("root"));
 
