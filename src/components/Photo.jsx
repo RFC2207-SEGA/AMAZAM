@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Photo = ({ photo, index, display, prev, next, triggerModal, last }) => {
   if (display(index)) {
     if (index === 0) {

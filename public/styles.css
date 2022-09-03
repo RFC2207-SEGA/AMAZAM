@@ -150,14 +150,14 @@ table {
 .product-category {
 	padding: 1%;
 	color: white;
-	background-color: #888;
+	background-color: black;
 	font-style: italic;
 }
 
 .product-name {
 	padding: 1%;
 	color: white;
-	background-color: #888;
+	background-color: black;
 	font-style: italic;
 	font-size: 36px;
 }
@@ -264,7 +264,7 @@ table {
 	font-size: 72px;
 	font-style: italic;
 	color: white;
-	background-color: #888;
+	background-color: black;
 	justify-content: space-between;
 	padding: 12px;
 	text-decoration: underline 4px;

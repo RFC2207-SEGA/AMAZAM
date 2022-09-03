@@ -97,7 +97,7 @@ class Related extends React.Component {
         return;
       }
     }
-    return this.setState({ 'myOutfit': [...this.state.myOutfit, this.props.product], 'myOutfitStyles': [...this.state.myOutfitStyles, this.props.style], 'myOutfitReviews': [...this.state.myOutfitReviews, 5] })
+    return this.setState({ 'myOutfit': [...this.state.myOutfit, this.props.product], 'myOutfitStyles': [...this.state.myOutfitStyles, this.props.style], 'myOutfitReviews': [...this.state.myOutfitReviews, this.props.mainRating] })
   }
 
   removeFit( product, styles, rating ) {

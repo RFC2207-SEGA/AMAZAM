@@ -204,7 +204,7 @@ class Overview extends React.Component {
         }
       }
     }
-    this.setState({ 'currentSize': n.target.value, 'quantities': quantities })
+    this.setState({ 'currentSize': n.target.value, 'quantities': quantities, 'currentQuant': 1 })
   }
 
   pickQuantity(n) {
@@ -247,7 +247,7 @@ class Overview extends React.Component {
             <div className="product-features"> <i class="fa-solid fa-check"></i> {feat.feature}: {feat.value}</div>))}</div>
         </div>
         <div>
-        <Related product={this.props.product} select={this.props.select} style={this.state.currentStyle} info={this.state.productInfo}/>
+        <Related product={this.props.product} select={this.props.select} style={this.state.currentStyle} info={this.state.productInfo} mainRating={this.state.rating}/>
         </div>
       </div>
       )
