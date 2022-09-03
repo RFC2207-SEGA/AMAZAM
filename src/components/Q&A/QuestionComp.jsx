@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import AddAnswer from "./AddAnswer.jsx";
+import QuestionReport from './QuestionReport.jsx';
 import { API_KEY } from "../../config/config.js";
 const axios = require("axios");
 
@@ -58,11 +59,11 @@ class QuestionComp extends React.Component {
         <div id="q-body">
           Q: {this.state.questions.question_body}
           <span id="q-user">
-            Asked by: {this.state.questions.asker_name} | {helpBtn}{" "}
+            Asked by: {this.state.questions.asker_name} | Helpful? {helpBtn}{" "}
             <span data-testid="numHelp">
               ({this.state.questions.question_helpfulness})
             </span>{" "}
-            |
+            | <QuestionReport quesObj={this.state.questions} />
             <button onClick={(e) => this.setState({ showAns: true })}>
               {" "}
               Add an Answer

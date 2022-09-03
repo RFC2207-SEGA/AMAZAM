@@ -14,6 +14,7 @@ class AnswerComp extends React.Component {
       reported: false,
       currentAns: {},
       moreBtnClick: false,
+      answersFromGet: {}
     };
     this.formatDate = this.formatDate.bind(this);
     this.checkName = this.checkName.bind(this);
@@ -35,8 +36,8 @@ class AnswerComp extends React.Component {
     return nameStr;
   }
   sortByHelp() {
-    var aList = this.props.answerList;
-    var key = Object.keys(this.props.answerList);
+    var aList = this.state.answersFromGet.results;
+    var key = Object.keys(this.state.answersFromGet.results);
     var arr = [];
     //populate an array of answer objects at specific key
     for (var i = 0; i < key.length; i++) {
@@ -46,15 +47,18 @@ class AnswerComp extends React.Component {
     //if array length is greater than one meaning there is more than one asnwer
     if (arr.length > 1) {
       //compare the helpfullness of each answer and sort it greatest first to lowest last
-      for (var i = 0; i < arr.length; i++) {
-        if (arr[i + 1]) {
-          if (arr[i].helpfulness < arr[i + 1].helpfulness) {
-            var temp = arr[i];
-            arr[i] = arr[i + 1];
-            arr[i + 1] = temp;
-          }
-        }
-      }
+      // for (var i = 0; i < arr.length; i++) {
+      //   if (arr[i + 1]) {
+      //     if (arr[i].helpfulness < arr[i + 1].helpfulness) {
+      //       var temp = arr[i];
+      //       arr[i] = arr[i + 1];
+      //       arr[i + 1] = temp;
+      //     }
+      //   }
+      // }
+      arr.sort((a, b) => {
+        return b.helpfulness - a.helpfullness;
+      });
       if (this.state.moreBtnClick) {
         this.setState({ totalAnsArr: arr });
         this.setState({ answerArr: arr });
@@ -101,8 +105,19 @@ class AnswerComp extends React.Component {
     this.setState({ answerArr: tempArr });
   }
 
+
   componentDidMount() {
-    this.sortByHelp();
+    if (this.props.quesID !== undefined) {
+        axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${this.props.quesID}/answers`,
+        {
+          headers: { Authorization: `${API_KEY}` },
+          params: { count: 5, page: 1, question_id: this.props.quesID },
+        }
+      )
+      .then((res) => this.setState({answersFromGet: res.data}))
+      .catch((err) => console.log(err));
+      }
+    setTimeout(this.sortByHelp, 1000);
   }
 
   render() {
