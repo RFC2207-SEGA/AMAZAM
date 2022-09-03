@@ -13,6 +13,19 @@ class FullscreenModal extends React.Component {
         return (
           <div className='fluid'>
           <div className="fluid_image-container full-photo-modal fade">
+            <div className="dot-container">
+            {this.props.photos.map((photo, tinyIndex) => (
+              <div className="dot" onClick={() => {
+                console.log('heyo!')
+                if (tinyIndex > this.props.index) {
+                  this.props.onClick(tinyIndex - this.props.index)
+                }
+                if (tinyIndex < this.props.index) {
+                  this.props.onClick(-(this.props.index - tinyIndex))
+                }}}
+                />
+            ))}
+            </div>
             <div onClick={this.props.toggleModal}>
             <ReactImageMagnify className="photo-modal-content" {...{
               smallImage: {
@@ -38,6 +51,19 @@ class FullscreenModal extends React.Component {
           <div className='fluid'>
           <div className="fluid_image-container full-photo-modal fade">
             <a className="prev" onClick={() => { this.props.prev(-1) }}>&#10094;</a>
+            <div className="dot-container">
+            {this.props.photos.map((photo, tinyIndex) => (
+              <div className="dot" onClick={() => {
+                console.log('heyo!')
+                if (tinyIndex > this.props.index) {
+                  this.props.onClick(tinyIndex - this.props.index)
+                }
+                if (tinyIndex < this.props.index) {
+                  this.props.onClick(-(this.props.index - tinyIndex))
+                }}}
+                />
+            ))}
+            </div>
             <div onClick={this.props.toggleModal}>
             <ReactImageMagnify className="photo-modal-content" {...{
               smallImage: {
@@ -61,6 +87,19 @@ class FullscreenModal extends React.Component {
         <div className='fluid'>
         <div className="fluid_image-container full-photo-modal fade">
           <a className="prev" onClick={() => { this.props.prev(-1) }}>&#10094;</a>
+          <div className="dot-container">
+          {this.props.photos.map((photo, tinyIndex) => (
+              <div className="dot" onClick={() => {
+                console.log('heyo!')
+                if (tinyIndex > this.props.index) {
+                  this.props.onClick(tinyIndex - this.props.index)
+                }
+                if (tinyIndex < this.props.index) {
+                  this.props.onClick(-(this.props.index - tinyIndex))
+                }}}
+                />
+            ))}
+          </div>
           <div onClick={this.props.toggleModal}>
           <ReactImageMagnify className="photo-modal-content" {...{
             smallImage: {
