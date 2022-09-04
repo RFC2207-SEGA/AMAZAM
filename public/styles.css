@@ -440,6 +440,8 @@ Add Review Modal
 	align-items: center;
 	justify-content: center;
 	z-index: 3;
+	max-height: 100%;
+	overflow-y: auto;
 }
 
 .add-review-modal-content {
@@ -449,10 +451,6 @@ Add Review Modal
 
 .add-review-modal-header, .add-review-modal-footer {
 	padding: 10px;
-}
-
-.add-review-modal-title {
-	margin: 0;
 }
 
 .add-review-modal-subtitle {
@@ -468,13 +466,57 @@ Add Review Modal
 
 .add-review-modal-body p {
 	font-size: smaller;
+	font-style: italic;
 }
 
+.add-review-textarea {
+	width: 99%;
+	border: 1px solid #eee;
+	margin-top: 1%;
+	font-size: small;
+	padding: 1%;
+}
+
+.add-review-input-fld {
+	border: 1px solid #eee;
+	font-family: 'futura';
+	padding: 1%;
+}
+
+.upload-photos-btn {
+	margin-top: 1%;
+}
 
 .review-thumbnail {
 	height: 5em;
-	margin: 1%
+	margin: 1%;
+	border-radius: 10%;
 }
+
+.current-char {
+	padding-top: 1%;
+	/* padding-bottom: 2%; */
+	font-style: italic;
+}
+
+.char-radio-container {
+	display: inline-block;
+}
+
+.char-ratio-btn {
+  text-align: center;
+	width: 108px;
+}
+
+.char-ratio-label {
+	font-size: small;
+  display: block;
+  text-align: center;
+	width: 108px;
+	padding-top: 5%;
+	padding-bottom: 10%;
+}
+
 
 /*
 Modal - Star Ratings
@@ -483,6 +525,9 @@ Modal - Star Ratings
 	margin-top: 15px;
 	margin-bottom: 15px;
 	text-align: center;
+	display: block;
+	position: relative;
+	justify-content: space-between;
 }
 
 .radio-item {
@@ -496,6 +541,12 @@ Modal - Star Ratings
 	margin-right: 5px;
 }
 
+.star-rating-text {
+	display: inline-block;
+	position: fixed;
+	margin-top: 6px;
+}
+/* ---- */
 
 
 .social-links {
