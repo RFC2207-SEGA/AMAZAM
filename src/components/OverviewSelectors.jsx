@@ -6,7 +6,7 @@ const OverviewSelectors = ({ pickSize, sizes, currentSize, quantities, addToCart
       <div>
       <div className="overview-selectors">
       <div>Size:</div>
-        <select className="overview-dropdown" onChange={(e) => { pickSize(e) }}>
+        <select data-testid="size-selector" className="overview-dropdown" onChange={(e) => { pickSize(e) }}>
           <option value={`${currentSize}`}> {currentSize} </option>
           {sizes.map((size) => (
             <option value={size}>{size}</option>
@@ -20,8 +20,9 @@ const OverviewSelectors = ({ pickSize, sizes, currentSize, quantities, addToCart
           ))}
         </select>
       </div>
-        <div>
+        <div className="overview-buttons">
           <button className="cartButton" onClick={() => { addToCart() }}>Add to Cart</button>
+          {/* <button className="cartButton"><i class="fa-solid fa-star"></i></button> */}
         </div>
       </div>
     )
@@ -29,10 +30,10 @@ const OverviewSelectors = ({ pickSize, sizes, currentSize, quantities, addToCart
   else {
     return (
       <div>
-      <div className="size-warning">Please select a size!</div>
+      <div data-testid="size-warning" className="size-warning">Please select a size!</div>
       <div className="overview-selectors">
         <div>Size:</div>
-        <select className="overview-dropdown" onChange={(e) => { pickSize(e) }}>
+        <select data-testid="size-selector" className="overview-dropdown" onChange={(e) => { pickSize(e) }}>
           <option value="" disabled selected hidden> Select Size </option>
           {sizes.map((size) => (
             <option value={size}>{size}</option>
@@ -43,8 +44,9 @@ const OverviewSelectors = ({ pickSize, sizes, currentSize, quantities, addToCart
           <option disabled selected hidden value="">OUT OF STOCK</option>
         </select>
         </div>
-        <div>
+        <div className="overview-buttons">
           <button className="cartButton" onClick={() => { addToCart() }}>Add to Cart</button>
+          {/* <button className="cartButton"><i class="fa-solid fa-star"></i></button> */}
         </div>
       </div>)
   }

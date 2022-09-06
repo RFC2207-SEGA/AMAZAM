@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ProductInfo.jsx</title>
+    <title>Code coverage report for components/ProductInfo.jsx</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="prettify.css" />
-    <link rel="stylesheet" href="base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(sort-arrow-sprite.png);
+            background-image: url(../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> ProductInfo.jsx</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">components</a> ProductInfo.jsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70% </span>
+                <span class="strong">60% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/10</span>
+                <span class='fraction'>6/10</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">55.55% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/9</span>
+                <span class='fraction'>5/9</span>
             </div>
         
             
@@ -94,13 +94,13 @@
 <a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -109,7 +109,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -124,10 +124,10 @@
 const ProductInfo = ({rating, product, style, onSale, scroll}) =&gt; {
   let starRating = []
   for (let i = 0; i &lt; Math.round(rating); i++) {
-    starRating.push(&lt;i class="fa-solid fa-star"&gt;&lt;/i&gt;)
+<span class="cstat-no" title="statement not covered" >    starRating.push(&lt;i class="fa-solid fa-star"&gt;&lt;/i&gt;)</span>
   }
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (onSale) {
-<span class="cstat-no" title="statement not covered" >    return (</span>
+  if (onSale) {
+    return (
     &lt;ul&gt;
       &lt;li data-testid="placeholder" className="placeholder"&gt; {starRating} &lt;div data-testid="read-all-reviews" className="read-all-reviews" onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >scroll()}</span>&gt;Read All Reviews&lt;/div&gt; &lt;/li&gt;
       &lt;li data-testid="product-category" className='product-category'&gt;Category: {product.category}&lt;/li&gt;
@@ -136,8 +136,8 @@ const ProductInfo = ({rating, product, style, onSale, scroll}) =&gt; {
       &lt;li data-testid="strikeout" className='strikeout'&gt;{style.original_price}&lt;/li&gt;
     &lt;/ul&gt;
     )
-  } else {
-    return (
+  } else <span class="missing-if-branch" title="else path not taken" >E</span>{
+<span class="cstat-no" title="statement not covered" >    return (</span>
       &lt;ul&gt;
         &lt;li data-testid="placeholder" className="placeholder"&gt; {starRating} &lt;div data-testid="read-all-reviews" className="read-all-reviews" onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >scroll()}</span>&gt;Read All Reviews&lt;/div&gt;  &lt;/li&gt;
         &lt;li data-testid="product-category" className='product-category'&gt;Category: {product.category}&lt;/li&gt;
@@ -154,16 +154,16 @@ export default ProductInfo;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-09-06T15:31:09.104Z
+                at 2022-09-06T23:20:05.167Z
             </div>
-        <script src="prettify.js"></script>
+        <script src="../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="sorter.js"></script>
-        <script src="block-navigation.js"></script>
+        <script src="../sorter.js"></script>
+        <script src="../block-navigation.js"></script>
     </body>
 </html>
     

@@ -8,6 +8,7 @@ import axios from 'axios';
 import {API_KEY} from '../config/config.js';
 // import axios from 'axios';
 
+
 class Overview extends React.Component {
   constructor(props) {
     super(props)
@@ -133,9 +134,6 @@ class Overview extends React.Component {
         .then((productInfo) => {
           this.setState({ 'productInfo': productInfo.data.features, 'currentProduct': this.props.product.id })
         })
-        .catch((err) => {
-          console.log(err);
-        })
         .then(() => {
           return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${this.props.product.id}/styles`, {headers: {'Authorization': `${API_KEY}`},
           params: { product_id: this.props.product.id}})
@@ -239,7 +237,7 @@ class Overview extends React.Component {
           </section>
         </div>
         <div className="product-description">
-          <div className="product-slogan">
+          <div data-testid="product-slogan" className="product-slogan">
             <h1 className="slogan-header">{this.props.product.slogan}:</h1>
             <p>{this.props.product.description}</p>
           </div>

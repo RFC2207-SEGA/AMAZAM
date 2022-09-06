@@ -742,7 +742,6 @@ td {
 	padding: 2%;
 	text-align: center;
 }
-<<<<<<< HEAD
 
 .fluid {
   max-width: 1200px;
@@ -916,7 +915,7 @@ select {
 .dot:hover {
   background-color: #e74c3c;
 }
-=======
+
 #q-a-title {
 	font-size: 30px;
 	font-weight: bold;
@@ -983,4 +982,4 @@ select {
 .qa-modal-button-close {
 	float: right;
 }
->>>>>>> 5a0300feecee4db7b35fb1ef5eb08ce71f7e46e8
+

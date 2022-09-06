@@ -51,7 +51,6 @@ class App extends React.Component {
   }
 
   executeScroll () {
-    console.log(this.myRef.current)
     this.myRef.current.scrollIntoView({behavior: 'smooth'})
   }
 

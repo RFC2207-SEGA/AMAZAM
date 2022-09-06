@@ -13,10 +13,9 @@ class FullscreenModal extends React.Component {
         return (
           <div className='fluid'>
           <div className="fluid_image-container full-photo-modal fade">
-            <div className="dot-container">
+            <div data-testid="dot-container" className="dot-container">
             {this.props.photos.map((photo, tinyIndex) => (
-              <div className="dot" onClick={() => {
-                console.log('heyo!')
+              <div data-testid="dot" className="dot" onClick={() => {
                 if (tinyIndex > this.props.index) {
                   this.props.onClick(tinyIndex - this.props.index)
                 }
@@ -27,7 +26,7 @@ class FullscreenModal extends React.Component {
             ))}
             </div>
             <div onClick={this.props.toggleModal}>
-            <ReactImageMagnify className="photo-modal-content" {...{
+            <ReactImageMagnify data-testid="photo-modal-content" className="photo-modal-content" {...{
               smallImage: {
                 isFluidWidth: true,
                 src: this.props.photo.url,
@@ -41,7 +40,7 @@ class FullscreenModal extends React.Component {
               enlargedImageContainerClassName: 'large-image'
             }} />
             </div>
-              <a className="next" onClick={() => { this.props.next(1) }}>&#10095;</a>
+              <a data-testid="modal-next" className="next" onClick={() => { this.props.next(1) }}>&#10095;</a>
           </div>
         </div>
         )
@@ -50,11 +49,10 @@ class FullscreenModal extends React.Component {
         return (
           <div className='fluid'>
           <div className="fluid_image-container full-photo-modal fade">
-            <a className="prev" onClick={() => { this.props.prev(-1) }}>&#10094;</a>
-            <div className="dot-container">
+            <a data-testid="modal-prev" className="prev" onClick={() => { this.props.prev(-1) }}>&#10094;</a>
+            <div data-testid="dot-container" className="dot-container">
             {this.props.photos.map((photo, tinyIndex) => (
-              <div className="dot" onClick={() => {
-                console.log('heyo!')
+              <div data-testid="dot" className="dot" onClick={() => {
                 if (tinyIndex > this.props.index) {
                   this.props.onClick(tinyIndex - this.props.index)
                 }
@@ -65,7 +63,7 @@ class FullscreenModal extends React.Component {
             ))}
             </div>
             <div onClick={this.props.toggleModal}>
-            <ReactImageMagnify className="photo-modal-content" {...{
+            <ReactImageMagnify  data-testid="photo-modal-content" className="photo-modal-content" {...{
               smallImage: {
                 isFluidWidth: true,
                 src: this.props.photo.url,
@@ -86,11 +84,10 @@ class FullscreenModal extends React.Component {
       return (
         <div className='fluid'>
         <div className="fluid_image-container full-photo-modal fade">
-          <a className="prev" onClick={() => { this.props.prev(-1) }}>&#10094;</a>
-          <div className="dot-container">
+          <a className="modal-prev" onClick={() => { this.props.prev(-1) }}>&#10094;</a>
+          <div data-testid="dot-container" className="dot-container">
           {this.props.photos.map((photo, tinyIndex) => (
-              <div className="dot" onClick={() => {
-                console.log('heyo!')
+              <div data-testid="dot" className="dot" onClick={() => {
                 if (tinyIndex > this.props.index) {
                   this.props.onClick(tinyIndex - this.props.index)
                 }
@@ -101,7 +98,7 @@ class FullscreenModal extends React.Component {
             ))}
           </div>
           <div onClick={this.props.toggleModal}>
-          <ReactImageMagnify className="photo-modal-content" {...{
+          <ReactImageMagnify  data-testid="photo-modal-content" className="photo-modal-content" {...{
             smallImage: {
               isFluidWidth: true,
               src: this.props.photo.url,
@@ -115,7 +112,7 @@ class FullscreenModal extends React.Component {
             enlargedImageContainerClassName: 'large-image'
           }} />
           </div>
-            <a className="next" onClick={() => { this.props.next(1) }}>&#10095;</a>
+            <a className="modal-next" onClick={() => { this.props.next(1) }}>&#10095;</a>
         </div>
       </div>
       )
