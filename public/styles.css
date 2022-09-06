@@ -66,6 +66,7 @@ table {
 	border-spacing: 0;
 }
 
+
 .overview-container {
 	display: flex;
 	justify-content: space-evenly;
@@ -741,6 +742,7 @@ td {
 	padding: 2%;
 	text-align: center;
 }
+<<<<<<< HEAD
 
 .fluid {
   max-width: 1200px;
@@ -914,3 +916,71 @@ select {
 .dot:hover {
   background-color: #e74c3c;
 }
+=======
+#q-a-title {
+	font-size: 30px;
+	font-weight: bold;
+	padding-bottom: 30px;
+}
+#q-list{
+	padding: 100px;
+}
+#q-comp, #a-comp {
+	padding: 10px;
+}
+#q-body {
+	font-size: 20px;
+	font-weight: bold;
+}
+#q-user {
+	font-size: small;
+	font-weight: normal;
+	float: right;
+
+}
+#a-letter {
+	float: left;
+	font-size: 20px;
+	font-weight: bold;
+}
+#a-wrapper {
+	padding: 3px;
+}
+#a-body {
+	margin-left: 30px;
+	font-size: 20px;
+}
+
+.qa-modal {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.qa-modal-content {
+	width: 500px;
+	background-color: #fff;
+}
+.qa-modal-header, .modal-footer {
+	padding: 10px;
+}
+.qa-modal-title {
+	margin: 0;
+}
+.qa-modal-subtitle {
+	font-size: 13px;
+}
+.qa-modal-body {
+	padding: 10px;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+}
+.qa-modal-button-close {
+	float: right;
+}
+>>>>>>> 5a0300feecee4db7b35fb1ef5eb08ce71f7e46e8
