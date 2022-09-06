@@ -1,10 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import { API_KEY } from  '../../../src/config/config.js';
+import { API_KEY } from '../../../src/config/config.js';
 
 class AddReview extends React.Component {
   constructor(props) {
     super(props);
+
+    this.photoLinks = []
 
     this.postData = {
       product_id: 0,
@@ -14,7 +16,7 @@ class AddReview extends React.Component {
       recommend: false,
       name: '',
       email: '',
-      photos: [],
+      photoFiles: [],
       characteristics: {}
     }
 
@@ -75,8 +77,8 @@ class AddReview extends React.Component {
     var key = e.target.attributes.name.value
     var value = e.target.value
     if (key === 'recommend') {
-      var booleanAns = Boolean(value);
-      this.postData[key] = booleanAns;
+      var boolResponse = Boolean(value);
+      this.postData[key] = boolResponse;
     } else if (key === "body") {
       this.postData[key] = value;
       this.setState({});
@@ -90,12 +92,14 @@ class AddReview extends React.Component {
   }
 
   handlePhotosUpload(e) {
+    console.log('e.target.files ', e.target.files);
     if ((this.state.photos.length + e.target.files.length) <= 5) {
       for (var i = 0; i < e.target.files.length; i++) {
-        this.postData.photos.push(URL.createObjectURL(e.target.files[i]));
+        this.postData.photoFiles.push(e.target.files[i]);
+        this.photoLinks.push(URL.createObjectURL(e.target.files[i]))
         console.log('photos array:', this.postData.photos)
       }
-      this.setState({ photos: this.postData.photos });
+      this.setState({ photos: this.photoLinks });
     } else {
       alert('Please limit the number of photos 📸 to five.')
     }
@@ -105,11 +109,11 @@ class AddReview extends React.Component {
     var resultArr = [];
     if (this.props.reviewMeta.characteristics !== undefined) {
       for (var currentChar in this.props.reviewMeta.characteristics) {
-        resultArr.push(<div className='current-char'>{currentChar}</div>)
+        resultArr.push(<div className='current-char' >{currentChar}</div>)
         for (var i = 0; i < this.charDesc[currentChar].length; i++) {
           resultArr.push(
             <span className='char-radio-container'>
-              <input onChange={this.onChange} className='char-ratio-btn' type='radio' id={this.charDesc[currentChar]} name={currentChar} value={i+1} />
+              <input onChange={this.onChange} className='char-ratio-btn' type='radio' id={this.charDesc[currentChar]} name={currentChar} value={i+1}/>
               <label className='char-ratio-label' htmlFor={this.charDesc[currentChar]}> {this.charDesc[currentChar][i]} </label>
             </span>
           )
@@ -121,47 +125,38 @@ class AddReview extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    let formData = new FormData();
+    this.postData.photoFiles.forEach((photoFile, index) => {
+      formData.append('photo' + index, photoFile, photoFile.name);
+    })
     for (var key in this.postData) {
-      console.log('key:', key, 'key type:', typeof key, 'value:', this.postData[key], 'value type:', typeof this.postData[key])
+      if (key === 'characteristics') {
+        for (var characteristicsKey in this.postData[key]) {
+          formData.append(`characteristics[\'${characteristicsKey}\']`, this.postData[key][characteristicsKey]);
+        }
+      }else if (key !== 'photoFiles') {
+        formData.append(key, this.postData[key]);
+      }
     }
-    console.log('on submit post data:', this.postData)
+    console.log('on submit post data:', formData)
+    for (var key of formData.entries()) {
+      console.log(key[0] + ', ' + key[1]);
+    }
     axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews',
-      this.postData, {
+      formData, {
       headers: {
         'Authorization': `${API_KEY}`,
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'multipart/form-data',
+        'Access-Control-Allow-Credentials':true
+      },
+      proxy:'https://app-hrsei-api.herokuapp.com/'
     })
     .then(res => console.log(res))
     .catch(err => console.log(err))
   };
 
 
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //   console.log('on submit post data:', this.postData)
-  //   return axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews', {
-  //     product_id: this.postData.product_id,
-  //     rating: this.postData.rating,
-  //     summary: this.postData.summary,
-  //     body: this.postData.body,
-  //     recommend: this.postData.recommend,
-  //     name: this.postData.name,
-  //     email: this.postData.email,
-  //     photos: this.postData.photos,
-  //     characteristics: this.postData.characteristics
-  //   },
-  //   {
-  //     headers: {
-  //       'Authorization': `${API_KEY}`,
-  //       'Content-Type': 'application/json'}
-  //   })
-  //   .then(res => console.log(res))
-  //   .catch(err => console.log(err))
-  // };
-
   render() {
-
     if (this.state.starRating > 0) {
       var ratingOptions = ['Poor', 'Fair', 'Average', 'Good', 'Great']
       var displayStarRatingText = <span className='star-rating-text'>{ratingOptions[this.state.starRating - 1]}</span>
@@ -191,8 +186,8 @@ class AddReview extends React.Component {
                 <div className='star-rating-icons-container'>
                   {[1, 2, 3, 4, 5].map((starValue) =>
                     <label className="star-radio-label" key={starValue}>
-                      <input type="radio" className="radio-item" />
-                      <i id={starValue} onClick={this.toggleStar}
+                      <input type="radio" className="radio-item" value={starValue}/>
+                      <i data-testid='toggle-star-rating' id={starValue} onClick={this.toggleStar}
                         className={starValue <= this.state.starRating ? "fa-solid fa-star" : "fa-regular fa-star"}>
                       </i>
                     </label>
@@ -201,22 +196,21 @@ class AddReview extends React.Component {
                 </div>
 
                 <label htmlFor='recommend'>Do you recommend this product?*</label>
-                  <input onChange={this.onChange} type='radio' name='recommend' value={true} />Yes
-                  <input onChange={this.onChange} type='radio' name='recommend' value={false} />No
+                  <input data-testid='recommend-yes' onChange={this.onChange} type='radio' name='recommend' value={true} />Yes
+                  <input data-testid='recommend-no' onChange={this.onChange} type='radio' name='recommend' value={false} />No
                 <br></br> <br></br>
 
-                {/* <label htmlFor='characteristics'>Product characteristics</label><br></br> */}
                 <div>
                   {this.characteristicsVote()}
                 </div>
                 <br></br>
 
                 <label htmlFor='summary'>Summary:</label><br></br>
-                  <textarea onChange={this.onChange} className='add-review-textarea' name='summary' maxLength='60' rows='2' placeholder='Example: Best purchase ever!' />
+                  <textarea onChange={this.onChange} className='add-review-textarea' name='summary' id='summary' maxLength='60' rows='2' placeholder='Example: Best purchase ever!' />
                 <br></br> <br></br>
 
                 <label htmlFor='body'>Body*:</label><br></br>
-                  <textarea onChange={this.onChange} className='add-review-textarea' name='body' maxLength='1000' rows='3' required='required' placeholder='Why did you like about the product or not?' />
+                  <textarea onChange={this.onChange} className='add-review-textarea' name='body' id='body' maxLength='1000' rows='3' required='required' placeholder='Why did you like about the product or not?' />
                   <p>{`${this.getCountText()}`}</p>
                 <br></br> <br></br>
 

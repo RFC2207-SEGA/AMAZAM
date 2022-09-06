@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.5% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/8</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/4</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.5% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/8</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -119,18 +119,24 @@
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -141,20 +147,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -177,18 +189,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 &nbsp;
-function ReviewTile ({ review }) {
+function <span class="fstat-no" title="function not covered" >ReviewTile </span>({ review }) {
 &nbsp;
-  function reviewerRec() {
-    if (review.recommend) {
-      return &lt;div&gt; ✔️ I recommend this product &lt;/div&gt;
+  function <span class="fstat-no" title="function not covered" >reviewerRec(</span>) {
+<span class="cstat-no" title="statement not covered" >    if (review.recommend) {</span>
+<span class="cstat-no" title="statement not covered" >      return &lt;div&gt; ✔️ I recommend this product &lt;/div&gt;</span>
     }
   }
 &nbsp;
-  function sellerResponse() {
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (review.response) {
+  function <span class="fstat-no" title="function not covered" >sellerResponse(</span>) {
+<span class="cstat-no" title="statement not covered" >    if (review.response) {</span>
 <span class="cstat-no" title="statement not covered" >      return (</span>
-        &lt;div className='sellerResponse'&gt;
+        &lt;div className='seller-response'&gt;
           &lt;p&gt;Seller Response:&lt;/p&gt;
           &lt;p&gt;{review.response}&lt;/p&gt;
         &lt;/div&gt;
@@ -196,21 +208,24 @@ function ReviewTile ({ review }) {
     }
   }
 &nbsp;
-  function formatDate(dateStr){
-    var options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(review.date).toLocaleDateString([],options);
+  function <span class="fstat-no" title="function not covered" >formatDate(</span>dateStr){
+    var options = <span class="cstat-no" title="statement not covered" >{ year: 'numeric', month: 'long', day: 'numeric' };</span>
+<span class="cstat-no" title="statement not covered" >    return new Date(review.date).toLocaleDateString([],options);</span>
   }
 &nbsp;
-  return (
-    &lt;div className='reviewTile'&gt;
+<span class="cstat-no" title="statement not covered" >  return (</span>
+    &lt;div className='review-tile'&gt;
       &lt;div&gt;⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ({review.rating})&lt;/div&gt;
-      &lt;span className='reviewer-name-and-date'&gt;{review.reviewer_name}&lt;/span&gt;, &lt;span&gt;{formatDate(review.date)}&lt;/span&gt;
-      &lt;h3&gt;{review.summary}&lt;/h3&gt;
-      &lt;p&gt;{review.body}&lt;/p&gt;
+      &lt;div data-testid='reviewer-name-and-date' className='reviewer-name-and-date'&gt;
+        &lt;span&gt;{review.reviewer_name}&lt;/span&gt;, &lt;span&gt;{formatDate(review.date)}&lt;/span&gt;
+      &lt;/div&gt;
+&nbsp;
+      &lt;h3 className='review-summary'&gt;{review.summary}&lt;/h3&gt;
+      &lt;p className='review-body'&gt;{review.body}&lt;/p&gt;
 &nbsp;
       &lt;div&gt;
-        {review.photos.map((photo, index) =&gt;
-          &lt;img className='reviewThumbnail' src={`${photo.url}`} key={photo.id}&gt;&lt;/img&gt;
+        {review.photos.map(<span class="fstat-no" title="function not covered" >(p</span>hoto, index) =&gt;
+<span class="cstat-no" title="statement not covered" >          &lt;img className='review-thumbnail' src={`${photo.url}`} key={photo.id}&gt;&lt;/img&gt;</span>
         )}
       &lt;/div&gt;
 &nbsp;
@@ -218,14 +233,17 @@ function ReviewTile ({ review }) {
 &nbsp;
       &lt;div&gt;{sellerResponse()}&lt;/div&gt;
 &nbsp;
-      &lt;div&gt;
+      &lt;div className='vote-helpfulness-and-report'&gt;
         &lt;span&gt;Helpful? &lt;/span&gt;
         &lt;a href=""&gt;Yes&lt;/a&gt;
         &lt;span&gt; ({review.helpfulness}) &lt;/span&gt;
         &lt;a href=""&gt;No&lt;/a&gt;
+        &lt;br&gt;&lt;/br&gt; &lt;br&gt;&lt;/br&gt;
+        &lt;div&gt;
+          &lt;a href=""&gt;Report&lt;/a&gt;
+        &lt;/div&gt;
       &lt;/div&gt;
 &nbsp;
-      &lt;a href=""&gt;Report&lt;/a&gt;
     &lt;/div&gt;
   )
 }
@@ -238,7 +256,7 @@ export default ReviewTile;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-08-31T04:41:25.570Z
+                at 2022-09-06T23:13:56.175Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

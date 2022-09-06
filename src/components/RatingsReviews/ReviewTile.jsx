@@ -27,7 +27,7 @@ function ReviewTile ({ review }) {
   return (
     <div className='review-tile'>
       <div>⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ({review.rating})</div>
-      <div className='reviewer-name-and-date'>
+      <div data-testid='reviewer-name-and-date' className='reviewer-name-and-date'>
         <span>{review.reviewer_name}</span>, <span>{formatDate(review.date)}</span>
       </div>
 
