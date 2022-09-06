@@ -117,7 +117,7 @@ class QList extends React.Component {
       axios.get("https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions",
           {
             headers: { Authorization: `${API_KEY}` },
-            params: { count: 30, page: 1, product_id: this.props.product.id },
+            params: { count: 10, page: 1, product_id: this.props.product.id },
           }
         )
         .then((res) => this.setState({ productQ: res.data }))
@@ -128,7 +128,6 @@ class QList extends React.Component {
   }
 
   render() {
-    console.log(this.state.productQ);
     if (
       this.state.productQ.results !== undefined &&
       this.state.sort === false
@@ -189,11 +188,12 @@ class QList extends React.Component {
     }
 
     return (
-      <div id="q-list">
-        <h1 id="q-a-title">Questions and Answers</h1>
+      <div data-testid="q-list" id="q-list">
+        <h1 data-testid="title" id="q-a-title">Questions and Answers</h1>
         <form>
           <h1>Search: </h1>
           <input
+            data-testid="search"
             type="text"
             placeholder="Have a question? Search for answers..."
             onChange={this.handleSearch}
@@ -201,9 +201,7 @@ class QList extends React.Component {
         </form>
         {toRender}
         {moreQBtn}
-        <button onClick={(e) => this.setState({ show: true })}>
-          Add a Question
-        </button>
+        <button onClick={(e) => this.setState({ show: true })}>Add a Question</button>
         <AddQuestion
           onClose={(e) => this.handleClose(e)}
           show={this.state.show}

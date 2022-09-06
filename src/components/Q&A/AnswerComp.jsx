@@ -153,14 +153,12 @@ class AnswerComp extends React.Component {
               {" "}
               {ans.answerer_name},
             </span>
-            <span> {this.formatDate(ans.date)}</span>
+            <span data-testid='date'> {this.formatDate(ans.date)}</span>
             <span>
               {" "}
               | Helpful?{" "}
-              <button onClick={(e) => this.handleAnsHelp(ans, e)}>
-                Yes?{" "}
-              </button>{" "}
-              ({ans.helpfulness})
+              <button data-testid='AnsHelp' onClick={(e) => this.handleAnsHelp(ans, e)}>Yes?</button>{" "}
+              <span data-testid="ansnumHelp">({ans.helpfulness})</span>
             </span>
             <span>
               {" "}

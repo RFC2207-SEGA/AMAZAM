@@ -35,13 +35,13 @@ class QuestionReport extends React.Component {
   render() {
     let reportButton;
     if (this.state.currentQues.reported) {
-      reportButton = <span>Reported</span>;
+      reportButton = <span data-testid="Report">Reported</span>;
     } else {
       reportButton = (
-        <button onClick={(e) => this.handleReport(e)}> Report? </button>
+        <button data-testid="Report" onClick={(e) => this.handleReport(e)}> Report? </button>
       );
     }
-    return <span>{reportButton}</span>;
+    return <span data-testid="Report">{reportButton}</span>;
   }
 }
 

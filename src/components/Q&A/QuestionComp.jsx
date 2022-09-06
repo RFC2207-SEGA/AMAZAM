@@ -55,8 +55,8 @@ class QuestionComp extends React.Component {
       );
     }
     return (
-      <div id="q-comp">
-        <div id="q-body">
+      <div data-testid="q-comp" id="q-comp">
+        <div data-testid="q-body" id="q-body">
           Q: {this.state.questions.question_body}
           <span id="q-user">
             Asked by: {this.state.questions.asker_name} | Helpful? {helpBtn}{" "}
@@ -64,7 +64,7 @@ class QuestionComp extends React.Component {
               ({this.state.questions.question_helpfulness})
             </span>{" "}
             | <QuestionReport quesObj={this.state.questions} />
-            <button onClick={(e) => this.setState({ showAns: true })}>
+            <button data-testid="AddAns" onClick={(e) => this.setState({ showAns: true })}>
               {" "}
               Add an Answer
             </button>

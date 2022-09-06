@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/Q&amp;A/AnswerReport.jsx</title>
+    <title>Code coverage report for components/Q&amp;A/QuestionReport.jsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/Q&A</a> AnswerReport.jsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/Q&A</a> QuestionReport.jsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">5.88% </span>
+                <span class="strong">41.17% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/17</span>
+                <span class='fraction'>7/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>2/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">5.88% </span>
+                <span class="strong">41.17% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/17</span>
+                <span class='fraction'>7/17</span>
             </div>
         
             
@@ -118,27 +118,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -147,14 +133,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -164,21 +164,21 @@ import ReactDOM from "react-dom";
 import { API_KEY } from "../../config/config.js";
 const axios = require("axios");
 &nbsp;
-class AnswerReport extends React.Component {
-<span class="fstat-no" title="function not covered" >  co</span>nstructor(props) {
-<span class="cstat-no" title="statement not covered" >    super(props);</span>
-<span class="cstat-no" title="statement not covered" >    this.state = {</span>
-      currentAns: this.props.ansObj,
+class QuestionReport extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentQues: this.props.quesObj,
     };
-<span class="cstat-no" title="statement not covered" >    this.handleReport = this.handleReport.bind(this);</span>
+    this.handleReport = this.handleReport.bind(this);
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  ha</span>ndleReport(e) {
-    var temp = <span class="cstat-no" title="statement not covered" >parseInt(this.state.currentAns.id);</span>
+    var temp = <span class="cstat-no" title="statement not covered" >parseInt(this.state.currentQues.question_id);</span>
 <span class="cstat-no" title="statement not covered" >    console.log(temp);</span>
 <span class="cstat-no" title="statement not covered" >    axios</span>
       .put(
-        `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${temp}/report`,
+        `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${temp}/report`,
         {},
         { headers: { Authorization: `${API_KEY}` } }
       )
@@ -188,25 +188,25 @@ class AnswerReport extends React.Component {
       .catch(<span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
 <span class="cstat-no" title="statement not covered" >        console.log(err);</span>
       });
-    var tempObj = <span class="cstat-no" title="statement not covered" >this.state.currentAns;</span>
+    var tempObj = <span class="cstat-no" title="statement not covered" >this.state.currentQues;</span>
 <span class="cstat-no" title="statement not covered" >    tempObj.reported = true;</span>
-<span class="cstat-no" title="statement not covered" >    this.setState({ currentAns: tempObj });</span>
+<span class="cstat-no" title="statement not covered" >    this.setState({ currentQues: tempObj });</span>
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  re</span>nder() {
+  render() {
     let reportButton;
-<span class="cstat-no" title="statement not covered" >    if (this.state.currentAns.reported) {</span>
-<span class="cstat-no" title="statement not covered" >      reportButton = &lt;span&gt;Reported&lt;/span&gt;;</span>
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (this.state.currentQues.reported) {
+<span class="cstat-no" title="statement not covered" >      reportButton = &lt;span data-testid="Report"&gt;Reported&lt;/span&gt;;</span>
     } else {
-<span class="cstat-no" title="statement not covered" >      reportButton = (</span>
-        &lt;button onClick={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >this.handleReport(e)}</span>&gt; Report? &lt;/button&gt;
+      reportButton = (
+        &lt;button data-testid="Report" onClick={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >this.handleReport(e)}</span>&gt; Report? &lt;/button&gt;
       );
     }
-<span class="cstat-no" title="statement not covered" >    return &lt;span&gt;{reportButton}&lt;/span&gt;;</span>
+    return &lt;span data-testid="Report"&gt;{reportButton}&lt;/span&gt;;
   }
 }
 &nbsp;
-export default AnswerReport;
+export default QuestionReport;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
