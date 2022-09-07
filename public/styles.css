@@ -41,6 +41,7 @@ section {
 
 body {
 	line-height: 1;
+	background:rgb(240, 240, 240)
 }
 
 ol,
@@ -149,18 +150,23 @@ table {
 }
 
 .product-category {
-	padding: 1%;
+	padding: 2%;
+	padding-bottom: 1%;
+	padding-top: 3%;
 	color: white;
 	background-color: black;
 	font-style: italic;
+	border-radius:20px 20px 0px 0px;
 }
 
 .product-name {
-	padding: 1%;
+	padding: 2%;
+	padding-bottom: 3%;
 	color: white;
 	background-color: black;
 	font-style: italic;
 	font-size: 36px;
+	border-radius: 0px 0px 20px 20px;
 }
 
 .placeholder {
@@ -186,12 +192,17 @@ table {
 	flex-direction: column;
 	justify-content: space-around;
 	width: 40%;
+	background-color: rgb(234, 234, 234);
+	border-radius: 5%;
+	padding: 1%;
 }
 
 .product-description {
 	display: flex;
 	margin-left: 10%;
 	margin-right: 20%;
+	margin-bottom: 2%;
+	margin-top: 1%;
 	justify-content: space-between;
 }
 
@@ -203,6 +214,7 @@ table {
 .slogan-header {
 	font-style: italic;
 	font-size: 24px;
+	margin-bottom: 1%;
 }
 
 .price {
@@ -210,6 +222,9 @@ table {
 	font-size: 12px;
 }
 
+.photo img {
+	border-radius: 5%;
+}
 .photo:hover {
 	cursor: zoom-in;
 	opacity: 80%;
@@ -272,10 +287,13 @@ table {
 }
 
 .title-streamer {
-	margin-top: 8px;
+	/* margin-top: 8px; */
+	padding: 1%;
 	display: flex;
 	justify-content: center;
 	font-size: small;
+	background-color:#e74c3c;
+	color: white;
 }
 
 /*
@@ -596,6 +614,7 @@ i:hover {
 	object-fit: cover;
 	border-radius: 50%;
 	margin: 1%;
+	border: solid black 2px;
 	transition: 0.5s all ease-in-out;
 }
 
@@ -606,7 +625,7 @@ i:hover {
 }
 
 .selected {
-	border: 2px dotted red;
+	border: 3px dotted red;
 }
 
 .size-warning {
@@ -629,6 +648,13 @@ i:hover {
 	align-items: center;
 }
 
+.related-widget {
+	margin-left: 5%;
+	margin-right: 5%;
+	background-color: rgb(234, 234, 234);
+	padding: 2%;
+	border-radius: 5%;
+}
 
 .related-product-container {
 	display: flex;
@@ -679,7 +705,8 @@ i:hover {
 .related-streamer {
 	display: flex;
 	justify-content: space-around;
-	margin-top: 2%
+	margin-top: 2%;
+	text-decoration: underline;
 }
 
 .empty-outfit-card {
@@ -709,7 +736,7 @@ i:hover {
 	position: fixed;
 	z-index: 2;
 	/* Sit on top */
-	left: -10%;
+	left: -12%;
 	width: auto;
 	/* Full width */
 	height: auto;
@@ -718,28 +745,32 @@ i:hover {
 	/* Fallback color */
 }
 
+
 .compare-modal-table {
-	width: 100%;
+	width: auto;
 	padding: 100%;
 	border: 1px solid
 }
 
 .compare-modal-head {
-	width: 100%;
+	width: auto;
 	background: #000;
 	padding: 24px;
 	color: white;
-	margin: auto;
+	/* margin: auto; */
 }
 
 .compare-modal-row {
+	width: 100%;
+	padding: 24px;
 	border: 1px solid white;
 	color: white;
 }
 
 td {
+	width: auto;
 	margin: 2%;
-	padding: 2%;
+	/* padding: 2%; */
 	text-align: center;
 }
 
@@ -820,6 +851,10 @@ td {
 	border-radius: 3px 0 0 3px;
 }
 
+.overview-buttons {
+	display: flex;
+	justify-content: space-evenly;
+}
 .cartButton {
   box-sizing: border-box;
   background-color: transparent;
@@ -834,7 +869,8 @@ td {
   font-weight: 400;
   line-height: 1;
   margin: 20px;
-	margin-left: 30%;
+	margin-left: -10px;
+	/* margin-left: 30%; */
   padding: 1.2em 2.8em;
   text-decoration: none;
   text-align: center;
@@ -856,6 +892,41 @@ td {
   box-shadow: 0 0 40px 40px #e74c3c inset;
 }
 
+.starButton {
+  box-sizing: border-box;
+  background-color: transparent;
+  border: 2px solid #e74c3c;
+  border-radius: 0.6em;
+  color: #e74c3c;
+  cursor: pointer;
+  display: flex;
+	align-self: flex-end;
+	position: relative;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+	/* margin-left: 30%; */
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.starButton:hover, .btn:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.starButton {
+  -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+.starButton:hover {
+  box-shadow: 0 0 40px 40px #e74c3c inset;
+}
 
 select {
   /* Reset Select */
@@ -881,10 +952,10 @@ select {
   position: relative;
   display: flex;
   width: 30em;
-  height: 3em;
+  height: 4em;
   border-radius: .5em;
   overflow: hidden;
-	margin: auto;
+	margin: 3%;
 }
 
 /* Transition */

@@ -84,7 +84,7 @@ class FullscreenModal extends React.Component {
       return (
         <div className='fluid'>
         <div className="fluid_image-container full-photo-modal fade">
-          <a className="modal-prev" onClick={() => { this.props.prev(-1) }}>&#10094;</a>
+          <a className="prev" onClick={() => { this.props.prev(-1) }}>&#10094;</a>
           <div data-testid="dot-container" className="dot-container">
           {this.props.photos.map((photo, tinyIndex) => (
               <div data-testid="dot" className="dot" onClick={() => {
@@ -112,7 +112,7 @@ class FullscreenModal extends React.Component {
             enlargedImageContainerClassName: 'large-image'
           }} />
           </div>
-            <a className="modal-next" onClick={() => { this.props.next(1) }}>&#10095;</a>
+            <a className="next" onClick={() => { this.props.next(1) }}>&#10095;</a>
         </div>
       </div>
       )
