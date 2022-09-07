@@ -1,7 +1,7 @@
 const axios = require('axios');
 // Bring React in to build a components
 // Import from react-dom the ability to create a root render
-import QList from './components/Q&A/QList.jsx';
+import QList from './components/Q&A/qList.jsx';
 // create the root of the app by selection where the app should be mounted in the dom
 import Overview from "./components/Overview.jsx"
 import TitleBar from "./components/TitleBar.jsx"
