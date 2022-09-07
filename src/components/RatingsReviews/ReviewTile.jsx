@@ -1,4 +1,5 @@
 import React from 'react';
+import Stars from '../../../src/components/Stars.jsx'
 
 function ReviewTile ({ review }) {
 
@@ -26,7 +27,7 @@ function ReviewTile ({ review }) {
 
   return (
     <div className='review-tile'>
-      <div>⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ({review.rating})</div>
+      <div><Stars rating={review.rating}/></div>
       <div data-testid='reviewer-name-and-date' className='reviewer-name-and-date'>
         <span>{review.reviewer_name}</span>, <span>{formatDate(review.date)}</span>
       </div>

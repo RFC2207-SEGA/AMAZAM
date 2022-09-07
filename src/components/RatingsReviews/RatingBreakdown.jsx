@@ -1,4 +1,5 @@
 import React from 'react';
+import Stars from '../../../src/components/Stars.jsx'
 
 
 function RatingBreakdown ({ reviewMeta }) {
@@ -51,7 +52,8 @@ function RatingBreakdown ({ reviewMeta }) {
   return (
     <div className='ratings-breakdown-container'>
       <div>
-        <span data-testid='stars placeholder'>{avgRating()}</span> stars placeholder <i className="fa-solid fa-star"></i>
+        <span data-testid='stars placeholder'>{avgRating()} </span>
+        <Stars rating={avgRating()}/>
       </div>
 
       <table className='ratings-breakdown-table'>

@@ -31,7 +31,7 @@ class RatingsReviews extends React.Component {
         }})
       .then((res) => {
         this.setState({reviews: res.data.results})
-        console.log('reviews:', res.data.results)
+        console.log('reviews from componentDidUpdate:', res.data.results)
       })
       .catch((err) =>
         console.log(err));
