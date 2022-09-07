@@ -9,6 +9,7 @@
     "axios": "^0.27.2",
     "cors": "^2.8.5",
     "express": "^4.18.1",
+    "node": "^18.8.0",
     "nodemon": "^2.0.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -45,6 +46,6 @@
     "build": "webpack --mode=production",
     "dev": "webpack serve --open",
     "test": "jest",
-    "server": "nodemon ./server/"
+    "server": "node ./server"
   }
 }
