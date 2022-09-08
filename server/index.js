@@ -10,4 +10,4 @@ app.use(express.static('./public'))
 const PORT = 8080;
 
 app.listen(PORT);
-console.log(`Server listening at http://${PORT}`)
+console.log(`Server listening at port ${PORT}`)
