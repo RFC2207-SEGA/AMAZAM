@@ -1,19 +1,31 @@
 import React from 'react';
+import axios from 'axios';
+import { API_KEY } from '../../../src/config/config.js';
+import CloudinaryUploadWidget from '../../../src/components/PhotoUploadWidget.jsx'
 
 class AddReview extends React.Component {
   constructor(props) {
     super(props);
 
     this.postData = {
+      product_id: 0,
       rating: 0,
-      recommend: false,
-      characteristics: {
-      },
       summary: '',
       body: '',
-      photos: [],
+      recommend: false,
       name: '',
-      email: ''
+      email: '',
+      photos: [],
+      characteristics: {}
+    }
+
+    this.charDesc = {
+      Size: ['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too wide'],
+      Width: ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide'],
+      Comfort: ['Uncomfortable', 'Slightly uncomfortable', 'Ok', 'Comfortable', 'Perfect'],
+      Quality: ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect'],
+      Length: ['Runs short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'],
+      Fit: ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']
     }
 
     this.charCountText = '';
@@ -21,13 +33,21 @@ class AddReview extends React.Component {
     this.state = {
       starRating: 0,
       post: {},
-      photos: []
+      photoThumbnails: []
     }
 
     this.toggleStar = this.toggleStar.bind(this)
     this.onChange = this.onChange.bind(this)
     this.getCountText = this.getCountText.bind(this)
-    this.handlePhotosUpload = this.handlePhotosUpload.bind(this)
+    this.characteristicsVote = this.characteristicsVote.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handlePhotoUploadResponse = this.handlePhotoUploadResponse.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.reviewMeta !== prevProps.reviewMeta) {
+      this.postData.product_id = parseInt(this.props.reviewMeta.product_id)
+    }
   }
 
   toggleStar(e) {
@@ -38,7 +58,7 @@ class AddReview extends React.Component {
       starNum = Number(e.target.attributes.id.value);
     }
     this.postData.rating = starNum
-    this.setState({starRating: starNum})
+    this.setState({ starRating: starNum })
   }
 
   getCountText() {
@@ -52,25 +72,74 @@ class AddReview extends React.Component {
   }
 
   onChange(e) {
-    e.preventDefault();
+    // e.preventDefault();
     var key = e.target.attributes.name.value
     var value = e.target.value
-    this.postData[key] = value;
-    console.log('postData:', this.postData)
-    if(key === "body") {
-      this.setState({}); // this allows the charCountText from above to re-render everytime there is a change to the body input
+    if (key === 'recommend') {
+      var boolResponse = Boolean(value);
+      this.postData[key] = boolResponse;
+    } else if (key === "body") {
+      this.postData[key] = value;
+      this.setState({});
+    } else if (this.charDesc[key]) {
+      var charIDstr = JSON.stringify(this.props.reviewMeta.characteristics[key].id)
+      var numValue = parseInt(value)
+      this.postData.characteristics[charIDstr] = numValue
+    } else {
+      this.postData[key] = value;
     }
   }
 
-  handlePhotosUpload(e) {
-    for (var i = 0; i < e.target.files.length; i++) {
-      this.postData.photos.push(URL.createObjectURL(e.target.files[i]));
+  handlePhotoUploadResponse(photoURLs, thumbnailURLs) {
+    this.postData.photos = photoURLs
+    this.setState({photoThumbnails: thumbnailURLs})
+  }
+
+  characteristicsVote() {
+    var resultArr = [];
+    if (this.props.reviewMeta.characteristics !== undefined) {
+      for (var currentChar in this.props.reviewMeta.characteristics) {
+        resultArr.push(<div className='current-char' >{currentChar}</div>)
+        for (var i = 0; i < this.charDesc[currentChar].length; i++) {
+          resultArr.push(
+            <span className='char-radio-container'>
+              <input onChange={this.onChange} className='char-ratio-btn' type='radio' id={this.charDesc[currentChar]} name={currentChar} value={i+1}/>
+              <label className='char-ratio-label' htmlFor={this.charDesc[currentChar]}> {this.charDesc[currentChar][i]} </label>
+            </span>
+          )
+        }
+      }
+      return resultArr;
     }
-    this.setState({ photos: this.postData.photos});
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews',
+      this.postData, {
+      headers: {'Authorization': `${API_KEY}`}
+    })
+    .then((res) => {
+      console.log(res)
+      this.props.toggleReviewModal()
+    })
+    .catch(err => console.log(err))
   }
 
 
   render() {
+
+    if (this.state.starRating > 0) {
+      var ratingOptions = ['Poor', 'Fair', 'Average', 'Good', 'Great']
+      var displayStarRatingText = <span className='star-rating-text'>{ratingOptions[this.state.starRating - 1]}</span>
+    }
+
+    if (this.postData.photos.length < 5) {
+      var displayAddPhotosBtn = <> <CloudinaryUploadWidget handlePhotoUploadResponse={this.handlePhotoUploadResponse}/> </>
+    } else {
+      var displayAddPhotosBtn = <><br></br><p>Max Number of Photos 📸 Reached</p></>
+    }
+
     if (!this.props.showAddReviewModal) {
       return null;
     } else {
@@ -86,63 +155,59 @@ class AddReview extends React.Component {
             <div className="add-review-modal-body">
               <form>
                 <div className='star-rating-icons-container'>
-                  {[1,2,3,4,5].map((starValue) =>
+                  {[1, 2, 3, 4, 5].map((starValue) =>
                     <label className="star-radio-label" key={starValue}>
-                      <input type="radio" className="radio-item" />
-                      <i id={starValue} onClick={this.toggleStar}
+                      <input type="radio" className="radio-item" value={starValue}/>
+                      <i data-testid='toggle-star-rating' id={starValue} onClick={this.toggleStar}
                         className={starValue <= this.state.starRating ? "fa-solid fa-star" : "fa-regular fa-star"}>
                       </i>
                     </label>
                   )}
+                  <span>{displayStarRatingText} </span>
                 </div>
 
-                <label htmlFor='recommed'>Do you recommend this product?*</label>
-                  <input onChange={this.onChange} type='radio' name='recommend' value='true' />Yes
-                  <input onChange={this.onChange} type='radio' name='recommend' value='false' />No
-                <br></br> <br></br> <br></br>
+                <label htmlFor='recommend'>Do you recommend this product?*</label>
+                  <input data-testid='recommend-yes' onChange={this.onChange} type='radio' name='recommend' value={true} />Yes
+                  <input data-testid='recommend-no' onChange={this.onChange} type='radio' name='recommend' value={false} />No
+                <br></br> <br></br>
 
-                <h1>Characteristics* PLACEHOLDER - IGNORE FOR NOW </h1>
-                <label htmlFor='characteristics'>Size:</label>
-                  <input onChange={this.onChange} type='radio' name='Size' value='1' />A size too small
-                  <input onChange={this.onChange} type='radio' name='Size' value='2' />½ a size too small
-                  <input onChange={this.onChange} type='radio' name='Size' value='3' />Perfect
-                  <input onChange={this.onChange} type='radio' name='Size' value='4' />½ a size too big
-                  <input onChange={this.onChange} type='radio' name='Size' value='5' />A size too wide
-                <br></br> <br></br> <br></br>
+                <div>
+                  {this.characteristicsVote()}
+                </div>
+                <br></br>
 
-                <label htmlFor='summary'>Summary:</label>
-                  <textarea onChange={this.onChange} name='summary' maxLength='60' rows='3' cols='30' placeholder='Example: Best purchase ever!' />
-                <br></br> <br></br> <br></br>
+                <label htmlFor='summary'>Summary:</label><br></br>
+                  <textarea onChange={this.onChange} className='add-review-textarea' name='summary' id='summary' maxLength='60' rows='2' placeholder='Example: Best purchase ever!' />
+                <br></br> <br></br>
 
-                <label htmlFor='body'>Body*:</label>
-                <textarea onChange={this.onChange} name='body' maxLength='1000' rows='5' cols='30' required='required' placeholder='Why did you like the product or not?' />
-                <p>{`${this.getCountText()}`}</p>
-                <br></br> <br></br> <br></br>
+                <label htmlFor='body'>Body*:</label><br></br>
+                  <textarea onChange={this.onChange} className='add-review-textarea' name='body' id='body' maxLength='1000' rows='3' required='required' placeholder='Why did you like about the product or not?' />
+                  <p>{`${this.getCountText()}`}</p>
+                <br></br> <br></br>
 
-                <label htmlFor='photos'>Upload Photos </label><br></br><br></br>
-                  <input onChange={this.handlePhotosUpload} type='file' accept='.jpg, .jpeg, .png, .svg, .gif' multiple />
-                  {this.state.photos.map((photoURL, index) => {
-                    return <img src={photoURL} key={index} className='review-thumbnail'></img>
+                <label htmlFor='photos'>Upload Photos</label><br></br> <br></br>
+                  {displayAddPhotosBtn}<br></br>
+                  {this.state.photoThumbnails.map((thumbnailURL, index) => {
+                    return <img src={thumbnailURL} key={index} className='review-thumbnail'></img>
                   })}
-                <br></br> <br></br> <br></br>
+                <br></br> <br></br>
 
                 <label htmlFor='name'>Name*: </label>
-                  <input type='text' maxLength='60' placeholder='Example: jackson11' required='required' />
+                  <input className='add-review-input-fld' onChange={this.onChange} type='text' maxLength='60' required='required' name='name' placeholder='Example: jackson11'/>
                   <p>For privacy reasons, do not use your full name or email address</p>
-                <br></br> <br></br> <br></br>
+                <br></br> <br></br>
 
-                <label htmlFor='name'>Email*: </label>
-                  <input type='email' maxLength='60' rows='10' cols='30' required='required' placeholder='Example: jackson11@email.com' />
+                <label htmlFor='email'>Email*: </label>
+                  <input className='add-review-input-fld' onChange={this.onChange} type='email' maxLength='60' rows='10' cols='30' required='required' name='email' placeholder='Example: jackson11@email.com' />
                   <p>For authentication reasons, you will not be emailed</p>
-                <br></br>
               </form>
             </div>
 
             <div className="add-review-modal-footer">
-              <button onClick={this.props.toggleReviewModal} className="button">Submit</button>
+              <button onClick={this.handleSubmit} className="button">Submit</button>
             </div>
+          </div>
         </div>
-      </div>
       )
     }
   }

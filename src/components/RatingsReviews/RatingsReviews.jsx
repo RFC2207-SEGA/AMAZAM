@@ -13,10 +13,12 @@ class RatingsReviews extends React.Component {
     this.state = {
       reviews: [],
       sort: 'relevant',
-      showAddReviewModal: false
+      showAddReviewModal: false,
+      reviewsToDiplay: 2
     }
     this.handleSort = this.handleSort.bind(this);
     this.toggleReviewModal = this.toggleReviewModal.bind(this);
+    this.setNumReviewsToDisplay = this.setNumReviewsToDisplay.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -24,8 +26,8 @@ class RatingsReviews extends React.Component {
       axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews', {
         headers: {'Authorization': `${API_KEY}`},
         params: {
-          count: 2,
-          page: 1,
+          count: 50,
+          // page: 1,
           product_id: this.props.product.id,
           sort: 'relevant'
         }})
@@ -44,7 +46,7 @@ class RatingsReviews extends React.Component {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews', {
       headers: {'Authorization': `${API_KEY}`},
       params: {
-        count: 10,
+        // count: 10,
         product_id: this.props.product.id,
         sort: sortMethod
       }})
@@ -59,6 +61,17 @@ class RatingsReviews extends React.Component {
     this.setState({ showAddReviewModal: !this.state.showAddReviewModal })
   }
 
+  setNumReviewsToDisplay() {
+    if (this.state.reviewsToDiplay >= 2 && this.state.reviewsToDiplay < this.state.reviews.length) {
+      return <button onClick={(e) => {
+        e.preventDefault()
+        this.setState({reviewsToDiplay: this.state.reviewsToDiplay + 2})
+      }}
+      > More Reviews </button>
+    }
+  }
+
+
   render() {
     return (
       <div ref={this.props.ref} id='primary-ratings-and-reviews-widget-container'>
@@ -70,20 +83,23 @@ class RatingsReviews extends React.Component {
             <div><ProductBreakdown reviewMeta={this.props.reviewMeta}/></div>
           </div>
 
-          <div className='reviews-list'>
-            <span>{`${this.state.reviews.length} reviews, sorted by `}</span>
-            <span>
-              <select onChange={this.handleSort}>
-                <option value='relevant'>Relevance</option>
-                <option value='helpful'>Helpfulness</option>
-                <option value='newest'>Newest</option>
-              </select>
-            </span>
-            <ReviewsList reviews={this.state.reviews} />
+          <div className='reviews-list-container'>
+            <div className='review-list-hdr'>
+              <span>{`${this.state.reviewsToDiplay} reviews, sorted by `}</span>
+              <span>
+                <select onChange={this.handleSort}>
+                  <option value='relevant'>Relevance</option>
+                  <option value='helpful'>Helpfulness</option>
+                  <option value='newest'>Newest</option>
+                </select>
+              </span>
+            </div>
 
+            <ReviewsList
+              reviews={this.state.reviews.slice(0, this.state.reviewsToDiplay)}/>
 
             <div className='footer-btns'>
-              <button>More Reviews</button>
+              {this.setNumReviewsToDisplay()}
               <button onClick={this.toggleReviewModal}>Add A Review</button>
               <div><AddReview
                 toggleReviewModal={this.toggleReviewModal}
@@ -102,3 +118,4 @@ class RatingsReviews extends React.Component {
 }
 
 export default RatingsReviews;
+

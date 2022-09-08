@@ -1,4 +1,5 @@
 import React from 'react';
+import Stars from '../../../src/components/Stars.jsx'
 
 
 function RatingBreakdown ({ reviewMeta }) {
@@ -51,7 +52,8 @@ function RatingBreakdown ({ reviewMeta }) {
   return (
     <div className='ratings-breakdown-container'>
       <div>
-        <span>{avgRating()}</span> stars placeholder <i className="fa-solid fa-star"></i>
+        <span className='avg-rating' data-testid='stars'>{avgRating()} </span>
+        <Stars rating={avgRating()}/>
       </div>
 
       <table className='ratings-breakdown-table'>
@@ -59,7 +61,7 @@ function RatingBreakdown ({ reviewMeta }) {
         {Object.entries(starPct).reverse().map(([key, value], index) => {
           return (
             <tr key={index}>
-              <td><a href=''>{key} stars</a></td>
+              <td className='rating-bar-graph-label'><a href=''>{key} stars</a></td>
               <td className='bar-graph-container'>
                 <div className='bar-graph-underlay'></div>
                 <div className='bar-graph-overlay' style={{'width': `${value}%`}}></div>
@@ -79,3 +81,4 @@ function RatingBreakdown ({ reviewMeta }) {
 }
 
 export default RatingBreakdown;
+
