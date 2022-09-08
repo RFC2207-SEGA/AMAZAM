@@ -1,6 +1,10 @@
 import React from 'react';
 
 const Outfit = ({ product, styles, rating, select, remove }) => {
+  let starRating = []
+  for (let i = 0; i < Math.round(rating); i++) {
+    starRating.push(<i class="fa-solid fa-star"></i>)
+  }
   if (product && styles) {
     var photoUrl = styles.photos[0].thumbnail_url;
     let salesPrice = 0;
@@ -13,8 +17,8 @@ const Outfit = ({ product, styles, rating, select, remove }) => {
           <span><i class="fa-solid fa-x"></i></span>
           <img onClick={() => { select(product) }}
             src={photoUrl}
-            width="75"
-            height="100"></img>
+            width="100"
+            height="150"></img>
           <div className="related-name">
             {product.name}
           </div>
@@ -25,7 +29,7 @@ const Outfit = ({ product, styles, rating, select, remove }) => {
             ${styles.original_price}
           </div>
           <div className="related-rating">
-            {rating} stars
+            {starRating}
           </div>
         </div>
       )
@@ -43,7 +47,7 @@ const Outfit = ({ product, styles, rating, select, remove }) => {
               ${styles.original_price}
             </div>
             <div className="related-rating">
-              {rating} stars
+              {starRating}
             </div>
           </div>
         )
@@ -52,8 +56,8 @@ const Outfit = ({ product, styles, rating, select, remove }) => {
           <div className="action-button" onClick={() => { remove(product, styles, rating) }}><i class="fa-solid fa-x"></i></div>
           <img onClick={() => { select(product) }}
             src={photoUrl}
-            width="75"
-            height="100"></img>
+            width="100"
+            height="150"></img>
           <div className="related-name">
             {product.name}
           </div>
@@ -61,7 +65,7 @@ const Outfit = ({ product, styles, rating, select, remove }) => {
             ${styles.original_price}
           </div>
           <div className="related-rating">
-            {rating} stars
+            {starRating}
           </div>
         </div>
       )

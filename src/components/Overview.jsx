@@ -8,6 +8,7 @@ import axios from 'axios';
 import {API_KEY} from '../config/config.js';
 // import axios from 'axios';
 
+
 class Overview extends React.Component {
   constructor(props) {
     super(props)
@@ -121,6 +122,7 @@ class Overview extends React.Component {
       currentSize: '',
       photoIndex: 1,
       currentQuant: '',
+      rating: '',
     }
   }
 
@@ -131,9 +133,6 @@ class Overview extends React.Component {
       {headers: {'Authorization': `${API_KEY}`}, params: { product_id: this.props.product.id}})
         .then((productInfo) => {
           this.setState({ 'productInfo': productInfo.data.features, 'currentProduct': this.props.product.id })
-        })
-        .catch((err) => {
-          console.log(err);
         })
         .then(() => {
           return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${this.props.product.id}/styles`, {headers: {'Authorization': `${API_KEY}`},
@@ -147,6 +146,15 @@ class Overview extends React.Component {
           return this.setState({ 'productStyles': productStyles.data.results, 'currentStyle': productStyles.data.results[0], 'sizes': sizes})
         })
         .then(() => {
+          let rating;
+          var average = 0;
+          var numOfKeys = 0;
+          for (var key in this.props.meta.ratings) {
+            average += (key * this.props.meta.ratings[key])
+            numOfKeys += parseInt(this.props.meta.ratings[key]);
+          }
+          rating = (average / numOfKeys).toFixed(2)
+          this.setState({ 'rating': rating })
           this.onSale();
           return;
         })
@@ -194,7 +202,7 @@ class Overview extends React.Component {
         }
       }
     }
-    this.setState({ 'currentSize': n.target.value, 'quantities': quantities })
+    this.setState({ 'currentSize': n.target.value, 'quantities': quantities, 'currentQuant': 1 })
   }
 
   pickQuantity(n) {
@@ -221,7 +229,7 @@ class Overview extends React.Component {
             <Gallery style={this.state.currentStyle} index={this.state.photoIndex} movePhoto={this.movePhoto.bind(this)}/>
           </div>
           <section className="product-info">
-            <ProductInfo product={this.props.product} style={this.state.currentStyle} onSale={this.state.onSale}/>
+            <ProductInfo rating={this.state.rating} product={this.props.product} style={this.state.currentStyle} onSale={this.state.onSale} scroll={this.props.scroll}/>
             <StyleSelector style={this.state.currentStyle.name} styles={this.state.productStyles} onClick={this.styleSelect.bind(this)}/>
             <OverviewSelectors pickSize={this.pickSize.bind(this)} sizes={this.state.sizes} currentSize={this.state.currentSize} quantities={this.state.quantities} addToCart={this.addToCart.bind(this)} pickQuantity={this.pickQuantity.bind(this)}/>
             <span className="social-links">
@@ -229,7 +237,7 @@ class Overview extends React.Component {
           </section>
         </div>
         <div className="product-description">
-          <div className="product-slogan">
+          <div data-testid="product-slogan" className="product-slogan">
             <h1 className="slogan-header">{this.props.product.slogan}:</h1>
             <p>{this.props.product.description}</p>
           </div>
@@ -237,7 +245,7 @@ class Overview extends React.Component {
             <div className="product-features"> <i class="fa-solid fa-check"></i> {feat.feature}: {feat.value}</div>))}</div>
         </div>
         <div>
-        <Related product={this.props.product} select={this.props.select} style={this.state.currentStyle} info={this.state.productInfo}/>
+        <Related product={this.props.product} select={this.props.select} style={this.state.currentStyle} info={this.state.productInfo} mainRating={this.state.rating}/>
         </div>
       </div>
       )
