@@ -60,6 +60,7 @@ class RatingsReviews extends React.Component {
     this.setState({ showAddReviewModal: !this.state.showAddReviewModal })
   }
 
+
   render() {
     return (
       <div id='primary-ratings-and-reviews-widget-container'>
@@ -103,3 +104,16 @@ class RatingsReviews extends React.Component {
 }
 
 export default RatingsReviews;
+
+
+
+// {
+//   "product_id":66642,
+//   "rating":4,
+//   "summary":"Testing to see if pics work!","body":"Cool purchase! Don't regret buying at all! You should get one, too!",
+//   "recommend":true,
+//   "name":"Kelly",
+//   "email":"kapoor@gmail.com",
+//   "photoURLs":["http://res.cloudinary.com/dedcgmjbe/image/upload/v1662595189/tsumr4rtgthes21oqadw.png","http://res.cloudinary.com/dedcgmjbe/image/upload/v1662595204/tkgklll9owxentuke7zo.png"],
+//   "characteristics":{"223572":3,"223573":3,"223574":3,"223575":3}
+//   }

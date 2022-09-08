@@ -1,12 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import { API_KEY } from '../../../src/config/config.js';
+import CloudinaryUploadWidget from '../../../src/components/PhotoUploadWidget.jsx'
 
 class AddReview extends React.Component {
   constructor(props) {
     super(props);
-
-    this.photoLinks = []
 
     this.postData = {
       product_id: 0,
@@ -16,7 +15,7 @@ class AddReview extends React.Component {
       recommend: false,
       name: '',
       email: '',
-      photoFiles: [],
+      photos: [],
       characteristics: {}
     }
 
@@ -34,15 +33,16 @@ class AddReview extends React.Component {
     this.state = {
       starRating: 0,
       post: {},
-      photos: []
+      photoThumbnails: []
     }
 
     this.toggleStar = this.toggleStar.bind(this)
     this.onChange = this.onChange.bind(this)
     this.getCountText = this.getCountText.bind(this)
-    this.handlePhotosUpload = this.handlePhotosUpload.bind(this)
+    // this.handlePhotosUpload = this.handlePhotosUpload.bind(this)
     this.characteristicsVote = this.characteristicsVote.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handlePhotoUploadResponse = this.handlePhotoUploadResponse.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -91,18 +91,11 @@ class AddReview extends React.Component {
     }
   }
 
-  handlePhotosUpload(e) {
-    console.log('e.target.files ', e.target.files);
-    if ((this.state.photos.length + e.target.files.length) <= 5) {
-      for (var i = 0; i < e.target.files.length; i++) {
-        this.postData.photoFiles.push(e.target.files[i]);
-        this.photoLinks.push(URL.createObjectURL(e.target.files[i]))
-        console.log('photos array:', this.postData.photos)
-      }
-      this.setState({ photos: this.photoLinks });
-    } else {
-      alert('Please limit the number of photos 📸 to five.')
-    }
+  handlePhotoUploadResponse(photoURLs, thumbnailURLs) {
+    this.postData.photos = photoURLs
+    this.setState({photoThumbnails: thumbnailURLs})
+    console.log('this.postData.photos', this.postData.photos)
+    console.log('this.photoThumbnails', this.photoThumbnails)
   }
 
   characteristicsVote() {
@@ -125,46 +118,29 @@ class AddReview extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let formData = new FormData();
-    this.postData.photoFiles.forEach((photoFile, index) => {
-      formData.append('photo' + index, photoFile, photoFile.name);
-    })
-    for (var key in this.postData) {
-      if (key === 'characteristics') {
-        for (var characteristicsKey in this.postData[key]) {
-          formData.append(`characteristics[\'${characteristicsKey}\']`, this.postData[key][characteristicsKey]);
-        }
-      }else if (key !== 'photoFiles') {
-        formData.append(key, this.postData[key]);
-      }
-    }
-    console.log('on submit post data:', formData)
-    for (var key of formData.entries()) {
-      console.log(key[0] + ', ' + key[1]);
-    }
     axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews',
-      formData, {
-      headers: {
-        'Authorization': `${API_KEY}`,
-        'Content-Type': 'multipart/form-data',
-        'Access-Control-Allow-Credentials':true
-      },
-      proxy:'https://app-hrsei-api.herokuapp.com/'
+      this.postData, {
+      headers: {'Authorization': `${API_KEY}`}
     })
-    .then(res => console.log(res))
+    .then((res) => {
+      console.log(res)
+      this.props.toggleReviewModal()
+    })
     .catch(err => console.log(err))
+
   };
 
 
   render() {
+
     if (this.state.starRating > 0) {
       var ratingOptions = ['Poor', 'Fair', 'Average', 'Good', 'Great']
       var displayStarRatingText = <span className='star-rating-text'>{ratingOptions[this.state.starRating - 1]}</span>
     }
 
 
-    if (this.state.photos.length < 5) {
-      var displayAddPhotosBtn = <><input className='upload-photos-btn' onChange={this.handlePhotosUpload} type='file' accept='.jpg, .jpeg, .png, .svg, .gif' multiple /><br></br></>
+    if (this.postData.photos.length < 5) {
+      var displayAddPhotosBtn = <> <CloudinaryUploadWidget handlePhotoUploadResponse={this.handlePhotoUploadResponse}/> </>
     } else {
       var displayAddPhotosBtn = <><br></br><p>Max Number of Photos 📸 Reached</p></>
     }
@@ -215,9 +191,9 @@ class AddReview extends React.Component {
                 <br></br> <br></br>
 
                 <label htmlFor='photos'>Upload Photos</label><br></br>
-                  {displayAddPhotosBtn}
-                  {this.state.photos.map((photoURL, index) => {
-                    return <img src={photoURL} key={index} className='review-thumbnail'></img>
+                  {displayAddPhotosBtn}<br></br>
+                  {this.state.photoThumbnails.map((thumbnailURL, index) => {
+                    return <img src={thumbnailURL} key={index} className='review-thumbnail'></img>
                   })}
                 <br></br> <br></br>
 
