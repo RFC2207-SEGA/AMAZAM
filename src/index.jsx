@@ -1,8 +1,5 @@
 const axios = require('axios');
-// Bring React in to build a components
-// Import from react-dom the ability to create a root render
 import QList from './components/Q&A/QList.jsx';
-// create the root of the app by selection where the app should be mounted in the dom
 import Overview from "./components/Overview.jsx"
 import TitleBar from "./components/TitleBar.jsx"
 import React from 'react';
@@ -48,7 +45,6 @@ class App extends React.Component {
 
 
   selectProduct(product) {
-    console.log('selectProduct was clicked!')
     this.setState({ 'product': product })
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta', {
       headers: {'Authorization': `${API_KEY}`},

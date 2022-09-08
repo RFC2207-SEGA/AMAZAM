@@ -32,7 +32,6 @@ class RatingsReviews extends React.Component {
           sort: 'relevant'
         }})
       .then((res) => {
-        console.log('res.data.results', res.data.results)
         this.setState({reviews: res.data.results})
       })
       .catch((err) =>
@@ -52,7 +51,6 @@ class RatingsReviews extends React.Component {
         sort: sortMethod
       }})
     .then((res) => {
-      console.log('res.data.results', res.data.results)
       this.setState({ reviews: res.data.results })
     })
     .catch((err) =>

@@ -39,7 +39,6 @@ class AddReview extends React.Component {
     this.toggleStar = this.toggleStar.bind(this)
     this.onChange = this.onChange.bind(this)
     this.getCountText = this.getCountText.bind(this)
-    // this.handlePhotosUpload = this.handlePhotosUpload.bind(this)
     this.characteristicsVote = this.characteristicsVote.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handlePhotoUploadResponse = this.handlePhotoUploadResponse.bind(this);
@@ -125,8 +124,7 @@ class AddReview extends React.Component {
       this.props.toggleReviewModal()
     })
     .catch(err => console.log(err))
-
-  };
+  }
 
 
   render() {
@@ -135,7 +133,6 @@ class AddReview extends React.Component {
       var ratingOptions = ['Poor', 'Fair', 'Average', 'Good', 'Great']
       var displayStarRatingText = <span className='star-rating-text'>{ratingOptions[this.state.starRating - 1]}</span>
     }
-
 
     if (this.postData.photos.length < 5) {
       var displayAddPhotosBtn = <> <CloudinaryUploadWidget handlePhotoUploadResponse={this.handlePhotoUploadResponse}/> </>
