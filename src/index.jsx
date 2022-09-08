@@ -1,16 +1,20 @@
 const axios = require('axios');
+// Bring React in to build a components
+// Import from react-dom the ability to create a root render
+import QList from './components/Q&A/QList.jsx';
+// create the root of the app by selection where the app should be mounted in the dom
+import Overview from "./components/Overview.jsx"
+import TitleBar from "./components/TitleBar.jsx"
 import React from 'react';
 import { API_KEY } from './config/config.js';
 import { createRoot } from 'react-dom/client';
-import Overview from './components/Overview.jsx';
-import TitleBar from './components/TitleBar.jsx';
 import RatingsReviews from './components/RatingsReviews/RatingsReviews.jsx';
 const root = createRoot(document.getElementById("root"));
 
 
 class App extends React.Component {
   constructor(props) {
-    super (props)
+    super(props);
     this.state = {
       products: [],
       product: {},
@@ -61,16 +65,18 @@ class App extends React.Component {
 
   render () {
     return (
+
       <div>
+
         <TitleBar />
         <div className="title-streamer">Site-wide announcement message... SALE / DISCOUNT Offer... new Product Highlight</div>
 
         <Overview product={this.state.product} select={this.selectProduct.bind(this)} />
-
-        {/* <QA product={this.state.product} select={this.selectProduct.bind(this)}/> */}
-
+        {/* <Related product={this.state.product} select={this.selectProduct.bind(this)} /> */}
+        {/* <Reviews product={this.state.product} select={this.selectProduct.bind(this)}/>
+        */<QList product={this.state.product} select={this.selectProduct.bind(this)} />/*
+        <Related products={this.state.products} product={this.state.product} select={this.selectProduct.bind(this)}/> */}
         <RatingsReviews product={this.state.product} reviewMeta={this.state.reviewMeta} select={this.selectProduct.bind(this)}/>
-
       </div>
     )
   }
