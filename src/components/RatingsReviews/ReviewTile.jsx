@@ -5,7 +5,7 @@ function ReviewTile ({ review }) {
 
   function reviewerRec() {
     if (review.recommend) {
-      return <div> ✔️ I recommend this product </div>
+      return <div className='reviewer-rec-yes'> <i class="fa-solid fa-check"></i> I recommend this product </div>
     }
   }
 
@@ -27,12 +27,15 @@ function ReviewTile ({ review }) {
 
   return (
     <div className='review-tile'>
-      <div><Stars rating={review.rating}/></div>
-      <div data-testid='reviewer-name-and-date' className='reviewer-name-and-date'>
-        <span>{review.reviewer_name}</span>, <span>{formatDate(review.date)}</span>
+      <div className='stars-username-date'>
+        <span><Stars rating={review.rating}/></span>
+        <span data-testid='reviewer-name-and-date' >
+          <span>{review.reviewer_name}</span>, <span>{formatDate(review.date)}</span>
+        </span>
+
       </div>
 
-      <h3 className='review-summary'>{review.summary}</h3>
+      <p className='review-summary'>{review.summary}</p>
       <p className='review-body'>{review.body}</p>
 
       <div>
@@ -50,10 +53,10 @@ function ReviewTile ({ review }) {
         <a href="">Yes</a>
         <span> ({review.helpfulness}) </span>
         <a href="">No</a>
-        <br></br> <br></br>
-        <div>
+        {'    |    '}
+        <span>
           <a href="">Report</a>
-        </div>
+        </span>
       </div>
 
     </div>

@@ -52,7 +52,7 @@ function RatingBreakdown ({ reviewMeta }) {
   return (
     <div className='ratings-breakdown-container'>
       <div>
-        <span data-testid='stars placeholder'>{avgRating()} </span>
+        <span className='avg-rating' data-testid='stars'>{avgRating()} </span>
         <Stars rating={avgRating()}/>
       </div>
 
@@ -61,7 +61,7 @@ function RatingBreakdown ({ reviewMeta }) {
         {Object.entries(starPct).reverse().map(([key, value], index) => {
           return (
             <tr key={index}>
-              <td><a href=''>{key} stars</a></td>
+              <td className='rating-bar-graph-label'><a href=''>{key} stars</a></td>
               <td className='bar-graph-container'>
                 <div className='bar-graph-underlay'></div>
                 <div className='bar-graph-overlay' style={{'width': `${value}%`}}></div>
@@ -81,3 +81,4 @@ function RatingBreakdown ({ reviewMeta }) {
 }
 
 export default RatingBreakdown;
+

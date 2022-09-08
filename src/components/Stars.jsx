@@ -2,25 +2,35 @@ import React from 'react';
 
 function Stars ({ rating }) {
 
+  var starsUnderlay = [
+    <span className='stars-underlay'>
+      <i class="fa-regular fa-star"></i>
+      <i class="fa-regular fa-star"></i>
+      <i class="fa-regular fa-star"></i>
+      <i class="fa-regular fa-star"></i>
+      <i class="fa-regular fa-star"></i>
+    </span>]
+
   function getStarsIcons() {
     let ratingToNum = parseFloat(rating)
     let roundedToQtrPct = (Math.round(ratingToNum * 4) / 4).toFixed(2);
-    let starsContainer = []
+    let starsOverlay = []
     while (roundedToQtrPct > 0) {
       if (roundedToQtrPct < 1) {
-        starsContainer.push(<i className="fa-solid fa-star" style={{width: `${(roundedToQtrPct * 16)}px`, overflow: 'hidden', position: 'absolute'}}></i>)
+        starsOverlay.push(<i className="fa-solid fa-star" style={{width: `${(roundedToQtrPct * 16)}px`, overflow: 'hidden', position: 'absolute'}}></i>)
         roundedToQtrPct = 0;
       } else {
-        starsContainer.push(<i className="fa-solid fa-star"></i>)
+        starsOverlay.push(<i className="fa-solid fa-star"></i>)
         roundedToQtrPct--;
       }
     }
-    return starsContainer;
+    return starsOverlay;
   }
 
 
   return (
     <span className='stars-component'>
+      {starsUnderlay}
       {getStarsIcons()}
     </span>
   )

@@ -65,7 +65,7 @@ class App extends React.Component {
         <TitleBar />
         <div className="title-streamer">Site-wide announcement message... SALE / DISCOUNT Offer... new Product Highlight</div>
 
-        {/* <Overview product={this.state.product} select={this.selectProduct.bind(this)} /> */}
+        <Overview product={this.state.product} select={this.selectProduct.bind(this)} />
 
         {/* <QA product={this.state.product} select={this.selectProduct.bind(this)}/> */}
 

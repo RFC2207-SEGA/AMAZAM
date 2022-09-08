@@ -94,8 +94,6 @@ class AddReview extends React.Component {
   handlePhotoUploadResponse(photoURLs, thumbnailURLs) {
     this.postData.photos = photoURLs
     this.setState({photoThumbnails: thumbnailURLs})
-    console.log('this.postData.photos', this.postData.photos)
-    console.log('this.photoThumbnails', this.photoThumbnails)
   }
 
   characteristicsVote() {
@@ -190,7 +188,7 @@ class AddReview extends React.Component {
                   <p>{`${this.getCountText()}`}</p>
                 <br></br> <br></br>
 
-                <label htmlFor='photos'>Upload Photos</label><br></br>
+                <label htmlFor='photos'>Upload Photos</label><br></br> <br></br>
                   {displayAddPhotosBtn}<br></br>
                   {this.state.photoThumbnails.map((thumbnailURL, index) => {
                     return <img src={thumbnailURL} key={index} className='review-thumbnail'></img>

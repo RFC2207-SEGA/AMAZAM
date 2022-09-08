@@ -3,11 +3,11 @@ import ReviewTile from './ReviewTile.jsx';
 
 function ReviewsList ({ reviews }) {
   return (
-    <>
-      {reviews.map(review =>
+    <div className='reviews-list'>
+      {reviews.map((review) =>
         <ReviewTile review={review} key={review.review_id} />
       )}
-    </>
+    </div>
   )
 }
 

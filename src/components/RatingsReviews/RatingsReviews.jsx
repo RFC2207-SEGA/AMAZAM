@@ -13,10 +13,12 @@ class RatingsReviews extends React.Component {
     this.state = {
       reviews: [],
       sort: 'relevant',
-      showAddReviewModal: false
+      showAddReviewModal: false,
+      reviewsToDiplay: 2
     }
     this.handleSort = this.handleSort.bind(this);
     this.toggleReviewModal = this.toggleReviewModal.bind(this);
+    this.setNumReviewsToDisplay = this.setNumReviewsToDisplay.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -24,14 +26,14 @@ class RatingsReviews extends React.Component {
       axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews', {
         headers: {'Authorization': `${API_KEY}`},
         params: {
-          count: 2,
-          page: 1,
+          count: 50,
+          // page: 1,
           product_id: this.props.product.id,
           sort: 'relevant'
         }})
       .then((res) => {
+        console.log('res.data.results', res.data.results)
         this.setState({reviews: res.data.results})
-        console.log('reviews from componentDidUpdate:', res.data.results)
       })
       .catch((err) =>
         console.log(err));
@@ -45,11 +47,12 @@ class RatingsReviews extends React.Component {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews', {
       headers: {'Authorization': `${API_KEY}`},
       params: {
-        count: 10,
+        // count: 10,
         product_id: this.props.product.id,
         sort: sortMethod
       }})
     .then((res) => {
+      console.log('res.data.results', res.data.results)
       this.setState({ reviews: res.data.results })
     })
     .catch((err) =>
@@ -58,6 +61,16 @@ class RatingsReviews extends React.Component {
 
   toggleReviewModal() {
     this.setState({ showAddReviewModal: !this.state.showAddReviewModal })
+  }
+
+  setNumReviewsToDisplay() {
+    if (this.state.reviewsToDiplay >= 2 && this.state.reviewsToDiplay < this.state.reviews.length) {
+      return <button onClick={(e) => {
+        e.preventDefault()
+        this.setState({reviewsToDiplay: this.state.reviewsToDiplay + 2})
+      }}
+      > More Reviews </button>
+    }
   }
 
 
@@ -72,20 +85,24 @@ class RatingsReviews extends React.Component {
             <div><ProductBreakdown reviewMeta={this.props.reviewMeta}/></div>
           </div>
 
-          <div className='reviews-list'>
-            <span>{`${this.state.reviews.length} reviews, sorted by `}</span>
-            <span>
-              <select onChange={this.handleSort}>
-                <option value='relevant'>Relevance</option>
-                <option value='helpful'>Helpfulness</option>
-                <option value='newest'>Newest</option>
-              </select>
-            </span>
-            <ReviewsList reviews={this.state.reviews} />
+          <div className='reviews-list-container'>
+            <div className='review-list-hdr'>
+              <span>{`${this.state.reviewsToDiplay} reviews, sorted by `}</span>
+              <span>
+                <select onChange={this.handleSort}>
+                  <option value='relevant'>Relevance</option>
+                  <option value='helpful'>Helpfulness</option>
+                  <option value='newest'>Newest</option>
+                </select>
+              </span>
+            </div>
+
+            <ReviewsList
+              reviews={this.state.reviews.slice(0, this.state.reviewsToDiplay)}/>
 
 
             <div className='footer-btns'>
-              <button>More Reviews</button>
+              {this.setNumReviewsToDisplay()}
               <button onClick={this.toggleReviewModal}>Add A Review</button>
               <div><AddReview
                 toggleReviewModal={this.toggleReviewModal}
@@ -105,15 +122,3 @@ class RatingsReviews extends React.Component {
 
 export default RatingsReviews;
 
-
-
-// {
-//   "product_id":66642,
-//   "rating":4,
-//   "summary":"Testing to see if pics work!","body":"Cool purchase! Don't regret buying at all! You should get one, too!",
-//   "recommend":true,
-//   "name":"Kelly",
-//   "email":"kapoor@gmail.com",
-//   "photoURLs":["http://res.cloudinary.com/dedcgmjbe/image/upload/v1662595189/tsumr4rtgthes21oqadw.png","http://res.cloudinary.com/dedcgmjbe/image/upload/v1662595204/tkgklll9owxentuke7zo.png"],
-//   "characteristics":{"223572":3,"223573":3,"223574":3,"223575":3}
-//   }

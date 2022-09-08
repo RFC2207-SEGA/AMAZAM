@@ -264,9 +264,9 @@ table {
 Ratings and Revies Main Component
 */
 #primary-ratings-and-reviews-widget-container {
-	margin-left: 10%;
-	margin-right: 10%;
-	margin-bottom: 5%;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-bottom: 10%;
 }
 .reviews-ratings-hdr {
 	font-size: large;
@@ -282,25 +282,34 @@ Ratings and Revies Main Component
 .breakdowns {
 	flex: 1;
 	order: 1;
-	width: 25%;
+	width: 500px;
 	flex-direction: column;
 }
 
-.reviews-list {
+.reviews-list-container {
 	flex: 2;
 	order: 2;
-	width: 75%;
 }
 
 /*
 Review List/Tiles Sub-component
 */
+
+.reviews-list {
+	height: 500px;
+	width: 900px;
+	overflow-y: auto;
+}
+
+.review-list-hdr{
+	margin-bottom: 20px;
+}
+
 .review-tile {
 	margin-top: 30px;
 	margin-bottom: 30px;
 	margin-right: 20px;
 	border-top: 1px solid #eee;
-	padding-top: 2%;
 }
 
 .review-thumbnail {
@@ -308,27 +317,35 @@ Review List/Tiles Sub-component
 	margin: 1%
 }
 
-.reviewer-name-and-date {
+.stars-username-date {
 	font-size: small;
 	margin-top: 1%;
 	margin-bottom: 1%;
+	display: flex;
+	justify-content: space-between;
 }
 
 .review-summary {
 	margin-top: 1%;
 	margin-bottom: 1%;
+	font-size: 20px;
+	font-weight: bold;
 }
 
 .review-body {
 	margin-top: 1%;
 	margin-bottom: 1%;
-	font-size: small;
+	font-size: 16px;
+}
+
+.reviewer-rec-yes {
+	font-size: 14px;
 }
 
 .vote-helpfulness-and-report {
 	margin-top: 1%;
 	margin-bottom: 1%;
-	font-size: small;
+	font-size: 14px;
 }
 
 .seller-response {
@@ -339,33 +356,42 @@ Review List/Tiles Sub-component
 Ratings Breakdown Sub-component
 */
 .ratings-breakdown-container {
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin: 10px;
+}
+
+.avg-rating {
+	font-size: 16px;
 }
 
 .ratings-breakdown-table {
 	margin-top: 10px;
 	margin-bottom: 5px;
-	width: 100%;
+	width: 500px;
 }
 
 .ratings-breakdown-table td {
-	padding-top: 2%;
-	padding-bottom: 2%;
+	padding-top: 3%;
+	padding-bottom: 3%;
+}
+
+
+.rating-bar-graph-label {
+	width: 50px;
+	font-size: 14px;
 }
 
 .bar-graph-container {
 	position: relative;
 	z-index: 1;
-	width: 90%;
+	width: 425px;
 }
 
 .bar-graph-underlay {
 	position: absolute;
   z-index: 1;
   height: 10px;
-  width: 95%;
-	margin-left: 3px;
+  width: 425px;
+	margin-left: 10px;
   background-color: rgb(225, 225, 225);
 }
 
@@ -373,12 +399,10 @@ Ratings Breakdown Sub-component
 	position: absolute;
 	z-index: 2;
   height: 10px;
-	margin-left: 3px;
   background-color: rgb(70, 70, 70);
 }
 
 .recommendations {
-	padding-top: 10px;
 	padding-bottom: 30px;
 }
 
@@ -388,6 +412,7 @@ Product Breakdown Sub-component
 */
 .product-breakdown-main {
 	margin: 10px;
+	width: 500px;
 }
 
 .range-bar-container {
@@ -441,12 +466,14 @@ Add Review Modal
 	justify-content: center;
 	z-index: 3;
 	max-height: 100%;
-	overflow-y: auto;
 }
 
 .add-review-modal-content {
-	width: 600px;
+	width: 615px;
+	height: 700px;
 	background-color: #fff;
+	overflow-y: scroll;
+	scroll-margin: 2%;
 	}
 
 .add-review-modal-header, .add-review-modal-footer {
@@ -470,7 +497,7 @@ Add Review Modal
 }
 
 .add-review-textarea {
-	width: 99%;
+	width: 98%;
 	border: 1px solid #eee;
 	margin-top: 1%;
 	font-size: small;
@@ -481,10 +508,6 @@ Add Review Modal
 	border: 1px solid #eee;
 	font-family: 'futura';
 	padding: 1%;
-}
-
-.upload-photos-btn {
-	margin-top: 1%;
 }
 
 .review-thumbnail {
@@ -543,11 +566,29 @@ Modal - Star Ratings
 
 .star-rating-text {
 	display: inline-block;
-	position: fixed;
+	position: absolute;
 	margin-top: 6px;
 }
 /* ---- */
 
+
+.stars-component {
+	position: relative;
+	z-index: 1;
+	height: 16px;
+}
+
+.stars-underlay {
+	position: absolute;
+	left: 0;
+	z-index: 1;
+	width: 90px;
+}
+
+.fa-star, fa-solid {
+  /* position: absolute; */
+	z-index: 2;
+}
 
 .social-links {
 	padding: 1%;
@@ -775,8 +816,8 @@ i:hover {
 	color: white;
 }
 
-td {
+/* td {
 	margin: 2%;
 	padding: 2%;
 	text-align: center;
-}
+} */

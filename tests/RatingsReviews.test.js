@@ -59,7 +59,7 @@ describe('Ratings and Reviews - Ratings Breakdown', function() {
   const user = userEvent.setup();
 
     it('should contain the stars component', () => {
-      expect(screen.getByTestId('stars placeholder')).toBeInTheDocument()
+      expect(screen.getByTestId('stars')).toBeInTheDocument()
     });
 });
 
