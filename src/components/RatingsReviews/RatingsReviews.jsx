@@ -74,7 +74,7 @@ class RatingsReviews extends React.Component {
 
   render() {
     return (
-      <div id='primary-ratings-and-reviews-widget-container'>
+      <div ref={this.props.ref} id='primary-ratings-and-reviews-widget-container'>
         <div className='reviews-ratings-hdr'>Ratings &amp; Reviews</div>
 
         <div className='reviews-ratings'>
@@ -97,7 +97,6 @@ class RatingsReviews extends React.Component {
 
             <ReviewsList
               reviews={this.state.reviews.slice(0, this.state.reviewsToDiplay)}/>
-
 
             <div className='footer-btns'>
               {this.setNumReviewsToDisplay()}

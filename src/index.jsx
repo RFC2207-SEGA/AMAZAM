@@ -11,7 +11,8 @@ const root = createRoot(document.getElementById("root"));
 
 class App extends React.Component {
   constructor(props) {
-    super(props);
+    super (props)
+    this.myRef = React.createRef()
     this.state = {
       products: [],
       product: {},
@@ -27,11 +28,11 @@ class App extends React.Component {
         page: 1
       }})
     .then(res => {
-      this.setState({ products: res.data, product: res.data[0] })
+      this.setState({ products: res.data, product: res.data[2] })
       console.log('Array of Products: ', res.data)
       return axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta', {
         headers: {'Authorization': `${API_KEY}`},
-        params: {product_id: res.data[0].id}
+        params: {product_id: res.data[2].id}
       })
     })
     .then(res => {
@@ -58,6 +59,9 @@ class App extends React.Component {
       console.log(err));
   }
 
+  executeScroll () {
+    this.myRef.current.scrollIntoView({behavior: 'smooth'})
+  }
 
   render () {
     return (
@@ -66,12 +70,10 @@ class App extends React.Component {
 
         <TitleBar />
         <div className="title-streamer">Site-wide announcement message... SALE / DISCOUNT Offer... new Product Highlight</div>
+        <Overview product={this.state.product} select={this.selectProduct.bind(this)} meta={this.state.reviewMeta} scroll={this.executeScroll.bind(this)}/>
 
-        <Overview product={this.state.product} select={this.selectProduct.bind(this)} />
-        {/* <Related product={this.state.product} select={this.selectProduct.bind(this)} /> */}
-        {/* <Reviews product={this.state.product} select={this.selectProduct.bind(this)}/>
-        */<QList product={this.state.product} select={this.selectProduct.bind(this)} />/*
-        <Related products={this.state.products} product={this.state.product} select={this.selectProduct.bind(this)}/> */}
+        <QList product={this.state.product} select={this.selectProduct.bind(this)} />
+        <div ref={this.myRef}></div>
         <RatingsReviews product={this.state.product} reviewMeta={this.state.reviewMeta} select={this.selectProduct.bind(this)}/>
       </div>
     )

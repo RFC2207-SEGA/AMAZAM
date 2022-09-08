@@ -3,7 +3,7 @@ import React from 'react';
 const MiniPhoto = ({photo, bigPhoto, bigPhotoIndex, onClick, index}) => {
   if (photo===bigPhoto) {
     return (
-      <div className="mini-photo-selected">
+      <div data-testid="mini-photo" className="mini-photo-selected">
         <img
           src={photo.url}
           width="50"
@@ -13,7 +13,7 @@ const MiniPhoto = ({photo, bigPhoto, bigPhotoIndex, onClick, index}) => {
     )
   } else {
   return (
-    <div className="mini-photo">
+    <div data-testid="mini-photo" className="mini-photo">
       <img
         src={photo.url}
         width="50"
