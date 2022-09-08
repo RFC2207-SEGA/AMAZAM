@@ -141,6 +141,11 @@ class AnswerComp extends React.Component {
             </div>
             <h1 id="a-letter">A: </h1>
             <p id="a-body">{ans.body}</p>
+            <div id='a-img'>
+            {ans.photos.map((img) =>
+            (<img src={`${img.url}`} alt='Should Have Image Here' id='a-img-display'/>)
+            )}
+            </div>
             <div id='a-sub-body' style={{fontSize: 'small', fontWeight: 'lighter', marginTop: '5px'}}>
             <span>By:</span>
             <span style={this.state.nameSeller ? { fontWeight: "bold" } : {}}>
