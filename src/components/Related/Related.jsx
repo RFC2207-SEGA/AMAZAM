@@ -29,6 +29,7 @@ class Related extends React.Component {
         { headers: { 'Authorization': `${API_KEY}` }, params: { 'product_id': this.props.product.id } })
         .then((data) => {
           this.setState({ 'productId': this.props.product.id, 'relatedIds': data.data, })
+          console.log(data)
           return (data.data)
         })
         .then((ids) => {
@@ -40,6 +41,7 @@ class Related extends React.Component {
           return Promise.all(promiseIds)
         })
         .then((data) => {
+          console.log(data)
           for (let i = 0; i < data.length; i++) {
             var currentId = data[i].data.id
             for (let j = i + 1; j < data.length; j++) {
@@ -97,7 +99,7 @@ class Related extends React.Component {
         return;
       }
     }
-    return this.setState({ 'myOutfit': [...this.state.myOutfit, this.props.product], 'myOutfitStyles': [...this.state.myOutfitStyles, this.props.style], 'myOutfitReviews': [...this.state.myOutfitReviews, 5] })
+    return this.setState({ 'myOutfit': [...this.state.myOutfit, this.props.product], 'myOutfitStyles': [...this.state.myOutfitStyles, this.props.style], 'myOutfitReviews': [...this.state.myOutfitReviews, this.props.mainRating] })
   }
 
   removeFit( product, styles, rating ) {
@@ -114,7 +116,7 @@ class Related extends React.Component {
     if (this.state.relatedProducts.length > 0) {
       return (
         <div className="related-widget">
-          <div className="related-streamer"> Related Products </div>
+          <div data-testid="related-streamer" className="related-streamer"> Related Products </div>
           <div className="related-product-container">
             {this.state.relatedProducts.map((product, index) => (
               <RelatedProduct product={product.data} styles={this.state.relatedStyles[index]} rating={this.state.relatedReviews[index]} select={this.props.select} mainProduct={this.props.product} mainInfo={this.props.info}/>
