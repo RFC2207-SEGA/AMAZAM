@@ -1080,12 +1080,13 @@ select {
 }
 
 #q-a-title {
-	font-size: 30px;
-	font-weight: bold;
+	font-size: 20px;
 	padding-bottom: 30px;
+	font-weight: lighter;
 }
 #q-list{
-	padding: 100px;
+	margin-top: 50px;
+	margin-left: 5%;
 	height: 600px;
 	overflow-y: scroll;
 }
@@ -1150,6 +1151,71 @@ select {
 }
 .qa-modal-button-close {
 	float: right;
+}
+.qa-modal-button {
+	border: none;
+	font-weight: bold;
+}
+.qa-modal-footer {
+	margin-top: 10px;
+}
+#a-upload, #a-email, #a-nickname, #a-answer {
+	margin-top: 10px;
+}
+#a-email input, #a-nickname input {
+	width: 50%;
+}
+#a-answer input {
+	width: 75%;
+	height: 70px;
+}
+#q-email, #q-question, #q-nickname {
+	margin-top: 10px;
+}
+#q-question input {
+	width: 75%;
+	height: 70px;
+}
+#q-email input, #q-nickname input {
+	width: 50%;
+}
+
+.qsearch {
+	width: 75%;
+  position: relative;
+  display: flex;
+	height: 40px;
+	font-size: large;
+	font-weight: bold;
+
+}
+.search-wrapper {
+	padding-bottom: 10px;
+}
+
+
+.a-sub-body {
+	font-size: small;
+	font-weight: lighter;
+	color:#e74c3c;
+}
+#q-add-btn, #q-see-more-btn, #q-see-less-btn {
+	padding: 10px;
+	font-size: large;
+	font-weight: bold;
+	margin: 10px;
+}
+
+#ans-expand, #ans-unexpand {
+	margin-top: 10px;
+	border: none;
+	font-weight: bold;
+}
+
+#ans-help-btn, #ans-report, #q-report, #q-help-btn, .q-add-ans-btn {
+	text-decoration:underline;
+	display:inline-block;
+	border: none;
 }
 
 .dark-button-div {

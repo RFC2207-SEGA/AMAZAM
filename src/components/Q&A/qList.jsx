@@ -3,6 +3,7 @@ import AnswerComp from "./AnswerComp.jsx";
 import QuestionComp from "./QuestionComp.jsx";
 import AddQuestion from "./AddQuestion.jsx";
 import { API_KEY } from "../../config/config.js";
+import {handleInteractions} from '../../utils.js';
 const axios = require("axios");
 
 class QList extends React.Component {
@@ -29,6 +30,9 @@ class QList extends React.Component {
     this.handleAddQues = this.handleAddQues.bind(this);
     this.handleClose = this.handleClose.bind(this);
   }
+
+
+
 
   sortQuestions() {
     var qArr = this.state.productQ.results;
@@ -78,7 +82,8 @@ class QList extends React.Component {
     }
   }
 
-  handleSeeMoreQues(totalArr) {
+  handleSeeMoreQues(totalArr, e) {
+    handleInteractions(e, 'Q&A');
     if (this.state.searchSort) {
       this.setState({ btnClick: true }); //on each button click should add 2 more questions to arr
       this.setState({ searchArray: totalArr }); //TODO: once working with live data make changes here
@@ -88,7 +93,8 @@ class QList extends React.Component {
     }
   }
 
-  handleSeeLessQues(totalArr) {
+  handleSeeLessQues(totalArr, e) {
+    handleInteractions(e, 'Q&A');
     if (this.state.searchSort) {
       this.setState({ btnClick: false });
       var temp = totalArr.slice(0, 2);
@@ -106,6 +112,7 @@ class QList extends React.Component {
 
   handleClose(e) {
     e.preventDefault();
+    handleInteractions(e, 'Q&A');
     this.setState({ show: false });
   }
   //use componentDidUpdate with a conditional statement
@@ -140,7 +147,8 @@ class QList extends React.Component {
     if (this.state.totalQuesArr.length > 2) {
       moreQBtn = (
         <button
-          onClick={(e) => this.handleSeeMoreQues(this.state.totalQuesArr)}
+          id='q-see-more-btn'
+          onClick={(e) => this.handleSeeMoreQues(this.state.totalQuesArr, e)}
         >
           See More Questions
         </button>
@@ -151,7 +159,8 @@ class QList extends React.Component {
     if (this.state.btnClick) {
       moreQBtn = (
         <button
-          onClick={(e) => this.handleSeeLessQues(this.state.totalQuesArr)}
+          id='q-see-less-btn'
+          onClick={(e) => this.handleSeeLessQues(this.state.totalQuesArr, e)}
         >
           See Less Questions
         </button>
@@ -167,6 +176,7 @@ class QList extends React.Component {
           <QuestionComp
             questionList={qItem}
             proID={this.state.productQ.product_id}
+            proName={this.props.product.name}
           />
           <AnswerComp
             quesID={qItem.question_id}
@@ -179,6 +189,7 @@ class QList extends React.Component {
           <QuestionComp
             questionList={qItem}
             proID={this.state.productQ.product_id}
+            proName={this.props.product.name}
           />
           <AnswerComp
             quesID={qItem.question_id}
@@ -190,18 +201,18 @@ class QList extends React.Component {
     return (
       <div data-testid="q-list" id="q-list">
         <h1 data-testid="title" id="q-a-title">Questions and Answers</h1>
-        <form>
-          <h1>Search: </h1>
+        <div className='search-wrapper'>
           <input
             data-testid="search"
+            className='qsearch'
             type="text"
             placeholder="Have a question? Search for answers..."
-            onChange={this.handleSearch}
+            onChange={(e) => this.handleSearch(e)}
           ></input>
-        </form>
+        </div>
         {toRender}
         {moreQBtn}
-        <button onClick={(e) => this.setState({ show: true })}>Add a Question</button>
+        <button id='q-add-btn' onClick={(e) => this.setState({ show: true })}>Add a Question +</button>
         <AddQuestion
           onClose={(e) => this.handleClose(e)}
           show={this.state.show}

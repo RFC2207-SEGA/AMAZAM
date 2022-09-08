@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import AnswerReport from "./AnswerReport.jsx";
 import { API_KEY } from "../../config/config.js";
+import {handleInteractions} from '../../utils.js';
 const axios = require("axios");
 
 class AnswerComp extends React.Component {
@@ -43,21 +44,10 @@ class AnswerComp extends React.Component {
     for (var i = 0; i < key.length; i++) {
       arr.push(aList[key[i]]);
     }
-    //console.log(arr);
     //if array length is greater than one meaning there is more than one asnwer
     if (arr.length > 1) {
-      //compare the helpfullness of each answer and sort it greatest first to lowest last
-      // for (var i = 0; i < arr.length; i++) {
-      //   if (arr[i + 1]) {
-      //     if (arr[i].helpfulness < arr[i + 1].helpfulness) {
-      //       var temp = arr[i];
-      //       arr[i] = arr[i + 1];
-      //       arr[i + 1] = temp;
-      //     }
-      //   }
-      // }
       arr.sort((a, b) => {
-        return b.helpfulness - a.helpfullness;
+        return b.helpfulness - a.helpfulness;
       });
       if (this.state.moreBtnClick) {
         this.setState({ totalAnsArr: arr });
@@ -73,7 +63,7 @@ class AnswerComp extends React.Component {
   }
 
   handleAnsHelp(ans, e) {
-    var temp = parseInt(ans.id);
+    var temp = parseInt(ans.answer_id);
     axios
       .put(
         `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${temp}/helpful`,
@@ -82,6 +72,7 @@ class AnswerComp extends React.Component {
       )
       .then((res) => {
         console.log(res);
+        handleInteractions(e, 'Q&A');
       })
       .catch((err) => {
         console.log(err);
@@ -95,11 +86,13 @@ class AnswerComp extends React.Component {
     this.sortByHelp();
   }
 
-  handleSeeMoreAns(ansArr) {
+  handleSeeMoreAns(ansArr, e) {
+    handleInteractions(e, 'Q&A');
     this.setState({ moreBtnClick: true });
     this.setState({ answerArr: ansArr });
   }
-  handleSeeLessAns(ansArr) {
+  handleSeeLessAns(ansArr, e) {
+    handleInteractions(e, 'Q&A');
     this.setState({ moreBtnClick: false });
     var tempArr = ansArr.slice(0, 2);
     this.setState({ answerArr: tempArr });
@@ -117,14 +110,14 @@ class AnswerComp extends React.Component {
       .then((res) => this.setState({answersFromGet: res.data}))
       .catch((err) => console.log(err));
       }
-    setTimeout(this.sortByHelp, 1000);
+    setTimeout(this.sortByHelp, 500);
   }
 
   render() {
     let moreBtn;
     if (this.state.totalAnsArr.length > 2) {
       moreBtn = (
-        <button onClick={(e) => this.handleSeeMoreAns(this.state.totalAnsArr)}>
+        <button id='ans-expand' onClick={(e) => this.handleSeeMoreAns(this.state.totalAnsArr, e)}>
           See more answers
         </button>
       );
@@ -133,7 +126,7 @@ class AnswerComp extends React.Component {
     }
     if (this.state.moreBtnClick) {
       moreBtn = (
-        <button onClick={(e) => this.handleSeeLessAns(this.state.totalAnsArr)}>
+        <button id='ans-unexpand' onClick={(e) => this.handleSeeLessAns(this.state.totalAnsArr, e)}>
           Collapse answers
         </button>
       );
@@ -148,6 +141,7 @@ class AnswerComp extends React.Component {
             </div>
             <h1 id="a-letter">A: </h1>
             <p id="a-body">{ans.body}</p>
+            <div id='a-sub-body' style={{fontSize: 'small', fontWeight: 'lighter', marginTop: '5px'}}>
             <span>By:</span>
             <span style={this.state.nameSeller ? { fontWeight: "bold" } : {}}>
               {" "}
@@ -157,13 +151,14 @@ class AnswerComp extends React.Component {
             <span>
               {" "}
               | Helpful?{" "}
-              <button data-testid='AnsHelp' onClick={(e) => this.handleAnsHelp(ans, e)}>Yes?</button>{" "}
+              <button id='ans-help-btn' data-testid='AnsHelp' onClick={(e) => this.handleAnsHelp(ans, e)}>Yes?</button>{" "}
               <span data-testid="ansnumHelp">({ans.helpfulness})</span>
             </span>
             <span>
               {" "}
               | <AnswerReport ansObj={ans} />
             </span>
+            </div>
           </div>
         ))}
         <div>{moreBtn}</div>

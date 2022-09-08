@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { API_KEY } from "../../config/config.js";
+import {handleInteractions} from '../../utils.js';
 const axios = require("axios");
 
 class AddQuestion extends React.Component {
@@ -18,6 +19,7 @@ class AddQuestion extends React.Component {
 
   questionPost(e) {
     e.preventDefault();
+    handleInteractions(e, 'Q&A');
     console.log(
       this.state.qBody,
       this.state.qName,
@@ -47,6 +49,7 @@ class AddQuestion extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    handleInteractions(e, 'Q&A');
     this.questionPost(e);
     this.props.onClose(e);
   }
@@ -73,27 +76,35 @@ class AddQuestion extends React.Component {
             </h5>
           </div>
           <div className="qa-modal-body">
-            Question Content
             <form onSubmit={(e) => this.handleSubmit(e)}>
-              <div>Your Question: </div>
+              <div id='q-question'>
+                Your Question: <br></br>
               <input
                 type="text"
+                maxlength='1000'
                 onChange={(e) => this.setState({ qBody: e.target.value })}
                 required
               />
-              <div>Nickname: </div>
+              </div>
+              <div id='q-nickname'>
+                Nickname: <br></br>
               <input
                 type="text"
+                maxlength='60'
                 placeholder="Example: jackson11!"
                 onChange={(e) => this.setState({ qName: e.target.value })}
                 required
               />
-              <div>Your Email: </div>
+              </div>
+              <div id='q-email'>
+                Your Email: <br></br>
               <input
                 type="text"
+                maxlength='60'
                 onChange={(e) => this.setState({ qEmail: e.target.value })}
                 required
               />
+              </div>
               <p>For authentication reasons, you will not be emailed</p>
               <div className="qa-modal-footer">
                 <button className="qa-modal-button">Submit</button>

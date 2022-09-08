@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { API_KEY } from "../../config/config.js";
+import {handleInteractions} from '../../utils.js';
 const axios = require("axios");
 
 class AnswerReport extends React.Component {
@@ -13,8 +14,7 @@ class AnswerReport extends React.Component {
   }
 
   handleReport(e) {
-    var temp = parseInt(this.state.currentAns.id);
-    console.log(temp);
+    var temp = parseInt(this.state.currentAns.answer_id);
     axios
       .put(
         `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${temp}/report`,
@@ -23,6 +23,7 @@ class AnswerReport extends React.Component {
       )
       .then((res) => {
         console.log(res);
+        handleInteractions(e, 'Q&A');
       })
       .catch((err) => {
         console.log(err);
@@ -30,7 +31,7 @@ class AnswerReport extends React.Component {
     var tempObj = this.state.currentAns;
     tempObj.reported = true;
     this.setState({ currentAns: tempObj });
-  }
+    }
 
   render() {
     let reportButton;
@@ -38,7 +39,7 @@ class AnswerReport extends React.Component {
       reportButton = <span>Reported</span>;
     } else {
       reportButton = (
-        <button onClick={(e) => this.handleReport(e)}> Report? </button>
+        <button id='ans-report' onClick={(e) => this.handleReport(e)}> Report? </button>
       );
     }
     return <span>{reportButton}</span>;

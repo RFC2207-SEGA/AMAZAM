@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { API_KEY } from "../../config/config.js";
+import {handleInteractions} from '../../utils.js';
 const axios = require("axios");
 
 class QuestionReport extends React.Component {
@@ -23,6 +24,7 @@ class QuestionReport extends React.Component {
       )
       .then((res) => {
         console.log(res);
+        handleInteractions(e, 'Q&A');
       })
       .catch((err) => {
         console.log(err);
@@ -38,7 +40,7 @@ class QuestionReport extends React.Component {
       reportButton = <span data-testid="Report">Reported</span>;
     } else {
       reportButton = (
-        <button data-testid="Report" onClick={(e) => this.handleReport(e)}> Report? </button>
+        <button id='q-report' data-testid="Report" onClick={(e) => this.handleReport(e)}> Report? </button>
       );
     }
     return <span data-testid="Report">{reportButton}</span>;
