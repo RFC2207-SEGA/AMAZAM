@@ -4,20 +4,21 @@ import { API_KEY } from "../../config/config.js";
 import {handleInteractions} from '../../utils.js';
 const axios = require("axios");
 
-class AnswerReport extends React.Component {
+class QuestionReport extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentAns: this.props.ansObj,
+      currentQues: this.props.quesObj,
     };
     this.handleReport = this.handleReport.bind(this);
   }
 
   handleReport(e) {
-    var temp = parseInt(this.state.currentAns.answer_id);
+    var temp = parseInt(this.state.currentQues.question_id);
+    console.log(temp);
     axios
       .put(
-        `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${temp}/report`,
+        `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${temp}/report`,
         {},
         { headers: { Authorization: `${API_KEY}` } }
       )
@@ -28,22 +29,22 @@ class AnswerReport extends React.Component {
       .catch((err) => {
         console.log(err);
       });
-    var tempObj = this.state.currentAns;
+    var tempObj = this.state.currentQues;
     tempObj.reported = true;
-    this.setState({ currentAns: tempObj });
-    }
+    this.setState({ currentQues: tempObj });
+  }
 
   render() {
     let reportButton;
-    if (this.state.currentAns.reported) {
-      reportButton = <span>Reported</span>;
+    if (this.state.currentQues.reported) {
+      reportButton = <span data-testid="Report">Reported</span>;
     } else {
       reportButton = (
-        <button id='ans-report' onClick={(e) => this.handleReport(e)}> Report? </button>
+        <button id='q-report' data-testid="Report" onClick={(e) => this.handleReport(e)}> Report? </button>
       );
     }
-    return <span>{reportButton}</span>;
+    return <span data-testid="Report">{reportButton}</span>;
   }
 }
 
-export default AnswerReport;
+export default QuestionReport;

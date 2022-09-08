@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {handleInteractions} from '../../utils.js';
 import { API_KEY } from '../../../src/config/config.js';
 import CloudinaryUploadWidget from '../../../src/components/PhotoUploadWidget.jsx'
 
@@ -51,6 +52,7 @@ class AddReview extends React.Component {
   }
 
   toggleStar(e) {
+    handleInteractions(e, 'Reviews');
     var starNum;
     if (Number(e.target.attributes.id.value) === this.state.starRating) {
       starNum = 0;
@@ -73,6 +75,7 @@ class AddReview extends React.Component {
 
   onChange(e) {
     // e.preventDefault();
+    handleInteractions(e, 'Reviews');
     var key = e.target.attributes.name.value
     var value = e.target.value
     if (key === 'recommend') {
@@ -114,6 +117,7 @@ class AddReview extends React.Component {
   }
 
   handleSubmit(e) {
+    handleInteractions(e, 'Reviews');
     e.preventDefault();
     axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews',
       this.postData, {

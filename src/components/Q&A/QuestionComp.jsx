@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import AddAnswer from "./AddAnswer.jsx";
+import QuestionReport from './QuestionReport.jsx';
+import {handleInteractions} from '../../utils.js';
 import { API_KEY } from "../../config/config.js";
 const axios = require("axios");
 
@@ -16,7 +18,7 @@ class QuestionComp extends React.Component {
     this.handleClose = this.handleClose.bind(this);
   }
 
-  handleQHelp(qObj) {
+  handleQHelp(qObj, e) {
     var questionID = parseInt(qObj.question_id);
     axios
       .put(
@@ -26,6 +28,7 @@ class QuestionComp extends React.Component {
       )
       .then((res) => {
         console.log(res);
+        handleInteractions(e, 'Q&A');
       })
       .catch((err) => {
         console.log(err);
@@ -47,23 +50,23 @@ class QuestionComp extends React.Component {
       helpBtn = <span> Yes! </span>;
     } else {
       helpBtn = (
-        <button onClick={(e) => this.handleQHelp(this.state.questions)}>
+        <button id='q-help-btn' onClick={(e) => this.handleQHelp(this.state.questions, e)}>
           {" "}
           Yes?{" "}
         </button>
       );
     }
     return (
-      <div id="q-comp">
-        <div id="q-body">
+      <div data-testid="q-comp" id="q-comp">
+        <div data-testid="q-body" id="q-body">
           Q: {this.state.questions.question_body}
           <span id="q-user">
-            Asked by: {this.state.questions.asker_name} | {helpBtn}{" "}
+            Helpful? {helpBtn}{" "}
             <span data-testid="numHelp">
               ({this.state.questions.question_helpfulness})
             </span>{" "}
-            |
-            <button onClick={(e) => this.setState({ showAns: true })}>
+            | <QuestionReport quesObj={this.state.questions} />
+            <button className='q-add-ans-btn' data-testid="AddAns" onClick={(e) => this.setState({ showAns: true })}>
               {" "}
               Add an Answer
             </button>
@@ -71,6 +74,7 @@ class QuestionComp extends React.Component {
               onClose={(e) => this.handleClose(e)}
               showAns={this.state.showAns}
               proID={this.props.proID}
+              proName={this.props.proName}
               qbody={this.state.questions.question_body}
               qID={this.state.questions.question_id}
             />
