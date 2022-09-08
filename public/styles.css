@@ -737,6 +737,8 @@ td {
 }
 #q-list{
 	padding: 100px;
+	height: 600px;
+	overflow-y: scroll;
 }
 #q-comp, #a-comp {
 	padding: 10px;
@@ -762,6 +764,10 @@ td {
 #a-body {
 	margin-left: 30px;
 	font-size: 20px;
+}
+#a-comp {
+	height: 150px;
+	overflow-y: scroll;
 }
 
 .qa-modal {
