@@ -123,7 +123,6 @@ class AddAnswer extends React.Component {
           />
           </div>
           <div id='a-upload'>
-            Upload Photos <br></br>
           {displayAddPhotos}
           {this.state.photoThumbnails.map((thumbnailURL, index) => {
             return <img src={thumbnailURL} key={index} className='review-thumbnail'></img>
