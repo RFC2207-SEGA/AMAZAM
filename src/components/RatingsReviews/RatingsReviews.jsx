@@ -3,6 +3,7 @@ import ReviewsList from './ReviewsList.jsx';
 import AddReview from './AddReview.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
+import {handleInteractions} from '../../utils.js';
 import { API_KEY } from  '../../../src/config/config.js';
 
 const axios = require('axios');
@@ -53,6 +54,7 @@ class RatingsReviews extends React.Component {
   }
 
   handleSort(e) {
+    handleInteractions(e, 'Reviews');
     e.preventDefault();
     let sortMethod = e.target.value
     this.setState({ sort: sortMethod });
