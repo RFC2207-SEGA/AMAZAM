@@ -1258,40 +1258,6 @@ select {
 #q-add-btn:hover,  #q-see-more-btn:hover, #q-see-less-btn:hover {
 	box-shadow: 0 0 40px 40px #e74c3c inset;
 }
-/*
-.cartButton {
-  box-sizing: border-box;
-  background-color: transparent;
-  border: 2px solid #e74c3c;
-  border-radius: 0.6em;
-  color: #e74c3c;
-  cursor: pointer;
-  display: flex;
-	align-self: flex-end;
-	position: relative;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1;
-  text-decoration: none;
-  text-align: center;
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-}
-
-.cartButton:hover, .btn:focus {
-  color: #fff;
-  outline: 0;
-}
-
-.cartButton {
-  -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-}
-.cartButton:hover {
-  box-shadow: 0 0 40px 40px #e74c3c inset;
-}
-*/
 
 #ans-expand, #ans-unexpand, .q-add-ans-btn{
 	margin-top: 10px;
