@@ -29,7 +29,7 @@ class Related extends React.Component {
         { headers: { 'Authorization': `${API_KEY}` }, params: { 'product_id': this.props.product.id } })
         .then((data) => {
           this.setState({ 'productId': this.props.product.id, 'relatedIds': data.data, })
-          console.log(data)
+          // console.log(data)
           return (data.data)
         })
         .then((ids) => {
@@ -41,7 +41,7 @@ class Related extends React.Component {
           return Promise.all(promiseIds)
         })
         .then((data) => {
-          console.log(data)
+          // console.log(data)
           for (let i = 0; i < data.length; i++) {
             var currentId = data[i].data.id
             for (let j = i + 1; j < data.length; j++) {

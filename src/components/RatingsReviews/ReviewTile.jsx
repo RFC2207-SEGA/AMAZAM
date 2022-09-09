@@ -50,12 +50,12 @@ function ReviewTile ({ review }) {
 
       <div className='vote-helpfulness-and-report'>
         <span>Helpful? </span>
-        <a href="">Yes</a>
+        <a className='reviews-anchors' href="">Yes</a>
         <span> ({review.helpfulness}) </span>
-        <a href="">No</a>
+        <a className='reviews-anchors' href="">No</a>
         {'    |    '}
         <span>
-          <a href="">Report</a>
+          <a className='reviews-anchors' href="">Report</a>
         </span>
       </div>
 

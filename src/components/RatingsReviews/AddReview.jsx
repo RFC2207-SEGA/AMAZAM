@@ -148,8 +148,11 @@ class AddReview extends React.Component {
           <div className="add-review-modal-content">
 
             <div className="add-review-modal-header">
-              <h4 className="add-review-modal-title">Write Your Review</h4>
-              <h5 className="add-review-modal-subtitle">About the {this.props.product.name}</h5>
+              <div>
+                <h4 className="add-review-modal-title">Write Your Review</h4>
+                <h5 className="add-review-modal-subtitle">About the {this.props.product.name}</h5>
+              </div>
+              <div className='review-modal-close-btn'><i onClick={()=> this.props.toggleReviewModal()}class="fa-solid fa-x"></i></div>
             </div>
 
             <div className="add-review-modal-body">

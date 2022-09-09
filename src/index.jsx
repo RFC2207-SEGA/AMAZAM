@@ -1,5 +1,5 @@
 const axios = require('axios');
-import QList from './components/Q&A/QList.jsx';
+import QList from './components/Q&A/qList.jsx';
 import Overview from "./components/Overview.jsx"
 import TitleBar from "./components/TitleBar.jsx"
 import React from 'react';
@@ -29,14 +29,12 @@ class App extends React.Component {
       }})
     .then(res => {
       this.setState({ products: res.data, product: res.data[2] })
-      console.log('Array of Products: ', res.data)
       return axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta', {
         headers: {'Authorization': `${API_KEY}`},
         params: {product_id: res.data[2].id}
       })
     })
     .then(res => {
-      console.log('meta res:', res.data)
       this.setState({ reviewMeta: res.data })
     })
     .catch(err =>
@@ -52,7 +50,6 @@ class App extends React.Component {
       params: {product_id: product.id}
     })
     .then(res => {
-      console.log('updated review metadata:', res.data)
       this.setState({ reviewMeta: res.data })
     })
     .catch(err =>
@@ -72,7 +69,7 @@ class App extends React.Component {
         <div className="title-streamer">Site-wide announcement message... SALE / DISCOUNT Offer... new Product Highlight</div>
         <Overview product={this.state.product} select={this.selectProduct.bind(this)} meta={this.state.reviewMeta} scroll={this.executeScroll.bind(this)}/>
 
-        <QList product={this.state.product} select={this.selectProduct.bind(this)} />
+        {/* <QList product={this.state.product} select={this.selectProduct.bind(this)} /> */}
         <div ref={this.myRef}></div>
         <RatingsReviews product={this.state.product} reviewMeta={this.state.reviewMeta} select={this.selectProduct.bind(this)}/>
       </div>

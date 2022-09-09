@@ -17,7 +17,7 @@ function Stars ({ rating }) {
     let starsOverlay = []
     while (roundedToQtrPct > 0) {
       if (roundedToQtrPct < 1) {
-        starsOverlay.push(<i className="fa-solid fa-star" style={{width: `${(roundedToQtrPct * 16)}px`, overflow: 'hidden', position: 'absolute'}}></i>)
+        starsOverlay.push(<i className="fa-solid fa-star" style={{width: `${(roundedToQtrPct * 18)}px`, overflow: 'hidden', position: 'absolute'}}></i>)
         roundedToQtrPct = 0;
       } else {
         starsOverlay.push(<i className="fa-solid fa-star"></i>)
