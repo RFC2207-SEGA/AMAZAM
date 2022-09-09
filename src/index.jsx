@@ -1,5 +1,5 @@
 const axios = require('axios');
-import QList from './components/Q&A/QList.jsx';
+import QList from './components/Q&A/qList.jsx';
 import Overview from "./components/Overview.jsx"
 import TitleBar from "./components/TitleBar.jsx"
 import React from 'react';
