@@ -33,6 +33,8 @@ class AnswerComp extends React.Component {
   checkName(nameStr) {
     if (nameStr === "Seller") {
       this.state.nameSeller = true;
+    } else {
+      this.state.nameSeller = false;
     }
     return nameStr;
   }

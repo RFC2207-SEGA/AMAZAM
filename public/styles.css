@@ -1115,11 +1115,11 @@ select {
 	margin-left: 30px;
 	font-size: 20px;
 }
-#a-comp {
-	height: 150px;
-	overflow-y: scroll;
-}
 
+#add-text-area {
+	border: 2px solid black;
+  border-radius: 0.6em;
+}
 .qa-modal {
 	position: fixed;
 	left: 0;
@@ -1139,14 +1139,12 @@ select {
 	padding: 10px;
 }
 .qa-modal-title {
-	margin: 0;
-	text-decoration: underline;
+	text-decoration: none;
 }
 .qa-modal-subtitle {
 	font-size: 13px;
 }
 .qa-modal-body {
-	text-decoration: underline;
 	padding: 10px;
 	border-top: 1px solid #eee;
 	border-bottom: 1px solid #eee;

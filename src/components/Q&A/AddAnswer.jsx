@@ -89,9 +89,12 @@ class AddAnswer extends React.Component {
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <div id='a-answer'>
             Your Answer: <br></br>
-          <input
+          <textarea
             type="text"
             maxlength='1000'
+            cols='40'
+            rows='10'
+            id='add-text-area'
             onChange={(e) => this.setState({ aBody: e.target.value })}
             required
           />

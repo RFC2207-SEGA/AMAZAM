@@ -84,6 +84,7 @@ class AddQuestion extends React.Component {
                 maxlength='1000'
                 cols='40'
                 rows='10'
+                id='add-text-area'
                 onChange={(e) => this.setState({ qBody: e.target.value })}
                 required
               />
