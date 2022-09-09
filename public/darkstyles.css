@@ -173,7 +173,6 @@ table {
 .placeholder {
 	display: flex;
 	margin: 1%;
-	font-size: 20px;
 	align-items: center;
 }
 
@@ -234,7 +233,7 @@ table {
 .full-photo-modal {
 	position: fixed;
 	/* Stay in place */
-	z-index: 1;
+	z-index: 2;
 	/* Sit on top */
 	left: 0;
 	height: 100%;
