@@ -11,11 +11,18 @@ function Characteristic ({ characteristic, value }) {
     Fit: ['Runs Tight', 'Perfect', 'Runs Big']
   }
 
+  var icon = {
+    Length: <i class="fa-solid fa-ruler"></i>,
+    Fit: <i class="fa-solid fa-shirt"></i>,
+    Comfort: <i class="fa-solid fa-heart"></i>,
+    Quality: <i class="fa-solid fa-gem"></i>
+  }
+
   var marginLeftPercentage = parseFloat(value) / 5 * 100;
 
   return (
     <div>
-      <p>{characteristic}</p>
+      <p>{icon[characteristic]}  {characteristic}</p>
       <div className='range-bar-container'>
         <div className="range-bar"></div>
         <div className="triangle-down" data-testid="triangleDown" style={{'marginLeft': `${marginLeftPercentage}%`}}></div>
