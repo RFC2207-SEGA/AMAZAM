@@ -2,7 +2,7 @@ import React from 'react';
 import Stars from '../../../src/components/Stars.jsx'
 
 
-function RatingBreakdown ({ reviewMeta }) {
+function RatingBreakdown ({ reviewMeta, filterReviews }) {
 
   function avgRating() {
     var sum = 0;
@@ -61,7 +61,10 @@ function RatingBreakdown ({ reviewMeta }) {
         {Object.entries(starPct).reverse().map(([key, value], index) => {
           return (
             <tr key={index}>
-              <td className='rating-bar-graph-label'><a href=''>{key} stars</a></td>
+              <td className='rating-bar-graph-label'><a onClick={(e) => {
+                e.preventDefault()
+                filterReviews(key)
+              }} href='' className='reviews-anchors'>{key} stars</a></td>
               <td className='bar-graph-container'>
                 <div className='bar-graph-underlay'></div>
                 <div className='bar-graph-overlay' style={{'width': `${value}%`}}></div>

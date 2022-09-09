@@ -304,8 +304,9 @@ Ratings and Revies Main Component
 	margin-right: 5%;
 	margin-bottom: 10%;
 }
+
 .reviews-ratings-hdr {
-	font-size: large;
+	font-size: 20px;
 	padding-top: 100px;
 	padding-bottom: 30px;
 }
@@ -323,29 +324,44 @@ Ratings and Revies Main Component
 }
 
 .reviews-list-container {
+	margin-left: 100px;
 	flex: 2;
 	order: 2;
 }
+
+.reviews-anchors {
+	color: #282828;
+}
+
+.reviews-anchors:visited {
+	color: #282828;
+}
+
+.reviews-anchors:hover, .reviews-anchors:active {
+	color:rgb(255, 0, 0);
+}
+
 
 /*
 Review List/Tiles Sub-component
 */
 
 .reviews-list {
-	height: 500px;
-	width: 900px;
-	overflow-y: auto;
+	height: 600px;
 }
 
 .review-list-hdr{
-	margin-bottom: 20px;
+	display: flex;
+	align-items: center;
 }
 
 .review-tile {
 	margin-top: 30px;
 	margin-bottom: 30px;
 	margin-right: 20px;
-	border-top: 1px solid #eee;
+	background-color: rgb(234, 234, 234);
+	border-radius: 20px;
+  padding: 1%;
 }
 
 .review-thumbnail {
@@ -364,8 +380,9 @@ Review List/Tiles Sub-component
 .review-summary {
 	margin-top: 1%;
 	margin-bottom: 1%;
-	font-size: 20px;
-	font-weight: bold;
+	font-size: 18px;
+	font-weight: 600;
+	/* font-weight: bold; */
 }
 
 .review-body {
@@ -375,17 +392,19 @@ Review List/Tiles Sub-component
 }
 
 .reviewer-rec-yes {
+	margin-bottom: 1%;
 	font-size: 14px;
 }
 
 .vote-helpfulness-and-report {
 	margin-top: 1%;
 	margin-bottom: 1%;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .seller-response {
 	background-color: rgb(220, 220, 220);
+	border-radius: 5%;
 }
 
 /*
@@ -410,10 +429,9 @@ Ratings Breakdown Sub-component
 	padding-bottom: 3%;
 }
 
-
 .rating-bar-graph-label {
 	width: 50px;
-	font-size: 14px;
+	font-size: 15px;
 }
 
 .bar-graph-container {
@@ -428,7 +446,7 @@ Ratings Breakdown Sub-component
   height: 10px;
   width: 425px;
 	margin-left: 10px;
-  background-color: rgb(225, 225, 225);
+  background-color: rgb(215, 215, 215);
 }
 
 .bar-graph-overlay {
@@ -464,7 +482,7 @@ Product Breakdown Sub-component
   z-index: 1;
   height: 10px;
   width: 100%;
-  background-color: rgb(225, 225, 225);
+  background-color:  rgb(215, 215, 215);
 }
 
 .triangle-down {
@@ -509,16 +527,34 @@ Add Review Modal
 	height: 700px;
 	background-color: #fff;
 	overflow-y: scroll;
-	scroll-margin: 2%;
+	border-radius: 5px;
 	}
 
-.add-review-modal-header, .add-review-modal-footer {
+.add-review-modal-header {
+	display: flex;
 	padding: 10px;
+}
+
+.add-review-modal-title {
+	font-size: 20px;
+	padding-bottom: 3px;
+	justify-content:left
 }
 
 .add-review-modal-subtitle {
 	font-weight: 200;
-	font-size: small;
+	font-size: 16;
+	justify-content: left;
+}
+
+.review-modal-close-btn {
+	align-content:flex-end;
+	position: relative;
+	left: 370px;
+}
+
+.add-review-modal-footer {
+	padding: 10px;
 }
 
 .add-review-modal-body {
@@ -536,14 +572,18 @@ Add Review Modal
 	width: 98%;
 	border: 1px solid #eee;
 	margin-top: 1%;
+	margin-bottom: 1%;
 	font-size: small;
 	padding: 1%;
+	border-radius: 5px;
 }
 
 .add-review-input-fld {
 	border: 1px solid #eee;
+	margin-bottom: 1%;
 	font-family: 'futura';
 	padding: 1%;
+	border-radius: 5px;
 }
 
 .review-thumbnail {
@@ -610,7 +650,7 @@ Modal - Star Ratings
 
 .stars-component {
 	position: relative;
-	z-index: 1;
+	z-index: 0;
 	height: 16px;
 }
 
@@ -621,11 +661,67 @@ Modal - Star Ratings
 	width: 90px;
 }
 
-.fa-star, fa-solid {
-  /* position: absolute; */
-	z-index: 2;
+.fa-star, .fa-solid {
+	z-index: 1;
 }
 
+/* Ratings & Reviews Buttons */
+.footer-btns {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.ratings-reviews-btn {
+  box-sizing: border-box;
+  background-color: transparent;
+  border: 2px solid #e74c3c;
+  border-radius: 0.6em;
+  color: #e74c3c;
+  cursor: pointer;
+  display: flex;
+	align-self: flex-end;
+	position: relative;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+	margin-left: -10px;
+	/* margin-left: 30%; */
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+	-webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.ratings-reviews-btn:hover, .btn:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.ratings-reviews-btn:hover {
+  box-shadow: 0 0 40px 40px #e74c3c inset;
+}
+
+.upload-photos {
+	margin-left: 5px;
+	margin-top: 1px;
+	margin-bottom: 1px;
+	padding: .8em 2em;
+}
+
+.submit-new-review-btn {
+	margin-left: 5px;
+	margin-top: 1px;
+	margin-bottom: 1px;
+	padding: .5em 2.8em;
+}
+
+
+/* ------ */
 .social-links {
 	padding: 1%;
 	margin: auto;
@@ -1053,6 +1149,10 @@ select {
 /* Transition */
 .select:hover::after {
   color: #f39c12;
+}
+
+.reviews-sorting-dropdown {
+	width: 15em;
 }
 
 .dot {
