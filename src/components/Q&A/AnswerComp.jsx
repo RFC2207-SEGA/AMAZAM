@@ -131,44 +131,53 @@ class AnswerComp extends React.Component {
         </button>
       );
     }
+    if(this.state.answerArr.length === 0) {
+      return(
+        <div id='no-ans'>
+          No Answers, add one with the button to the right!
+        </div>
+      )
+    }
+    else {
+      return (
+        <div id="a-comp">
+          {this.state.answerArr.map((ans) => (
+            <div id="a-wrapper">
+              <div style={{ display: "none" }}>
+                {this.checkName(ans.answerer_name)}
+              </div>
+              <h1 id="a-letter">A: </h1>
+              <p id="a-body">{ans.body}</p>
+              <div id='a-img'>
+              {ans.photos.map((img) =>
+              (<img src={`${img.url}`} alt='Should Have Image Here' id='a-img-display'/>)
+              )}
+              </div>
+              <div id='a-sub-body' style={{fontSize: 'small', fontWeight: 'lighter', marginTop: '5px'}}>
+              <span>By:</span>
+              <span style={this.state.nameSeller ? { fontWeight: "bold" } : {}}>
+                {" "}
+                {ans.answerer_name},
+              </span>
+              <span data-testid='date'> {this.formatDate(ans.date)}</span>
+              <span>
+                {" "}
+                | Helpful?{" "}
+                <button id='ans-help-btn' data-testid='AnsHelp' onClick={(e) => this.handleAnsHelp(ans, e)}>Yes?</button>{" "}
+                <span data-testid="ansnumHelp">({ans.helpfulness})</span>
+              </span>
+              <span>
+                {" "}
+                | <AnswerReport ansObj={ans} />
+              </span>
+              </div>
+            </div>
+          ))}
+          <div>{moreBtn}</div>
+        </div>
+      );
+    }
 
-    return (
-      <div id="a-comp">
-        {this.state.answerArr.map((ans) => (
-          <div id="a-wrapper">
-            <div style={{ display: "none" }}>
-              {this.checkName(ans.answerer_name)}
-            </div>
-            <h1 id="a-letter">A: </h1>
-            <p id="a-body">{ans.body}</p>
-            <div id='a-img'>
-            {ans.photos.map((img) =>
-            (<img src={`${img.url}`} alt='Should Have Image Here' id='a-img-display'/>)
-            )}
-            </div>
-            <div id='a-sub-body' style={{fontSize: 'small', fontWeight: 'lighter', marginTop: '5px'}}>
-            <span>By:</span>
-            <span style={this.state.nameSeller ? { fontWeight: "bold" } : {}}>
-              {" "}
-              {ans.answerer_name},
-            </span>
-            <span data-testid='date'> {this.formatDate(ans.date)}</span>
-            <span>
-              {" "}
-              | Helpful?{" "}
-              <button id='ans-help-btn' data-testid='AnsHelp' onClick={(e) => this.handleAnsHelp(ans, e)}>Yes?</button>{" "}
-              <span data-testid="ansnumHelp">({ans.helpfulness})</span>
-            </span>
-            <span>
-              {" "}
-              | <AnswerReport ansObj={ans} />
-            </span>
-            </div>
-          </div>
-        ))}
-        <div>{moreBtn}</div>
-      </div>
-    );
   }
 }
 
