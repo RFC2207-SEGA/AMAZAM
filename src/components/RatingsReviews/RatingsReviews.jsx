@@ -39,7 +39,7 @@ class RatingsReviews extends React.Component {
       axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews', {
         headers: {'Authorization': `${API_KEY}`},
         params: {
-          count: 5, // FIXME - Change back to 50
+          count: 50,
           // page: 1,
           product_id: this.props.product.id,
           sort: 'relevant'

@@ -306,7 +306,7 @@ Ratings and Revies Main Component
 }
 
 .reviews-ratings-hdr {
-	font-size: large;
+	font-size: 20px;
 	padding-top: 100px;
 	padding-bottom: 30px;
 }
@@ -337,7 +337,7 @@ Ratings and Revies Main Component
 	color: #d3d3d3;
 }
 
-.reviews-anchors:hover, .reviews-anchors:active, .reviews-anchors:focus {
+.reviews-anchors:hover, .reviews-anchors:active {
 	color: #0F7D5A;
 }
 
@@ -345,8 +345,9 @@ Ratings and Revies Main Component
 /*
 Review List/Tiles Sub-component
 */
+
 .reviews-list {
-	height: 550px;
+	height: 600px;
 }
 
 .review-list-hdr{
@@ -355,9 +356,12 @@ Review List/Tiles Sub-component
 }
 
 .review-tile {
-	margin-top: 50px;
-	margin-bottom: 50px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 	margin-right: 20px;
+	background-color: #252525;
+	border-radius: 20px;
+  padding: 1%;
 }
 
 .review-thumbnail {
@@ -373,31 +377,34 @@ Review List/Tiles Sub-component
 	justify-content: space-between;
 }
 
-.reviewer-name-and-date {
-	font-size: small;
-	margin-top: 1%;
-	margin-bottom: 1%;
-}
-
 .review-summary {
 	margin-top: 1%;
 	margin-bottom: 1%;
+	font-size: 18px;
+	font-weight: 600;
+	/* font-weight: bold; */
 }
 
 .review-body {
 	margin-top: 1%;
 	margin-bottom: 1%;
-	font-size: small;
+	font-size: 16px;
+}
+
+.reviewer-rec-yes {
+	margin-bottom: 1%;
+	font-size: 14px;
 }
 
 .vote-helpfulness-and-report {
 	margin-top: 1%;
 	margin-bottom: 1%;
-	font-size: small;
+	font-size: 12px;
 }
 
 .seller-response {
-	background-color: rgb(239, 239, 239);
+	background-color: rgb(220, 220, 220);
+	border-radius: 5%;
 }
 
 
@@ -425,7 +432,7 @@ Ratings Breakdown Sub-component
 
 .rating-bar-graph-label {
 	width: 50px;
-	font-size: 14px;
+	font-size: 15px;
 }
 
 .bar-graph-container {
@@ -508,7 +515,7 @@ Add Review Modal
 	top: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.5) ;
+	background-color: rgba(85, 85, 85, 0.8) ;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -519,9 +526,10 @@ Add Review Modal
 .add-review-modal-content {
 	width: 615px;
 	height: 700px;
-	background-color: rgb(0, 0, 0);
-	color: white;
+	background-color: rgb(35, 35, 35);
+	color:rgb(230, 230, 230);
 	overflow-y: scroll;
+	border-radius: 5px;
 	}
 
 .add-review-modal-header {
@@ -566,14 +574,22 @@ Add Review Modal
 	width: 98%;
 	border: 1px solid #eee;
 	margin-top: 1%;
+	margin-bottom: 1%;
 	font-size: small;
 	padding: 1%;
+	background-color: rgb(25, 25, 25);
+	color:rgb(230, 230, 230);
+	border-radius: 5px;
 }
 
 .add-review-input-fld {
 	border: 1px solid #eee;
+	margin-bottom: 1%;
 	font-family: 'futura';
 	padding: 1%;
+	background-color: #181818;
+	color:rgb(240, 240, 240);
+	border-radius: 5px;
 }
 
 .review-thumbnail {
@@ -692,6 +708,21 @@ Modal - Star Ratings
 .ratings-reviews-btn:hover {
   box-shadow: 0 0 40px 40px #0F7D5A inset;
 }
+
+.upload-photos {
+	margin-left: 5px;
+	margin-top: 1px;
+	margin-bottom: 1px;
+	padding: .8em 2em;
+}
+
+.submit-new-review-btn {
+	margin-left: 5px;
+	margin-top: 1px;
+	margin-bottom: 1px;
+	padding: .5em 2.8em;
+}
+
 
 
 

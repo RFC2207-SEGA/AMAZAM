@@ -67,7 +67,7 @@ class CloudinaryUploadWidget extends Component {
 
   render() {
     return (
-      <button id="upload_widget">
+      <button className='ratings-reviews-btn upload-photos' id="upload_widget">
         Choose File
       </button>
     );

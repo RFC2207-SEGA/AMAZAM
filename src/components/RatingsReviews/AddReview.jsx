@@ -192,12 +192,12 @@ class AddReview extends React.Component {
                   <p>{`${this.getCountText()}`}</p>
                 <br></br> <br></br>
 
-                <label htmlFor='photos'>Upload Photos</label><br></br> <br></br>
+                <label htmlFor='photos'></label>
                   {displayAddPhotosBtn}<br></br>
                   {this.state.photoThumbnails.map((thumbnailURL, index) => {
                     return <img src={thumbnailURL} key={index} className='review-thumbnail'></img>
                   })}
-                <br></br> <br></br>
+                <br></br>
 
                 <label htmlFor='name'>Name*: </label>
                   <input className='add-review-input-fld' onChange={this.onChange} type='text' maxLength='60' required='required' name='name' placeholder='Example: jackson11'/>
@@ -211,7 +211,7 @@ class AddReview extends React.Component {
             </div>
 
             <div className="add-review-modal-footer">
-              <button onClick={this.handleSubmit} className="button">Submit</button>
+              <button onClick={this.handleSubmit} className="ratings-reviews-btn submit-new-review-btn">Submit</button>
             </div>
           </div>
         </div>

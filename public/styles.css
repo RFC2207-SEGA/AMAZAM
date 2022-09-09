@@ -306,7 +306,7 @@ Ratings and Revies Main Component
 }
 
 .reviews-ratings-hdr {
-	font-size: large;
+	font-size: 20px;
 	padding-top: 100px;
 	padding-bottom: 30px;
 }
@@ -347,7 +347,7 @@ Review List/Tiles Sub-component
 */
 
 .reviews-list {
-	height: 550px;
+	height: 600px;
 }
 
 .review-list-hdr{
@@ -356,9 +356,12 @@ Review List/Tiles Sub-component
 }
 
 .review-tile {
-	margin-top: 50px;
-	margin-bottom: 50px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 	margin-right: 20px;
+	background-color: rgb(234, 234, 234);
+	border-radius: 20px;
+  padding: 1%;
 }
 
 .review-thumbnail {
@@ -377,8 +380,9 @@ Review List/Tiles Sub-component
 .review-summary {
 	margin-top: 1%;
 	margin-bottom: 1%;
-	font-size: 20px;
-	font-weight: bold;
+	font-size: 18px;
+	font-weight: 600;
+	/* font-weight: bold; */
 }
 
 .review-body {
@@ -388,17 +392,19 @@ Review List/Tiles Sub-component
 }
 
 .reviewer-rec-yes {
+	margin-bottom: 1%;
 	font-size: 14px;
 }
 
 .vote-helpfulness-and-report {
 	margin-top: 1%;
 	margin-bottom: 1%;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .seller-response {
 	background-color: rgb(220, 220, 220);
+	border-radius: 5%;
 }
 
 /*
@@ -425,7 +431,7 @@ Ratings Breakdown Sub-component
 
 .rating-bar-graph-label {
 	width: 50px;
-	font-size: 14px;
+	font-size: 15px;
 }
 
 .bar-graph-container {
@@ -521,6 +527,7 @@ Add Review Modal
 	height: 700px;
 	background-color: #fff;
 	overflow-y: scroll;
+	border-radius: 5px;
 	}
 
 .add-review-modal-header {
@@ -565,14 +572,18 @@ Add Review Modal
 	width: 98%;
 	border: 1px solid #eee;
 	margin-top: 1%;
+	margin-bottom: 1%;
 	font-size: small;
 	padding: 1%;
+	border-radius: 5px;
 }
 
 .add-review-input-fld {
 	border: 1px solid #eee;
+	margin-bottom: 1%;
 	font-family: 'futura';
 	padding: 1%;
+	border-radius: 5px;
 }
 
 .review-thumbnail {
@@ -694,6 +705,21 @@ Modal - Star Ratings
 .ratings-reviews-btn:hover {
   box-shadow: 0 0 40px 40px #e74c3c inset;
 }
+
+.upload-photos {
+	margin-left: 5px;
+	margin-top: 1px;
+	margin-bottom: 1px;
+	padding: .8em 2em;
+}
+
+.submit-new-review-btn {
+	margin-left: 5px;
+	margin-top: 1px;
+	margin-bottom: 1px;
+	padding: .5em 2.8em;
+}
+
 
 /* ------ */
 .social-links {
