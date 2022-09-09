@@ -11,6 +11,17 @@ const axios = require('axios');
 class RatingsReviews extends React.Component {
   constructor(props) {
     super(props);
+
+    this.ratingsFiltersStatus = {
+      1: false,
+      2: false,
+      3: false,
+      4: false,
+      5: false
+    }
+
+    this.allReviews = []
+
     this.state = {
       reviews: [],
       sort: 'relevant',
@@ -20,6 +31,7 @@ class RatingsReviews extends React.Component {
     this.handleSort = this.handleSort.bind(this);
     this.toggleReviewModal = this.toggleReviewModal.bind(this);
     this.setNumReviewsToDisplay = this.setNumReviewsToDisplay.bind(this);
+    this.filterReviews = this.filterReviews.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -34,6 +46,7 @@ class RatingsReviews extends React.Component {
         }})
       .then((res) => {
         this.setState({reviews: res.data.results})
+        this.allReviews = res.data.results
       })
       .catch((err) =>
         console.log(err));
@@ -53,6 +66,7 @@ class RatingsReviews extends React.Component {
         sort: sortMethod
       }})
     .then((res) => {
+      console.log('resorted reviews!')
       this.setState({ reviews: res.data.results })
     })
     .catch((err) =>
@@ -65,13 +79,30 @@ class RatingsReviews extends React.Component {
 
   setNumReviewsToDisplay() {
     if (this.state.reviewsToDiplay >= 2 && this.state.reviewsToDiplay < this.state.reviews.length) {
-      return <button onClick={(e) => {
+      return <button className='ratings-reviews-btn' onClick={(e) => {
         e.preventDefault()
         this.setState({reviewsToDiplay: this.state.reviewsToDiplay + 2})
       }}
       > More Reviews </button>
     }
   }
+
+  filterReviews(key) {
+    this.ratingsFiltersStatus[key] = !this.ratingsFiltersStatus[key]
+    var filteredReviews = this.allReviews.filter(review => {
+      return this.ratingsFiltersStatus[review.rating]
+    })
+    this.setState({reviews: filteredReviews, reviewsToDiplay: filteredReviews.length})
+
+    var allAreFalse = Object.values(this.ratingsFiltersStatus).every(value => {
+      return value === false
+    })
+
+    if (allAreFalse) {
+      this.setState({reviews: this.allReviews, reviewsToDiplay: this.allReviews.length})
+    }
+  }
+
 
 
   render() {
@@ -81,15 +112,18 @@ class RatingsReviews extends React.Component {
 
         <div className='reviews-ratings'>
           <div className='breakdowns'>
-            <div><RatingBreakdown reviewMeta={this.props.reviewMeta}/></div>
+            <div><RatingBreakdown
+              reviewMeta={this.props.reviewMeta}
+              filterReviews={this.filterReviews}/>
+            </div>
             <div><ProductBreakdown reviewMeta={this.props.reviewMeta}/></div>
           </div>
 
           <div className='reviews-list-container'>
             <div className='review-list-hdr'>
-              <span>{`${this.state.reviewsToDiplay} reviews, sorted by `}</span>
+              <span className='reviews-hrd-sort-text'>{`${this.state.reviewsToDiplay} review(s), sorted by `}</span>
               <span>
-                <select onChange={this.handleSort}>
+                <select className='reviews-sorting-dropdown' onChange={this.handleSort}>
                   <option value='relevant'>Relevance</option>
                   <option value='helpful'>Helpfulness</option>
                   <option value='newest'>Newest</option>
@@ -98,11 +132,12 @@ class RatingsReviews extends React.Component {
             </div>
 
             <ReviewsList
-              reviews={this.state.reviews.slice(0, this.state.reviewsToDiplay)}/>
+              reviews={this.state.reviews.slice(0, this.state.reviewsToDiplay)}
+              reviewsToDiplay={this.state.reviewsToDiplay}/>
 
             <div className='footer-btns'>
               {this.setNumReviewsToDisplay()}
-              <button onClick={this.toggleReviewModal}>Add A Review</button>
+              <button className='ratings-reviews-btn' onClick={this.toggleReviewModal}>Add A Review</button>
               <div><AddReview
                 toggleReviewModal={this.toggleReviewModal}
                 showAddReviewModal={this.state.showAddReviewModal}

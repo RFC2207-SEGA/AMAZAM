@@ -79,9 +79,11 @@ class AddQuestion extends React.Component {
             <form onSubmit={(e) => this.handleSubmit(e)}>
               <div id='q-question'>
                 Your Question: <br></br>
-              <input
+              <textarea
                 type="text"
                 maxlength='1000'
+                cols='40'
+                rows='10'
                 onChange={(e) => this.setState({ qBody: e.target.value })}
                 required
               />

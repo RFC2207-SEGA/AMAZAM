@@ -29,14 +29,12 @@ class App extends React.Component {
       }})
     .then(res => {
       this.setState({ products: res.data, product: res.data[2] })
-      console.log('Array of Products: ', res.data)
       return axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta', {
         headers: {'Authorization': `${API_KEY}`},
         params: {product_id: res.data[2].id}
       })
     })
     .then(res => {
-      console.log('meta res:', res.data)
       this.setState({ reviewMeta: res.data })
     })
     .catch(err =>
@@ -52,7 +50,6 @@ class App extends React.Component {
       params: {product_id: product.id}
     })
     .then(res => {
-      console.log('updated review metadata:', res.data)
       this.setState({ reviewMeta: res.data })
     })
     .catch(err =>

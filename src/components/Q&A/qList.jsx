@@ -220,6 +220,9 @@ class QList extends React.Component {
           currentProduct={this.props.product.name}
         />
       </div>
+
+
+
     );
   }
 }
