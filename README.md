@@ -1,6 +1,4 @@
 # SEGA-Project-Atelier
-# Old-School
-
 ## Contributors
 - Product Overview, Related Products - [Alice Blank](https://github.com/AllEyesBlank)
 - Ratings and Reviews - [Melissa Gil](https://github.com/melissa-gv)
