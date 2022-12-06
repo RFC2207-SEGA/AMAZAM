@@ -11,8 +11,9 @@ This project restructured the front-end of an e-commerce app to have a more mode
 The app provides a clear shopping experience where you may navigate through products and arrays of product photos in a central gallery, leave and read reviews, and search and answer questions about the products listed.
 
 ## Video Demo
-<!-- #### Product Overview (Alice)
-![gif](https://media.giphy.com/media/eX9JBf8ld6DCTuXKqK/giphy.gif) -->
+#### Product Overview (Alice)
+![gif](https://media.giphy.com/media/vuHs0LpNVL8lIzmmU3/giphy.gif)
+![gif](https://media.giphy.com/media/sejTJvcPPDZkDXuEsz/giphy.gif)
 
 ## Tech Stack
 #### Front End:
