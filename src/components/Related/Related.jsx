@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { API_KEY } from '../../config/config.js';
 import RelatedProduct from './RelatedProduct.jsx';
 import Outfit from './Outfit.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
+const { API_KEY } = process.env
 
 class Related extends React.Component {
   constructor(props) {

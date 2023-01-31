@@ -1,6 +1,12 @@
 const path = require("path");
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
+  plugins: [
+    new Dotenv({
+      path: "./.env"
+    }),
+  ],
   mode: "development",
   entry: "./src/index.jsx",
   output: {

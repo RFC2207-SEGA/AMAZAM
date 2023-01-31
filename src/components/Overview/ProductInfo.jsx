@@ -1,5 +1,5 @@
 import React from 'react';
-import Stars from './Stars.jsx'
+import Stars from '../Stars.jsx'
 
 const ProductInfo = ({rating, product, style, onSale, scroll}) => {
   let starRating = []

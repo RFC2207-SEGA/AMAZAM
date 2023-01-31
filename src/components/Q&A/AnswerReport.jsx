@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { API_KEY } from "../../config/config.js";
 import {handleInteractions} from '../../utils.js';
 const axios = require("axios");
+// const { API_KEY } = process.env
 
 class AnswerReport extends React.Component {
   constructor(props) {

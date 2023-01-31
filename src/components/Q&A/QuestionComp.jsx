@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import AddAnswer from "./AddAnswer.jsx";
 import QuestionReport from './QuestionReport.jsx';
 import {handleInteractions} from '../../utils.js';
-import { API_KEY } from "../../config/config.js";
 const axios = require("axios");
+const { API_KEY } = process.env
 
 class QuestionComp extends React.Component {
   constructor(props) {

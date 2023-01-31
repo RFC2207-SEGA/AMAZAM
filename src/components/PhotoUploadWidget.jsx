@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 
-class CloudinaryUploadWidget extends Component {
+class CloudinaryUploadWidget extends React.Component {
   constructor(props) {
     super(props);
     this.uploadedPhotoURLs = []

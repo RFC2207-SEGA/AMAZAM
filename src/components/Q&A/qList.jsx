@@ -2,9 +2,9 @@ import React from "react";
 import AnswerComp from "./AnswerComp.jsx";
 import QuestionComp from "./QuestionComp.jsx";
 import AddQuestion from "./AddQuestion.jsx";
-import { API_KEY } from "../../config/config.js";
 import {handleInteractions} from '../../utils.js';
 const axios = require("axios");
+const { API_KEY } = process.env
 
 class QList extends React.Component {
   constructor(props) {

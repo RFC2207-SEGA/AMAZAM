@@ -4,8 +4,8 @@ import AddReview from './AddReview.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 import {handleInteractions} from '../../utils.js';
-import { API_KEY } from  '../../../src/config/config.js';
 
+const { API_KEY } = process.env
 const axios = require('axios');
 
 class RatingsReviews extends React.Component {

@@ -5,7 +5,7 @@ import ProductInfo from './ProductInfo.jsx';
 import OverviewSelectors from './OverviewSelectors.jsx';
 import Related from "../Related/Related.jsx"
 import axios from 'axios';
-import { API_KEY } from '../../config/config.js'
+const { API_KEY } = process.env
 // import axios from 'axios';
 
 

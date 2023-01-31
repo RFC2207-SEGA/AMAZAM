@@ -3,11 +3,11 @@ import QList from './components/Q&A/qList.jsx';
 import Overview from "./components/Overview/Overview.jsx"
 import TitleBar from "./components/TitleBar.jsx"
 import React from 'react';
-import { API_KEY } from './config/config.js';
 import { createRoot } from 'react-dom/client';
 import RatingsReviews from './components/RatingsReviews/RatingsReviews.jsx';
 const root = createRoot(document.getElementById("root"));
 
+const { API_KEY } = process.env
 
 class App extends React.Component {
   constructor(props) {

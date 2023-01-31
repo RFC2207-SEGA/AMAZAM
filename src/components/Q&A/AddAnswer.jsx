@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { API_KEY } from "../../config/config.js";
 import {handleInteractions} from '../../utils.js';
 import CloudinaryUploadWidget from '../../../src/components/PhotoUploadWidget.jsx'
 const axios = require("axios");
+// const { API_KEY } = process.env
 
 class AddAnswer extends React.Component {
   constructor(props) {

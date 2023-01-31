@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import {handleInteractions} from '../../utils.js';
-import { API_KEY } from '../../../src/config/config.js';
 import CloudinaryUploadWidget from '../../../src/components/PhotoUploadWidget.jsx'
+const { API_KEY } = process.env
 
 class AddReview extends React.Component {
   constructor(props) {

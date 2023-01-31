@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {API_KEY} from '../../config/config.js';
+const { API_KEY } = process.env
 
 class ComparisonModal extends React.Component {
   constructor(props) {

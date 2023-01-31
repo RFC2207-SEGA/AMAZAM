@@ -47,7 +47,7 @@ class RelatedCarousel extends React.Component {
             <div className="arrow-spacer">
             </div>
             {this.state.relatedPhotos.map((photo, index) => (
-              <RelatedCarouselPhoto photo={photo} index={index + this.state.index} changePhoto={this.props.changePhoto} bigPhotoIndex={this.props.index} />
+              <RelatedCarouselPhoto key={index} photo={photo} index={index + this.state.index} changePhoto={this.props.changePhoto} bigPhotoIndex={this.props.index} />
             ))}
             <div className="arrow-spacer">
             <a className="related-next" onClick={() => { this.photosInArray(this.state.index + 1) }}>&#10095;</a>
