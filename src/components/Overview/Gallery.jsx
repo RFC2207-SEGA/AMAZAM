@@ -24,8 +24,8 @@ class Gallery extends React.Component {
   render () {
     return (
       <div>
-        {this.props.style.photos.map((photo) => (
-        <Photo photo={photo} last={this.props.style.photos.length - 1} index={this.props.style.photos.indexOf(photo)} display={this.display.bind(this)} next={this.props.movePhoto} prev={this.props.movePhoto} triggerModal={this.triggerModal.bind(this)} photos={this.props.style.photos}/>))}
+        {this.props.style.photos.map((photo, i) => (
+        <Photo key={i} photo={photo} last={this.props.style.photos.length - 1} index={this.props.style.photos.indexOf(photo)} display={this.display.bind(this)} next={this.props.movePhoto} prev={this.props.movePhoto} triggerModal={this.triggerModal.bind(this)} photos={this.props.style.photos}/>))}
         <MiniGallery photos={this.props.style.photos} index={this.props.index - 1} onClick={this.props.movePhoto}/>
         <FullscreenModal show={this.state.showModal} photo={this.props.style.photos[this.props.index - 1]} index={this.props.index - 1} last={this.props.style.photos.length - 1} toggleModal={this.triggerModal.bind(this)} next={this.props.movePhoto} prev={this.props.movePhoto} photos={this.props.style.photos} onClick={this.props.movePhoto}/>
       </div>

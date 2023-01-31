@@ -33,7 +33,7 @@ class MiniGallery extends React.Component {
         return (
           <div className="mini-carousel">
             {this.state.tinyPhotos.map((photo, index, photos) => (
-              <MiniPhoto photo={photo} bigPhoto={this.props.photos[this.props.index]} bigPhotoIndex={this.props.index} onClick={this.props.onClick} index={this.state.index + index} />))}
+              <MiniPhoto key={index} photo={photo} bigPhoto={this.props.photos[this.props.index]} bigPhotoIndex={this.props.index} onClick={this.props.onClick} index={this.state.index + index} />))}
           </div>
         )
       }

@@ -12,10 +12,10 @@ function Characteristic ({ characteristic, value }) {
   }
 
   var icon = {
-    Length: <i class="fa-solid fa-ruler"></i>,
-    Fit: <i class="fa-solid fa-shirt"></i>,
-    Comfort: <i class="fa-solid fa-heart"></i>,
-    Quality: <i class="fa-solid fa-gem"></i>
+    Length: <i className="fa-solid fa-ruler"></i>,
+    Fit: <i className="fa-solid fa-shirt"></i>,
+    Comfort: <i className="fa-solid fa-heart"></i>,
+    Quality: <i className="fa-solid fa-gem"></i>
   }
 
   var marginLeftPercentage = parseFloat(value) / 5 * 100;

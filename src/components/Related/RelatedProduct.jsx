@@ -35,7 +35,7 @@ class RelatedProduct extends React.Component {
   calculateStars(rating) {
     let starRating = []
     for (let i = 0; i < Math.round(rating); i++) {
-      starRating.push(<i class="fa-solid fa-star"></i>)
+      starRating.push(<i key={i} className="fa-solid fa-star"></i>)
     }
     return starRating
   }
@@ -53,7 +53,7 @@ class RelatedProduct extends React.Component {
             <div className="comparison-modal-container">
               <ComparisonModal show={this.state.showComparison} mainProduct={this.props.mainProduct} comparedProduct={this.props.product} mainInfo={this.props.mainInfo} toggle={this.toggleModal.bind(this)} />
             </div>
-            <div className="action-button" onClick={this.toggleModal.bind(this)}><i class="fa-solid fa-star"></i></div>
+            <div className="action-button" onClick={this.toggleModal.bind(this)}><i className="fa-solid fa-star"></i></div>
             <img
               src={photoUrl}
               width="100"
@@ -81,7 +81,7 @@ class RelatedProduct extends React.Component {
           //     <div className="comparison-modal-container">
           //       <ComparisonModal show={this.state.showComparison} mainProduct={this.props.mainProduct} comparedProduct={this.props.product} mainInfo={this.props.mainInfo} toggle={this.toggleModal.bind(this)} />
           //     </div>
-          //     <div className="action-button" onClick={this.toggleModal.bind(this)}><i class="fa-solid fa-star"></i></div>
+          //     <div className="action-button" onClick={this.toggleModal.bind(this)}><i className="fa-solid fa-star"></i></div>
           //     <div className="sale" onClick={() => { this.props.select(this.props.product) }}> No
           //     </div>
           //     <div className="sale" onClick={() => { this.props.select(this.props.product) }}>Preview</div>
@@ -103,7 +103,7 @@ class RelatedProduct extends React.Component {
               <div className="comparison-modal-container">
                 <ComparisonModal show={this.state.showComparison} mainProduct={this.props.mainProduct} comparedProduct={this.props.product} mainInfo={this.props.mainInfo} toggle={this.toggleModal.bind(this)} />
               </div>
-              <div className="action-button" onClick={this.toggleModal.bind(this)}><i class="fa-solid fa-star"></i></div>
+              <div className="action-button" onClick={this.toggleModal.bind(this)}><i className="fa-solid fa-star"></i></div>
               <img onClick={this.moveProduct.bind(this)}
                 src={photoUrl}
                 width="100"

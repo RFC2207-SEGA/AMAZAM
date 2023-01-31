@@ -2,6 +2,10 @@ import React from 'react';
 import Stars from './Stars.jsx'
 
 const ProductInfo = ({rating, product, style, onSale, scroll}) => {
+  let starRating = []
+  for (let i = 0; i < Math.round(rating); i++) {
+    starRating.push(<i key={i} className="fa-solid fa-star"></i>)
+  }
   if (onSale) {
     return (
     <ul>

@@ -170,8 +170,8 @@ class QList extends React.Component {
     let toRender;
     var index = 1;
     if (this.state.searchSort) {
-      toRender = this.state.searchArray.map((qItem) => (
-        <ul>
+      toRender = this.state.searchArray.map((qItem, idx) => (
+        <ul key={idx}>
           <span>Results: </span>
           <QuestionComp
             questionList={qItem}
@@ -184,8 +184,8 @@ class QList extends React.Component {
         </ul>
       ));
     } else {
-      toRender = this.state.questionArr.map((qItem) => (
-        <ul>
+      toRender = this.state.questionArr.map((qItem, idx) => (
+        <ul key={idx}>
           <QuestionComp
             questionList={qItem}
             proID={this.state.productQ.product_id}
