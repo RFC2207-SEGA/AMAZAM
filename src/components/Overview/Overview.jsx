@@ -3,9 +3,9 @@ import Gallery from './Gallery.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import OverviewSelectors from './OverviewSelectors.jsx';
-import Related from "./Related/Related.jsx"
+import Related from "../Related/Related.jsx"
 import axios from 'axios';
-import {API_KEY} from '../config/config.js';
+import { API_KEY } from '../../config/config.js'
 // import axios from 'axios';
 
 
@@ -233,7 +233,7 @@ class Overview extends React.Component {
             <StyleSelector style={this.state.currentStyle.name} styles={this.state.productStyles} onClick={this.styleSelect.bind(this)}/>
             <OverviewSelectors pickSize={this.pickSize.bind(this)} sizes={this.state.sizes} currentSize={this.state.currentSize} quantities={this.state.quantities} addToCart={this.addToCart.bind(this)} pickQuantity={this.pickQuantity.bind(this)}/>
             <span className="social-links">
-            <i class="fa-brands fa-facebook"></i><i class="fa-brands fa-twitter"></i><i class="fa-brands fa-pinterest"></i></span>
+            <i className="fa-brands fa-facebook"></i><i className="fa-brands fa-twitter"></i><i className="fa-brands fa-pinterest"></i></span>
           </section>
         </div>
         <div className="product-description">
@@ -241,8 +241,8 @@ class Overview extends React.Component {
             <h1 className="slogan-header">{this.props.product.slogan}:</h1>
             <p>{this.props.product.description}</p>
           </div>
-          <div> {this.state.productInfo.map((feat) => (
-            <div className="product-features"> <i class="fa-solid fa-check"></i> {feat.feature}: {feat.value}</div>))}</div>
+          <div> {this.state.productInfo.map((feat, index) => (
+            <div className="product-features" key={index}> <i className="fa-solid fa-check"></i> {feat.feature}: {feat.value}</div>))}</div>
         </div>
         <div>
         <Related product={this.props.product} select={this.props.select} style={this.state.currentStyle} info={this.state.productInfo} mainRating={this.state.rating}/>

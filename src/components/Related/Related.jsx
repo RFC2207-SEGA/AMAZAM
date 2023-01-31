@@ -119,13 +119,13 @@ class Related extends React.Component {
           <div data-testid="related-streamer" className="related-streamer"> Related Products </div>
           <div className="related-product-container">
             {this.state.relatedProducts.map((product, index) => (
-              <RelatedProduct product={product.data} styles={this.state.relatedStyles[index]} rating={this.state.relatedReviews[index]} select={this.props.select} mainProduct={this.props.product} mainInfo={this.props.info}/>
+              <RelatedProduct key={index} product={product.data} styles={this.state.relatedStyles[index]} rating={this.state.relatedReviews[index]} select={this.props.select} mainProduct={this.props.product} mainInfo={this.props.info}/>
             ))}
           </div>
           <div className="related-streamer"> My Outfit </div>
           <div className="outfit-container">
             <div className="empty-outfit-card" onClick={this.addMainToFit.bind(this)}>
-              <div className="action-button"><i class="fa-solid fa-shirt"></i></div>
+              <div className="action-button"><i className="fa-solid fa-shirt"></i></div>
               <div className="sale"> +
               </div><div>Add to</div><div>Outfit</div>
               <div className="related-name">

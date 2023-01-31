@@ -3,7 +3,7 @@ import React from 'react';
 const ProductInfo = ({rating, product, style, onSale, scroll}) => {
   let starRating = []
   for (let i = 0; i < Math.round(rating); i++) {
-    starRating.push(<i class="fa-solid fa-star"></i>)
+    starRating.push(<i key={i} className="fa-solid fa-star"></i>)
   }
   if (onSale) {
     return (

@@ -3,7 +3,7 @@ import React from 'react';
 const Outfit = ({ product, styles, rating, select, remove }) => {
   let starRating = []
   for (let i = 0; i < Math.round(rating); i++) {
-    starRating.push(<i class="fa-solid fa-star"></i>)
+    starRating.push(<i className="fa-solid fa-star"></i>)
   }
   if (product && styles) {
     var photoUrl = styles.photos[0].thumbnail_url;
@@ -14,7 +14,7 @@ const Outfit = ({ product, styles, rating, select, remove }) => {
     if (salesPrice !== 0) {
       return (
         <div className="related-product">
-          <span><i class="fa-solid fa-x"></i></span>
+          <span><i className="fa-solid fa-x"></i></span>
           <img onClick={() => { select(product) }}
             src={photoUrl}
             width="100"
@@ -37,7 +37,7 @@ const Outfit = ({ product, styles, rating, select, remove }) => {
       if (photoUrl === null) {
         return (
           <div className="related-product">
-            <div className="action-button" onClick={() => { remove(product, styles, rating) }}><i class="fa-solid fa-x"></i></div>
+            <div className="action-button" onClick={() => { remove(product, styles, rating) }}><i className="fa-solid fa-x"></i></div>
             <div className="sale" onClick={() => { select(product) }}> No
             </div><div className="sale" onClick={() => { select(product) }}>Preview</div><div className="sale" onClick={() => { select(product) }}>Available</div>
             <div className="related-name">
@@ -53,7 +53,7 @@ const Outfit = ({ product, styles, rating, select, remove }) => {
         )
       } else return (
         <div className="related-product">
-          <div className="action-button" onClick={() => { remove(product, styles, rating) }}><i class="fa-solid fa-x"></i></div>
+          <div className="action-button" onClick={() => { remove(product, styles, rating) }}><i className="fa-solid fa-x"></i></div>
           <img onClick={() => { select(product) }}
             src={photoUrl}
             width="100"
