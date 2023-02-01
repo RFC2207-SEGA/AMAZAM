@@ -25,11 +25,10 @@ class ReviewReport extends React.Component {
 
   render() {
     return (
-        this.state.reviewReported ?
-          (<span className='reviews-anchors'>Thank you for your feedback!</span>)
-          :
-          (<a className='reviews-anchors' onClick={this.handleReportClick} href="">Report</a>)
-
+      this.state.reviewReported ?
+        (<span className='reviews-anchors'>Thank you for your feedback!</span>)
+        :
+        (<a className='reviews-anchors' onClick={this.handleReportClick} href="">Report</a>)
     )
   }
 }
