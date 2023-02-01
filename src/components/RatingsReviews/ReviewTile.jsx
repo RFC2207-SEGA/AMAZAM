@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Stars from '../../../src/components/Stars.jsx'
 import ReviewReport from '../../../src/components/RatingsReviews/ReviewReport.jsx'
+import ReportHelpfulness from '../../../src/components/RatingsReviews/ReportHelpfulness.jsx'
 const { API_KEY } = process.env
 
 function ReviewTile ({ review }) {
@@ -52,13 +53,11 @@ function ReviewTile ({ review }) {
       <div>{sellerResponse()}</div>
 
       <div className='vote-helpfulness-and-report'>
-        <span>Helpful? </span>
-        <a className='reviews-anchors' href="">Yes</a>
-        <span> ({review.helpfulness}) </span>
-        <a className='reviews-anchors' href="">No</a>
-        {'    |    '}
+
         <span>
-          <ReviewReport review={review}/>
+          <ReportHelpfulness review={review} />
+          &nbsp;|&nbsp;
+          <ReviewReport review={review} />
         </span>
       </div>
 

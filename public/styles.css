@@ -328,16 +328,16 @@ Ratings and Revies Main Component
 	order: 2;
 }
 
-.reviews-anchors {
+.review-tile-voting-btns {
 	color: #282828;
+	transition: all 0.3s ease-in-out;
+	text-decoration: underline;
+	display: inline-block;
 }
 
-.reviews-anchors:visited {
-	color: #282828;
-}
-
-.reviews-anchors:hover, .reviews-anchors:active {
+.review-tile-voting-btns:hover {
 	color:rgb(255, 0, 0);
+  transform: scale(1.2);
 }
 
 
