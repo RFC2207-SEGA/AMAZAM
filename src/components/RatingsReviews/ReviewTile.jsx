@@ -1,5 +1,8 @@
-import React from 'react';
+import React from 'react'
+import axios from 'axios'
 import Stars from '../../../src/components/Stars.jsx'
+import ReviewReport from '../../../src/components/RatingsReviews/ReviewReport.jsx'
+const { API_KEY } = process.env
 
 function ReviewTile ({ review }) {
 
@@ -23,11 +26,6 @@ function ReviewTile ({ review }) {
   function formatDate(dateStr){
     var options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(review.date).toLocaleDateString([],options);
-  }
-
-  function handleReportClick(e) {
-    e.preventDefault()
-    console.log("clicked report!")
   }
 
   return (
@@ -60,7 +58,7 @@ function ReviewTile ({ review }) {
         <a className='reviews-anchors' href="">No</a>
         {'    |    '}
         <span>
-          <a className='reviews-anchors' onClick={handleReportClick}>Report</a>
+          <ReviewReport review={review}/>
         </span>
       </div>
 

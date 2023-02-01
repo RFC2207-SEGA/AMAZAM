@@ -1,12 +1,12 @@
-import React from 'react';
-import axios from 'axios';
-import {handleInteractions} from '../../utils.js';
+import React from 'react'
+import axios from 'axios'
+import { handleInteractions } from '../../utils.js'
 import CloudinaryUploadWidget from '../../../src/components/PhotoUploadWidget.jsx'
 const { API_KEY } = process.env
 
 class AddReview extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.postData = {
       product_id: 0,
@@ -74,7 +74,6 @@ class AddReview extends React.Component {
   }
 
   onChange(e) {
-    // e.preventDefault();
     handleInteractions(e, 'Reviews');
     var key = e.target.attributes.name.value
     var value = e.target.value

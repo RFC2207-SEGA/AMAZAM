@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import {handleInteractions} from '../../utils.js';
 const axios = require("axios");
-// const { API_KEY } = process.env
+const { API_KEY } = process.env
 
 class QuestionReport extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class QuestionReport extends React.Component {
         { headers: { Authorization: `${API_KEY}` } }
       )
       .then((res) => {
-        console.log(res);
+        console.log("question report:", res);
         handleInteractions(e, 'Q&A');
       })
       .catch((err) => {
