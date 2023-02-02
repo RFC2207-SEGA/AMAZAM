@@ -731,7 +731,7 @@ Modal - Star Ratings
 }
 
 .ratings-reviews-btn:hover {
-  box-shadow: 0 0 40px 40px #e4331finset;
+  box-shadow: 0 0 40px 40px #e4331f inset;
 }
 
 .upload-photos {
@@ -1105,7 +1105,7 @@ i:hover {
   transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
 .cartButton:hover {
-  box-shadow: 0 0 40px 40px #e4331finset;
+  box-shadow: 0 0 40px 40px #e4331f inset;
 }
 
 .starButton {
@@ -1141,7 +1141,7 @@ i:hover {
   transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
 .starButton:hover {
-  box-shadow: 0 0 40px 40px #e4331f;
+  box-shadow: 0 0 40px 40px #e4331f inset;
 }
 
 select {
@@ -1149,7 +1149,8 @@ select {
 	outline: none;
 	font-family: 'Montserrat', sans-serif;
 	border-width: 5px;
-	border-color: #888;
+	border-color:rgb(150, 150, 150);
+	background-color: rgb(150, 150, 150);
 	border-radius: .5em;
 	overflow: hidden;
   /* Position & Size */
@@ -1160,20 +1161,21 @@ select {
 	margin: 3%;
   /* Personalize */
   color: #fff;
-  background-color: #888;
   cursor: pointer;
   transition: 300ms ease-in-out, color 300ms ease-in-out;
 }
 
 select:hover {
 	opacity: 80%;
-	background-color: #e4331f;
+	background-color: #e4331f ;
 	border-color: #e4331f;
 }
 
 .reviews-sorting-dropdown {
 	width: 10em;
 	height: 2.5em;
+	border-color:rgb(160, 160, 160);
+	background-color: rgb(160, 160, 160);
 }
 
 .dot {
@@ -1294,7 +1296,7 @@ select:hover {
   transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
 .qa-modal-button:hover {
-	box-shadow: 0 0 40px 40px #e4331finset;
+	box-shadow: 0 0 40px 40px #e4331f inset;
 }
 .qa-modal-button:hover, .btn:focus {
 	color: #fff;
@@ -1377,7 +1379,7 @@ select:hover {
 }
 
 #q-add-btn:hover,  #q-see-more-btn:hover, #q-see-less-btn:hover {
-	box-shadow: 0 0 40px 40px #e4331finset;
+	box-shadow: 0 0 40px 40px #e4331f inset;
 }
 
 #ans-expand, #ans-unexpand, .q-add-ans-btn{
