@@ -52,7 +52,7 @@ class AddReview extends React.Component {
   }
 
   toggleStar(e) {
-    handleInteractions(e, 'Reviews');
+    // handleInteractions(e, 'Reviews');
     var starNum;
     if (Number(e.target.attributes.id.value) === this.state.starRating) {
       starNum = 0;
@@ -74,7 +74,7 @@ class AddReview extends React.Component {
   }
 
   onChange(e) {
-    handleInteractions(e, 'Reviews');
+    // handleInteractions(e, 'Reviews');
     var key = e.target.attributes.name.value
     var value = e.target.value
     if (key === 'recommend') {
@@ -105,7 +105,7 @@ class AddReview extends React.Component {
         for (var i = 0; i < this.charDesc[currentChar].length; i++) {
           resultArr.push(
             <span className='char-radio-container'>
-              <input onChange={this.onChange} className='char-ratio-btn' type='radio' id={this.charDesc[currentChar]} name={currentChar} value={i + 1} />
+              <input onChange={this.onChange} type='radio' id={this.charDesc[currentChar]} name={currentChar} value={i + 1} />
               <label className='char-ratio-label' htmlFor={this.charDesc[currentChar]}> {this.charDesc[currentChar][i]} </label>
             </span>
           )
