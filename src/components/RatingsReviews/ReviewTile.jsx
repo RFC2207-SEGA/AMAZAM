@@ -3,6 +3,7 @@ import axios from 'axios'
 import Stars from '../../../src/components/Stars.jsx'
 import ReviewReport from '../../../src/components/RatingsReviews/ReviewReport.jsx'
 import ReportHelpfulness from '../../../src/components/RatingsReviews/ReportHelpfulness.jsx'
+import ReviewThumbnailExpand from '../../../src/components/RatingsReviews/ReviewThumbnailExpand.jsx'
 const { API_KEY } = process.env
 
 function ReviewTile ({ review }) {
@@ -43,9 +44,7 @@ function ReviewTile ({ review }) {
       <p className='review-body'>{review.body}</p>
 
       <div>
-        {review.photos.map((photo, index) =>
-          <img className='review-thumbnail' src={`${photo.url}`} key={photo.id}></img>
-        )}
+        <ReviewThumbnailExpand photos={review.photos}/>
       </div>
 
       <div>{reviewerRec()}</div>

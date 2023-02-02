@@ -26,7 +26,7 @@ class ReviewReport extends React.Component {
   render() {
     return (
       this.state.reviewReported ?
-        (<span className='review-tile-voting-btns-clicked'>Thanks for your feedback!</span>)
+        (<span className='review-tile-voting-btns-clicked'>Thanks for the feedback!</span>)
         :
         (<p className='review-tile-voting-btns' onClick={this.handleReportClick}>Report</p>)
     )

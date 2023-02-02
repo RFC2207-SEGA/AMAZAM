@@ -328,19 +328,6 @@ Ratings and Revies Main Component
 	order: 2;
 }
 
-.review-tile-voting-btns {
-	color: #282828;
-	transition: all 0.3s ease-in-out;
-	text-decoration: underline;
-	display: inline-block;
-}
-
-.review-tile-voting-btns:hover {
-	color:rgb(255, 0, 0);
-  transform: scale(1.2);
-}
-
-
 /*
 Review List/Tiles Sub-component
 */
@@ -365,7 +352,12 @@ Review List/Tiles Sub-component
 
 .review-thumbnail {
 	height: 5em;
-	margin: 1%
+	margin: 1%;
+	border-radius: 10%;
+}
+
+.review-thumbnail:hover {
+	cursor: pointer;
 }
 
 .stars-username-date {
@@ -381,7 +373,6 @@ Review List/Tiles Sub-component
 	margin-bottom: 1%;
 	font-size: 18px;
 	font-weight: 600;
-	/* font-weight: bold; */
 }
 
 .review-body {
@@ -401,9 +392,54 @@ Review List/Tiles Sub-component
 	font-size: 12px;
 }
 
+.review-tile-voting-btns {
+	color: #282828;
+	transition: all 0.3s ease-in-out;
+	text-decoration: underline;
+	display: inline-block;
+}
+
+.review-tile-voting-btns:hover {
+	color:rgb(255, 0, 0);
+  transform: scale(1.2);
+}
+
 .seller-response {
 	background-color: rgb(220, 220, 220);
 	border-radius: 5%;
+}
+
+/*
+Review Thumbnail Modal
+*/
+.review-thumbnail-modal-background {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5) ;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 3;
+	max-height: 100%;
+}
+
+
+.review-thumbnail-expanded {
+	width: 600px;
+	height:600px;
+	display: flex;
+	border-radius: 5px;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.review-thumbnail-modal-close-btn {
+	position: relative;
+	top: 5px;
+	left: 580px;
 }
 
 /*
@@ -502,8 +538,6 @@ Product Breakdown Sub-component
 	padding-bottom: 15px;
 }
 
-
-
 /*
 Add Review Modal
 */
@@ -585,11 +619,6 @@ Add Review Modal
 	border-radius: 5px;
 }
 
-.review-thumbnail {
-	height: 5em;
-	margin: 1%;
-	border-radius: 10%;
-}
 
 .current-char {
 	padding-top: 1%;

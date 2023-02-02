@@ -94,7 +94,7 @@ class AddReview extends React.Component {
 
   handlePhotoUploadResponse(photoURLs, thumbnailURLs) {
     this.postData.photos = photoURLs
-    this.setState({photoThumbnails: thumbnailURLs})
+    this.setState({ photoThumbnails: thumbnailURLs })
   }
 
   characteristicsVote() {
@@ -105,7 +105,7 @@ class AddReview extends React.Component {
         for (var i = 0; i < this.charDesc[currentChar].length; i++) {
           resultArr.push(
             <span className='char-radio-container'>
-              <input onChange={this.onChange} className='char-ratio-btn' type='radio' id={this.charDesc[currentChar]} name={currentChar} value={i+1}/>
+              <input onChange={this.onChange} className='char-ratio-btn' type='radio' id={this.charDesc[currentChar]} name={currentChar} value={i + 1} />
               <label className='char-ratio-label' htmlFor={this.charDesc[currentChar]}> {this.charDesc[currentChar][i]} </label>
             </span>
           )
@@ -120,13 +120,13 @@ class AddReview extends React.Component {
     e.preventDefault();
     axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews',
       this.postData, {
-      headers: {'Authorization': `${API_KEY}`}
+      headers: { 'Authorization': `${API_KEY}` }
     })
-    .then((res) => {
-      console.log(res)
-      this.props.toggleReviewModal()
-    })
-    .catch(err => console.log(err))
+      .then((res) => {
+        console.log(res)
+        this.props.toggleReviewModal()
+      })
+      .catch(err => console.log(err))
   }
 
 
@@ -138,7 +138,7 @@ class AddReview extends React.Component {
     }
 
     if (this.postData.photos.length < 5) {
-      var displayAddPhotosBtn = <> <CloudinaryUploadWidget handlePhotoUploadResponse={this.handlePhotoUploadResponse}/> </>
+      var displayAddPhotosBtn = <> <CloudinaryUploadWidget handlePhotoUploadResponse={this.handlePhotoUploadResponse} /> </>
     } else {
       var displayAddPhotosBtn = <><br></br><p>Max Number of Photos 📸 Reached</p></>
     }
@@ -155,7 +155,7 @@ class AddReview extends React.Component {
                 <h4 className="add-review-modal-title">Write Your Review</h4>
                 <h5 className="add-review-modal-subtitle">About the {this.props.product.name}</h5>
               </div>
-              <div className='review-modal-close-btn'><i onClick={()=> this.props.toggleReviewModal()}className="fa-solid fa-x"></i></div>
+              <div className='review-modal-close-btn'><i onClick={() => this.props.toggleReviewModal()} className="fa-solid fa-x"></i></div>
             </div>
 
             <div className="add-review-modal-body">
@@ -163,7 +163,7 @@ class AddReview extends React.Component {
                 <div className='star-rating-icons-container'>
                   {[1, 2, 3, 4, 5].map((starValue) =>
                     <label className="star-radio-label" key={starValue}>
-                      <input type="radio" className="radio-item" value={starValue}/>
+                      <input type="radio" className="radio-item" value={starValue} />
                       <i data-testid='toggle-star-rating' id={starValue} onClick={this.toggleStar}
                         className={starValue <= this.state.starRating ? "fa-solid fa-star" : "fa-regular fa-star"}>
                       </i>
@@ -173,8 +173,8 @@ class AddReview extends React.Component {
                 </div>
 
                 <label htmlFor='recommend'>Do you recommend this product?*</label>
-                  <input data-testid='recommend-yes' onChange={this.onChange} type='radio' name='recommend' value={true} />Yes
-                  <input data-testid='recommend-no' onChange={this.onChange} type='radio' name='recommend' value={false} />No
+                <input data-testid='recommend-yes' onChange={this.onChange} type='radio' name='recommend' value={true} />Yes
+                <input data-testid='recommend-no' onChange={this.onChange} type='radio' name='recommend' value={false} />No
                 <br></br> <br></br>
 
                 <div>
@@ -183,29 +183,29 @@ class AddReview extends React.Component {
                 <br></br>
 
                 <label htmlFor='summary'>Summary:</label><br></br>
-                  <textarea onChange={this.onChange} className='add-review-textarea' name='summary' id='summary' maxLength='60' rows='2' placeholder='Example: Best purchase ever!' />
+                <textarea onChange={this.onChange} className='add-review-textarea' name='summary' id='summary' maxLength='60' rows='2' placeholder='Example: Best purchase ever!' />
                 <br></br> <br></br>
 
                 <label htmlFor='body'>Body*:</label><br></br>
-                  <textarea onChange={this.onChange} className='add-review-textarea' name='body' id='body' maxLength='1000' rows='3' required='required' placeholder='Why did you like about the product or not?' />
-                  <p>{`${this.getCountText()}`}</p>
+                <textarea onChange={this.onChange} className='add-review-textarea' name='body' id='body' maxLength='1000' rows='3' required='required' placeholder='Why did you like about the product or not?' />
+                <p>{`${this.getCountText()}`}</p>
                 <br></br> <br></br>
 
                 <label htmlFor='photos'></label>
-                  {displayAddPhotosBtn}<br></br>
-                  {this.state.photoThumbnails.map((thumbnailURL, index) => {
-                    return <img src={thumbnailURL} key={index} className='review-thumbnail'></img>
-                  })}
+                {displayAddPhotosBtn}<br></br>
+                {this.state.photoThumbnails.map((thumbnailURL, index) => {
+                  return <img src={thumbnailURL} key={index} className='review-thumbnail'></img>
+                })}
                 <br></br>
 
                 <label htmlFor='name'>Name*: </label>
-                  <input className='add-review-input-fld' onChange={this.onChange} type='text' maxLength='60' required='required' name='name' placeholder='Example: jackson11'/>
-                  <p>For privacy reasons, do not use your full name or email address</p>
+                <input className='add-review-input-fld' onChange={this.onChange} type='text' maxLength='60' required='required' name='name' placeholder='Example: jackson11' />
+                <p>For privacy reasons, do not use your full name or email address</p>
                 <br></br> <br></br>
 
                 <label htmlFor='email'>Email*: </label>
-                  <input className='add-review-input-fld' onChange={this.onChange} type='email' maxLength='60' rows='10' cols='30' required='required' name='email' placeholder='Example: jackson11@email.com' />
-                  <p>For authentication reasons, you will not be emailed</p>
+                <input className='add-review-input-fld' onChange={this.onChange} type='email' maxLength='60' rows='10' cols='30' required='required' name='email' placeholder='Example: jackson11@email.com' />
+                <p>For authentication reasons, you will not be emailed</p>
               </form>
             </div>
 

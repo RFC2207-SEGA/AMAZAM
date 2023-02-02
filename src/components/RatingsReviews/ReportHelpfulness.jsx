@@ -25,21 +25,17 @@ class ReportHelpfulness extends React.Component {
 
   render() {
     return (
-      <>
-        <span>Helpful?</span>
-        &nbsp;
-        {
-          this.state.reviewHelpful ?
-            (<span className='review-tile-voting-btns-clicked'>Thanks for your feedback! ({this.props.review.helpfulness + 1})</span>)
-            :
-            (
-              <>
-                <span className='review-tile-voting-btns' onClick={this.handleHelpfulReviewSubmit}>Yes</span>
-                <span> ({this.props.review.helpfulness})</span>
-              </>
-            )
-        }
-      </>
+      this.state.reviewHelpful ?
+        (<span className='review-tile-voting-btns-clicked'>Thanks for the feedback!</span>)
+        :
+        (
+          <>
+            <span>Helpful?</span>
+            &nbsp;
+            <span className='review-tile-voting-btns' onClick={this.handleHelpfulReviewSubmit}>Yes</span>
+            <span> ({this.props.review.helpfulness})</span>
+          </>
+        )
     )
   }
 }
