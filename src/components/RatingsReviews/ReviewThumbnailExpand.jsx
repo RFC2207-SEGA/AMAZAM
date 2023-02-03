@@ -46,4 +46,4 @@ class ReviewThumbnailExpand extends React.Component {
   }
 }
 
-export default ReviewThumbnailExpand;
+export default ReviewThumbnailExpand

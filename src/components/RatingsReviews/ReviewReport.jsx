@@ -16,9 +16,6 @@ class ReviewReport extends React.Component {
     axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/${this.props.review.review_id}/report`,
       {},
       { headers: { Authorization: API_KEY } })
-      .then((res) => {
-        console.log('report review res:', res)
-      })
       .catch(err => console.log(err))
     this.setState({ reviewReported: true })
   }
@@ -33,4 +30,4 @@ class ReviewReport extends React.Component {
   }
 }
 
-export default ReviewReport;
+export default ReviewReport

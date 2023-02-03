@@ -4,10 +4,10 @@ import Stars from '../../../src/components/Stars.jsx'
 import ReviewReport from '../../../src/components/RatingsReviews/ReviewReport.jsx'
 import ReportHelpfulness from '../../../src/components/RatingsReviews/ReportHelpfulness.jsx'
 import ReviewThumbnailExpand from '../../../src/components/RatingsReviews/ReviewThumbnailExpand.jsx'
+
 const { API_KEY } = process.env
 
 function ReviewTile ({ review }) {
-
   function reviewerRec() {
     if (review.recommend) {
       return <div className='reviewer-rec-yes'> <i className="fa-solid fa-check"></i> I recommend this product </div>
@@ -37,7 +37,6 @@ function ReviewTile ({ review }) {
         <span data-testid='reviewer-name-and-date' >
           <span>{review.reviewer_name}</span>, <span>{formatDate(review.date)}</span>
         </span>
-
       </div>
 
       <p className='review-summary'>{review.summary}</p>
@@ -52,7 +51,6 @@ function ReviewTile ({ review }) {
       <div>{sellerResponse()}</div>
 
       <div className='vote-helpfulness-and-report'>
-
         <span>
           <ReportHelpfulness review={review} />
           &nbsp;|&nbsp;
@@ -64,4 +62,4 @@ function ReviewTile ({ review }) {
   )
 }
 
-export default ReviewTile;
+export default ReviewTile

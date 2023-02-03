@@ -16,9 +16,6 @@ class ReportHelpfulness extends React.Component {
     axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/${this.props.review.review_id}/helpful`,
       {},
       { headers: { Authorization: API_KEY } })
-      .then((res) => {
-        console.log('review helpfulness res:', res)
-      })
       .catch(err => console.log(err))
     this.setState({ reviewHelpful: true })
   }
@@ -40,4 +37,4 @@ class ReportHelpfulness extends React.Component {
   }
 }
 
-export default ReportHelpfulness;
+export default ReportHelpfulness

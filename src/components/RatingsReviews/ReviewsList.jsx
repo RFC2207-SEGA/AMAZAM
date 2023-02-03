@@ -1,5 +1,5 @@
-import React from 'react';
-import ReviewTile from './ReviewTile.jsx';
+import React from 'react'
+import ReviewTile from './ReviewTile.jsx'
 
 function ReviewsList ({ reviews, reviewsToDiplay }) {
   return (
@@ -11,4 +11,4 @@ function ReviewsList ({ reviews, reviewsToDiplay }) {
   )
 }
 
-export default ReviewsList;
+export default ReviewsList

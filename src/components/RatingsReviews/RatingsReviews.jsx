@@ -762,8 +762,6 @@ class RatingsReviews extends React.Component {
     }
   }
 
-
-
   render() {
     return (
       <div ref={this.props.ref} id='primary-ratings-and-reviews-widget-container'>
@@ -771,9 +769,11 @@ class RatingsReviews extends React.Component {
 
         <div className='reviews-ratings'>
           <div className='breakdowns'>
-            <div><RatingBreakdown
-              reviewMeta={this.props.reviewMeta}
-              filterReviews={this.filterReviews} />
+            <div>
+              <RatingBreakdown
+                reviewMeta={this.props.reviewMeta}
+                filterReviews={this.filterReviews}
+              />
             </div>
             <div><ProductBreakdown reviewMeta={this.props.reviewMeta} /></div>
           </div>
@@ -808,10 +808,8 @@ class RatingsReviews extends React.Component {
           </div>
         </div>
       </div>
-
     )
   }
 }
 
-export default RatingsReviews;
-
+export default RatingsReviews
