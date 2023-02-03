@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 import QList from './components/Q&A/qList.jsx';
 import Overview from "./components/Overview/Overview.jsx"
 import TitleBar from "./components/TitleBar.jsx"

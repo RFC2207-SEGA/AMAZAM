@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 const { API_KEY } = process.env.API_KEY
 
 export const handleInteractions = (e, currentWidget) => {
