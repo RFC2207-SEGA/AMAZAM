@@ -1,10 +1,10 @@
-import React from 'react';
-import axios from 'axios';
-import ReviewsList from './ReviewsList.jsx';
-import AddReview from './AddReview.jsx';
-import RatingBreakdown from './RatingBreakdown.jsx';
-import ProductBreakdown from './ProductBreakdown.jsx';
-import { handleInteractions } from '../../utils.js';
+import React from 'react'
+import axios from 'axios'
+import ReviewsList from './ReviewsList.jsx'
+import AddReview from './AddReview.jsx'
+import RatingBreakdown from './RatingBreakdown.jsx'
+import ProductBreakdown from './ProductBreakdown.jsx'
+import { handleInteractions } from '../../utils.js'
 
 const { API_KEY } = process.env
 
@@ -688,30 +688,28 @@ class RatingsReviews extends React.Component {
     this.filterReviews = this.filterReviews.bind(this);
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.product !== prevProps.product) {
-  //     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews', {
-  //       headers: { 'Authorization': `${API_KEY}` },
-  //       params: {
-  //         count: 50,
-  //         // page: 1,
-  //         product_id: this.props.product.id,
-  //         sort: 'relevant'
-  //       }
-  //     })
-  //       .then((res) => {
-  //         // FIXME - Remove console log after testing complete
-  //         console.log('Reviews:', res.data.results)
-  //         this.setState({ reviews: res.data.results })
-  //         this.allReviews = res.data.results
-  //       })
-  //       .catch((err) =>
-  //         console.log(err));
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    if (this.props.product !== prevProps.product) {
+      axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews', {
+        headers: { 'Authorization': `${API_KEY}` },
+        params: {
+          count: 50,
+          // page: 1,
+          product_id: this.props.product.id,
+          sort: 'relevant'
+        }
+      })
+        .then((res) => {
+          this.setState({ reviews: res.data.results })
+          this.allReviews = res.data.results
+        })
+        .catch((err) =>
+          console.log(err));
+    }
+  }
 
   handleSort(e) {
-    handleInteractions(e, 'Reviews');
+    // handleInteractions(e, 'Reviews');
     e.preventDefault();
     let sortMethod = e.target.value
     this.setState({ sort: sortMethod });
@@ -724,7 +722,6 @@ class RatingsReviews extends React.Component {
       }
     })
       .then((res) => {
-        console.log('resorted reviews!')
         this.setState({ reviews: res.data.results })
       })
       .catch((err) =>
@@ -737,11 +734,15 @@ class RatingsReviews extends React.Component {
 
   setNumReviewsToDisplay() {
     if (this.state.reviewsToDiplay >= 2 && this.state.reviewsToDiplay < this.state.reviews.length) {
-      return <button className='ratings-reviews-btn' onClick={(e) => {
-        e.preventDefault()
-        this.setState({ reviewsToDiplay: this.state.reviewsToDiplay + 2 })
-      }}
-      > More Reviews </button>
+      return (
+        <button className='ratings-reviews-btn'
+          onClick={(e) => {
+            e.preventDefault()
+            this.setState({ reviewsToDiplay: this.state.reviewsToDiplay + 2 })
+          }}>
+          More Reviews
+        </button>
+      )
     }
   }
 

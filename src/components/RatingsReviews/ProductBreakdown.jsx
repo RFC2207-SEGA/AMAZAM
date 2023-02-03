@@ -1,8 +1,7 @@
-import React from 'react';
+import React from 'react'
 import Characteristic from './Characteristic.jsx'
 
 function ProductBreakdown ({ reviewMeta }) {
-
   function createCharacteristicRange() {
     if (reviewMeta.characteristics !== undefined) {
       return Object.entries(reviewMeta.characteristics).map(([characteristic, values]) =>
@@ -16,4 +15,4 @@ function ProductBreakdown ({ reviewMeta }) {
   )
 }
 
-export default ProductBreakdown;
+export default ProductBreakdown

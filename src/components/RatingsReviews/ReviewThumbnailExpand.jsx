@@ -32,7 +32,8 @@ class ReviewThumbnailExpand extends React.Component {
           this.state.showModal ?
             (
               <div className="review-thumbnail-modal-background">
-                <div className="review-thumbnail-expanded" style={{ backgroundImage: `url(${this.props.photos[this.state.chosenPhotoIdx].url})` }}>
+                <div className="review-thumbnail-modal-container">
+                  <img className="review-thumbnail-expanded" alt="review thumbnail modal" src={this.props.photos[this.state.chosenPhotoIdx].url}></img>
                   <i onClick={this.handleCloseReviewThumbnailModal} className="fa-solid fa-x review-thumbnail-modal-close-btn"></i>
                 </div>
               </div>

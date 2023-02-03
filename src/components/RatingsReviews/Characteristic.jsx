@@ -1,7 +1,6 @@
-import React from 'react';
+import React from 'react'
 
 function Characteristic ({ characteristic, value }) {
-
   var descriptors = {
     Size: ['Too Small', 'Perfect', 'Too Big'],
     Width: ['Too Narrow', 'Perfect', 'Too Wide'],
@@ -37,4 +36,4 @@ function Characteristic ({ characteristic, value }) {
   )
 }
 
-export default Characteristic;
+export default Characteristic

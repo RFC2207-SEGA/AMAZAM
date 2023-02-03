@@ -124,7 +124,6 @@ class AddReview extends React.Component {
       headers: { 'Authorization': `${API_KEY}` }
     })
       .then((res) => {
-        console.log(res)
         this.props.toggleReviewModal()
       })
       .catch(err => console.log(err))
@@ -139,7 +138,7 @@ class AddReview extends React.Component {
     }
 
     if (this.postData.photos.length < 5) {
-      var displayAddPhotosBtn = <> <CloudinaryUploadWidget handlePhotoUploadResponse={this.handlePhotoUploadResponse} /> </>
+      var displayAddPhotosBtn = <CloudinaryUploadWidget handlePhotoUploadResponse={this.handlePhotoUploadResponse} />
     } else {
       var displayAddPhotosBtn = <><br></br><p>Max Number of Photos 📸 Reached</p></>
     }
@@ -223,5 +222,4 @@ class AddReview extends React.Component {
     }
   }
 }
-export default AddReview;
-
+export default AddReview

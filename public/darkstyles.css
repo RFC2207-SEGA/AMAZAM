@@ -421,7 +421,7 @@ Review Thumbnail Modal
 	top: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.9);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -429,17 +429,18 @@ Review Thumbnail Modal
 	max-height: 100%;
 }
 
+.review-thumbnail-modal-container {
+	position: relative;
+}
+
 .review-thumbnail-expanded {
-	width: 600px;
-	height: 600px;
-	display: flex;
 	border-radius: 5px;
-	background-size: contain;
-	background-repeat: no-repeat;
+	width: 600px;
+	height: auto;
 }
 
 .review-thumbnail-modal-close-btn {
-	position: relative;
+	position: absolute;
 	top: 5px;
 	left: 580px;
 }
@@ -1377,7 +1378,7 @@ select:hover {
   position: relative;
   display: flex;
 	height: 25px;
-	font-size: 10pt;
+	font-size: 12pt;
 	border: 1px solid #252525;
 	border-radius: 5px;
 	background-color: #252525;

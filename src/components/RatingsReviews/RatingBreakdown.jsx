@@ -1,8 +1,7 @@
-import React from 'react';
+import React from 'react'
 import Stars from '../../../src/components/Stars.jsx'
 
 function RatingBreakdown({ reviewMeta, filterReviews }) {
-
   function avgRating() {
     var sum = 0;
     var totalReviews = 0;
@@ -86,5 +85,4 @@ function RatingBreakdown({ reviewMeta, filterReviews }) {
   )
 }
 
-export default RatingBreakdown;
-
+export default RatingBreakdown
