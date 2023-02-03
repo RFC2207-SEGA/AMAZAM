@@ -8,7 +8,6 @@ import { handleInteractions } from '../../utils.js';
 
 const { API_KEY } = process.env
 
-
 class RatingsReviews extends React.Component {
   constructor(props) {
     super(props);

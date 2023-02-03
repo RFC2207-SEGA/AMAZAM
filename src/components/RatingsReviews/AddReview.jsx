@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { handleInteractions } from '../../utils.js'
 import CloudinaryUploadWidget from '../../../src/components/PhotoUploadWidget.jsx'
+
 const { API_KEY } = process.env
 
 class AddReview extends React.Component {
@@ -26,7 +27,7 @@ class AddReview extends React.Component {
       Comfort: ['Uncomfortable', 'Slightly uncomfortable', 'Ok', 'Comfortable', 'Perfect'],
       Quality: ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect'],
       Length: ['Runs short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'],
-      Fit: ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']
+      Fit: ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly loose', 'Runs loose']
     }
 
     this.charCountText = '';
@@ -161,6 +162,7 @@ class AddReview extends React.Component {
             <div className="add-review-modal-body">
               <form>
                 <div className='star-rating-icons-container'>
+                  <span>Select a Rating:*</span>
                   {[1, 2, 3, 4, 5].map((starValue) =>
                     <label className="star-radio-label" key={starValue}>
                       <input type="radio" className="radio-item" value={starValue} />
@@ -169,9 +171,9 @@ class AddReview extends React.Component {
                       </i>
                     </label>
                   )}
-                  <span>{displayStarRatingText} </span>
+                  <span>{displayStarRatingText}</span>
                 </div>
-
+                <br></br>
                 <label htmlFor='recommend'>Do you recommend this product?*</label>
                 <input data-testid='recommend-yes' onChange={this.onChange} type='radio' name='recommend' value={true} />Yes
                 <input data-testid='recommend-no' onChange={this.onChange} type='radio' name='recommend' value={false} />No
@@ -207,7 +209,10 @@ class AddReview extends React.Component {
                 <input className='add-review-input-fld' onChange={this.onChange} type='email' maxLength='60' rows='10' cols='30' required='required' name='email' placeholder='Example: jackson11@email.com' />
                 <p>For authentication reasons, you will not be emailed</p>
               </form>
+              <br />
+              <p style={{fontSize: '8pt', color: 'darkgrey'}}>* Indicates a required field</p>
             </div>
+
 
             <div className="add-review-modal-footer">
               <button onClick={this.handleSubmit} className="ratings-reviews-btn submit-new-review-btn">Submit</button>

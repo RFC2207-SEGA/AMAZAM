@@ -289,12 +289,13 @@ table {
 }
 
 .title-streamer {
-	padding: 1%;
+	padding: .5%;
 	display: flex;
 	justify-content: center;
-	font-size: small;
+	font-size: medium;
 	background-color: #e74c3c;
 	color: white;
+	text-align: center;
 }
 
 /*
@@ -661,7 +662,6 @@ Modal - Star Ratings
 .star-rating-icons-container {
 	margin-top: 15px;
 	margin-bottom: 15px;
-	text-align: center;
 	display: block;
 	position: relative;
 	justify-content: space-between;
@@ -762,6 +762,10 @@ Modal - Star Ratings
 	padding: 1%;
 	margin: auto;
 	font-size: 24px;
+}
+
+.social-links .fa-brands {
+	margin: 0 10px;
 }
 
 i:hover {
@@ -1213,22 +1217,27 @@ select:hover {
 #q-a-title {
 	font-size: 20px;
 	padding-bottom: 30px;
-	font-weight: lighter;
+	font-weight: 300;
 }
 
-#q-list{
+#q-list {
 	margin-top: 50px;
 	margin-left: 5%;
-	height: 600px;
+	height: 300px;
 	overflow-y: scroll;
 }
+
+
+
+
+
 
 #q-comp, #a-comp {
 	padding: 10px;
 }
 
 #q-body {
-	font-size: 20px;
+	font-size: 16px;
 	font-weight: bold;
 }
 
@@ -1364,12 +1373,22 @@ select:hover {
 
 .qsearch {
 	width: 75%;
+	padding: .5%;
   position: relative;
   display: flex;
-	height: 40px;
-	font-size: large;
-	font-weight: bold;
+	height: 25px;
+	font-size: 10pt;
+	border: 1px solid #fefefe;
+	border-radius: 5px;
+	background-color: #fefefe;
+
 }
+
+.qsearch::placeholder {
+	font-family: futura;
+}
+
+
 .search-wrapper {
 	padding-bottom: 10px;
 }
@@ -1415,7 +1434,7 @@ select:hover {
 	box-shadow: 0 0 40px 40px #e4331f inset;
 }
 
-#ans-expand, #ans-unexpand, .q-add-ans-btn{
+#ans-expand, #ans-unexpand, .q-add-ans-btn {
 	margin-top: 10px;
 	border: none;
 	font-weight: bold;
@@ -1424,6 +1443,11 @@ select:hover {
 	-webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
   transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
+
+
+
+
+
 
 #ans-expand:hover, #ans-unexpand:hover, .q-add-ans-btn:hover {
 	color: #a3372a;
