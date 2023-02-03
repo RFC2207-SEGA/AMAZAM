@@ -22,7 +22,7 @@ function Characteristic ({ characteristic, value }) {
 
   return (
     <div>
-      <p>{icon[characteristic]}  {characteristic}</p>
+      <p>{icon[characteristic]} {characteristic}</p>
       <div className='range-bar-container'>
         <div className="range-bar"></div>
         <div className="triangle-down" data-testid="triangleDown" style={{'marginLeft': `${marginLeftPercentage}%`}}></div>

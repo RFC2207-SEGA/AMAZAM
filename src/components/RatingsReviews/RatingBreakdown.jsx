@@ -1,8 +1,7 @@
 import React from 'react';
 import Stars from '../../../src/components/Stars.jsx'
 
-
-function RatingBreakdown ({ reviewMeta, filterReviews }) {
+function RatingBreakdown({ reviewMeta, filterReviews }) {
 
   function avgRating() {
     var sum = 0;
@@ -28,7 +27,6 @@ function RatingBreakdown ({ reviewMeta, filterReviews }) {
     return Math.round((yesCount / totalReviews) * 100)
   }
 
-
   var totalRatings = 0;
   var starPct = {};
   var ratingsPerStar = {
@@ -53,25 +51,30 @@ function RatingBreakdown ({ reviewMeta, filterReviews }) {
     <div className='ratings-breakdown-container'>
       <div>
         <span className='avg-rating' data-testid='stars'>{avgRating()} </span>
-        <Stars rating={avgRating()}/>
+        <Stars rating={avgRating()} />
       </div>
 
       <table className='ratings-breakdown-table'>
         <tbody>{starPercentage()}
-        {Object.entries(starPct).reverse().map(([key, value], index) => {
-          return (
-            <tr key={index}>
-              <td className='rating-bar-graph-label'><a onClick={(e) => {
-                e.preventDefault()
-                filterReviews(key)
-              }} href='' className='reviews-anchors'>{key} stars</a></td>
-              <td className='bar-graph-container'>
-                <div className='bar-graph-underlay'></div>
-                <div className='bar-graph-overlay' style={{'width': `${value}%`}}></div>
-              </td>
-            </tr>
-          )
-        })}
+          {Object.entries(starPct).reverse().map(([key, value], index) => {
+            return (
+              <tr key={index}>
+                <td className='rating-bar-graph-label'>
+                  <a onClick={(e) => {
+                    e.preventDefault()
+                    filterReviews(key)
+                  }}
+                    href='' className='reviews-anchors'>
+                    {key} stars
+                  </a>
+                </td>
+                <td className='bar-graph-container'>
+                  <div className='bar-graph-underlay'></div>
+                  <div className='bar-graph-overlay' style={{ 'width': `${value}%` }}></div>
+                </td>
+              </tr>
+            )
+          })}
         </tbody>
       </table>
 

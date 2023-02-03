@@ -335,7 +335,8 @@ Review List/Tiles Sub-component
 */
 
 .reviews-list {
-	height: 600px;
+	height: 450px;
+	margin: 20px 0;
 }
 
 .review-list-hdr{
@@ -344,7 +345,6 @@ Review List/Tiles Sub-component
 }
 
 .review-tile {
-	margin-top: 30px;
 	margin-bottom: 30px;
 	margin-right: 20px;
 	background-color: rgb(234, 234, 234);
@@ -469,6 +469,14 @@ Ratings Breakdown Sub-component
 .rating-bar-graph-label {
 	width: 50px;
 	font-size: 15px;
+}
+
+.reviews-anchors:visited {
+	color: black;
+}
+
+.reviews-anchors:active {
+	color: #e74c3c;
 }
 
 .bar-graph-container {
@@ -1162,6 +1170,7 @@ select {
 	margin: 3%;
   /* Personalize */
   color: #fff;
+	font-size: 12pt;
   cursor: pointer;
   transition: 300ms ease-in-out, color 300ms ease-in-out;
 }
