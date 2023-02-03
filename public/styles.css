@@ -169,15 +169,17 @@ table {
 	border-radius: 0px 0px 20px 20px;
 }
 
-.placeholder {
+.product-info-rating-reviews {
 	display: flex;
 	margin: 1%;
 	align-items: center;
+	position: relative;
 }
 
 .read-all-reviews {
- 	font-size: 14px !important;
-	margin-left: 7%;
+	font-size: 14px !important;
+	position: absolute;
+	left: 95px;
 	text-decoration: underline;
 }
 

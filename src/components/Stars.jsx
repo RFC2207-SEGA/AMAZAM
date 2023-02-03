@@ -12,7 +12,7 @@ function Stars ({ rating }) {
     </span>
   ]
 
-  function getStarsIcons() {
+  function getStarRatingOverlay() {
     let ratingToNum = parseFloat(rating)
     let roundedToQtrPct = (Math.round(ratingToNum * 4) / 4).toFixed(2);
     let starsOverlay = []
@@ -32,7 +32,7 @@ function Stars ({ rating }) {
   return (
     <span className='stars-component'>
       {starsUnderlay}
-      {getStarsIcons()}
+      {getStarRatingOverlay()}
     </span>
   )
 }
