@@ -42,6 +42,7 @@ section {
 body {
 	line-height: 1;
 	background:rgb(240, 240, 240)
+
 }
 
 ol,
@@ -288,12 +289,11 @@ table {
 }
 
 .title-streamer {
-	/* margin-top: 8px; */
 	padding: 1%;
 	display: flex;
 	justify-content: center;
 	font-size: small;
-	background-color:#e74c3c;
+	background-color: #e74c3c;
 	color: white;
 }
 
@@ -339,7 +339,7 @@ Review List/Tiles Sub-component
 	margin: 20px 0;
 }
 
-.review-list-hdr{
+.review-list-hdr {
 	display: flex;
 	align-items: center;
 }
@@ -403,7 +403,7 @@ Review List/Tiles Sub-component
 
 .review-tile-voting-btns:hover {
 	color:rgb(255, 0, 0);
-  transform: scale(1.2);
+	transform: scale(1.2);
 }
 
 .seller-response {
@@ -420,7 +420,7 @@ Review Thumbnail Modal
 	top: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.5) ;
+	background-color: rgba(0, 0, 0, 0.5);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -428,10 +428,9 @@ Review Thumbnail Modal
 	max-height: 100%;
 }
 
-
 .review-thumbnail-expanded {
 	width: 600px;
-	height:600px;
+	height: 600px;
 	display: flex;
 	border-radius: 5px;
 	background-size: contain;
@@ -487,11 +486,11 @@ Ratings Breakdown Sub-component
 
 .bar-graph-underlay {
 	position: absolute;
-  z-index: 1;
-  height: 10px;
-  width: 425px;
+	z-index: 1;
+	height: 10px;
+	width: 425px;
 	margin-left: 10px;
-  background-color: rgb(215, 215, 215);
+	background-color: rgb(215, 215, 215);
 }
 
 .bar-graph-overlay {
@@ -524,10 +523,10 @@ Product Breakdown Sub-component
 
 .range-bar {
 	position: absolute;
-  z-index: 1;
-  height: 10px;
-  width: 100%;
-  background-color:  rgb(215, 215, 215);
+	z-index: 1;
+	height: 10px;
+	width: 100%;
+	background-color:  rgb(215, 215, 215);
 }
 
 .triangle-down {
@@ -569,9 +568,10 @@ Add Review Modal
 	width: 615px;
 	height: 700px;
 	background-color: #fff;
+
 	overflow-y: scroll;
 	border-radius: 5px;
-	}
+}
 
 .add-review-modal-header {
 	display: flex;
@@ -581,7 +581,7 @@ Add Review Modal
 .add-review-modal-title {
 	font-size: 20px;
 	padding-bottom: 3px;
-	justify-content:left
+	justify-content: left
 }
 
 .add-review-modal-subtitle {
@@ -618,6 +618,8 @@ Add Review Modal
 	margin-bottom: 1%;
 	font-size: small;
 	padding: 1%;
+
+
 	border-radius: 5px;
 }
 
@@ -626,9 +628,10 @@ Add Review Modal
 	margin-bottom: 1%;
 	font-family: 'futura';
 	padding: 1%;
+
+
 	border-radius: 5px;
 }
-
 
 .current-char {
 	padding-top: 2%;
@@ -637,7 +640,6 @@ Add Review Modal
 }
 
 .char-radio-container {
-	/* display: inline-block; */
 	display: inline-grid;
 	width: 116px;
 }
@@ -652,7 +654,6 @@ Add Review Modal
 	height: 35px;
 	font-size: small;
 }
-
 
 /*
 Modal - Star Ratings
@@ -723,7 +724,6 @@ Modal - Star Ratings
   line-height: 1;
   margin: 20px;
 	margin-left: -10px;
-	/* margin-left: 30%; */
   padding: 1.2em 2.8em;
   text-decoration: none;
   text-align: center;
@@ -756,7 +756,6 @@ Modal - Star Ratings
 	margin-bottom: 1px;
 	padding: .5em 2.8em;
 }
-
 
 /* ------ */
 .social-links {
@@ -1080,28 +1079,28 @@ i:hover {
 	display: flex;
 	justify-content: space-evenly;
 }
+
 .cartButton {
-  box-sizing: border-box;
-  background-color: transparent;
-  border: 2px solid #e74c3c;
-  border-radius: 0.6em;
-  color: #e74c3c;
-  cursor: pointer;
-  display: flex;
+	box-sizing: border-box;
+	background-color: transparent;
+	border: 2px solid #e74c3c;
+	border-radius: 0.6em;
+	color: #e74c3c;
+	cursor: pointer;
+	display: flex;
 	align-self: flex-end;
 	position: relative;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1;
-  margin: 20px;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1;
+	margin: 20px;
 	margin-left: -10px;
-	/* margin-left: 30%; */
-  padding: 1.2em 2.8em;
-  text-decoration: none;
-  text-align: center;
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
+	padding: 1.2em 2.8em;
+	text-decoration: none;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
 }
 
 .cartButton:hover, .btn:focus {
@@ -1118,26 +1117,25 @@ i:hover {
 }
 
 .starButton {
-  box-sizing: border-box;
-  background-color: transparent;
-  border: 2px solid #e74c3c;
-  border-radius: 0.6em;
-  color: #e74c3c;
-  cursor: pointer;
-  display: flex;
+	box-sizing: border-box;
+	background-color: transparent;
+	border: 2px solid #e74c3c;
+	border-radius: 0.6em;
+	color: #e74c3c;
+	cursor: pointer;
+	display: flex;
 	align-self: flex-end;
 	position: relative;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1;
-  margin: 20px;
-	/* margin-left: 30%; */
-  padding: 1.2em 2.8em;
-  text-decoration: none;
-  text-align: center;
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1;
+	margin: 20px;
+	padding: 1.2em 2.8em;
+	text-decoration: none;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
 }
 
 .starButton:hover, .btn:focus {
@@ -1158,7 +1156,7 @@ select {
 	outline: none;
 	font-family: 'Montserrat', sans-serif;
 	border-width: 5px;
-	border-color:rgb(150, 150, 150);
+	border-color: rgb(150, 150, 150);
 	background-color: rgb(150, 150, 150);
 	border-radius: .5em;
 	overflow: hidden;
@@ -1177,7 +1175,7 @@ select {
 
 select:hover {
 	opacity: 80%;
-	background-color: #e4331f ;
+	background-color: #e4331f;
 	border-color: #e4331f;
 }
 
@@ -1213,41 +1211,48 @@ select:hover {
 }
 
 #q-a-title {
-	font-size: large;
+	font-size: 20px;
 	padding-bottom: 30px;
 	font-weight: lighter;
 }
+
 #q-list{
 	margin-top: 50px;
 	margin-left: 5%;
 	height: 600px;
 	overflow-y: scroll;
 }
+
 #q-comp, #a-comp {
 	padding: 10px;
 }
+
 #q-body {
 	font-size: 20px;
 	font-weight: bold;
 }
+
 #q-user {
 	font-size: small;
 	font-weight: normal;
 	float: right;
-
 }
+
 #a-letter {
 	float: left;
 	font-size: 20px;
 	font-weight: bold;
 }
+
 #a-wrapper {
 	padding: 3px;
 }
+
 #a-body {
 	margin-left: 30px;
 	font-size: 20px;
 }
+
 #a-comp {
 	height: 150px;
 	overflow-y: scroll;
@@ -1264,50 +1269,59 @@ select:hover {
 	align-items: center;
 	justify-content: center;
 }
+
 .qa-modal-content {
 	width: 500px;
 	background-color: #fff;
 }
+
 .qa-modal-header, .modal-footer {
 	padding: 10px;
 }
+
 .qa-modal-title {
 	margin: 0;
 	text-decoration: underline;
 }
+
 .qa-modal-subtitle {
 	font-size: 13px;
 }
+
 .qa-modal-body {
 	text-decoration: underline;
 	padding: 10px;
 	border-top: 1px solid #eee;
 	border-bottom: 1px solid #eee;
 }
+
 .qa-modal-button-close {
 	float: right;
 }
+
 .qa-modal-button {
 	box-sizing: border-box;
-  background-color: transparent;
-  border: 2px solid #e74c3c;
-  border-radius: 0.6em;
-  color: #e74c3c;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1;
-  text-decoration: none;
-  text-align: center;
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
+	background-color: transparent;
+	border: 2px solid #e74c3c;
+	border-radius: 0.6em;
+	color: #e74c3c;
+	cursor: pointer;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1;
+	text-decoration: none;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
 	-webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+	transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
+
 .qa-modal-button:hover {
 	box-shadow: 0 0 40px 40px #e4331f inset;
 }
+
 .qa-modal-button:hover, .btn:focus {
 	color: #fff;
   outline: 0;
@@ -1315,26 +1329,33 @@ select:hover {
 .qa-modal-footer {
 	margin-top: 10px;
 }
+
 #a-upload, #a-email, #a-nickname, #a-answer {
 	margin-top: 10px;
 }
+
 #a-email input, #a-nickname input {
 	width: 50%;
 }
+
 #a-answer input {
 	width: 75%;
 	height: 70px;
 }
+
 #q-email, #q-question, #q-nickname {
 	margin-top: 10px;
 }
+
 #q-question input {
 	width: 75%;
 	height: 70px;
 }
+
 #q-email input, #q-nickname input {
 	width: 50%;
 }
+
 #a-img-display {
 	padding-top: 5px;
 	max-width: 100px;
@@ -1348,11 +1369,11 @@ select:hover {
 	height: 40px;
 	font-size: large;
 	font-weight: bold;
-
 }
 .search-wrapper {
 	padding-bottom: 10px;
 }
+
 #no-ans {
 	padding-left: 10px;
 	padding-bottom: 10px;
@@ -1363,27 +1384,29 @@ select:hover {
 	font-weight: 100;
 	color:rgb(70, 70, 70);
 }
+
 #q-add-btn, #q-see-more-btn, #q-see-less-btn {
 	padding: 10px;
 	margin: 10px;
 	box-sizing: border-box;
-  background-color: transparent;
-  border: 2px solid #e74c3c;
-  border-radius: 0.6em;
-  color: #e74c3c;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1;
-  text-decoration: none;
-  text-align: center;
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
+	background-color: transparent;
+	border: 2px solid #e74c3c;
+	border-radius: 0.6em;
+	color: #e74c3c;
+	cursor: pointer;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1;
+	text-decoration: none;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
 	-webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+	transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
-#q-add-btn:hover, .btn:focus,  #q-see-more-btn:hover, .btn:focus, #q-see-less-btn:hover, .btn:focus {
+
+#q-add-btn:hover, .btn:focus, #q-see-more-btn:hover, .btn:focus, #q-see-less-btn:hover, .btn:focus {
 	color: #fff;
   outline: 0;
 }
@@ -1401,6 +1424,7 @@ select:hover {
 	-webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
   transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
+
 #ans-expand:hover, #ans-unexpand:hover, .q-add-ans-btn:hover {
 	color: #a3372a;
 }
@@ -1411,8 +1435,9 @@ select:hover {
 	border: none;
 	color: gray;
 	-webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+	transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
+
 #ans-help-btn:hover, #ans-report:hover, #q-report:hover, #q-help-btn:hover {
 	color: darkgray;
 }
@@ -1453,4 +1478,3 @@ select:hover {
 .toggle-dark-mode-button:active {
 	transform: scale(1.1);
 }
-

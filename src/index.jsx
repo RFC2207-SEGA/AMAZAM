@@ -169,10 +169,12 @@ class App extends React.Component {
 
         <TitleBar />
         <div className="title-streamer">Site-wide announcement message... SALE / DISCOUNT Offer... new Product Highlight</div>
+
         <Overview product={this.state.product} select={this.selectProduct.bind(this)} meta={this.state.reviewMeta} scroll={this.executeScroll.bind(this)} />
 
-        {/* <QList product={this.state.product} select={this.selectProduct.bind(this)} />
-        <div ref={this.myRef}></div> */}
+        <QList product={this.state.product} select={this.selectProduct.bind(this)} />
+        <div ref={this.myRef}></div>
+
         <RatingsReviews product={this.state.product} reviewMeta={this.state.reviewMeta} select={this.selectProduct.bind(this)} />
       </div>
     )
