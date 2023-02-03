@@ -679,7 +679,7 @@ class RatingsReviews extends React.Component {
         }
       ],
       sort: 'relevant',
-      showAddReviewModal: true,
+      showAddReviewModal: false,
       reviewsToDiplay: 2
     }
     this.handleSort = this.handleSort.bind(this);

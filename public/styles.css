@@ -1412,36 +1412,34 @@ select:hover {
 	right: 20px;
 }
 
-.dark-mode-button {
+.toggle-dark-mode-button {
 	position: fixed;
   box-sizing: border-box;
   background-color: transparent;
-  border: 2px solid #323232;
+  border: 2px solid #444444;
   border-radius: 0.6em;
-  color: #323232;
   cursor: pointer;
   display: flex;
 	align-self: flex-end;
 	position: relative;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
   line-height: 1;
 	padding: 5px;
 	margin: 10px;
-	/* margin-left: 30%; */
   text-decoration: none;
   text-align: center;
+	transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+	box-shadow: 0 0 40px 40px #444444 inset;
 }
 
-.dark-mode-button:hover, .btn:focus {
+.toggle-dark-mode-button:hover, .toggle-dark-mode-button:hover i {
   color: #fff;
   outline: 0;
+	transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
 
-.dark-mode-button {
-  -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+.toggle-dark-mode-button:active {
+	transform: scale(1.1);
 }
-.dark-mode-button {
-  box-shadow: 0 0 40px 40px #323232 inset;
-}
+
