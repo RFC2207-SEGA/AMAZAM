@@ -10,12 +10,7 @@ Our team was tasked with re-creating the site from the ground up to modernize th
 
 We collaborated during our daily stand-ups, tracked tickets in Trello, and used Git Feature Branch Workflow to develop our own features without disturbing the main codebase. Our team successfully completed the project in under two weeks and presented it to the stakeholders.
 
-### Contributors
-- Product Overview and Related Products - [Alice Blank](https://github.com/AllEyesBlank)
-- Ratings and Reviews - [Melissa Gil](https://github.com/melissa-gv)
-- Questions and Answers - [Zachary Vallow](https://github.com/Zachariah1618)
-
-## Tech Stack
+### Tech Stack
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Javscript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
@@ -29,6 +24,11 @@ We collaborated during our daily stand-ups, tracked tickets in Trello, and used 
 ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
 ![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
 ![Trello](https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white)
+
+### Contributors
+- Product Overview and Related Products - [Alice Blank](https://github.com/AllEyesBlank)
+- Ratings and Reviews - [Melissa Gil](https://github.com/melissa-gv)
+- Questions and Answers - [Zachary Vallow](https://github.com/Zachariah1618)
 
 ## Demo
 #### Product Overview (Alice)
