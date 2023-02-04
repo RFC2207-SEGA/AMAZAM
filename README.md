@@ -2,6 +2,8 @@
 
 ## About the App
 AMAZAM is an online store that sells clothing, shoes, and accessories. The app provides an intuitive shopping experience where customers can view product information, navigate through related products, read and add reviews, and search and answer questions about the products listed.
+<p align="center"><img width="800" alt="fullscreen view of home page" src="https://user-images.githubusercontent.com/104800030/216736856-8ce9c614-23a4-47bf-b9b6-7067f02cbadf.png"></p>
+
 
 ### Background
 Our team was tasked with re-creating the site from the ground up to modernize the look and feel of the site. We were provided with a business requirements document as well as wireframes (Adobe XD) from a design team for which we were then responsible for the implementing and stylizing.
