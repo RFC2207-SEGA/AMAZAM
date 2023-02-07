@@ -63,20 +63,32 @@ class RatingsReviews extends React.Component {
     // handleInteractions(e, 'Reviews');
     e.preventDefault();
     let sortMethod = e.target.value
-    this.setState({ sort: sortMethod });
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews', {
-      headers: { 'Authorization': `${API_KEY}` },
-      params: {
-        // count: 10,
-        product_id: this.props.product.id,
-        sort: sortMethod
-      }
-    })
-      .then((res) => {
-        this.setState({ reviews: res.data.results })
+    this.setState({ sort: sortMethod })
+    if (sortMethod === 'relevant') {
+      axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews', {
+        headers: { 'Authorization': `${API_KEY}` },
+        params: {
+          count: 50,
+          product_id: this.props.product.id,
+          sort: sortMethod
+        }
       })
-      .catch((err) =>
-        console.log(err));
+        .then((res) => {
+          this.setState({ reviews: res.data.results })
+          this.allReviews = res.data.results
+          return
+        })
+        .catch((err) =>
+          console.log(err))
+    }
+    if (sortMethod === 'helpfulness') {
+      this.allReviews.sort((a, b) => b.helpfulness - a.helpfulness)
+    } else if (sortMethod === 'newest') {
+      this.allReviews.sort((a, b) => -a.date.localeCompare(b.date))
+    } else if (sortMethod === 'oldest') {
+      this.allReviews.sort((a, b) => a.date.localeCompare(b.date))
+    }
+    this.setState({ reviews: this.allReviews })
   }
 
   toggleReviewModal() {
@@ -89,7 +101,11 @@ class RatingsReviews extends React.Component {
         <button className='ratings-reviews-btn'
           onClick={(e) => {
             e.preventDefault()
-            this.setState({ reviewsToDiplay: this.state.reviewsToDiplay + 2 })
+            if (this.state.reviewsToDiplay + 1 === this.state.reviews.length) {
+              this.setState({ reviewsToDiplay: this.state.reviewsToDiplay + 1 })
+            } else {
+              this.setState({ reviewsToDiplay: this.state.reviewsToDiplay + 2 })
+            }
           }}>
           More Reviews
         </button>
@@ -119,7 +135,6 @@ class RatingsReviews extends React.Component {
     const resetFilters = { 0: false, 1: false, 3: false, 4: false, 5: false }
     this.ratingsFiltersStatusTemp = resetFilters
     this.setState({ ratingsFiltersStatus: resetFilters })
-    console.log('reset filters')
   }
 
   render() {
@@ -145,12 +160,13 @@ class RatingsReviews extends React.Component {
 
           <div className='reviews-list-container'>
             <div className='review-list-hdr'>
-              <span className='reviews-hrd-sort-text'>{`${this.state.reviewsToDiplay} ${this.state.reviewsToDiplay === 1 ? 'review' : 'reviews'}, sorted by `}</span>
+              <span className='reviews-hrd-sort-text'>{`Showing ${this.state.reviewsToDiplay} ${this.state.reviewsToDiplay === 1 ? 'review' : 'reviews'}, sorted by `}</span>
               <span>
                 <select className='reviews-sorting-dropdown' onChange={this.handleSort}>
                   <option value='relevant'>Relevance</option>
-                  <option value='helpful'>Helpfulness</option>
+                  <option value='helpfulness'>Helpfulness</option>
                   <option value='newest'>Newest</option>
+                  <option value='oldest'>Oldest</option>
                 </select>
               </span>
             </div>

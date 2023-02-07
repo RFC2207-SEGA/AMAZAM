@@ -22,7 +22,6 @@ class AnswerReport extends React.Component {
         { headers: { Authorization: `${API_KEY}` } }
       )
       .then((res) => {
-        console.log(res);
         handleInteractions(e, 'Q&A');
       })
       .catch((err) => {

@@ -13,7 +13,6 @@ class ReviewThumbnailExpand extends React.Component {
   handleCloseReviewThumbnailModal(e) {
     e.preventDefault()
     this.setState({ showModal: false })
-    console.log('closed thumbnail')
   }
 
   render() {

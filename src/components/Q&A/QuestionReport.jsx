@@ -15,7 +15,6 @@ class QuestionReport extends React.Component {
 
   handleReport(e) {
     var temp = parseInt(this.state.currentQues.question_id);
-    console.log(temp);
     axios
       .put(
         `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${temp}/report`,
@@ -23,7 +22,6 @@ class QuestionReport extends React.Component {
         { headers: { Authorization: `${API_KEY}` } }
       )
       .then((res) => {
-        console.log("question report:", res);
         handleInteractions(e, 'Q&A');
       })
       .catch((err) => {

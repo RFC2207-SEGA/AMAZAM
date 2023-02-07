@@ -24,7 +24,6 @@ class AddAnswer extends React.Component {
   answerPost(e) {
     e.preventDefault();
     handleInteractions(e, 'Q&A');
-    console.log(this.state.aPhotos);
     var tempID = parseInt(this.props.qID);
     axios
       .post(
@@ -37,9 +36,6 @@ class AddAnswer extends React.Component {
         },
         { headers: { Authorization: `${API_KEY}` } }
       )
-      .then((res) => {
-        console.log(res);
-      })
       .catch((err) => {
         console.log(err);
       });

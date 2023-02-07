@@ -173,7 +173,6 @@ class Overview extends React.Component {
     }
     else for (var key in this.state.currentStyle.skus) {
       if (this.state.currentStyle.skus[key].size === this.state.currentSize) {
-        console.log('key: ', key )
         currentSku = key;
       }
     }

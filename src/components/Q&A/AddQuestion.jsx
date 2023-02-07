@@ -20,14 +20,7 @@ class AddQuestion extends React.Component {
   questionPost(e) {
     e.preventDefault();
     handleInteractions(e, 'Q&A');
-    console.log(
-      this.state.qBody,
-      this.state.qName,
-      this.state.qEmail,
-      this.props.currentProductID
-    );
     var tempID = parseInt(this.props.currentProductID);
-    console.log(tempID);
     axios
       .post(
         "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions",
@@ -39,9 +32,6 @@ class AddQuestion extends React.Component {
         },
         { headers: { Authorization: `${API_KEY}` } }
       )
-      .then((res) => {
-        console.log(res);
-      })
       .catch((err) => {
         console.log(err);
       });
