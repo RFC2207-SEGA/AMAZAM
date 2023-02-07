@@ -336,7 +336,7 @@ Review List/Tiles Sub-component
 */
 
 .reviews-list {
-	height: 450px;
+	height: 550px;
 	margin: 20px 0;
 }
 
@@ -450,33 +450,50 @@ Ratings Breakdown Sub-component
 */
 .ratings-breakdown-container {
 	margin: 10px;
+	margin-bottom: 20px;
 }
 
 .avg-rating {
-	font-size: 16px;
+	font-size: 36px;
+}
+
+.ratings-breakdown-stars {
+	display: inline-block;
+	font-size: larger;
+  white-space: nowrap;
+}
+
+.reviews-count {
+	margin-left: 50px;
 }
 
 .ratings-breakdown-table {
-	margin-top: 10px;
-	margin-bottom: 5px;
-	width: 500px;
+	width: 480px;
 }
 
 .ratings-breakdown-table td {
-	padding-top: 3%;
-	padding-bottom: 3%;
+	padding: 3% 0;
+}
+
+.rating-bar-graph-checkbox {
+	display: none;
 }
 
 .rating-bar-graph-label {
-	width: 50px;
-	font-size: 15px;
+	display: inline-table;
+	font-family: futura;
+	border: none;
+  text-decoration: underline;
+	font-size: 14px;
+	width: 55px;
 }
 
-.reviews-anchors:visited {
-	color: #d3d3d3;
+.rating-bar-graph-label:hover {
+	color: #0F7D5A;
 }
 
-.reviews-anchors:active {
+input[type="checkbox"]:checked + .rating-bar-graph-label {
+	font-style: italic;
 	color: #0F7D5A;
 }
 
@@ -488,24 +505,25 @@ Ratings Breakdown Sub-component
 
 .bar-graph-underlay {
 	position: absolute;
+	top: 19px;
 	z-index: 1;
-	height: 10px;
+	height: 12px;
 	width: 425px;
-	margin-left: 10px;
 	background-color: rgb(70, 70, 70);
 }
 
 .bar-graph-overlay {
 	position: absolute;
+	top: 19px;
 	z-index: 2;
-  height: 10px;
+  height: 12px;
   background-color:  rgb(215, 215, 215)
 }
 
 .recommendations {
-	padding-bottom: 30px;
+	padding: 15px 0;
+	font-size: 18px;
 }
-
 
 /*
 Product Breakdown Sub-component
@@ -526,9 +544,9 @@ Product Breakdown Sub-component
 .range-bar {
 	position: absolute;
 	z-index: 1;
-	height: 10px;
+	height: 12px;
 	width: 100%;
-  background-color: rgb(70, 70, 70);
+	background-color: rgb(70, 70, 70);
 }
 
 .triangle-down {
@@ -547,6 +565,21 @@ Product Breakdown Sub-component
 	justify-content: space-between;
 	font-size: small;
 	padding-bottom: 15px;
+}
+
+.clear-ratings-filter {
+	font-size: 11px;
+	appearance: none;
+	border: none;
+	text-decoration: underline;
+	padding: 0 0 15px;
+	background: transparent;
+	color: #eee;
+}
+
+.clear-ratings-filter:hover {
+	font-style: italic;
+	color: #0F7D5A;
 }
 
 /*
@@ -570,7 +603,7 @@ Add Review Modal
 	width: 615px;
 	height: 700px;
 	background-color: rgb(15, 15, 15);
-	color:rgb(230, 230, 230);
+	color: rgb(230, 230, 230);
 	overflow-y: scroll;
 	border-radius: 5px;
 }
@@ -691,6 +724,7 @@ Modal - Star Ratings
 	position: relative;
 	z-index: 0;
 	height: 16px;
+	pointer-events: none !important;
 }
 
 .stars-underlay {
@@ -1375,8 +1409,8 @@ select:hover {
 .qsearch {
 	width: 75%;
 	padding: .5%;
-  position: relative;
-  display: flex;
+	position: relative;
+	display: flex;
 	height: 25px;
 	font-size: 12pt;
 	border: 1px solid #252525;
@@ -1459,7 +1493,7 @@ select:hover {
 	border: none;
 	color: gray;
 	-webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+	transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
 
 #ans-help-btn:hover, #ans-report:hover, #q-report:hover, #q-help-btn:hover {
@@ -1474,28 +1508,28 @@ select:hover {
 
 .toggle-dark-mode-button {
 	position: fixed;
-  box-sizing: border-box;
-  background-color: transparent;
-  border: 2px solid #444444;
-  border-radius: 0.6em;
-  cursor: pointer;
-  display: flex;
+	box-sizing: border-box;
+	background-color: transparent;
+	border: 2px solid #444444;
+	border-radius: 0.6em;
+	cursor: pointer;
+	display: flex;
 	align-self: flex-end;
 	position: relative;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1;
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 1;
 	padding: 5px;
 	margin: 10px;
-  text-decoration: none;
-  text-align: center;
+	text-decoration: none;
+	text-align: center;
 	transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 	box-shadow: 0 0 40px 40px #444444 inset;
 }
 
 .toggle-dark-mode-button:hover, .toggle-dark-mode-button:hover i {
-  color: #fff;
-  outline: 0;
+	color: #fff;
+	outline: 0;
 	transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
 

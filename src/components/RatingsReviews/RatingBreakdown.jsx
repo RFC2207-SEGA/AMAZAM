@@ -1,7 +1,8 @@
 import React from 'react'
 import Stars from '../../../src/components/Stars.jsx'
+import RatingsFilter from './RatingsFilter.jsx'
 
-function RatingBreakdown({ reviewMeta, filterReviews }) {
+function RatingBreakdown({ reviews, reviewMeta, filterReviews, ratingsFiltersStatus, resetRatingsFilter }) {
   function avgRating() {
     var sum = 0;
     var totalReviews = 0;
@@ -46,40 +47,38 @@ function RatingBreakdown({ reviewMeta, filterReviews }) {
     }
   }
 
+
+  function clearFilters(e) {
+    e.preventDefault()
+    resetRatingsFilter()
+  }
+
   return (
     <div className='ratings-breakdown-container'>
+
       <div>
         <span className='avg-rating' data-testid='stars'>{avgRating()} </span>
-        <Stars rating={avgRating()} />
+        <span className="ratings-breakdown-stars">
+          <Stars rating={avgRating()} />
+        </span>
+        <span className='reviews-count'>({reviews.length} Reviews)</span>
       </div>
-
-      <table className='ratings-breakdown-table'>
-        <tbody>{starPercentage()}
-          {Object.entries(starPct).reverse().map(([key, value], index) => {
-            return (
-              <tr key={index}>
-                <td className='rating-bar-graph-label'>
-                  <a onClick={(e) => {
-                    e.preventDefault()
-                    filterReviews(key)
-                  }}
-                    href='' className='reviews-anchors'>
-                    {key} stars
-                  </a>
-                </td>
-                <td className='bar-graph-container'>
-                  <div className='bar-graph-underlay'></div>
-                  <div className='bar-graph-overlay' style={{ 'width': `${value}%` }}></div>
-                </td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
 
       <div className='recommendations'>
         <p>{recPercentage()}% of reviewers recommend this product</p>
       </div>
+
+      <table className='ratings-breakdown-table'>
+        <tbody>{starPercentage()}
+          <RatingsFilter
+            starPct={starPct}
+            filterReviews={filterReviews}
+            ratingsFiltersStatus={ratingsFiltersStatus}
+          />
+        </tbody>
+      </table>
+
+      <button className="clear-ratings-filter" onClick={clearFilters}>Clear filters</button>
 
     </div>
   )
