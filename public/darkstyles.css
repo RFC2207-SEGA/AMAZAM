@@ -1363,7 +1363,7 @@ select:hover {
 }
 
 .qa-modal-button:hover {
-	box-shadow: 0 0 40px 40px #0F7D5A; inset;
+	box-shadow: 0 0 40px 40px #0F7D5A inset;
 }
 
 .qa-modal-button:hover, .btn:focus {
