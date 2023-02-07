@@ -304,7 +304,7 @@ Ratings and Revies Main Component
 #primary-ratings-and-reviews-widget-container {
 	margin-left: 5%;
 	margin-right: 5%;
-	margin-bottom: 10%;
+	margin-bottom: 5%;
 }
 
 .reviews-ratings-hdr {
@@ -336,7 +336,7 @@ Review List/Tiles Sub-component
 */
 
 .reviews-list {
-	height: 550px;
+	height: 600px;
 	margin: 20px 0;
 }
 
@@ -427,7 +427,7 @@ Review Thumbnail Modal
 	top: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.9);
+	background-color: rgba(0, 0, 0, 0.8);
 	display: flex;
 	align-items: center;
 	justify-content: center;
