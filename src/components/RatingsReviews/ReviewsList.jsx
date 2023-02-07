@@ -3,7 +3,7 @@ import ReviewTile from './ReviewTile.jsx'
 
 function ReviewsList ({ reviews, reviewsToDiplay }) {
   return (
-    <div className='reviews-list' style={{overflowY: reviewsToDiplay > 2 ? 'scroll' : 'hidden'}}>
+    <div className='reviews-list' style={{overflowY: 'scroll'}}>
       {reviews.map((review) =>
         <ReviewTile review={review} key={review.review_id} />
       )}

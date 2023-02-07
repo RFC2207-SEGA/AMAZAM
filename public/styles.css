@@ -400,11 +400,17 @@ Review List/Tiles Sub-component
 	transition: all 0.3s ease-in-out;
 	text-decoration: underline;
 	display: inline-block;
+	color: grey;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .review-tile-voting-btns:hover {
 	color:rgb(255, 0, 0);
 	transform: scale(1.2);
+}
+
+.review-tile-voting-btns-clicked {
+  font-style: italic;
 }
 
 .seller-response {
@@ -568,7 +574,7 @@ Product Breakdown Sub-component
 }
 
 .clear-ratings-filter {
-	font-size: 11px;
+	font-size: 12px;
 	appearance: none;
 	border: none;
 	text-decoration: underline;
@@ -578,8 +584,8 @@ Product Breakdown Sub-component
 }
 
 .clear-ratings-filter:hover {
-	font-style: italic;
 	color: red;
+	transform: scale(1.1);
 }
 
 /*
@@ -741,7 +747,7 @@ Modal - Star Ratings
 /* Ratings & Reviews Buttons */
 .footer-btns {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: center;
 }
 
 .ratings-reviews-btn {
@@ -752,13 +758,10 @@ Modal - Star Ratings
   color: #e74c3c;
   cursor: pointer;
   display: flex;
-	align-self: flex-end;
-	position: relative;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1;
   margin: 20px;
-	margin-left: -10px;
   padding: 1.2em 2.8em;
   text-decoration: none;
   text-align: center;
