@@ -47,7 +47,6 @@ function RatingBreakdown({ reviews, reviewMeta, filterReviews, ratingsFiltersSta
     }
   }
 
-
   function clearFilters(e) {
     e.preventDefault()
     resetRatingsFilter()

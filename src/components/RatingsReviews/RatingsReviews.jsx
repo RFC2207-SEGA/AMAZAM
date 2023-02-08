@@ -76,19 +76,20 @@ class RatingsReviews extends React.Component {
         .then((res) => {
           this.setState({ reviews: res.data.results })
           this.allReviews = res.data.results
-          return
         })
         .catch((err) =>
           console.log(err))
     }
+    return
+    let sortedReviews
     if (sortMethod === 'helpfulness') {
-      this.allReviews.sort((a, b) => b.helpfulness - a.helpfulness)
+      sortedReviews =this.state.reviews.sort((a, b) => b.helpfulness - a.helpfulness)
     } else if (sortMethod === 'newest') {
-      this.allReviews.sort((a, b) => -a.date.localeCompare(b.date))
+      sortedReviews =this.state.reviews.sort((a, b) => -a.date.localeCompare(b.date))
     } else if (sortMethod === 'oldest') {
-      this.allReviews.sort((a, b) => a.date.localeCompare(b.date))
+      sortedReviews = this.state.reviews.sort((a, b) => a.date.localeCompare(b.date))
     }
-    this.setState({ reviews: this.allReviews })
+    this.setState({ reviews: sortedReviews })
   }
 
   toggleReviewModal() {
@@ -134,7 +135,7 @@ class RatingsReviews extends React.Component {
   resetRatingsFilter() {
     const resetFilters = { 0: false, 1: false, 3: false, 4: false, 5: false }
     this.ratingsFiltersStatusTemp = resetFilters
-    this.setState({ ratingsFiltersStatus: resetFilters })
+    this.setState({ ratingsFiltersStatus: resetFilters, reviews: this.allReviews, reviewsToDiplay: this.allReviews.length })
   }
 
   render() {
