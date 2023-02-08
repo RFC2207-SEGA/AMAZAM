@@ -79,13 +79,14 @@ class RatingsReviews extends React.Component {
         })
         .catch((err) =>
           console.log(err))
+      return
     }
-    return
+
     let sortedReviews
     if (sortMethod === 'helpfulness') {
-      sortedReviews =this.state.reviews.sort((a, b) => b.helpfulness - a.helpfulness)
+      sortedReviews = this.state.reviews.sort((a, b) => b.helpfulness - a.helpfulness)
     } else if (sortMethod === 'newest') {
-      sortedReviews =this.state.reviews.sort((a, b) => -a.date.localeCompare(b.date))
+      sortedReviews = this.state.reviews.sort((a, b) => -a.date.localeCompare(b.date))
     } else if (sortMethod === 'oldest') {
       sortedReviews = this.state.reviews.sort((a, b) => a.date.localeCompare(b.date))
     }

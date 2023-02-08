@@ -489,6 +489,7 @@ Ratings Breakdown Sub-component
 }
 
 .rating-bar-graph-label {
+	cursor: pointer;
 	display: inline-table;
 	font-family: futura;
 	border: none;
@@ -577,6 +578,7 @@ Product Breakdown Sub-component
 }
 
 .clear-ratings-filter {
+	cursor: pointer;
 	font-size: 12px;
 	appearance: none;
 	border: none;
