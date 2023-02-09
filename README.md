@@ -52,5 +52,7 @@ New reviews can be posted by users by filling out the 'Add A Review' form. Users
 
 ### Dark Mode
 For ease of viewing, we added a dark mode by using an event click handler that renders a dark style CSS when the dark mode button is clicked.
-<p align="center"><img width="800" alt="review list demo" src="public/readme-assets/Darkmode-4x.gif"></p>
+<p align="center"><img width="800" alt="review list demo" src="public/readme-assets/Darkmode4x.gif"></p>
+
+
 
