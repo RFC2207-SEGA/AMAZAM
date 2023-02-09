@@ -36,4 +36,21 @@ We collaborated during our daily stand-ups, tracked tickets in Trello, and used 
 ![gif](https://media.giphy.com/media/sejTJvcPPDZkDXuEsz/giphy.gif)
 
 #### Ratings and Review (Melissa)
-(in progress!)
+<p align="center"><img width="800" alt="fullscreen view of home page" src="https://user-images.githubusercontent.com/104800030/217648683-429205c9-3f50-4873-92e9-d598c2c603ee.png"></p>
+
+### Reviews
+The reviews section dynamically renders product reviews. The list can be expanded to display additional reviews. Review image thumbnails can be clicked on to show an enlarged image in a popup modal. Users have the option to report a review if deemed inappropriate OR can mark a review as helpful. All interactions provide user feedback for an engaging and responsive user experience.
+<p align="center"><img width="800" alt="review list demo" src="public/readme-assets/Review-List.gif"></p>
+
+### Reviews Filtering and Sorting
+Reviews can sort by age of reviews (newest and oldest), helpfulness, and relevance. In addition, users can filter reviews for a specific rating.
+<p align="center"><img width="800" alt="review list demo" src="public/readme-assets/Filter-and-Sort.gif"></p>
+
+### Add New Review
+New reviews can be posted by users by filling out the 'Add A Review' form. Users select a rating by clicking a star from one to five, select the product characteristics, and upload images. I used [Cloudinary](https://cloudinary.com/) for image hosting. 
+<p align="center"><img width="800" alt="review list demo" src="public/readme-assets/AddReview5x.gif"></p>
+
+### Dark Mode
+For ease of viewing, we added a dark mode by using an event click handler that renders a dark style CSS when the dark mode button is clicked.
+<p align="center"><img width="800" alt="review list demo" src="public/readme-assets/Darkmode-4x.gif"></p>
+
