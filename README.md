@@ -1,5 +1,17 @@
 # 🛍️ AMAZAM
 
+## Table of Contents
+  * [About the App](#about-the-app)
+    + [Background](#background)
+  * [Tech Stack](#tech-stack)
+  * [Contributors](#contributors)
+  * [Product Overview Demo by Alice Blank](#product-overview-demo-by-alice-blank)
+  * [Ratings and Reviews Demo by Melissa Gil](#ratings-and-reviews-demo-by-melissa-gil)
+    + [Reviews](#reviews)
+    + [Reviews Filtering and Sorting](#reviews-filtering-and-sorting)
+    + [Add New Review](#add-new-review)
+    + [Dark Mode](#dark-mode)
+
 ## About the App
 AMAZAM is an online store that sells clothing, shoes, and accessories. The app provides an intuitive shopping experience where customers can view product information, browse related products, read and add reviews, and search and answer questions about the products.
 
@@ -30,11 +42,11 @@ We collaborated during our daily stand-ups, tracked tickets in Trello, and used 
 - Questions and Answers - [Zachary Vallow](https://github.com/Zachariah1618)
 - Ratings and Reviews - [Melissa Gil](https://github.com/melissa-gv)
 
-## Product Overview Demo (Alice Blank)
+## Product Overview Demo by Alice Blank
 <p align="center"><img width="800" alt="product overview gif" src="https://media.giphy.com/media/vuHs0LpNVL8lIzmmU3/giphy.gif"></p>
 <p align="center"><img width="800" alt="product overview gif2" src="https://media.giphy.com/media/sejTJvcPPDZkDXuEsz/giphy.gif"></p>
 
-## Ratings and Reviews Demo (Melissa Gil)
+## Ratings and Reviews Demo by Melissa Gil
 ### Reviews
 The reviews section dynamically renders product reviews. The list can be expanded to display additional reviews. Review image thumbnails can be clicked on to show an enlarged image in a popup modal. Users have the option to report a review if deemed inappropriate and can also mark a review as helpful. All interactions provide user feedback for an engaging and responsive user experience.
 <p align="center"><img width="800" alt="review list demo" src="public/readme-assets/Review-List.gif"></p>
