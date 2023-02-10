@@ -336,7 +336,7 @@ Review List/Tiles Sub-component
 */
 
 .reviews-list {
-	height: 550px;
+	height: 600px;
 	margin: 20px 0;
 }
 
@@ -396,6 +396,7 @@ Review List/Tiles Sub-component
 }
 
 .review-tile-voting-btns {
+	cursor: pointer;
 	color: #d3d3d3;
 	transition: all 0.3s ease-in-out;
 	text-decoration: underline;
@@ -1264,10 +1265,9 @@ select:hover {
 }
 
 #q-list {
-	margin-top: 50px;
-	margin-left: 5%;
+	margin: 5%;
 	height: 300px;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 #q-list button {
