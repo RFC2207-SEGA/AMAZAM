@@ -50,6 +50,7 @@ We collaborated during our daily stand-ups, tracked tickets in Trello, and used 
 ### Reviews
 The reviews section dynamically renders product reviews. The list can be expanded to display additional reviews. Review image thumbnails can be clicked on to show an enlarged image in a popup modal. Users have the option to report a review if deemed inappropriate and can also mark a review as helpful. All interactions provide user feedback for an engaging and responsive user experience.
 
+
 Refer to [Backend Repo](https://github.com/SDC-Yoda/SDC-API-Reviews) for details on API.
 
 <p align="center"><img width="800" alt="review list demo" src="public/readme-assets/Review-List.gif"></p>
